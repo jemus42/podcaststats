@@ -1,0 +1,260 @@
+---
+title: "Relay.fm — In Numbers"
+date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
+author: "Lukas — @jemus42"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+#### Global options ####
+options(max.print = "75")
+opts_chunk$set(echo    = FALSE,
+	             cache   = FALSE,
+               prompt  = FALSE,
+               tidy    = TRUE,
+               comment = NA,
+               message = FALSE,
+               warning = FALSE,
+               fig.retina = 2,
+               fig.path = "assets/relay/")
+opts_knit$set(width = 75)
+
+#### Data prep ####
+source("setup.R")
+
+relay      <- readRDS("data/relay.rds") %>% filter(year >= 2014)
+
+shows <- relay %>% group_by(podcast) %>% tally() %>% arrange(desc(n)) %>% extract2("podcast")
+
+relay %<>%
+  mutate(podcast = factor(podcast, levels = shows, ordered = T))
+
+```
+
+After doing [The Incomparable](http://stats.jemu.name/theincomparable/results_incomparable_master.html), I had to go see what I could do with [Relay.fm's](https://relay.fm) data as well, naturally.  
+So this is the beginning of that. The source code is included in [this repo](https://github.com/jemus42/podcaststats), and, in case anyone asks:  
+Yes, you can use these graphs for whatever. Maybe link back to me, that would be cool.
+
+Please note that there's probably still stuff coming.
+
+# Overview
+
+```{r text_placeholders, echo=F}
+projection <- relay %>%
+  group_by(podcast) %>%
+  summarize(first_aired = min(date),
+            last_aired = max(date),
+            episodes = length(unique(number))) %>%
+  mutate(lifetime_weeks = as.numeric(difftime(last_aired, first_aired, units = "weeks")),
+         episodes_per_week = episodes / lifetime_weeks) %>%
+  transmute(ep_yearly = episodes_per_week * 52) %>%
+  summarize(sum(ep_yearly)) %>% 
+  as.numeric() %>%
+  round()
+
+lastyear <- relay %>% filter(year == year(now())-1) %>% nrow()
+thisyear <- relay %>% filter(year == year(now())) %>% nrow()
+progress <- round(thisyear/projection * 100)
+```
+
+
+[Relay.fm](https://relay.fm/) spans **`r relay$podcast %>% unique %>% length()`** shows and a combined runtime of over **`r relay$duration %>% sum() %>% divide_by(60) %>% divide_by(24) %>% floor`** days spread across **`r nrow(relay)` episodes** since 2014.  
+
+In `r year(now())-1`, there were **`r lastyear`** episodes published, and based on the average release frequencies, there will probably be **`r projection`** episodes in `r year(now())`. We're currently about **`r progress`%** of the way there at **`r thisyear`** episodes.
+
+## Shows per Year
+
+```{r show_peryear}
+relay %>%
+  group_by(podcast, year) %>%
+  tally %>%
+  ggplot(aes(x = as.factor(year), weight = n, fill = podcast)) +
+  geom_bar() +
+  scale_y_continuous(breaks = seq(0, 1000, 100),
+                     minor_breaks = seq(0, 1000, 25)) +
+  scale_fill_viridis(discrete = T) +
+  labs(x = "Year", y = "# of Episodes", fill = "Show",
+       title = expression(paste(italic("Relay.fm "), "Episodes per Year"))) +
+  theme_readthedown(axis_emph = "y") +
+  theme(legend.key.size = unit(.5, "cm"))
+
+```
+
+## Shows per Week
+
+```{r shows_perweek}
+relay %>%
+  mutate(week = week(date)) %>%
+  filter(year >= 2014) %>%
+  group_by(year, week) %>%
+  tally %>%
+  {
+  ggplot(data = ., aes(x = week, y = n)) +
+  geom_point() +
+  geom_smooth(data = filter(., year != 2016),
+              method = lm, se = F, color = "red") +
+  scale_y_continuous(breaks = seq(0, 100, 5),
+                     minor_breaks = seq(0, 100, 1)) +
+  scale_x_continuous(breaks = seq(0, 55, 16)) +
+  facet_grid(.~year, space = "free_x", scales = "free_x") +
+  labs(title = expression(paste(italic("Relay.fm "), "Weekly Episode Output")),
+       x = "Week of Year", y = "Episodes Published") +
+  theme_readthedown(axis_emph = "y")
+  }
+```
+
+### Regularity
+
+```{r shows_perweek_bars, fig.height=10, fig.width=11}
+relay %>%
+  filter(year == 2015) %>%
+  mutate(week = isoweek(date)) %>%
+  group_by(podcast, year, week) %>%
+  tally %>%
+  ggplot(aes(x = week, weight = n)) +
+  geom_bar() +
+  scale_y_continuous(breaks = seq(0, 10, 1)) +
+  scale_x_continuous(breaks = seq(0, 60, 10)) +
+  facet_wrap(~podcast, ncol = 2) +
+  labs(title = expression(paste(italic("Relay.fm "), 
+                                "Episodes per Week in 2015")),
+       x = "Week of Year", y = "# fo Episodes") +
+  theme_readthedown(axis_emph = "y") +
+  theme(axis.text.y = element_text(size = rel(.5))) 
+```
+
+### Regularity and Age
+
+```{r shows_perweek_perage}
+relay %>%
+  group_by(podcast) %>%
+  summarize(first_aired = min(date),
+            last_aired = max(date),
+            episodes = length(unique(number)),
+            duration = sum(duration)) %>%
+  mutate(lifetime_weeks = as.numeric(difftime(last_aired, first_aired, units = "weeks")),
+         episodes_per_week = episodes / lifetime_weeks,
+         duration_per_week = duration / lifetime_weeks) %>%
+  ggplot(aes(x = lifetime_weeks, y = episodes_per_week)) +
+  geom_point() +
+  geom_label_repel(aes(label = podcast), size = 3) +
+  geom_hline(aes(yintercept = mean(episodes_per_week)), linetype = "dotted", color = "blue") +
+  geom_vline(aes(xintercept = mean(lifetime_weeks)), linetype = "dotted", color = "blue") +
+  labs(title = expression(paste(italic("Relay.fm "), 
+                                "Show Lifetime and Weekly Output")),
+       x = "Lifetime of Podcast in Weeks", y = "Average # of Episodes per Week") +
+    theme_readthedown(axis_emph = "y")
+```
+
+
+## Shows per Month
+
+```{r shows_permonth}
+relay %>%
+  mutate(month = month(date)) %>%
+  filter(year >= 2014) %>%
+  group_by(year, month) %>%
+  tally %>%
+  {
+  ggplot(data = ., aes(x = month, y = n)) +
+  geom_point() +
+  geom_smooth(data = filter(., year != 2016),
+              method = lm, se = F, color = "red") +
+  scale_y_continuous(breaks = seq(0, 100, 15),
+                     minor_breaks = seq(0, 100, 5)) +
+  scale_x_continuous(breaks = seq(0, 13, 2),
+                     minor_breaks = seq(0, 13, 1)) +
+  facet_grid(.~year, space = "free_x", scales = "free_x") +
+  labs(title = expression(paste(italic("Relay.fm "), "Monthly Episode Output")),
+       x = "Month of Year", y = "Episodes Published") +
+  theme_readthedown(axis_emph = "y")
+  }
+```
+
+# Runtimes
+
+## All Shows
+
+```{r runtime_allshows, fig.height=8, fig.width=11}
+relay %>%
+  filter(podcast != "B-Sides") %>%
+  {
+    ggplot(., aes(x = date, y = duration)) +
+      geom_point() +
+      expand_limits(y = 0) +
+      scale_x_datetime(breaks = date_breaks("6 months"), minor_breaks = date_breaks("3 month"),
+                       date_labels = "%b %Y") +
+      scale_y_continuous(breaks = seq(0, 300, 30),
+                         minor_breaks = seq(0, 300, 15)) +
+      facet_wrap(~podcast, ncol = 7) +
+      labs(title = expression(paste(italic("Relay.fm "), "Episode Durations")),
+           x = "Date Published", y = "Duration (mins)") +
+      theme_readthedown(axis_emph = "y") +
+      theme(axis.text.x = element_text(angle = 45, vjust = .5))
+  }
+
+```
+
+### Histogram
+
+```{r runtime_allshows_hist}
+relay %>%
+  ggplot(aes(x = duration, fill = podcast)) +
+  geom_histogram(binwidth = 2.5) +
+  geom_density(aes(y = ..count.., group = 1), fill = "black", alpha = .3) +
+  scale_x_continuous(breaks = seq(0, 300, 15),
+                         minor_breaks = seq(0, 300, 5)) +
+  scale_y_continuous(breaks = seq(0, 300, 15),
+                         minor_breaks = seq(0, 300, 5)) +
+  scale_fill_viridis(discrete = T) +
+  labs(title = expression(paste(italic("Relay.fm "), "Episode Durations")),
+           y = "Frequency", x = "Duration (mins)", fill = "Show") +
+      theme_readthedown(axis_emph = "y")
+```
+
+
+## Average by Show
+
+### Boxplots 
+
+```{r runtime_avg_pershow}
+relay %>%
+  #filter(podcast != "B-Sides") %>%
+  group_by(podcast) %>%
+  mutate(dur_mean = mean(duration)) %>%
+         {
+           ggplot(., aes(x = reorder(podcast, dur_mean), y = duration)) +
+             geom_boxplot() +
+             stat_summary(fun.y = "mean", geom = "point", size = 2, color = "red") +
+             coord_flip() +
+             scale_y_continuous(breaks = seq(0, 300, 30),
+                                minor_breaks = seq(0, 300, 15)) +
+             labs(title = expression(paste(italic("Relay.fm "), 
+                                           "Episode Duration — Boxplot + Mean (red)")),
+                  x = "", y = "Duration (mins)") +
+             theme_readthedown()
+         }
+
+```
+
+### 95% CI
+
+```{r runtime_ci_pershow}
+relay %>%
+  #filter(podcast != "B-Sides") %>%
+  group_by(podcast) %>%
+  mutate(dur_mean = mean(duration)) %>%
+  {
+    ggplot(., aes(x = reorder(podcast, dur_mean), y = duration)) +
+      stat_summary(fun.data = "mean_ci_t", geom = "errorbar") +
+      stat_summary(fun.y = "mean", geom = "point", size = 2, color = "red") +
+      coord_flip() +
+      expand_limits(y = 0) +
+      scale_y_continuous(breaks = seq(0, 300, 15),
+                         minor_breaks = seq(0, 300, 5)) +
+      labs(title = expression(paste(italic("Relay.fm "), "Episode Duration — 95% CI + Mean (red)")),
+           x = "", y = "Duration (mins)") +
+      theme_readthedown()
+  }
+```

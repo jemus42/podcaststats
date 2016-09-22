@@ -1,0 +1,42 @@
+name: "Podcast Stats"
+output_dir: "."
+navbar:
+  title: "Podcast Stats"
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "The Incomparable"
+      icon: fa-list-ul
+      menu:
+        - text: "1"
+          href:
+        - text: "2"
+          href:
+        - text: "3"
+          href:
+        - text: "4"
+          href:
+        - text: "5"
+          href:
+    - text: "Relay FM"
+      icon: fa-list-ul
+      menu:
+        - text: "Network"
+          href: relayfm_network.html
+        - text: "2"
+          href:
+        - text: "3"
+          href:
+    - text: "ATP"
+      icon: fa-list-ul
+      href: atp.html
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    highlight: kate
+    fig_width: 9
+    theme: flatly
+    code_folding: hide
