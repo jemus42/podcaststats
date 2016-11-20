@@ -1,3 +1,4 @@
+#! /usr/bin/env Rscript
 #### Acquiring the data and chaching it
 
 ## Relay.fm
