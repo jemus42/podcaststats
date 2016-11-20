@@ -1,6 +1,4 @@
 #! /usr/bin/env Rscript
-# Build things
-
-source("get_data.R")
+# Build site only. Use get_data.R to refetch data
 
 rmarkdown::render_site(input = ".")
