@@ -1,0 +1,68 @@
+---
+title: "The Incomparable"
+date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
+author: "Lukas — @jemus42"
+output: 
+  html_document:
+    fig_height: 7
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+#### Global options ####
+options(max.print = "75")
+opts_chunk$set(echo    = FALSE,
+	             cache   = FALSE,
+               prompt  = FALSE,
+               tidy    = TRUE,
+               comment = NA,
+               message = FALSE,
+               warning = FALSE,
+               fig.retina = 2,
+               fig.path = "assets/incomparable_main/")
+opts_knit$set(width = 75)
+
+#### Data prep ####
+source("setup.R")
+
+incomparable_wide      <- readRDS("data/incomparable_master_wide.rds") %>% filter(podcast == "The Incomparable")
+incomparable           <- readRDS("data/incomparable_master.rds") %>% filter(podcast == "The Incomparable")
+
+```
+
+## Introduction
+
+I would like to do a lot more with this, but currently time is scarce.  
+However, I want to fulfill [Jason's request](https://twitter.com/jsnell/status/800412064640483328), since I would love to be worthy of the title of *record keeper*.
+
+I had issues with my old code to parse the podcast data, so there may be some wonkyness in the data below. Please let me know if you find something that's obviously wrong (i.e. easy for me to check/verify).
+
+## 2016 Panelists
+
+```{r 2016_panelists}
+incomparable %>% 
+  filter(year == 2016) %>%
+  group_by(person, role) %>%
+  tally() %>%
+  spread(role, n) %>% 
+  replace_na(list(guest = 0, host = 0)) %>%
+  mutate(total = guest + host) %>%
+  arrange(desc(total)) %>%
+  datatable(style = "bootstrap", colnames = c("Person", "Guest", "Host", "Total Appearances"))
+
+incomparable %>% 
+  filter(year == 2016) %>%
+  group_by(person, role) %>%
+  tally() %>%
+  {
+    ggplot(data = ., aes(x = reorder(person, n), y = n, fill = role)) +
+      geom_col(color = "black", alpha = .6) +
+      coord_flip() +
+      scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
+      scale_fill_brewer(palette = "Set1") +
+      labs(title = "The Incomparable — 2016", subtitle = "Panelists by # of Appearances",
+           x = "Panelist", y = "# of Appearances", fill = "Role")
+  }
+```
+
+

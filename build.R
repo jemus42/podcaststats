@@ -1,4 +1,6 @@
 #! /usr/bin/env Rscript
-# Build things, copy to dropbox
+# Build things
+
+source("get_data.R")
 
 rmarkdown::render_site(input = ".")
