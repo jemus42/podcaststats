@@ -29,8 +29,13 @@ ringpost      <- get_podcast_stats("ringpost",      show_title = "The Ringpost")
 incomparable_master <- bind_rows(incomparable, robot, teevee, gameshow, tvtm, tpk, ump,
                                  randomtrek, radio, afoot, defocused, lazydoctorwho, myke,
                                  ruin, cartooncast, pod4ham, notplaying, bonustrack,
-                                 sophomorelit) %>%
+                                 sophomorelit, klickitcast, ringpost, hoarse) %>%
                         filter(!is.na(podcast))
+
+rm(incomparable, robot, teevee, gameshow, tvtm, tpk, ump,
+   randomtrek, radio, afoot, defocused, lazydoctorwho, myke,
+   ruin, cartooncast, pod4ham, notplaying, bonustrack,
+   sophomorelit, klickitcast, ringpost, hoarse)
 
 # Spreading guests
 incomparable_master_wide <- incomparable_master %>%
