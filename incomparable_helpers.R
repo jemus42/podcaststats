@@ -25,7 +25,7 @@ enhance_datetimes <- function(showstats) {
   require(lubridate)
   showstats %<>%
     filter(!is.na(number)) %>%
-    mutate(duration = duration/60,
+    mutate(duration = parse_duration(duration),
            date     = dmy(date),
            year     = as.factor(year(date)),
            month    = month(date, abbr = F, label = T),
@@ -63,7 +63,8 @@ get_initial_stats <- function(urlpartial = "theincomparable", show_title = "The 
     str_c(., ";") %>%
     paste0(collapse = "\n") %>%
     read_delim(file = ., delim = ";", quote = "",
-                          col_names = F, col_types = cols(X1 = col_character()))
+                          col_names = F, col_types = cols(X1 = col_character(),
+                                                          X3 = col_character()))
 
   if (ncol(showstats) == 5) {
     names(showstats) <- c("number", "date", "duration", "title", "host")
