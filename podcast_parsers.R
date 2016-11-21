@@ -42,9 +42,10 @@ parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
   return(df)
 }
 
-get_relay_shows <- function(){
+get_relay_shows <- function() {
   relay_urls <-
     c("https://www.relay.fm/analogue/feed",
+      "https://www.relay.fm/almanac/feed",
       "https://www.relay.fm/bonanza/feed",
       "https://www.relay.fm/b-sides/feed",
       "https://www.relay.fm/canvas/feed",
@@ -58,6 +59,7 @@ get_relay_shows <- function(){
       "https://www.relay.fm/liftoff/feed",
       "https://www.relay.fm/mpu/feed",
       "https://www.relay.fm/material/feed",
+      "https://www.relay.fm/mixedfeelings/feed",
       "https://www.relay.fm/rd/feed",
       "https://www.relay.fm/remaster/feed",
       "https://www.relay.fm/rocket/feed",
