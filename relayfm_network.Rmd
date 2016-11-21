@@ -46,6 +46,7 @@ projection <- relay %>%
   summarize(first_aired = min(date),
             last_aired = max(date),
             episodes = length(unique(number))) %>%
+  filter(episodes > 2) %>%
   mutate(lifetime_weeks = as.numeric(difftime(last_aired, first_aired, units = "weeks")),
          episodes_per_week = episodes / lifetime_weeks) %>%
   transmute(ep_yearly = episodes_per_week * 52) %>%
@@ -53,7 +54,7 @@ projection <- relay %>%
   as.numeric() %>%
   round()
 
-lastyear <- relay %>% filter(year == year(now())-1) %>% nrow()
+lastyear <- relay %>% filter(year == year(now()) - 1) %>% nrow()
 thisyear <- relay %>% filter(year == year(now())) %>% nrow()
 progress <- round(thisyear/projection * 100)
 ```
