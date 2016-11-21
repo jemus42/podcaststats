@@ -92,7 +92,7 @@ relay %>%
   {
   ggplot(data = ., aes(x = week, y = n)) +
   geom_point() +
-  geom_smooth(data = filter(., year != 2016),
+  geom_smooth(data = filter(., year != 2017),
               method = lm, se = F, color = "red") +
   scale_y_continuous(breaks = seq(0, 100, 5),
                      minor_breaks = seq(0, 100, 1)) +
