@@ -10,7 +10,7 @@ output:
 source("setup.R")
 ```
 
-I'm migrating this from the old location to here, cleanung up the code and improving it when I can.  
-THe new repo is located [here](https://github.com/jemus42/podcaststats).  
+I'm migrating this from the old location to here, cleaning up the code and improving it when I can.  
+The new repo is located [here](https://github.com/jemus42/podcaststats).  
 
 This is still under heavy maintenance, and I'll replace this text when I consider it done(ish).
