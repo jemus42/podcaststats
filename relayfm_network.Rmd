@@ -41,28 +41,15 @@ Please note that there's probably still stuff coming.
 # Overview
 
 ```{r text_placeholders, echo=F}
-projection <- relay %>%
-  group_by(podcast) %>%
-  summarize(first_aired = min(date),
-            last_aired = max(date),
-            episodes = length(unique(number))) %>%
-  filter(episodes > 2) %>%
-  mutate(lifetime_weeks = as.numeric(difftime(last_aired, first_aired, units = "weeks")),
-         episodes_per_week = episodes / lifetime_weeks) %>%
-  transmute(ep_yearly = episodes_per_week * 52) %>%
-  summarize(sum(ep_yearly)) %>% 
-  as.numeric() %>%
-  round()
-
 lastyear <- relay %>% filter(year == year(now()) - 1) %>% nrow()
 thisyear <- relay %>% filter(year == year(now())) %>% nrow()
-progress <- round(thisyear/projection * 100)
+progress <- round(thisyear/lastyear * 100, 1)
 ```
 
 
-[Relay.fm](https://relay.fm/) spans **`r relay$podcast %>% unique %>% length()`** shows and a combined runtime of over **`r relay$duration %>% sum() %>% divide_by(60) %>% divide_by(24) %>% floor`** days spread across **`r nrow(relay)` episodes** since 2014.  
+[Relay.fm](https://relay.fm/) spans **`r length(shows)`** shows and a combined runtime of over **`r relay$duration %>% sum() %>% divide_by(60) %>% divide_by(24) %>% floor`** days spread across **`r nrow(relay)` episodes** since 2014.  
 
-In `r year(now())-1`, there were **`r lastyear`** episodes published, and based on the average release frequencies, there will probably be **`r projection`** episodes in `r year(now())`. We're currently about **`r progress`%** of the way there at **`r thisyear`** episodes.
+In `r year(now())-1`, there were **`r lastyear`** episodes published, and we're currently about **`r progress`%** of the way there at **`r thisyear`** episodes this year.
 
 ## Shows per Year
 
