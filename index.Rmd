@@ -2,8 +2,8 @@
 title: "Podcast Data for the Lulz"
 output:
   html_document:
-    toc: false
-    code_folding: none
+    toc: true
+    code_folding: hide
 ---
 
 ```{r global_options, include=FALSE}
@@ -14,3 +14,28 @@ I'm migrating this from the old location to here, cleaning up the code and impro
 The new repo is located [here](https://github.com/jemus42/podcaststats).  
 
 This is still under heavy maintenance, and I'll replace this text when I consider it done(ish).
+
+## Placeholder Quickie: Defocused vs. Reconcilable Differences
+
+```{r}
+defocused <- readRDS("data/incomparable_master_wide.rds") %>% 
+                filter(podcast == "Defocused") %>%
+                mutate(number = as.numeric(number),
+                       year = as.numeric(year))
+recdiffs  <- readRDS("data/relay.rds") %>% 
+                filter(podcast == "Reconcilable Differences") %>%
+                mutate(date = as.Date(date))
+
+data <- full_join(recdiffs, defocused)
+
+ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
+  geom_violin(draw_quantiles = c(.25, .75)) +
+  stat_summary(fun.y = mean, geom = "point") +
+  coord_flip() +
+  theme(legend.position = "top") +
+  labs(title = "Defocused vs. Reconcilable Differences",
+       subtitle = "Comparison of Show Durations (Violin Plot)", 
+       x = "", y = "Duration (mins)", fill = "Show")
+
+```
+
