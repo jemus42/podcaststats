@@ -41,7 +41,7 @@ incomparable_master <- tibble()
 for (i in seq_len(nrow(incomparable_shows))) {
   show                <- get_podcast_stats(incomparable_shows$partial[i],
                                            show_title = incomparable_shows$show[i])
-  incomparable_master <- bind_rows(inc_master, show)
+  incomparable_master <- bind_rows(incomparable_master, show)
 }; rm(i, incomparable_show_partials, incomparable_shows, show)
 
 # Spreading guests
