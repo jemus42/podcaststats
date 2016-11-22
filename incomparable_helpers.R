@@ -26,7 +26,7 @@ enhance_datetimes <- function(showstats) {
   showstats %<>%
     filter(!is.na(number)) %>%
     mutate(duration = parse_duration(duration),
-           date     = dmy(date),
+           date     = as.POSIXct(dmy(date)),
            year     = as.factor(year(date)),
            month    = month(date, abbr = F, label = T),
            weekday  = wday(date, label = T, abbr = F)) %>%
@@ -264,5 +264,3 @@ get_podcast_segment_episodes <- function(){
   ret <- bind_rows(inc, gs, teevee)
   return(ret)
 }
-
-

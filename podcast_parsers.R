@@ -37,8 +37,8 @@ parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
 
   df <- data_frame(number = number, podcast = show,
                    title = titles, duration = durations, date = pubdate, people = people) %>%
-    mutate(month = month(date, label = T, abbr = T),
-           year  = year(date))
+    mutate(month = month(date, label = T, abbr = F),
+           year  = as.factor(year(date)))
   return(df)
 }
 
