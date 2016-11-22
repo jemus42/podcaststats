@@ -27,8 +27,8 @@ recdiffs  <- readRDS("data/relay.rds") %>%
 data <- full_join(recdiffs, defocused)
 
 ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
-  geom_violin(draw_quantiles = c(.25, .75), alpha = .7) +
-  stat_summary(fun.y = mean, geom = "point", size = 2) +
+  geom_violin(draw_quantiles = c(.25, .75), alpha = .7, show.legend = F) +
+  stat_summary(fun.y = mean, geom = "point", size = 2, show.legend = F) +
   coord_flip() +
   theme(legend.position = "top") +
   labs(title = "Defocused vs. Reconcilable Differences",
