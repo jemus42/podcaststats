@@ -2,7 +2,18 @@
 .Rhistory
 .RData
 .Ruserdata
-.stfolder
+
+# Ignore experiments script and old code
+experiments.R
+theincomparable
+
+# Ignore outputs
 *.html
 assets/*
 *.png
+site_libs
+
+# Ignore syncthing files
+.stfolder
+.stignore
+
