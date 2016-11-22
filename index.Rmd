@@ -8,12 +8,57 @@ output:
 
 ```{r global_options, include=FALSE}
 source("setup.R")
+
+relay <- readRDS("data/relay.rds")
+atp   <- readRDS("data/atp.rds")
+incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds")
 ```
 
 I'm migrating this from the old location to here, cleaning up the code and improving it when I can.  
 The new repo is located [here](https://github.com/jemus42/podcaststats).  
 
 This is still under heavy maintenance, and I'll replace this text when I consider it done(ish).
+
+## All Shows
+
+Here's a quick overview of the podcast data I've collected so far.  
+Note that there's only limited data available on ATP.
+
+```{r allshows}
+relay %<>%
+  mutate(number = as.character(number),
+         year = year(date),
+         network = "Relay.FM")
+
+atp %<>%
+  mutate(number = as.character(number),
+         year = year(date),
+         network = "ATP")
+
+incomparable_master_wide %<>%
+  mutate(number = as.character(number),
+         year = year(date),
+         network = "The Incomparable")
+
+podcasts <- full_join(incomparable_master_wide, relay) %>%
+              full_join(atp)
+
+podcasts %>%
+  group_by(network) %>%
+  summarize(episodes = n(),
+            duration_d = round(sum(duration)/60/24),
+            duration_avg = round(mean(duration)),
+            firstep   = as.character(as.Date(min(date))),
+            lastep = as.character(as.Date(max(date))),
+            shows = length(unique(podcast)),
+            epspershow = round(episodes/shows, 1)) %>%
+  set_colnames(c("Network", "Episodes", "Duration (total, days)",
+                                              "Duration (mean, days)", "First Episode",
+                                              "Last Episode", "# of Shows", "Episodes per Show")) %>%
+  datatable()
+
+
+```
 
 ## Placeholder Quickie: Defocused vs. Reconcilable Differences
 
@@ -37,4 +82,3 @@ ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
        subtitle = "Comparison of Show Durations (Violin Plot)", 
        x = "", y = "Duration (mins)", fill = "Show")
 ```
-
