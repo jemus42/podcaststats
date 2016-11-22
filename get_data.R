@@ -24,41 +24,25 @@ relay %<>%
 #### The Incomparable ####
 source("incomparable_helpers.R")
 
-## Getting individual show stats ##
-incomparable  <- get_podcast_stats("theincomparable", show_title = "The Incomparable")
-robot         <- get_podcast_stats("robot",         show_title = "Robot or Not?")
-gameshow      <- get_podcast_stats("gameshow",      show_title = "Game Show")
-teevee        <- get_podcast_stats("teevee",        show_title = "TeeVee")
-tvtm          <- get_podcast_stats("tvtm",          show_title = "TV Talk Machine")
-tpk           <- get_podcast_stats("tpk",           show_title = "Total Party Kill")
-ump           <- get_podcast_stats("ump",           show_title = "Unjustly Maligned")
-randomtrek    <- get_podcast_stats("randomtrek",    show_title = "Random Trek")
-radio         <- get_podcast_stats("radio",         show_title = "Radio Theatre")
-afoot         <- get_podcast_stats("afoot",         show_title = "Afoot!")
-defocused     <- get_podcast_stats("defocused",     show_title = "Defocused")
-lazydoctorwho <- get_podcast_stats("lazydoctorwho", show_title = "Lazy Doctor Who")
-myke          <- get_podcast_stats("myke",          show_title = "Myke at the Movies")
-ruin          <- get_podcast_stats("ruin",          show_title = "Ruin the Movies")
-cartooncast   <- get_podcast_stats("cartooncast",   show_title = "Cartoon Cast")
-pod4ham       <- get_podcast_stats("pod4ham",       show_title = "Pod4Ham")
-notplaying    <- get_podcast_stats("notplaying",    show_title = "Not Playing")
-bonustrack    <- get_podcast_stats("bonustrack",    show_title = "Bonus Track")
-sophomorelit  <- get_podcast_stats("sophomorelit",  show_title = "Sophomore Lit")
-hoarse        <- get_podcast_stats("hoarse",        show_title = "Three Hoarsemen")
-klickitcast   <- get_podcast_stats("klickitcast",   show_title = "Klickitcast")
-ringpost      <- get_podcast_stats("ringpost",      show_title = "The Ringpost")
+incomparable_shows <- read_html("https://www.theincomparable.com/shows/") %>%
+  html_nodes("h3 a") %>%
+  html_text()
 
-## Binding the good datasets to a master dataset ##
-incomparable_master <- bind_rows(incomparable, robot, teevee, gameshow, tvtm, tpk, ump,
-                                 randomtrek, radio, afoot, defocused, lazydoctorwho, myke,
-                                 ruin, cartooncast, pod4ham, notplaying, bonustrack,
-                                 sophomorelit, klickitcast, ringpost, hoarse) %>%
-                         filter(!is.na(podcast))
+incomparable_show_partials <- read_html("https://www.theincomparable.com/shows/") %>%
+  html_nodes("h3 a") %>%
+  html_attr("href") %>%
+  str_replace_all("\\/", "")
 
-rm(incomparable, robot, teevee, gameshow, tvtm, tpk, ump,
-   randomtrek, radio, afoot, defocused, lazydoctorwho, myke,
-   ruin, cartooncast, pod4ham, notplaying, bonustrack,
-   sophomorelit, klickitcast, ringpost, hoarse)
+incomparable_shows <- tibble(partial = incomparable_show_partials,
+                             show = incomparable_shows)
+
+incomparable_master <- tibble()
+
+for (i in seq_len(nrow(incomparable_shows))) {
+  show                <- get_podcast_stats(incomparable_shows$partial[i],
+                                           show_title = incomparable_shows$show[i])
+  incomparable_master <- bind_rows(inc_master, show)
+}; rm(i, incomparable_show_partials, incomparable_shows, show)
 
 # Spreading guests
 incomparable_master_wide <- incomparable_master %>%
