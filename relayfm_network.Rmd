@@ -27,7 +27,8 @@ relay <- readRDS("data/relay.rds") %>% filter(year >= 2014)
 shows <- relay %>% group_by(podcast) %>% tally() %>% arrange(desc(n)) %>% extract2("podcast")
 
 relay %<>%
-  mutate(podcast = factor(podcast, levels = shows, ordered = T))
+  mutate(podcast = factor(podcast, levels = shows, ordered = T),
+         year_num = year(date))
 
 ```
 
@@ -72,8 +73,9 @@ relay %>%
 
 ```{r shows_perweek}
 relay %>%
-  mutate(week = week(date)) %>%
-  filter(year >= 2014) %>%
+  mutate(week = week(date),
+         year_num = year(date)) %>%
+  filter(year_num >= 2014) %>%
   group_by(year, week) %>%
   tally %>%
   {
@@ -84,7 +86,7 @@ relay %>%
   scale_y_continuous(breaks = seq(0, 100, 5),
                      minor_breaks = seq(0, 100, 1)) +
   scale_x_continuous(breaks = seq(0, 55, 16)) +
-  facet_grid(.~year, space = "free_x", scales = "free_x") +
+  facet_wrap(~year) +
   labs(title = expression(paste(italic("Relay.fm "), "Weekly Episode Output")),
        x = "Week of Year", y = "Episodes Published") +
   theme_readthedown(axis_emph = "y")
@@ -95,8 +97,9 @@ relay %>%
 
 ```{r shows_perweek_bars, fig.height=10, fig.width=11}
 relay %>%
-  filter(year == 2015) %>%
-  mutate(week = isoweek(date)) %>%
+  mutate(week = isoweek(date),
+         year_num = year(date)) %>%
+  filter(year_num == 2015) %>%
   group_by(podcast, year, week) %>%
   tally %>%
   ggplot(aes(x = week, weight = n)) +
@@ -139,8 +142,9 @@ relay %>%
 
 ```{r shows_permonth}
 relay %>%
-  mutate(month = month(date)) %>%
-  filter(year >= 2014) %>%
+  mutate(month = month(date),
+         year_num = year(date)) %>%
+  filter(year_num >= 2014) %>%
   group_by(year, month) %>%
   tally %>%
   {
