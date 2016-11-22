@@ -6,27 +6,8 @@ output:
   html_document
 ---
 
-```{r knitr_init, echo=FALSE, cache=FALSE, include=FALSE}
+```{r setup, echo=FALSE, cache=FALSE, include=FALSE}
 source("setup.R")
-
-#### Helper function ####
-#### Converting HH:MM:SS or MM:SS to a numeric vector of minutes
-parse_duration <- function(x){
-  mins <- sapply(x, function(x){
-            if (str_count(x, ":") == 2) {
-              xx      <- as.numeric(unlist(str_split(x, ":")))
-              minutes <- xx[1] * 60 + xx[2] + xx[3] / 60
-            } else if (str_count(x, ":") == 1) {
-              xx      <- as.numeric(unlist(str_split(x, ":")))
-              minutes <- xx[1] + xx[2] / 60
-            } else {
-              stop("Unexpected input format ", x)
-            }
-            return(unname(minutes))
-          })
-  mins <- unname(mins)
-  return(mins)
-}
 
 ## Global options
 options(max.print = "75")
@@ -43,40 +24,9 @@ opts_chunk$set(echo    = FALSE,
 opts_knit$set(width = 90)
 
 #### Data Prep ####
-atpfeed <- read_html("http://atp.fm/episodes?format=rss")
-
-titles    <- atpfeed %>% html_nodes("title") %>%
-                html_text()
-durations <- atpfeed %>% html_nodes("duration") %>%
-                html_text() %>%
-                parse_duration()
-pubdate   <- atpfeed %>% html_nodes("pubdate") %>%
-                html_text() %>%
-                str_replace("^.{5}", "") %>%
-                lubridate::parse_date_time("%d %b %Y %H:%M:%S %z")
-
-atp <- data_frame(title = titles[-1], duration = durations, date = pubdate) %>%
-           mutate(month = month(date, label = T, abbr = T),
-                  year  = year(date))
-
+atp <- readRDS("data/atp.rds")
 
 #### Plot presets ####
-template_background <- element_rect(fill = "#fcfcfc", color = "#fcfcfc")
-
-theme_background <- 
-  theme(panel.background  = template_background,
-        plot.background   = template_background,
-        legend.background = template_background,
-        strip.background  = template_background)
-
-theme_breaks_x <-
-  theme(panel.grid.major.x = element_line(size = .1, color = "black"),
-        panel.grid.minor.x = element_line(size = .1, color = "black", linetype = "dotted"))
-  
-theme_breaks_y <-   
-  theme(panel.grid.major.y = element_line(size = .1, color = "black"),
-        panel.grid.minor.y = element_line(size = .1, color = "black", linetype = "dotted"))
-
 duration_mins <- "Duration (mins)"
 ```
 
@@ -97,14 +47,12 @@ ggplot(atp, aes(x = date, y = duration)) +
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations",
        x = "Date Published", y = "Duration (mins)") +
-  theme_background +
-  theme_breaks_y
+  theme_readthedown(axis_emph = "y")
 ```
 
 ## Duration by Month
 
 ```{r atp_duration_month}
-
 atp %>%
   ggplot(data = ., aes(x = month, y = duration)) +
   geom_boxplot() +
@@ -114,9 +62,9 @@ atp %>%
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations per Month",
        x = "Month", y = "Duration (mins)") +
-  theme_background +
-  theme_breaks_y +
-  theme(strip.text = element_text(size = rel(1)))
+  theme_readthedown(axis_emph = "y") + 
+  theme(strip.text = element_text(size = rel(1)),
+        axis.text.x = element_text(angle = 45))
 
 atp %>%
   ggplot(data = ., aes(x = month, y = duration)) +
@@ -127,9 +75,9 @@ atp %>%
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations grouped by Month",
        x = "Month", y = "Duration (mins)") +
-  theme_background +
-  theme_breaks_y +
-  theme(strip.text = element_text(size = rel(1)))
+  theme_readthedown(axis_emph = "y") +
+  theme(strip.text = element_text(size = rel(1)),
+        axis.text.x = element_text(angle = 45))
 
 atp %>%
   group_by(month) %>%
@@ -142,9 +90,7 @@ atp %>%
   coord_flip() +
   labs(title = "ATP Average Episode Duration by Month",
        x = "Month", y = "Duration (mins) + 95% CI") +
-  theme_background +
-  theme_breaks_x
-
+  theme_readthedown(axis_emph = "x")
 ```
 
 ## Duration by Year
@@ -161,10 +107,8 @@ atp %>%
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations per Year",
        x = "", y = "Duration (mins)") +
-  theme_background +
-  theme_breaks_y +
+  theme_readthedown(axis_emph = "y") +
   theme(strip.text = element_text(size = rel(1)),
         axis.text.x = element_text(size = rel(1.5)),
         axis.ticks.x = element_blank())
 ```
-

@@ -2,10 +2,9 @@
 #### Acquiring the data and chaching it
 
 source("setup.R")
-
-#### Relay.fm ####
 source("podcast_parsers.R")
 
+#### Relay.fm ####
 relay_shows <- read_html("https://www.relay.fm/shows") %>%
   html_nodes("h4 a") %>%
   html_attr("href") %>%
@@ -72,10 +71,14 @@ incomparable_master %<>%
   full_join(get_podcast_segment_episodes(),
             by = c("number" = "number", "podcast" = "podcast"))
 
+#### ATP ####
+atp <- parse_atp_feed()
+
 #### Write to disk ####
 cache_podcast_data(incomparable_master_wide)
 cache_podcast_data(incomparable_master)
 cache_podcast_data(relay)
+cache_podcast_data(atp)
 
 # Write master set as CSV with ; as separator because Numbers likes that more than ,
 incomparable_master_wide %>%
