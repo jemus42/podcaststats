@@ -186,7 +186,7 @@ relay %>%
 
 ### Histogram
 
-```{r runtime_allshows_hist}
+```{r runtime_allshows_hist, fig.width=4.5}
 relay %>%
   ggplot(aes(x = duration, fill = podcast)) +
   geom_histogram(binwidth = 2.5) +
@@ -197,8 +197,9 @@ relay %>%
                          minor_breaks = seq(0, 300, 5)) +
   scale_fill_viridis(discrete = T) +
   labs(title = expression(paste(italic("Relay.fm "), "Episode Durations")),
-           y = "Frequency", x = "Duration (mins)", fill = "Show") +
-      theme_readthedown(axis_emph = "y")
+           y = "Frequency", x = "Duration (mins)", fill = "") +
+  theme_readthedown(axis_emph = "y") +
+  theme(legend.position = "bottom")
 ```
 
 
