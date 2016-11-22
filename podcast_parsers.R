@@ -56,7 +56,8 @@ parse_atp_feed <- function(url = "http://atp.fm/episodes?format=rss") {
   atpfeed <- read_html(url)
 
   titles    <- atpfeed %>% html_nodes("title") %>%
-    html_text()
+    html_text() %>%
+    str_replace_all("\\t", "")
 
   number <- str_extract(titles, "^\\d+")
 
