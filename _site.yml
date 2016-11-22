@@ -31,7 +31,7 @@ navbar:
           href:
     - text: "ATP"
       icon: fa-list-ul
-      href: atp.html
+      href: ATP.html
 output:
   html_document:
     toc: true

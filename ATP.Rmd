@@ -1,0 +1,170 @@
+---
+title: "Accidental Tech Podcast"
+date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
+author: "Lukas — @jemus42"
+output:
+  html_document
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE, include=FALSE}
+source("setup.R")
+
+#### Helper function ####
+#### Converting HH:MM:SS or MM:SS to a numeric vector of minutes
+parse_duration <- function(x){
+  mins <- sapply(x, function(x){
+            if (str_count(x, ":") == 2) {
+              xx      <- as.numeric(unlist(str_split(x, ":")))
+              minutes <- xx[1] * 60 + xx[2] + xx[3] / 60
+            } else if (str_count(x, ":") == 1) {
+              xx      <- as.numeric(unlist(str_split(x, ":")))
+              minutes <- xx[1] + xx[2] / 60
+            } else {
+              stop("Unexpected input format ", x)
+            }
+            return(unname(minutes))
+          })
+  mins <- unname(mins)
+  return(mins)
+}
+
+## Global options
+options(max.print = "75")
+opts_chunk$set(echo    = FALSE,
+	             cache   = FALSE,
+               prompt  = FALSE,
+               tidy    = TRUE,
+               comment = NA,
+               message = FALSE,
+               warning = FALSE,
+               fig.path = "assets/atp/",
+               fig.retina = 2)
+
+opts_knit$set(width = 90)
+
+#### Data Prep ####
+atpfeed <- read_html("http://atp.fm/episodes?format=rss")
+
+titles    <- atpfeed %>% html_nodes("title") %>%
+                html_text()
+durations <- atpfeed %>% html_nodes("duration") %>%
+                html_text() %>%
+                parse_duration()
+pubdate   <- atpfeed %>% html_nodes("pubdate") %>%
+                html_text() %>%
+                str_replace("^.{5}", "") %>%
+                lubridate::parse_date_time("%d %b %Y %H:%M:%S %z")
+
+atp <- data_frame(title = titles[-1], duration = durations, date = pubdate) %>%
+           mutate(month = month(date, label = T, abbr = T),
+                  year  = year(date))
+
+
+#### Plot presets ####
+template_background <- element_rect(fill = "#fcfcfc", color = "#fcfcfc")
+
+theme_background <- 
+  theme(panel.background  = template_background,
+        plot.background   = template_background,
+        legend.background = template_background,
+        strip.background  = template_background)
+
+theme_breaks_x <-
+  theme(panel.grid.major.x = element_line(size = .1, color = "black"),
+        panel.grid.minor.x = element_line(size = .1, color = "black", linetype = "dotted"))
+  
+theme_breaks_y <-   
+  theme(panel.grid.major.y = element_line(size = .1, color = "black"),
+        panel.grid.minor.y = element_line(size = .1, color = "black", linetype = "dotted"))
+
+duration_mins <- "Duration (mins)"
+```
+
+Data in this summary is [limited to the 100 most recent episodes](https://twitter.com/caseyliss/status/706885764236361728) in the feed.
+
+## Episode Duration
+
+```{r atp_duration}
+ggplot(atp, aes(x = date, y = duration)) +
+  geom_point() +
+  geom_label_repel(data = filter(atp, duration > 150),
+                   aes(label = title)) +
+  expand_limits(y = 0) +
+  geom_smooth(method = loess, se = T) +
+  scale_x_datetime(breaks = date_breaks("3 months"), minor_breaks = date_breaks("1 weeks"),
+                   date_labels = "%b %Y") +
+  scale_y_continuous(breaks = seq(0, 300, 30),
+                     minor_breaks = seq(0, 300, 15)) +
+  labs(title = "ATP Episode Durations",
+       x = "Date Published", y = "Duration (mins)") +
+  theme_background +
+  theme_breaks_y
+```
+
+## Duration by Month
+
+```{r atp_duration_month}
+
+atp %>%
+  ggplot(data = ., aes(x = month, y = duration)) +
+  geom_boxplot() +
+  stat_summary(fun.y = mean, geom = "point", color = "red") +
+  facet_grid(.~year, scales = "free_x", space = "free_x") +
+  scale_y_continuous(breaks = seq(0, 300, 30),
+                     minor_breaks = seq(0, 300, 15)) +
+  labs(title = "ATP Episode Durations per Month",
+       x = "Month", y = "Duration (mins)") +
+  theme_background +
+  theme_breaks_y +
+  theme(strip.text = element_text(size = rel(1)))
+
+atp %>%
+  ggplot(data = ., aes(x = month, y = duration)) +
+  geom_boxplot() +
+  stat_summary(fun.y = mean, geom = "point", color = "red") +
+  #facet_grid(.~year, scales = "free_x", space = "free_x") +
+  scale_y_continuous(breaks = seq(0, 300, 30),
+                     minor_breaks = seq(0, 300, 15)) +
+  labs(title = "ATP Episode Durations grouped by Month",
+       x = "Month", y = "Duration (mins)") +
+  theme_background +
+  theme_breaks_y +
+  theme(strip.text = element_text(size = rel(1)))
+
+atp %>%
+  group_by(month) %>%
+  mutate(dur_mean = mean(duration)) %>%
+  ggplot(aes(x = reorder(month, dur_mean), y = duration)) +
+  stat_summary(fun.data = "mean_ci_t", geom = "errorbar") +
+  stat_summary(fun.y = "mean", geom = "point", color = "red", size = 2) +
+  scale_y_continuous(breaks = seq(0, 300, 15),
+                     minor_breaks = seq(0, 300, 5)) +
+  coord_flip() +
+  labs(title = "ATP Average Episode Duration by Month",
+       x = "Month", y = "Duration (mins) + 95% CI") +
+  theme_background +
+  theme_breaks_x
+
+```
+
+## Duration by Year
+
+```{r atp_duration_year}
+atp %>%
+  mutate(month = month(date, label = T, abbr = T),
+         year = year(date)) %>%
+  group_by(year) %>%
+  ggplot(data = ., aes(x = as.factor(year), y = duration)) +
+  geom_boxplot() +
+  stat_summary(fun.y = mean, geom = "point", color = "red") +
+  scale_y_continuous(breaks = seq(0, 300, 30),
+                     minor_breaks = seq(0, 300, 15)) +
+  labs(title = "ATP Episode Durations per Year",
+       x = "", y = "Duration (mins)") +
+  theme_background +
+  theme_breaks_y +
+  theme(strip.text = element_text(size = rel(1)),
+        axis.text.x = element_text(size = rel(1.5)),
+        axis.ticks.x = element_blank())
+```
+
