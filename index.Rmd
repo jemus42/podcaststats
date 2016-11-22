@@ -20,22 +20,19 @@ This is still under heavy maintenance, and I'll replace this text when I conside
 ```{r}
 defocused <- readRDS("data/incomparable_master_wide.rds") %>% 
                 filter(podcast == "Defocused") %>%
-                mutate(number = as.numeric(number),
-                       year = as.numeric(year))
+                mutate(number = as.numeric(number))
 recdiffs  <- readRDS("data/relay.rds") %>% 
-                filter(podcast == "Reconcilable Differences") %>%
-                mutate(date = as.Date(date))
+                filter(podcast == "Reconcilable Differences")
 
 data <- full_join(recdiffs, defocused)
 
 ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
-  geom_violin(draw_quantiles = c(.25, .75)) +
-  stat_summary(fun.y = mean, geom = "point") +
+  geom_violin(draw_quantiles = c(.25, .75), alpha = .7) +
+  stat_summary(fun.y = mean, geom = "point", size = 2) +
   coord_flip() +
   theme(legend.position = "top") +
   labs(title = "Defocused vs. Reconcilable Differences",
        subtitle = "Comparison of Show Durations (Violin Plot)", 
        x = "", y = "Duration (mins)", fill = "Show")
-
 ```
 
