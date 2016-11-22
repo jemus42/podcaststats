@@ -23,8 +23,7 @@ opts_knit$set(width = 75)
 #### Data prep ####
 source("setup.R")
 
-relay      <- readRDS("data/relay.rds") %>% filter(year >= 2014)
-
+relay <- readRDS("data/relay.rds") %>% filter(year >= 2014)
 shows <- relay %>% group_by(podcast) %>% tally() %>% arrange(desc(n)) %>% extract2("podcast")
 
 relay %<>%

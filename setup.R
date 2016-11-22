@@ -29,11 +29,7 @@ knitr::opts_chunk$set(fig.path = "assets/plots/", fig.align = "center",
                       fig.retina = 2, echo = T, warning = F, message = F,
                       cache.path = "assets/cache/", cache = F)
 
-#### Reading the prepared dataset ####
-
-
 #### Plotting presets ####
-
 # Set default theme
 theme_set(theme_readthedown())
 

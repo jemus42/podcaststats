@@ -27,7 +27,6 @@ source("setup.R")
 
 incomparable_wide <- readRDS("data/incomparable_master_wide.rds") %>% filter(podcast == "The Incomparable")
 incomparable      <- readRDS("data/incomparable_master.rds") %>% filter(podcast == "The Incomparable")
-
 ```
 
 ## Introduction
