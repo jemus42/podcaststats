@@ -40,3 +40,5 @@ output:
     fig_width: 9
     theme: flatly
     code_folding: hide
+    include:
+      after_body: _footer.html
