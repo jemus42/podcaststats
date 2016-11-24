@@ -9,6 +9,16 @@ output:
 ```{r global_options, include=FALSE}
 source("setup.R")
 
+opts_chunk$set(echo    = FALSE,
+	             cache   = FALSE,
+               prompt  = FALSE,
+               tidy    = TRUE,
+               comment = NA,
+               message = FALSE,
+               warning = FALSE,
+               fig.retina = 2,
+               fig.path = "assets/main/")
+
 relay <- readRDS("data/relay.rds")
 atp   <- readRDS("data/atp.rds")
 incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds")
@@ -34,7 +44,8 @@ atp %<>%
   mutate(number = as.character(number),
          year = year(date),
          date = as.POSIXct(date),
-         network = "ATP")
+         network = "ATP",
+         podcast = "ATP")
 
 incomparable_master_wide %<>%
   mutate(number = as.character(number),
@@ -60,6 +71,19 @@ podcasts %>%
 
 
 ```
+
+## All Shows by Duration
+
+```{r allshows_duration, fig.height=12}
+podcasts %>%
+  ggplot(aes(x = reorder(podcast, duration), y = duration, fill = network)) +
+  geom_boxplot() +
+  coord_flip() +
+  labs(title = "Podcasts by Duration", subtitle = "By Network",
+       x = "", y = "Duration (mins)", fill = "Network") +
+  theme(legend.position = "top")
+```
+
 
 ## Placeholder Quickie: Defocused vs. Reconcilable Differences
 
