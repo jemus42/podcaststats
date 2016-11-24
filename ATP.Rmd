@@ -34,7 +34,7 @@ Data in this summary is [limited to the 100 most recent episodes](https://twitte
 
 At least that was the case until November 2016, when [Marco pointed out](https://twitter.com/marcoarment/status/801550714568900608) to me that there was, indeed, a better place for me to scrape episode data. 
 
-In the meantime, I had [taken John's advice](https://twitter.com/siracusa/status/801444008404914176) and started [downloading every ATP episode ever as mp3](https://twitter.com/Jemus42/status/801451942560022528) to manually [mediainfo](https://en.wikipedia.org/wiki/MediaInfo) the duration out of them in a script, only to realize that the first few episode [didn't have title information](https://twitter.com/Jemus42/status/801504118816833536) in them. This left the only option of crawling the ATP website for full episode metadata (which is annoying because of non-trivial URL paremeters for pagination), which I was very much about to do, until I got Marco's reply.  
+In the meantime, I had [taken John's advice](https://twitter.com/siracusa/status/801444008404914176) and started [downloading every ATP episode ever as mp3](https://twitter.com/Jemus42/status/801451942560022528) to manually [mediainfo](https://en.wikipedia.org/wiki/MediaInfo) the duration out of them in a script, only to realize that the first few episodes [didn't have title information](https://twitter.com/Jemus42/status/801504118816833536) in them. This left only the option of crawling the ATP website for full episode metadata (which is annoying because of non-trivial URL parameters for pagination), which I was very much about to do… until I got Marco's reply.  
 So… thanks Marco for saving me from the horrible fate that would have been a while loop in R.
 
 ## Episode Duration
