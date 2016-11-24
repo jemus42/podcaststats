@@ -33,6 +33,7 @@ relay %<>%
 atp %<>%
   mutate(number = as.character(number),
          year = year(date),
+         date = as.POSIXct(date),
          network = "ATP")
 
 incomparable_master_wide %<>%
