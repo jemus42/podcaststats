@@ -39,7 +39,7 @@ So… thanks Marco for saving me from the horrible fate that would have been a w
 
 ## Episode Duration
 
-```{r atp_duration}
+```{r atp_duration, fig.height=5, fig.width=8}
 ggplot(atp, aes(x = as.POSIXct(date), y = duration)) +
   geom_point() +
   geom_label_repel(data = filter(atp, duration > 150),
@@ -56,7 +56,7 @@ ggplot(atp, aes(x = as.POSIXct(date), y = duration)) +
   theme(axis.text.x = element_text(angle = 45))
 ```
 
-## Duration by Month
+### Duration by Month
 
 ```{r atp_duration_month}
 atp %>%
@@ -99,7 +99,7 @@ atp %>%
   theme_readthedown(axis_emph = "x")
 ```
 
-## Duration by Year
+### Duration by Year
 
 ```{r atp_duration_year}
 atp %>%
@@ -118,3 +118,26 @@ atp %>%
         axis.text.x = element_text(size = rel(1.5)),
         axis.ticks.x = element_blank())
 ```
+
+## Number of Episodes
+
+```{r atp_episodes, fig.height=6}
+atp %>%
+  group_by(year, month) %>%
+  tally() %>%
+  ggplot(data = ., aes(x = month, y = n)) +
+  geom_col(alpha = .7) +
+  facet_wrap(~year, ncol = 1) +
+  labs(title = "ATP Episodes", subtitle = "Episode per Month", 
+       x = "", y = "# of Episodes")
+```
+
+## Raw Data 
+
+```{r atp_episodes_table}
+atp %>%
+  mutate(duration = round(duration, 2)) %>%
+  datatable(style = "bootstrap", 
+            colnames = c("#", "Title", "Date", "Month", "Year", "Duration (mins)", "Summary"))
+```
+
