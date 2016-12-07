@@ -167,7 +167,7 @@ relay %>%
 
 ## All Shows
 
-```{r runtime_allshows, fig.height=8, fig.width=11}
+```{r runtime_allshows, fig.height=9, fig.width=11}
 relay %>%
   filter(podcast != "B-Sides") %>%
   {
@@ -178,7 +178,7 @@ relay %>%
                        date_labels = "%b %Y") +
       scale_y_continuous(breaks = seq(0, 300, 30),
                          minor_breaks = seq(0, 300, 15)) +
-      facet_wrap(~podcast, ncol = 7) +
+      facet_wrap(~podcast, ncol = 5) +
       labs(title = expression(paste(italic("Relay.fm "), "Episode Durations")),
            x = "Date Published", y = "Duration (mins)") +
       theme_readthedown(axis_emph = "y") +
