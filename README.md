@@ -13,6 +13,6 @@ Jason replied [he could get more metadata if I liked](https://twitter.com/jsnell
 A short time after that, [Jason delivered magnificiently](https://twitter.com/jsnell/status/700882298795765761).  
 And now my analysis began.
 
-After I was sufficiently satisfied with my results, I began branching out to [Realy FM](https://relay.fm).  
+After I was sufficiently satisfied with my results, I began branching out to [Relay FM](https://relay.fm).  
 I am now trying to analyze data from both networks in a neat and tidy way.
 
