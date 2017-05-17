@@ -1,7 +1,7 @@
 #! /usr/bin/env Rscript
 #### Acquiring the data and chaching it
 
-source("setup.R")
+source("setup.R", echo = F)
 source("podcast_parsers.R")
 
 #### Relay.fm ####
@@ -20,6 +20,9 @@ relay %<>%
   mutate(show_status = ifelse(title %in% retired_shows, "Retired", "Active"),
          month    = month(date, abbr = F, label = T),
          weekday  = wday(date, label = T, abbr = F))
+
+cache_podcast_data(relay)
+
 
 #### The Incomparable ####
 source("incomparable_helpers.R")
@@ -58,11 +61,11 @@ incomparable_master %<>%
 #### ATP ####
 atp <- parse_atp_feed()
 
+cache_podcast_data(atp)
+
 #### Write to disk ####
 cache_podcast_data(incomparable_master_wide)
 cache_podcast_data(incomparable_master)
-cache_podcast_data(relay)
-cache_podcast_data(atp)
 
 # Write master set as CSV with ; as separator because Numbers likes that more than ,
 incomparable_master_wide %>%
