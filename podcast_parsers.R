@@ -1,5 +1,25 @@
 #### Functions to get the show data #####
 
+#### Utility functions ####
+#### Converting HH:MM:SS or MM:SS to a numeric vector of minutes
+parse_duration <- function(x){
+  require(stringr)
+  mins <- sapply(x, function(x){
+    if (str_count(x, ":") == 2) {
+      xx      <- as.numeric(unlist(str_split(x, ":")))
+      minutes <- xx[1] * 60 + xx[2] + xx[3] / 60
+    } else if (str_count(x, ":") == 1) {
+      xx      <- as.numeric(unlist(str_split(x, ":")))
+      minutes <- xx[1] + xx[2] / 60
+    } else {
+      stop("Unexpected input format ", x)
+    }
+    return(unname(minutes))
+  })
+  mins <- unname(mins)
+  return(mins)
+}
+
 #### RelayFM #####
 parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
   feed <- read_html(url)
@@ -74,7 +94,7 @@ parse_atp_feed <- function(url = "https://overcast.fm/itunes617416468/accidental
   drt    <- str_extract(meta, "\\u2022.*$") %>%
               str_replace_all("\\u2022\\s", "") %>%
               str_trim() %>%
-              parse_duration()
+              str_extract(pattern = "\\d+") # Should be minutes
 
   summ  <- html_nodes(raw, ".lighttext.margintop05") %>% html_text() %>%
             str_replace_all("^\\n", "") %>%
