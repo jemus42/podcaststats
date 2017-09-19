@@ -65,7 +65,7 @@ podcasts %>%
             shows = length(unique(podcast)),
             epspershow = round(episodes/shows, 1)) %>%
   set_colnames(c("Network", "Episodes", "Duration (total, days)",
-                                              "Duration (mean, days)", "First Episode",
+                                              "Duration (mean, mins)", "First Episode",
                                               "Last Episode", "# of Shows", "Episodes per Show")) %>%
   datatable()
 
