@@ -31,6 +31,9 @@ knitr::opts_chunk$set(fig.path = "assets/plots/", fig.align = "center",
                       cache.path = "assets/cache/", cache = F)
 
 #### Plotting presets ####
+caption <- paste0("podcasts.jemu.name – @jemus42\n",
+                  format(lubridate::now("UTC"), format = "%F %H:%M %Z"))
+
 # Set default theme
 theme_set(theme_ipsum())
 
