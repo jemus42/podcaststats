@@ -94,7 +94,8 @@ parse_atp_feed <- function(url = "https://overcast.fm/itunes617416468/accidental
   drt    <- str_extract(meta, "\\u2022.*$") %>%
               str_replace_all("\\u2022\\s", "") %>%
               str_trim() %>%
-              str_extract(pattern = "\\d+") # Should be minutes
+              str_extract(pattern = "\\d+") %>% # Should be minutes
+              as.numeric()
 
   summ  <- html_nodes(raw, ".lighttext.margintop05") %>% html_text() %>%
             str_replace_all("^\\n", "") %>%
