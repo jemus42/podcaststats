@@ -23,6 +23,7 @@ suppressPackageStartupMessages(library(scales))
 suppressPackageStartupMessages(library(viridis))
 suppressPackageStartupMessages(library(lubridate))
 suppressPackageStartupMessages(library(ggrepel))
+suppressPackageStartupMessages(library(hrbrthemes))
 
 #### Knitr chunk options ####
 knitr::opts_chunk$set(fig.path = "assets/plots/", fig.align = "center",
@@ -31,7 +32,7 @@ knitr::opts_chunk$set(fig.path = "assets/plots/", fig.align = "center",
 
 #### Plotting presets ####
 # Set default theme
-theme_set(theme_readthedown())
+theme_set(theme_ipsum())
 
 # Convenience function to display N
 label_n <- function(data, brackets = FALSE) {

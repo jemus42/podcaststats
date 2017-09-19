@@ -3,6 +3,8 @@ title: "Relay.fm — In Numbers"
 date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
 author: "Lukas — @jemus42"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -64,7 +66,7 @@ relay %>%
   scale_fill_viridis(discrete = T) +
   labs(x = "Year", y = "# of Episodes", fill = "Show",
        title = expression(paste(italic("Relay.fm "), "Episodes per Year"))) +
-  theme_readthedown(axis_emph = "y") +
+  theme_ipsum(grid = "y") +
   theme(legend.key.size = unit(.5, "cm"))
 
 ```
@@ -89,7 +91,7 @@ relay %>%
   facet_wrap(~year) +
   labs(title = expression(paste(italic("Relay.fm "), "Weekly Episode Output")),
        x = "Week of Year", y = "Episodes Published") +
-  theme_readthedown(axis_emph = "y")
+  theme_ipsum(grid = "y")
   }
 ```
 
@@ -110,7 +112,7 @@ relay %>%
   labs(title = expression(paste(italic("Relay.fm "), 
                                 "Episodes per Week in 2015")),
        x = "Week of Year", y = "# fo Episodes") +
-  theme_readthedown(axis_emph = "y") +
+  theme_ipsum(grid = "y") +
   theme(axis.text.y = element_text(size = rel(.5))) 
 ```
 
@@ -134,7 +136,7 @@ relay %>%
   labs(title = expression(paste(italic("Relay.fm "), 
                                 "Show Lifetime and Weekly Output")),
        x = "Lifetime of Podcast in Weeks", y = "Average # of Episodes per Week") +
-    theme_readthedown(axis_emph = "y")
+    theme_ipsum(grid = "y")
 ```
 
 
@@ -159,7 +161,7 @@ relay %>%
   facet_grid(.~year, space = "free_x", scales = "free_x") +
   labs(title = expression(paste(italic("Relay.fm "), "Monthly Episode Output")),
        x = "Month of Year", y = "Episodes Published") +
-  theme_readthedown(axis_emph = "y")
+  theme_ipsum(grid = "y")
   }
 ```
 
@@ -181,7 +183,7 @@ relay %>%
       facet_wrap(~podcast, ncol = 5) +
       labs(title = expression(paste(italic("Relay.fm "), "Episode Durations")),
            x = "Date Published", y = "Duration (mins)") +
-      theme_readthedown(axis_emph = "y") +
+      theme_ipsum(grid = "y") +
       theme(axis.text.x = element_text(angle = 45, vjust = .5))
   }
 
@@ -201,7 +203,7 @@ relay %>%
   scale_fill_viridis(discrete = T) +
   labs(title = expression(paste(italic("Relay.fm "), "Episode Durations")),
            y = "Frequency", x = "Duration (mins)") +
-  theme_readthedown(axis_emph = "y")
+  theme_ipsum(grid = "y")
 ```
 
 
