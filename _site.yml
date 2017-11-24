@@ -12,8 +12,8 @@ navbar:
       menu:
         - text: "Main Show"
           href: incomparable_main.html
-        - text: "2"
-          href:
+        - text: "Network Wide"
+          href: incomparable_network.html
         - text: "3"
           href:
         - text: "4"
