@@ -4,7 +4,7 @@ date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
 author: "Lukas — @jemus42"
 output: html_document
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
@@ -55,7 +55,7 @@ In `r year(now())-1`, there were **`r lastyear`** episodes published, and we're 
 
 ## Shows per Year
 
-```{r show_peryear}
+```{r show_peryear, height = 6, width = 8}
 relay %>%
   group_by(podcast, year) %>%
   tally %>%
@@ -68,12 +68,11 @@ relay %>%
        title = expression(paste(italic("Relay.fm "), "Episodes per Year"))) +
   theme_ipsum(grid = "y") +
   theme(legend.key.size = unit(.5, "cm"))
-
 ```
 
 ## Shows per Week
 
-```{r shows_perweek}
+```{r shows_perweek, fig.height=6, fig.width = 10}
 relay %>%
   mutate(week = week(date),
          year_num = year(date)) %>%
@@ -83,8 +82,7 @@ relay %>%
   {
   ggplot(data = ., aes(x = week, y = n)) +
   geom_point() +
-  geom_smooth(data = filter(., year != 2017),
-              method = lm, se = F, color = "red") +
+  geom_smooth(method = lm, se = F, color = "red") +
   scale_y_continuous(breaks = seq(0, 100, 5),
                      minor_breaks = seq(0, 100, 1)) +
   scale_x_continuous(breaks = seq(0, 55, 16)) +
@@ -152,8 +150,7 @@ relay %>%
   {
   ggplot(data = ., aes(x = month, y = n)) +
   geom_point() +
-  geom_smooth(data = filter(., year != 2017),
-              method = lm, se = F, color = "red") +
+  geom_smooth(method = lm, se = F, color = "red") +
   scale_y_continuous(breaks = seq(0, 100, 15),
                      minor_breaks = seq(0, 100, 5)) +
   scale_x_continuous(breaks = seq(0, 13, 2),
@@ -169,7 +166,7 @@ relay %>%
 
 ## All Shows
 
-```{r runtime_allshows, fig.height=9, fig.width=11}
+```{r runtime_allshows, fig.height=12, fig.width=13}
 relay %>%
   filter(podcast != "B-Sides") %>%
   {
@@ -186,7 +183,6 @@ relay %>%
       theme_ipsum(grid = "y") +
       theme(axis.text.x = element_text(angle = 45, vjust = .5))
   }
-
 ```
 
 ### Histogram
@@ -228,7 +224,6 @@ relay %>%
                   x = "", y = "Duration (mins)") +
              theme_readthedown()
          }
-
 ```
 
 ### 95% CI
