@@ -43,3 +43,4 @@ output:
     self_contained: false
     include:
       after_body: _footer.html
+      in_header: piwik.html
