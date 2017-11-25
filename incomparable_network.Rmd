@@ -111,7 +111,8 @@ incomparable_wide %>%
            subtitle = "Shows per week",
            x = "",
            y = "# of Episodes per Week",
-           caption = "@jemus42 podcasts.jemu.name")
+           caption = "@jemus42 podcasts.jemu.name") +
+      theme(axis.text.x = element_text(angle = 45))
   }
 ```
 
