@@ -47,3 +47,91 @@ incomparable %>%
 
 I opted to leave out the plot for that data because *oh boy so many people*, so I hope everyone will be happy with the table.  
 It was artisanally crafted as a gift to *The Incomparable* panelists and fans <3
+
+(As a footnote, the plot version is found [here](https://dump.jemu.name/incomparable_panelists_2017.png) and it's... a littler bigger than it needs to be. But it's there.)
+
+
+### A Searchable Table of All The nice People
+
+Here's a searchable and sortable list of all the episodes released in 2017 (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
+
+```{r 2017_panelists_network_fulltable}
+incomparable %>% 
+  filter(year == 2017) %>%
+  select(podcast, number, date, 
+         duration, title, person, role) %>%
+  mutate(duration = round(duration, 2),
+         date = lubridate::as_date(date)) %>%
+  arrange(desc(date)) %>%
+  datatable(style = "bootstrap", filter = "top",
+            colnames = c("Show", "#", "Date (UTC)",
+                         "Duration (mins)", "Title", "Person", 
+                         "Role")) %>%
+  formatDate(3, method = "toDateString")
+```
+
+## 2017 Shows
+
+TL;DR TeeVee is basially cheating.
+
+```{r incomparable_network_2017_shows}
+incomparable_wide %>%
+  filter(year == 2017) %>%
+  count(podcast) %>%
+  ggplot(aes(x = reorder(podcast, n), y = n)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "The Incomparable Network — 2017",
+       subtitle = "Shows by episode count",
+       x = "",
+       y = "# of Episodes",
+       caption = "@jemus42 podcasts.jemu.name")
+```
+
+## 2017 Episodes
+
+In 2017, *The Incomparable* published `r as.character(dminutes(sum(incomparable_wide$duration[incomparable_wide$year == "2017"])))` of content. That's a lot. In case you were wondering what time is.
+
+```{r incomparable_network_2017_episodes, fig.height=6, fig.width=9}
+incomparable_wide %>%
+  filter(year == 2017) %>%
+  mutate(date = round_date(date, unit = "week")) %>%
+  count(date) %>%
+  {
+    ggplot(data = ., aes(x = date, y = n)) +
+    geom_col() +
+    geom_hline(yintercept = mean(.$n), color = "red", size = 1, lty = "dotdash") +
+      annotate("text", label = paste("bar(x) ==", round(mean(.$n), 1)), parse = TRUE,
+               x = as.POSIXct("2017-01-5"), y = 13.5) +
+    scale_x_datetime(date_breaks = "1 month",
+                     date_labels = "%B") +
+      labs(title = "The Incomparable Network — 2017",
+           subtitle = "Shows per week",
+           x = "",
+           y = "# of Episodes per Week",
+           caption = "@jemus42 podcasts.jemu.name")
+  }
+```
+
+## Yearly Episode Output
+
+All in all, *The Incomparable* published `r as.character(dminutes(sum(incomparable_wide$duration)))` of content, which is a number that exists as a concept in your head but not in reality.
+
+```{r incomparable_network_episodes_peryear}
+incomparable_wide %>%
+  filter(year >= 2011) %>%
+  count(year) %>%
+  {
+    ggplot(data = ., aes(x = year, y = n)) +
+      geom_col() +
+      geom_hline(yintercept = mean(.$n), color = "red", size = 1, lty = "dotdash") +
+      annotate("text", label = paste("bar(x) ==", round(mean(.$n), 1)), parse = TRUE,
+               x = "2011", y = 300) +
+      labs(title = "The Incomparable Network — 2017",
+           subtitle = "Shows per year",
+           x = "",
+           y = "# of Episodes per Year",
+           caption = "@jemus42 podcasts.jemu.name")
+  }
+```
+
