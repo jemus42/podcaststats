@@ -14,21 +14,11 @@ navbar:
           href: incomparable_main.html
         - text: "Network Wide"
           href: incomparable_network.html
-        - text: "3"
-          href:
-        - text: "4"
-          href:
-        - text: "5"
-          href:
     - text: "Relay FM"
       icon: fa-list-ul
       menu:
         - text: "Network"
           href: relayfm_network.html
-        - text: "2"
-          href:
-        - text: "3"
-          href:
     - text: "ATP"
       icon: fa-list-ul
       href: ATP.html
