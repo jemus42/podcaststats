@@ -21,7 +21,7 @@ opts_chunk$set(echo    = FALSE,
                message = FALSE,
                warning = FALSE,
                fig.retina = 2,
-               fig.path = "assets/incomparable_network/")
+               fig.path = "assets/plots/incomparable_network/")
 opts_knit$set(width = 75)
 
 #### Data prep ####
@@ -51,7 +51,9 @@ It was artisanally crafted as a gift to *The Incomparable* panelists and fans <3
 (As a footnote, the plot version is found [here](https://dump.jemu.name/incomparable_panelists_2017.png) and it's... a littler bigger than it needs to be. But it's there.)
 
 
-### A Searchable Table of All The nice People
+### A Searchable Table of All The nice People<small>*</small>
+
+<small>* All the nice people _and_ Philip Mozolak</small>
 
 Here's a searchable and sortable list of all the episodes released in 2017 (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
 

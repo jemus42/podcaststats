@@ -21,7 +21,7 @@ opts_chunk$set(echo    = FALSE,
                message = FALSE,
                warning = FALSE,
                fig.retina = 2,
-               fig.path = "assets/incomparable_main/")
+               fig.path = "assets/plots/incomparable_main/")
 opts_knit$set(width = 75)
 
 #### Data prep ####
