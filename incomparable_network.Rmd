@@ -11,6 +11,9 @@ editor_options:
 
 ```{r setup, include=FALSE}
 library(knitr)
+#### Data prep ####
+source("setup.R")
+
 #### Global options ####
 options(max.print = "75")
 opts_chunk$set(echo    = FALSE,
@@ -23,9 +26,6 @@ opts_chunk$set(echo    = FALSE,
                fig.retina = 2,
                fig.path = "assets/plots/incomparable_network/")
 opts_knit$set(width = 75)
-
-#### Data prep ####
-source("setup.R")
 
 incomparable_wide <- readRDS("data/incomparable_master_wide.rds")
 incomparable      <- readRDS("data/incomparable_master.rds")
@@ -112,7 +112,7 @@ incomparable_wide %>%
            x = "",
            y = "# of Episodes per Week",
            caption = "@jemus42 podcasts.jemu.name") +
-      theme(axis.text.x = element_text(angle = 45))
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
   }
 ```
 
