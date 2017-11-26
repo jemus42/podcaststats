@@ -120,3 +120,21 @@ incomparable_wide %>%
 }
 ```
 
+
+## Runtime per Person
+
+```{r runtime_person}
+incomparable %>%
+  filter(year >= 2011, podcast == "The Incomparable") %>%
+  group_by(person) %>%
+  mutate(mean_duration = mean(duration)) %>%
+  ggplot(data = ., aes(x = reorder(person, mean_duration), y = duration)) +
+  geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +
+  geom_boxplot(alpha = .5, outlier.alpha = 0) +
+  coord_flip() +
+  labs(title = "The Incomparable: Main Show",
+       subtitle = "Episode Runtimes",
+       y = "Duration (mins)", x = "",
+       caption = caption)
+```
+
