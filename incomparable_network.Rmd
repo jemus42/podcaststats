@@ -57,7 +57,43 @@ incomparable_wide %>%
        subtitle = "All Episodes Since 2011 by Duration, Colored by Show",
        x = "", y = "Duration (mins)",
        caption = caption)
+
+incomparable_wide %>%
+  filter(year >= 2011) %>%
+  count(year, month) %>%
+  ggplot(data = ., aes(x = month, y = n)) +
+  geom_point(color = "black", alpha = .75) +
+  facet_wrap(~year, nrow = 1, scales = "free_x") +
+  labs(title = "The Incomparable Network",
+       subtitle = "Episodes per Month Since 2011",
+       x = "", y = "# of Episodes",
+       caption = caption) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = rel(0.5)))
 ```
+
+Episode duration by the 15 people most frequently appearing on the network:
+
+```{r top_15_people_duration}
+incomparable %>%
+  filter(year >= 2011) %>%
+  count(person) %>%
+  top_n(15) %>%
+  pull(person) -> top_15
+
+incomparable %>%
+  filter(person %in% top_15) %>%
+  group_by(person) %>%
+  mutate(mean_duration = mean(duration)) %>%
+  ggplot(data = ., aes(x = reorder(person, mean_duration), y = duration)) +
+  geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +
+  geom_boxplot(alpha = .5, outlier.alpha = 0) +
+  coord_flip() +
+  labs(title = "The Incomparable Network",
+       subtitle = "15 Most Frequently Appearing People's Episode Duration",
+       x = "", y = "Duration (mins)",
+       caption = caption)
+```
+
 
 ## 2017 Hosts and Guests
 
@@ -91,7 +127,8 @@ incomparable %>%
   select(podcast, number, date, 
          duration, title, person, role) %>%
   mutate(duration = round(duration, 2),
-         date = lubridate::as_date(date)) %>%
+         date = lubridate::as_date(date),
+         podcast = factor(podcast)) %>%
   arrange(desc(date)) %>%
   datatable(style = "bootstrap", filter = "top",
             colnames = c("Show", "#", "Date (UTC)",
@@ -99,6 +136,29 @@ incomparable %>%
                          "Role")) %>%
   formatDate(3, method = "toDateString")
 ```
+
+As a bonus, here's a proportional chart of all people having appeared on at least 10 occastions throughout 2017. Unfortunately, it's pretty hard to make out individual podcasts because there just aren't as many distinctive colors as there are shows on the Incomaparable network :(
+
+
+```{r}
+incomparable %>%
+  filter(year == 2017) %>%
+  count(podcast, person) %>%
+  group_by(person) %>%
+  mutate(total = sum(n)) %>%
+  filter(total >= 10) %>%
+  mutate(p = n / total) %>%
+  ggplot(aes(x = reorder(person, total), y = p, fill = podcast)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_percent() +
+  scale_fill_viridis(discrete = TRUE, option = "A") +
+  labs(title = "The Incomparable Network — 2017",
+       subtitle = "Relative Show Appearances by Person",
+       x = "", y = "", fill = "Show",
+       caption = caption)
+```
+
 
 ## 2017 Shows
 
