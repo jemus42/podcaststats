@@ -44,16 +44,17 @@ So… thanks Marco for saving me from the horrible fate that would have been a w
 ```{r atp_duration, fig.height=6, fig.width=10}
 ggplot(atp, aes(x = as.POSIXct(date), y = duration)) +
   geom_point() +
-  geom_label_repel(data = filter(atp, duration > 150),
+  geom_label_repel(data = filter(atp, duration > 160),
                    aes(label = title)) +
   expand_limits(y = 0) +
   geom_smooth(method = loess, se = T) +
-  scale_x_datetime(breaks = date_breaks("6 months"), minor_breaks = date_breaks("1 month"),
+  scale_x_datetime(breaks = date_breaks("6 months"), 
+                   minor_breaks = date_breaks("1 month"),
                    date_labels = "%b'%y") +
   scale_y_continuous(breaks = seq(0, 300, 30),
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations",
-       x = "Date Published", y = "Duration (mins)") +
+       x = "Date Published", y = "Duration (mins)", caption = caption) +
   theme_ipsum(grid = "y")
 ```
 
@@ -68,10 +69,10 @@ atp %>%
   scale_y_continuous(breaks = seq(0, 300, 30),
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations per Month",
-       x = "Month", y = "Duration (mins)") +
+       x = "Month", y = "Duration (mins)", caption = caption) +
   theme_ipsum(grid = "y") + 
   theme(strip.text = element_text(size = rel(1)),
-        axis.text.x = element_text(angle = 90, size = rel(.9)))
+        axis.text.x = element_text(angle = 90, size = rel(.7), hjust = 1))
 
 atp %>%
   ggplot(data = ., aes(x = month, y = duration)) +
@@ -81,10 +82,10 @@ atp %>%
   scale_y_continuous(breaks = seq(0, 300, 30),
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations grouped by Month",
-       x = "Month", y = "Duration (mins)") +
+       x = "Month", y = "Duration (mins)", caption = caption) +
   theme_ipsum(grid = "y") +
   theme(strip.text = element_text(size = rel(1)),
-        axis.text.x = element_text(angle = 90, size = rel(.9)))
+        axis.text.x = element_text(angle = 90, size = rel(.9), hjust = 1))
 
 atp %>%
   group_by(month) %>%
@@ -96,7 +97,7 @@ atp %>%
                      minor_breaks = seq(0, 300, 5)) +
   coord_flip() +
   labs(title = "ATP Average Episode Duration by Month",
-       x = "Month", y = "Duration (mins) + 95% CI") +
+       x = "Month", y = "Duration (mins) + 95% CI", caption = caption) +
   theme_ipsum(grid = "x")
 ```
 
@@ -113,7 +114,7 @@ atp %>%
   scale_y_continuous(breaks = seq(0, 300, 30),
                      minor_breaks = seq(0, 300, 15)) +
   labs(title = "ATP Episode Durations per Year",
-       x = "", y = "Duration (mins)") +
+       x = "", y = "Duration (mins)", caption = caption) +
   theme_ipsum(grid = "y") +
   theme(strip.text = element_text(size = rel(1)),
         axis.text.x = element_text(size = rel(1.5)),
@@ -122,7 +123,7 @@ atp %>%
 
 ## Number of Episodes
 
-```{r atp_episodes, fig.height=6}
+```{r atp_episodes, fig.height=8}
 atp %>%
   group_by(year, month) %>%
   tally() %>%
@@ -130,9 +131,9 @@ atp %>%
   geom_col(alpha = .7) +
   facet_wrap(~year, ncol = 1) +
   labs(title = "ATP Episodes", subtitle = "Episode per Month", 
-       x = "", y = "# of Episodes") +
+       x = "", y = "# of Episodes", caption = caption) +
   theme(strip.text = element_text(size = rel(1)),
-        axis.text.x = element_text(angle = 90, size = rel(.9)))
+        axis.text.x = element_text(angle = 90, size = rel(.9), hjust = 1))
 ```
 
 ## Raw Data 
