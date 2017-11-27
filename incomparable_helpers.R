@@ -145,25 +145,6 @@ get_podcast_metadata <- function(urlpartial = "theincomparable"){
     html_text() %>%
     as.character()
 
-  # Not exact, but possible fallback for duration. Lacks seconds.
-  # duration <- archive_parsed %>%
-  #   html_nodes(css = ".postdate .postdate") %>%
-  #   html_text() %>%
-  #   str_replace_all("(minutes|minute)", ":0") %>%
-  #   str_replace_all("(hours|hour)", ":") %>%
-  #   str_replace_all(",", "") %>%
-  #   str_replace_all(" ", "") %>%
-  #   parse_duration()
-
-  # Fallback for date
-  # date <- archive_parsed %>%
-  #   html_nodes(css = ".postdate:nth-child(5)") %>%
-  #   html_text() %>%
-  #   str_replace_all("\\n", "") %>%
-  #   str_replace_all("•.*", "") %>%
-  #   str_trim("both") %>%
-  #   mdy()
-
   summaries <- archive_parsed %>%
     html_nodes(css = ".episode-description") %>%
     html_text() %>%
@@ -174,16 +155,27 @@ get_podcast_metadata <- function(urlpartial = "theincomparable"){
     html_nodes(css = ".entry-title a") %>%
     html_text()
 
-  categories <- entries %>%
-    str_replace_all("(\\n|\\s)*$", "") %>%
-    str_extract("\\s\\w+$") %>%
-    str_trim("both") %>%
-    str_replace_all("^(seconds|minute|minutes|hour)$", "Not provided")
+  # categories <- entries %>%
+  #   str_replace_all("(\\n|\\s)*$", "") %>%
+  #   str_extract("\\s\\w+$") %>%
+  #   str_trim("both") %>%
+  #   str_replace_all("^(seconds|minute|minutes|hour)$", "Not provided")
 
-  topics <- entries %>%
-    str_extract(".* •") %>%
-    str_replace_all("•", "") %>%
-    str_replace_all("^\\s$", "Not provided") %>%
+  categories <- archive_parsed %>%
+    html_nodes("#entry img") %>%
+    html_attr("alt")
+
+  # topics <- entries %>%
+  #   str_extract(".* •") %>%
+  #   str_replace_all("•", "") %>%
+  #   str_replace_all("^\\s$", "Not provided") %>%
+  #   str_trim("both")
+
+  topics <- archive_parsed %>%
+    html_nodes(".postdate+ .postdate") %>%
+    html_text() %>%
+    str_extract("•.*") %>%
+    str_replace_all("•", "")  %>%
     str_trim("both")
 
   result <- data_frame(number = epnums, title = titles, summary = summaries,
