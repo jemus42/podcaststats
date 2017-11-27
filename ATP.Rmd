@@ -47,7 +47,7 @@ ggplot(atp, aes(x = as.POSIXct(date), y = duration)) +
   geom_label_repel(data = filter(atp, duration > 160),
                    aes(label = title)) +
   expand_limits(y = 0) +
-  geom_smooth(method = loess, se = T) +
+  geom_smooth(method = lm, se = T, color = "red") +
   scale_x_datetime(breaks = date_breaks("6 months"), 
                    minor_breaks = date_breaks("1 month"),
                    date_labels = "%b'%y") +
@@ -133,7 +133,8 @@ atp %>%
   labs(title = "ATP Episodes", subtitle = "Episode per Month", 
        x = "", y = "# of Episodes", caption = caption) +
   theme(strip.text = element_text(size = rel(1)),
-        axis.text.x = element_text(angle = 90, size = rel(.9), hjust = 1))
+        axis.text.x = element_text(angle = 90, size = rel(.9), hjust = 1),
+        axis.text.y = element_text(size = rel(.75)))
 ```
 
 ## Raw Data 
