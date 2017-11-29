@@ -64,10 +64,12 @@ readRDS("data/relay.rds") %>%
   geom_errorbar(aes(ymin = d_min, ymax = d_max),
                 width = .5, size = 2, alpha = .75) +
   coord_flip() +
+  scale_x_discrete(position = "top") +
   scale_color_brewer(palette = "Dark2") +
   labs(x = "", y = "First to Last Episode Date",
        title = "Relay.fm", subtitle = "Show Timelines",
-       caption = caption, color = "Status")
+       caption = caption, color = "Status") +
+  theme(legend.position = "top")
 ```
 
 ## Shows per Year
@@ -267,3 +269,47 @@ relay %>%
       theme_ipsum()
   }
 ```
+
+## Shitty Statistics
+
+The following is merely done for fun and for me to try out some things.  
+Nothing I do here should *actually* be considered statistically sound or something.
+
+The following plot shows the proportion of shows airing (or that used to air) on a given day which are retired or active.  
+We can infer from this that "monday shows" get retired more often, relatively speaking.
+
+```{r showstatus_plot_proportion}
+relay %>%
+  count(show_status, weekday) %>%
+  mutate(weekday = forcats::fct_rev(weekday)) %>%
+  group_by(weekday) %>%
+  mutate(p = n / sum(n)) %>%
+  ggplot(aes(x = weekday, p, fill = show_status)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_percent() +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = "Relay.fm",
+       subtitle = "Show Status by Publishing Day of Week",
+       x = "", y = "Proportion (within Day of Week)", fill = "Status", caption = caption) +
+  theme(legend.position = "top")
+```
+
+...Which, obviously, is bullshitty because podcasts don't work like live television, and when a show is published should not by any means indicate whether or not it will be retired. At least I can't think of any reason.
+
+To put it in statsy terms:
+
+```{r showstatus_logreg}
+relay %>%
+  mutate(status_bin = if_else(show_status == "Retired", 1, 0),
+         weekday    = factor(weekday, ordered = FALSE)) %>%
+  glm(formula = status_bin ~ weekday, data = ., family = binomial) %>%
+  sjPlot::sjt.glm(exp.coef = TRUE,
+                  separate.ci.col = FALSE)
+```
+
+Monday shows are 6 times more like to be retires than sunday shows (which is the reference level), while wednesday shows are 8 times more like. Also, friday shows are half as likely to be retired compared to wednesday shows.  
+
+Huh.  
+
+As I said, this is not methodologically sound, as I just dumped data into a logistic regression model and looked at the results, but **if** the next Relay show to be retires aired on wednesdays or mondays, I'll have my hands full with hindsight bias, so there's that.
