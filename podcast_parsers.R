@@ -56,9 +56,12 @@ parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
     magrittr::extract(-1)
 
   df <- tibble(number = number, podcast = show,
-                   title = titles, duration = durations, date = pubdate, people = people) %>%
+              title = titles, duration = durations,
+               date = pubdate, people = people,
+              network = "Relay.fm") %>%
     mutate(month = month(date, label = T, abbr = F),
-           year  = year(date))
+           year  = year(date),
+           date = as_date(date))
   return(df)
 }
 
@@ -86,7 +89,7 @@ parse_atp_feed <- function(url = "https://overcast.fm/itunes617416468/accidental
               str_replace_all("^\\n\\s+", "") %>%
               str_replace("\\s\\u2022$", "")
   yr     <- as.numeric(str_extract(pub, "\\d{4}$"))
-  yr     <- ifelse(is.na(yr), as.numeric(format(now(), "%Y")), yr)
+  yr     <- ifelse(is.na(yr), year(now()), yr)
 
   pub    <- str_replace(pub, ",\\s\\d+$", "")
   pub    <- mdy(paste0(pub, " ", yr))
@@ -101,6 +104,8 @@ parse_atp_feed <- function(url = "https://overcast.fm/itunes617416468/accidental
             str_replace_all("^\\n", "") %>%
             str_trim("both")
 
-  tibble(number = nums, title = titles, date = pub, month = month(pub, label = T, abbr = F),
-         year = yr, duration = drt, summary = summ)
+  tibble(number = nums, title = titles, date = pub,
+         month = month(pub, label = T, abbr = F),
+         year = yr, duration = drt, summary = summ,
+         network = "ATP", podcast = "ATP")
 }
