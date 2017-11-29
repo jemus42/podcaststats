@@ -60,13 +60,14 @@ readRDS("data/relay.rds") %>%
   group_by(podcast) %>%
   mutate(d_min = min(date),
          d_max = max(date)) %>%
-  ggplot(aes(x = reorder(podcast, d_min))) +
+  ggplot(aes(x = reorder(podcast, d_min), color = show_status)) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max),
-                width = .5, size = 2, alpha = .75, color = "black") +
+                width = .5, size = 2, alpha = .75) +
   coord_flip() +
+  scale_color_brewer(palette = "Dark2") +
   labs(x = "", y = "First to Last Episode Date",
        title = "Relay.fm", subtitle = "Show Timelines",
-       caption = caption)
+       caption = caption, color = "Status")
 ```
 
 ## Shows per Year

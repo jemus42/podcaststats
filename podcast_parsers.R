@@ -66,7 +66,7 @@ parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
 }
 
 get_relay_shows <- function(urls) {
-  relay <- plyr::ldply(urls, function(x){
+  relay <- purrr::map_df(urls, function(x) {
     parse_relay_feed(x)
   })
 

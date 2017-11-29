@@ -13,11 +13,11 @@ relay_shows <- read_html("https://www.relay.fm/shows") %>%
 relay <- get_relay_shows(relay_shows)
 
 retired_shows <- read_html("https://www.relay.fm/shows") %>%
-  html_nodes(".broadcasts__retired h4 a") %>%
+  html_nodes(".subheader~ .entry .broadcast__name a") %>%
   html_text()
 
 relay %<>%
-  mutate(show_status = ifelse(title %in% retired_shows, "Retired", "Active"),
+  mutate(show_status = ifelse(podcast %in% retired_shows, "Retired", "Active"),
          month    = month(date, abbr = F, label = T),
          weekday  = wday(date, label = T, abbr = F))
 
