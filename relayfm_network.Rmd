@@ -53,6 +53,22 @@ progress <- round(thisyear/lastyear * 100, 1)
 
 In `r year(now())-1`, there were **`r lastyear`** episodes published, and we're currently about **`r progress`%** of the way there at **`r thisyear`** episodes this year.
 
+## Shows by Age
+
+```{r shows_byage, fig.height=9}
+readRDS("data/relay.rds") %>%
+  group_by(podcast) %>%
+  mutate(d_min = min(date),
+         d_max = max(date)) %>%
+  ggplot(aes(x = reorder(podcast, d_min))) +
+  geom_errorbar(aes(ymin = d_min, ymax = d_max),
+                width = .5, size = 2, alpha = .75, color = "black") +
+  coord_flip() +
+  labs(x = "", y = "First to Last Episode Date",
+       title = "Relay.fm", subtitle = "Show Timelines",
+       caption = caption)
+```
+
 ## Shows per Year
 
 ```{r show_peryear, height = 6, width = 8}
@@ -129,8 +145,11 @@ relay %>%
   ggplot(aes(x = lifetime_weeks, y = episodes_per_week)) +
   geom_point() +
   geom_label_repel(aes(label = podcast), size = 3) +
-  geom_hline(aes(yintercept = mean(episodes_per_week)), linetype = "dotted", color = "blue") +
-  geom_vline(aes(xintercept = mean(lifetime_weeks)), linetype = "dotted", color = "blue") +
+  geom_hline(aes(yintercept = mean(episodes_per_week)), 
+             linetype = "dotted", color = "blue") +
+  geom_vline(aes(xintercept = mean(lifetime_weeks)), 
+             linetype = "dotted", color = "blue") +
+  scale_y_continuous(breaks = seq(0, 5, .25), minor_breaks = seq(0, 5, .1)) +
   labs(title = "Relay.fm", subtitle = "Show Lifetime and Weekly Output",
        x = "Lifetime of Podcast in Weeks", y = "Average # of Episodes per Week",
        caption = caption) +
@@ -188,7 +207,7 @@ relay %>%
 
 ### Histogram
 
-```{r runtime_allshows_hist, fig.width=9}
+```{r runtime_allshows_hist, fig.width=9, fig.height=7}
 relay %>%
   ggplot(aes(x = duration)) +
   geom_histogram(binwidth = 2.5) +
@@ -208,7 +227,7 @@ relay %>%
 
 ### Boxplots 
 
-```{r runtime_avg_pershow, fig.height=7}
+```{r runtime_avg_pershow, fig.height=9}
 relay %>%
   #filter(podcast != "B-Sides") %>%
   group_by(podcast) %>%
@@ -229,14 +248,14 @@ relay %>%
 
 ### 95% CI
 
-```{r runtime_ci_pershow, fig.height=7}
+```{r runtime_ci_pershow, fig.height=9}
 relay %>%
   #filter(podcast != "B-Sides") %>%
   group_by(podcast) %>%
   mutate(dur_mean = mean(duration)) %>%
   {
     ggplot(., aes(x = forcats::fct_reorder(podcast, dur_mean), y = duration)) +
-      stat_summary(fun.data = "mean_ci_t", geom = "errorbar") +
+      stat_summary(fun.data = mean_cl_normal, geom = "errorbar") +
       stat_summary(fun.y = "mean", geom = "point", size = 2, color = "red") +
       coord_flip() +
       expand_limits(y = 0) +

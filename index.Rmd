@@ -4,6 +4,8 @@ output:
   html_document:
     toc: true
     code_folding: hide
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r global_options, include=FALSE}
@@ -27,12 +29,11 @@ incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds")
 I'm migrating this from the old location to here, cleaning up the code and improving it when I can.  
 The new repo is located [here](https://github.com/jemus42/podcaststats).  
 
-This is still under heavy maintenance, and I'll replace this text when I consider it done(ish).
+This is still under maintenance, and I'll replace this text when I consider it done(ish).
 
 ## All Shows
 
 Here's a quick overview of the podcast data I've collected so far.  
-Note that there's only limited data available on ATP.
 
 ```{r allshows}
 relay %<>%
@@ -57,20 +58,42 @@ podcasts <- full_join(incomparable_master_wide, relay) %>%
 
 podcasts %>%
   group_by(network) %>%
-  summarize(episodes = n(),
-            duration_d = round(sum(duration)/60/24),
+  summarize(episodes     = n(),
+            duration_d   = round(sum(duration)/60/24),
             duration_avg = round(mean(duration)),
-            firstep   = as.character(as.Date(min(date))),
-            lastep = as.character(as.Date(max(date))),
-            shows = length(unique(podcast)),
-            epspershow = round(episodes/shows, 1)) %>%
+            firstep      = as.character(as.Date(min(date))),
+            lastep       = as.character(as.Date(max(date))),
+            shows        = length(unique(podcast)),
+            epspershow   = round(episodes/shows, 1)) %>%
   set_colnames(c("Network", "Episodes", "Duration (total, days)",
-                                              "Duration (mean, mins)", "First Episode",
-                                              "Last Episode", "# of Shows", "Episodes per Show")) %>%
+                 "Duration (mean, mins)", "First Episode",
+                 "Last Episode", "# of Shows", "Episodes per Show")) %>%
   datatable()
-
-
 ```
+
+## All Shows Timeline
+
+From first to last published episode.
+
+```{r allshows_timeline, fig.height=12}
+podcasts %>%
+  group_by(podcast) %>%
+  mutate(d_min = min(date),
+         d_max = max(date)) %>%
+  ggplot(aes(x = reorder(podcast, d_min), color = network)) +
+  geom_errorbar(aes(ymin = d_min, ymax = d_max),
+                width = .5, size = 2) +
+  scale_x_discrete(position = "top") +
+  coord_flip() +
+  theme(legend.position = "top") +
+  labs(title = "All Podcasts Timeline", 
+       subtitle = "The Incomparable, Relay.fm, ATP",
+       x = "", y = "First to Latest Episode Date", 
+       color = "Network",
+       caption = caption) +
+  theme(legend.position = "top")
+```
+
 
 ## All Shows by Duration
 
