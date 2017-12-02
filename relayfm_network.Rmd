@@ -333,3 +333,24 @@ Monday shows are 7 times more like to be retires than sunday shows (which is the
 Huh.  
 
 As I said, this is not methodologically sound, as I just dumped data into a logistic regression model and looked at the results, but **if** the next Relay show to be retires aired on wednesdays or mondays, I'll have my hands full with hindsight bias, so there's that.
+
+## People
+
+Sadly I don't have a lot of data about people besides the hosts of each show. I *could* try to pry out the guests of shows out of each show's RSS feed, but sadly this information is not neatly presented in the feed, but rather would require an amount of regexing I am not prepared, and therere for not able to do.  
+Be that as it may, here's a bit about the hosts.
+
+```{r}
+relay %>%
+  separate(col = people, sep = ",\\s", into = paste0("Host", 1:10)) %>%
+  gather(role, person, starts_with("Host")) %>%
+  mutate(role = "Host") %>%
+  filter(!is.na(person)) %>%
+  count(person) %>%
+  ggplot(aes(x = reorder(person, n), y = n)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Relay.fm",
+       subtitle = "Person by Number of Epised",
+       x = "", y = "# of Episodes Hosted")
+```
+
