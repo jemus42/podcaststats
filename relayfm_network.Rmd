@@ -26,12 +26,17 @@ opts_knit$set(width = 100)
 source("setup.R")
 
 relay <- readRDS("data/relay.rds") %>% filter(year >= 2014)
-shows <- relay %>% group_by(podcast) %>% tally() %>% arrange(desc(n)) %>% pull("podcast")
+# shows <- relay %>% group_by(podcast) %>% tally() %>% arrange(desc(n)) %>% pull("podcast")
+
+shows <- relay %>% 
+  group_by(podcast) %>% 
+  summarise(age = min(date)) %>% 
+  arrange(age) %>%
+  pull("podcast")
 
 relay %<>%
   mutate(podcast = factor(podcast, levels = shows, ordered = T),
          year_num = year(date))
-
 ```
 
 After doing [The Incomparable](http://stats.jemu.name/theincomparable/results_incomparable_master.html), I had to go see what I could do with [Relay.fm's](https://relay.fm) data as well, naturally.  
@@ -74,7 +79,7 @@ readRDS("data/relay.rds") %>%
 
 ## Shows per Year
 
-```{r show_peryear, height = 6, width = 8}
+```{r show_peryear, fig.height = 6, fig.width = 6}
 relay %>%
   group_by(podcast, year) %>%
   tally %>%
@@ -82,7 +87,8 @@ relay %>%
   geom_bar() +
   scale_y_continuous(breaks = seq(0, 1000, 100),
                      minor_breaks = seq(0, 1000, 25)) +
-  scale_fill_viridis(discrete = T) +
+  scale_fill_viridis(discrete = TRUE, 
+                      guide = guide_legend(ncol = 1, keyheight = .75, )) +
   labs(x = "Year", y = "# of Episodes", fill = "Show",
        title = "Relay.fm", subtitle = "Episodes per Year",
        caption = caption) +
@@ -239,7 +245,6 @@ relay %>%
                          minor_breaks = seq(0, 300, 5)) +
   scale_y_continuous(breaks = seq(0, 300, 15),
                          minor_breaks = seq(0, 300, 5)) +
-  scale_fill_viridis(discrete = T) +
   labs(title = "Relay.fm", subtitle = "Episode Durations",
            y = "Frequency", x = "Duration (mins)", caption = caption) +
   theme_ipsum(grid = "y")
@@ -334,12 +339,12 @@ Huh.
 
 As I said, this is not methodologically sound, as I just dumped data into a logistic regression model and looked at the results, but **if** the next Relay show to be retires aired on wednesdays or mondays, I'll have my hands full with hindsight bias, so there's that.
 
-## People
+# People
 
 Sadly I don't have a lot of data about people besides the hosts of each show. I *could* try to pry out the guests of shows out of each show's RSS feed, but sadly this information is not neatly presented in the feed, but rather would require an amount of regexing I am not prepared, and therere for not able to do.  
 Be that as it may, here's a bit about the hosts.
 
-```{r}
+```{r people, fig.height=9}
 relay %>%
   separate(col = people, sep = ",\\s", into = paste0("Host", 1:10)) %>%
   gather(role, person, starts_with("Host")) %>%
@@ -350,7 +355,8 @@ relay %>%
   geom_col() +
   coord_flip() +
   labs(title = "Relay.fm",
-       subtitle = "Person by Number of Epised",
-       x = "", y = "# of Episodes Hosted")
+       subtitle = "Person by Number of Episodes",
+       x = "", y = "# of Episodes Hosted",
+       caption = caption)
 ```
 
