@@ -54,7 +54,7 @@ label_n <- function(data, brackets = FALSE) {
 
 #### Caching ####
 cache_podcast_data <- function(x, dir = "data", filename = NULL) {
-  if (is.null(filename)){
+  if (is.null(filename)) {
     filename <- deparse(substitute(x))
   }
   path <- paste0(file.path(dir, filename), ".rds")

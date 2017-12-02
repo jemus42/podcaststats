@@ -55,13 +55,13 @@ parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
     str_replace_all(" and ", ", ") %>%
     magrittr::extract(-1)
 
-  df <- tibble(number = number, podcast = show,
-              title = titles, duration = durations,
-               date = pubdate, people = people,
-              network = "Relay.fm") %>%
-    mutate(month = month(date, label = T, abbr = F),
-           year  = year(date),
-           date = as_date(date))
+  df <- tibble(number  = number, podcast = show,
+               title   = titles, duration = durations,
+               date    = pubdate, people = people,
+               network = "Relay.fm") %>%
+        mutate(month = month(date, label = T, abbr = F),
+               year  = year(date),
+               date  = as_date(date))
   return(df)
 }
 
