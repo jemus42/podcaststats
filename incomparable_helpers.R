@@ -132,6 +132,8 @@ get_podcast_metadata <- function(urlpartial = "theincomparable"){
   require(dplyr)
   require(stringr)
 
+  cat("getting", urlpartial, "\n")
+
   url     <- paste0("https://www.theincomparable.com/", urlpartial, "/archive/")
 
   archive_parsed <- read_html(url)
@@ -155,31 +157,33 @@ get_podcast_metadata <- function(urlpartial = "theincomparable"){
     html_nodes(css = ".entry-title a") %>%
     html_text()
 
-  # categories <- entries %>%
-  #   str_replace_all("(\\n|\\s)*$", "") %>%
-  #   str_extract("\\s\\w+$") %>%
-  #   str_trim("both") %>%
-  #   str_replace_all("^(seconds|minute|minutes|hour)$", "Not provided")
+   categories <- archive_parsed %>%
+     html_nodes("#entry img") %>%
+     html_attr("alt")
 
-  categories <- archive_parsed %>%
-    html_nodes("#entry img") %>%
-    html_attr("alt")
+   if (identical(categories, character(0))) {
+     categories <- NA
+   }
 
-  # topics <- entries %>%
-  #   str_extract(".* •") %>%
-  #   str_replace_all("•", "") %>%
-  #   str_replace_all("^\\s$", "Not provided") %>%
-  #   str_trim("both")
+   topics <- archive_parsed %>%
+     html_nodes(".postdate+ .postdate") %>%
+     html_text() %>%
+     str_extract("•.*") %>%
+     str_replace_all("•", "")  %>%
+     str_trim("both")
 
-  topics <- archive_parsed %>%
-    html_nodes(".postdate+ .postdate") %>%
-    html_text() %>%
-    str_extract("•.*") %>%
-    str_replace_all("•", "")  %>%
-    str_trim("both")
+   if (length(topics) != length(titles)) {
+     topics <- rep(NA, length(titles))
+   }
+   if (length(categories) != length(titles)) {
+     categories <- rep(NA, length(titles))
+   }
 
-  result <- data_frame(number = epnums, title = titles, summary = summaries,
-                       category = categories, topic = topics)
+  result <- tibble(number = epnums,
+                   title = titles,
+                   summary = summaries,
+                   category = categories,
+                   topic = topics)
   return(result)
 }
 
@@ -210,27 +214,30 @@ get_podcast_segment_episodes <- function(){
                           list(partial = "truedetective", name = "True Detective"))
 
   inc <-  plyr::ldply(segments_incomparable, function(segment){
-          url <- paste("https://www.theincomparable.com/theincomparable", segment$partial, "archive", sep = "/")
+          url <- paste("https://www.theincomparable.com/theincomparable",
+                       segment$partial, "archive", sep = "/")
           entry  <- read_html(url) %>% html_nodes(".entry-title a")
           title  <- entry %>% html_text()
           epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-          data.frame(number = epnums, segment = segment$name, podcast = "The Incomparable")
+          tibble(number = epnums, segment = segment$name, podcast = "The Incomparable")
         })
 
   gs <-  plyr::ldply(segments_gameshow, function(segment){
-            url <- paste("https://www.theincomparable.com/gameshow", segment$partial, "archive", sep = "/")
+            url <- paste("https://www.theincomparable.com/gameshow",
+                         segment$partial, "archive", sep = "/")
             entry  <- read_html(url) %>% html_nodes(".entry-title a")
             title  <- entry %>% html_text()
             epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-            data.frame(number = epnums, segment = segment$name, podcast = "Game Show")
+            tibble(number = epnums, segment = segment$name, podcast = "Game Show")
           })
 
   teevee <-  plyr::ldply(segments_teevee, function(segment){
-                url <- paste("https://www.theincomparable.com/teevee", segment$partial, "archive", sep = "/")
+                url <- paste("https://www.theincomparable.com/teevee",
+                             segment$partial, "archive", sep = "/")
                 entry  <- read_html(url) %>% html_nodes(".entry-title a")
                 title  <- entry %>% html_text()
                 epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-                data.frame(number = epnums, segment = segment$name, podcast = "TeeVee")
+                tibble(number = epnums, segment = segment$name, podcast = "TeeVee")
               })
 
   ret <- bind_rows(inc, gs, teevee)

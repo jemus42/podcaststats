@@ -39,6 +39,7 @@ Here's a quick overview of the podcast data I've collected so far.
 relay %<>%
   mutate(number = as.character(number),
          year = year(date),
+         date = as.POSIXct(date),
          network = "Relay.FM")
 
 atp %<>%
