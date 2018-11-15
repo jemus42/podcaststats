@@ -118,6 +118,7 @@ defocused <- readRDS("data/incomparable_master_wide.rds") %>%
                        year = as.numeric(year))
 
 recdiffs  <- readRDS("data/relay.rds") %>% 
+                mutate(date = as.POSIXct(date)) %>%
                 filter(podcast == "Reconcilable Differences")
 
 data <- full_join(recdiffs, defocused)

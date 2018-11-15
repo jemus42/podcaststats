@@ -114,11 +114,11 @@ incomparable_master %>%
 ```
 
 
-## 2017 Hosts and Guests
+## 2018 Hosts and Guests
 
-```{r 2017_panelists_network, fig.height=14}
+```{r 2018_panelists_network, fig.height=14}
 incomparable_master %>% 
-  filter(year == 2017) %>%
+  filter(year == 2018) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>% 
@@ -131,18 +131,15 @@ incomparable_master %>%
 I opted to leave out the plot for that data because *oh boy so many people*, so I hope everyone will be happy with the table.  
 It was artisanally crafted as a gift to *The Incomparable* panelists and fans <3
 
-(As a footnote, the plot version is found [here](https://dump.jemu.name/incomparable_panelists_2017.png) and it's... a littler bigger than it needs to be. But it's there.)
-
-
 ### A Searchable Table of All The nice People<small>*</small>
 
 <small>* All the nice people _and_ Philip Mozolak</small>
 
-Here's a searchable and sortable list of all the episodes released in 2017 (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
+Here's a searchable and sortable list of all the episodes released in 2018 (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
 
-```{r 2017_panelists_network_fulltable}
+```{r 2018_panelists_network_fulltable}
 incomparable_master %>% 
-  filter(year == 2017) %>%
+  filter(year == 2018) %>%
   select(podcast, number, date, 
          duration, title, person, role) %>%
   mutate(duration = round(duration, 2),
@@ -161,7 +158,7 @@ As a bonus, here's a proportional chart of all people having appeared on at leas
 
 ```{r}
 incomparable_master %>%
-  filter(year == 2017) %>%
+  filter(year == 2018) %>%
   count(podcast, person) %>%
   group_by(person) %>%
   mutate(total = sum(n)) %>%
@@ -179,13 +176,13 @@ incomparable_master %>%
 ```
 
 
-## 2017 Shows
+## 2018 Shows
 
 TL;DR TeeVee is basially cheating.
 
 ```{r incomparable_network_2017_shows}
 incomparable_master_wide %>%
-  filter(year == 2017) %>%
+  filter(year == 2018) %>%
   count(podcast) %>%
   ggplot(aes(x = reorder(podcast, n), y = n)) +
   geom_col() +
@@ -197,13 +194,13 @@ incomparable_master_wide %>%
        caption = caption)
 ```
 
-## 2017 Episodes
+## 2018 Episodes
 
-In 2017, *The Incomparable* published `r as.character(dminutes(sum(incomparable_master_wide$duration[incomparable_master_wide$year == "2017"])))` of content. That's a lot. In case you were wondering what time is.
+In 2018, *The Incomparable* published `r as.character(dminutes(sum(incomparable_master_wide$duration[incomparable_master_wide$year == "2018"])))` of content. That's a lot. In case you were wondering what time is.
 
 ```{r incomparable_network_2017_episodes, fig.height=6, fig.width=9}
 incomparable_master_wide %>%
-  filter(year == 2017) %>%
+  filter(year == 2018) %>%
   mutate(date = round_date(date, unit = "week")) %>%
   count(date) %>%
   {
