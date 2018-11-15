@@ -41,11 +41,11 @@ I had issues with my old code to parse the podcast data, so there may be some wo
 
 ## Panelists 
 
-### 2017 Panelists
+### 2018 Panelists
 
-```{r 2017_panelists, fig.height=9}
+```{r 2018_panelists, fig.height=9}
 incomparable %>% 
-  filter(year == 2017) %>%
+  filter(year == 2018) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>% 
@@ -56,7 +56,7 @@ incomparable %>%
             colnames = c("Person", "Guest", "Host", "Total Appearances"))
 
 incomparable %>% 
-  filter(year == 2017) %>%
+  filter(year == 2018) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>% 
@@ -69,7 +69,7 @@ incomparable %>%
       coord_flip() +
       scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
       scale_fill_brewer(palette = "Set1", label = c("Guest", "Host")) +
-      labs(title = "The Incomparable — 2017", 
+      labs(title = "The Incomparable — 2018", 
            subtitle = "Panelists by # of Appearances",
            x = "Panelist", y = "# of Appearances", fill = "Role") +
       theme(legend.position = "top")

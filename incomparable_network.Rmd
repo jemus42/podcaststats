@@ -153,7 +153,7 @@ incomparable_master %>%
   formatDate(3, method = "toDateString")
 ```
 
-As a bonus, here's a proportional chart of all people having appeared on at least 10 occastions throughout 2017. Unfortunately, it's pretty hard to make out individual podcasts because there just aren't as many distinctive colors as there are shows on the Incomaparable network :(
+As a bonus, here's a proportional chart of all people having appeared on at least 10 occastions throughout 2018. Unfortunately, it's pretty hard to make out individual podcasts because there just aren't as many distinctive colors as there are shows on the Incomaparable network :(
 
 
 ```{r}
@@ -169,7 +169,7 @@ incomparable_master %>%
   coord_flip() +
   scale_y_percent() +
   scale_fill_viridis(discrete = TRUE, option = "A") +
-  labs(title = "The Incomparable Network — 2017",
+  labs(title = "The Incomparable Network — 2018",
        subtitle = "Relative Show Appearances by Person",
        x = "", y = "", fill = "Show",
        caption = caption)
@@ -180,14 +180,14 @@ incomparable_master %>%
 
 TL;DR TeeVee is basially cheating.
 
-```{r incomparable_network_2017_shows}
+```{r incomparable_network_2018_shows}
 incomparable_master_wide %>%
   filter(year == 2018) %>%
   count(podcast) %>%
   ggplot(aes(x = reorder(podcast, n), y = n)) +
   geom_col() +
   coord_flip() +
-  labs(title = "The Incomparable Network — 2017",
+  labs(title = "The Incomparable Network — 2018",
        subtitle = "Shows by episode count",
        x = "",
        y = "# of Episodes",
@@ -198,7 +198,7 @@ incomparable_master_wide %>%
 
 In 2018, *The Incomparable* published `r as.character(dminutes(sum(incomparable_master_wide$duration[incomparable_master_wide$year == "2018"])))` of content. That's a lot. In case you were wondering what time is.
 
-```{r incomparable_network_2017_episodes, fig.height=6, fig.width=9}
+```{r incomparable_network_2018_episodes, fig.height=6, fig.width=9}
 incomparable_master_wide %>%
   filter(year == 2018) %>%
   mutate(date = round_date(date, unit = "week")) %>%
@@ -208,10 +208,10 @@ incomparable_master_wide %>%
     geom_col() +
     geom_hline(yintercept = mean(.$n), color = "red", size = 1, lty = "dotdash") +
       annotate("text", label = paste("bar(x) ==", round(mean(.$n), 1)), parse = TRUE,
-               x = as.POSIXct("2017-01-5"), y = 13.5) +
+               x = as.POSIXct("2018-01-5"), y = 13.5) +
     scale_x_datetime(date_breaks = "1 month",
                      date_labels = "%B") +
-      labs(title = "The Incomparable Network — 2017",
+      labs(title = "The Incomparable Network — 2018",
            subtitle = "Shows per week",
            x = "",
            y = "# of Episodes per Week",
@@ -234,7 +234,7 @@ incomparable_master_wide %>%
       geom_hline(yintercept = mean(.$n), color = "red", size = 1, lty = "dotdash") +
       annotate("text", label = paste("bar(x) ==", round(mean(.$n), 1)), parse = TRUE,
                x = "2011", y = 300) +
-      labs(title = "The Incomparable Network — 2017",
+      labs(title = "The Incomparable Network — 2018",
            subtitle = "Shows per year",
            x = "",
            y = "# of Episodes per Year",
