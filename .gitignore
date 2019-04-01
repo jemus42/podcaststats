@@ -18,3 +18,4 @@ site_libs
 .stignore
 
 *_files
+push.sh
