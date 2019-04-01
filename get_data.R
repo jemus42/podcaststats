@@ -45,7 +45,9 @@ for (i in seq_len(nrow(incomparable_shows))) {
   show                <- get_podcast_stats(incomparable_shows$partial[i],
                                            show_title = incomparable_shows$show[i])
   incomparable_master <- bind_rows(incomparable_master, show)
-}; rm(i, incomparable_show_partials, incomparable_shows, show)
+}
+
+rm(i, incomparable_show_partials, incomparable_shows, show)
 
 # Spreading guests
 incomparable_master_wide <- incomparable_master %>%
@@ -60,8 +62,6 @@ incomparable_master %<>%
 
 #### ATP ####
 atp <- parse_atp_feed()
-
-
 cache_podcast_data(atp)
 
 #### Write to disk ####

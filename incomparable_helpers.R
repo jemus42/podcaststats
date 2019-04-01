@@ -39,6 +39,7 @@ get_initial_stats <- function(urlpartial = "theincomparable", show_title = "The 
   require(magrittr)
 
   stats_url <- paste0("https://www.theincomparable.com/", urlpartial, "/stats.txt")
+  message(stats_url)
   showstats <- read_lines(stats_url) %>%
     str_c(., ";") %>%
     paste0(collapse = "\n") %>%
@@ -187,59 +188,75 @@ get_podcast_metadata <- function(urlpartial = "theincomparable"){
   return(result)
 }
 
-get_podcast_segment_episodes <- function(){
+get_podcast_segment_episodes <- function() {
   require(rvest)
+  require(purrr)
 
-  segments_incomparable <- list(list(partial = "oldmovieclub", name = "Old Movie Club"),
-                           list(partial = "rocketsurgery", name = "Rocket Surgery"),
-                           list(partial = "comicbookclub", name = "Comic Book Club"),
-                           list(partial = "bookclub", name = "Book Club"))
+  inc_raw <- read_html("https://www.theincomparable.com/incomparable/") %>%
+    html_nodes("#nav:nth-child(3) a")
+  inc_partials <- inc_raw %>%
+    html_attr("href") %>%
+    str_remove("theincomparable") %>%
+    str_remove_all("/") %>%
+    unique()
+  inc_titles <- inc_raw %>%
+    html_text() %>%
+    unique()
+  segments_incomparable <- tibble(partial = inc_partials, name = inc_titles)
 
-  segments_gameshow <- list(list(partial = "counterclockwise", name = "Counterclockwise"),
-                       list(partial = "gamenight", name = "Game Night"),
-                       list(partial = "inconceivable", name = "Inconceivable!"),
-                       list(partial = "lowdef", name = "Low Definition"),
-                       list(partial = "turnsout", name = "Turns Out"),
-                       list(partial = "pundit", name = "Pundit Showdown"))
-
-  segments_teevee <- list(list(partial = "arrow", name = "Arrow"),
-                          list(partial = "daredevil", name = "Daredevil"),
-                          list(partial = "doctorwho", name = "Doctor Who!"),
-                          list(partial = "gameofthrones", name = "Game of Thrones"),
-                          list(partial = "legends", name = "Legends of Tomorrow"),
-                          list(partial = "jessicajones", name = "Jessica Jones"),
-                          list(partial = "sonsofanarchy", name = "Sons of Anarchy"),
-                          list(partial = "expanse", name = "The Expanse"),
-                          list(partial = "flash", name = "The Flash"),
-                          list(partial = "truedetective", name = "True Detective"))
-
-  inc <-  plyr::ldply(segments_incomparable, function(segment){
+  inc <-  map2_df(segments_incomparable$partial, segments_incomparable$name,
+                  function(partial, name) {
           url <- paste("https://www.theincomparable.com/theincomparable",
-                       segment$partial, "archive", sep = "/")
+                       partial, "archive", sep = "/")
           entry  <- read_html(url) %>% html_nodes(".entry-title a")
           title  <- entry %>% html_text()
           epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-          tibble(number = epnums, segment = segment$name, podcast = "The Incomparable")
+          tibble(number = epnums, segment = name, podcast = "The Incomparable")
         })
 
-  gs <-  plyr::ldply(segments_gameshow, function(segment){
+  # Get gameshow ----
+  gs_raw <- read_html("https://www.theincomparable.com/gameshow/") %>%
+    html_nodes("#nav:nth-child(3) a")
+  gs_partials <- gs_raw %>%
+    html_attr("href") %>%
+    str_remove("/gameshow") %>%
+    str_remove_all("/") %>%
+    unique()
+  gs_titles <- gs_raw %>%
+    html_text() %>%
+    unique()
+  segments_gameshow <- tibble(partial = gs_partials, name = gs_titles)
+
+  gs <-  map2_df(segments_gameshow$partial, segments_gameshow$name,
+                 function(partial, name) {
             url <- paste("https://www.theincomparable.com/gameshow",
-                         segment$partial, "archive", sep = "/")
+                         partial, "archive", sep = "/")
             entry  <- read_html(url) %>% html_nodes(".entry-title a")
             title  <- entry %>% html_text()
             epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-            tibble(number = epnums, segment = segment$name, podcast = "Game Show")
+            tibble(number = epnums, segment = name, podcast = "Game Show")
           })
 
-  teevee <-  plyr::ldply(segments_teevee, function(segment){
+  # Get teevee ----
+  teevee_raw <- read_html("https://www.theincomparable.com/teevee/") %>%
+    html_nodes("#nav:nth-child(3) a")
+  teevee_partials <- teevee_raw %>%
+    html_attr("href") %>%
+    str_remove("/teevee") %>%
+    str_remove_all("/")
+  teevee_titles <- teevee_raw %>%
+    html_text()
+  segments_teevee <- tibble(partial = teevee_partials, name = teevee_titles)
+
+  teevee <-  map2_df(segments_teevee$partial, segments_teevee$name,
+                            function(partial, name) {
                 url <- paste("https://www.theincomparable.com/teevee",
-                             segment$partial, "archive", sep = "/")
+                             partial, "archive", sep = "/")
                 entry  <- read_html(url) %>% html_nodes(".entry-title a")
                 title  <- entry %>% html_text()
                 epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-                tibble(number = epnums, segment = segment$name, podcast = "TeeVee")
+                tibble(number = epnums, segment = name, podcast = "TeeVee")
               })
 
-  ret <- bind_rows(inc, gs, teevee)
-  return(ret)
+  bind_rows(inc, gs, teevee)
 }
