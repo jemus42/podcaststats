@@ -43,6 +43,7 @@ relay %<>%
          network = "Relay.FM")
 
 atp %<>%
+  filter(!is.na(month))
   mutate(number = as.character(number),
          year = year(date),
          date = as.POSIXct(date),

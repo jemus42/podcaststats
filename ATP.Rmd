@@ -26,7 +26,8 @@ opts_chunk$set(echo    = FALSE,
 opts_knit$set(width = 90)
 
 #### Data Prep ####
-atp <- readRDS("data/atp.rds")
+atp <- readRDS("data/atp.rds") %>%
+  filter(!is.na(month))
 
 #### Plot presets ####
 duration_mins <- "Duration (mins)"
