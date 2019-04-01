@@ -121,22 +121,6 @@ atp %>%
         axis.ticks.x = element_blank())
 ```
 
-## Number of Episodes
-
-```{r atp_episodes, fig.height=8}
-atp %>%
-  group_by(year, month) %>%
-  tally() %>%
-  ggplot(data = ., aes(x = month, y = n)) +
-  geom_col(alpha = .7) +
-  facet_wrap(~year, ncol = 1) +
-  labs(title = "ATP Episodes", subtitle = "Episode per Month", 
-       x = "", y = "# of Episodes", caption = caption) +
-  theme(strip.text = element_text(size = rel(1)),
-        axis.text.x = element_text(angle = 90, size = rel(.9), hjust = 1),
-        axis.text.y = element_text(size = rel(.75)))
-```
-
 ## Raw Data 
 
 ```{r atp_episodes_table}

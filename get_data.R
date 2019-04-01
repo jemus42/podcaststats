@@ -60,6 +60,10 @@ incomparable_master %<>%
 
 #### ATP ####
 atp <- parse_atp_feed()
+# Manual fix
+atp$date[atp$number == 254] <- ymd("2017-12-27")
+atp$month[atp$number == 254] <- "December"
+atp$duration[atp$number == 254] <- 144.87
 
 cache_podcast_data(atp)
 
