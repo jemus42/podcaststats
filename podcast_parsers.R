@@ -84,14 +84,17 @@ parse_atp_feed <- function(url = "https://overcast.fm/itunes617416468/accidental
   nums   <- as.numeric(str_extract(titles, "^\\d+"))
 
   meta   <- html_nodes(raw, ".caption2.singleline") %>% html_text()
-  pub    <- str_extract(meta, "^\\n\\s+.*\\u2022") %>%
-              str_replace_all("^\\n\\s+", "") %>%
-              str_replace("\\s\\u2022$", "")
-  yr     <- as.numeric(str_extract(pub, "\\d{4}$"))
-  yr     <- ifelse(is.na(yr), year(now()), yr)
 
-  pub    <- str_replace(pub, ",\\s\\d+$", "")
-  pub    <- mdy(paste0(pub, " ", yr))
+  pub_monthday <- meta %>%
+    str_trim() %>%
+    str_extract("^\\w{3}\\s\\d{1,2}")
+
+  pub_year <- meta %>%
+    str_trim() %>%
+    str_extract("20\\d{2}") %>%
+    ifelse(is.na(.), year(today()), .)
+
+  pub <- mdy(paste(pub_monthday, pub_year))
 
   drt    <- str_extract(meta, "\\u2022.*$") %>%
               str_replace_all("\\u2022\\s", "") %>%
@@ -105,6 +108,6 @@ parse_atp_feed <- function(url = "https://overcast.fm/itunes617416468/accidental
 
   tibble(number = nums, title = titles, date = pub,
          month = month(pub, label = T, abbr = F),
-         year = yr, duration = drt, summary = summ,
+         year = pub_year, duration = drt, summary = summ,
          network = "ATP", podcast = "ATP")
 }
