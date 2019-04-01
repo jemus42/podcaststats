@@ -2,7 +2,6 @@ name: "Podcast Stats"
 output_dir: "."
 navbar:
   title: "Podcast Stats"
-  type: inverse
   left:
     - text: "Home"
       icon: fa-home
@@ -28,7 +27,7 @@ output:
     toc_float: true
     highlight: kate
     fig_width: 9
-    theme: flatly
+    theme: cosmo
     code_folding: hide
     self_contained: false
     include:
