@@ -22,20 +22,24 @@ parse_duration <- function(x){
 
 #### RelayFM #####
 parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
+
   feed <- read_html(url)
 
-  titles <- feed %>% html_nodes("title") %>%
-    html_text() %>%
-    magrittr::extract(-1)
+  show <- feed %>%
+    html_node("channel") %>%
+    html_node("title") %>%
+    html_text()
+
+  titles <- feed %>%
+    html_nodes("item") %>%
+    html_node("title") %>%
+    html_text()
 
   number <- titles %>%
     str_extract("\\d+:") %>%
     str_replace(":", "") %>%
     as.numeric()
 
-  show <- titles %>%
-    str_extract("^.*\\d") %>%
-    str_replace_all("\\s\\d+.*$", "")
 
   durations <- feed %>%
     html_nodes("duration") %>%
@@ -46,8 +50,8 @@ parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
   pubdate <- feed %>% html_nodes("pubdate") %>%
     html_text() %>%
     str_replace("^.{5}", "") %>%
-    lubridate::parse_date_time("%d %b %Y %H:%M:%S", tz = "GMT")
-  pubdate <- pubdate[-1]
+    lubridate::parse_date_time("%d %b %Y %H:%M:%S", tz = "GMT") %>%
+    magrittr::extract(-1)
 
   people <- feed %>%
     html_nodes("author") %>%
@@ -55,22 +59,17 @@ parse_relay_feed <- function(url = "https://www.relay.fm/master/feed"){
     str_replace_all(" and ", ", ") %>%
     magrittr::extract(-1)
 
-  df <- tibble(number  = number, podcast = show,
-               title   = titles, duration = durations,
-               date    = pubdate, people = people,
-               network = "Relay.fm") %>%
-        mutate(month = month(date, label = T, abbr = F),
-               year  = year(date),
-               date  = as_date(date))
-  return(df)
+  tibble(number  = number, podcast = show,
+         title   = titles, duration = durations,
+         date    = pubdate, people = people,
+         network = "Relay.fm") %>%
+  mutate(month = month(date, label = T, abbr = F),
+         year  = year(date),
+         date  = as_date(date))
 }
 
 get_relay_shows <- function(urls) {
-  relay <- purrr::map_df(urls, function(x) {
-    parse_relay_feed(x)
-  })
-
-  return(relay)
+  purrr::map_df(urls, parse_relay_feed)
 }
 
 #### ATP ####
