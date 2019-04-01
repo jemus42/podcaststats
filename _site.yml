@@ -27,6 +27,7 @@ output:
     toc_float: true
     highlight: kate
     fig_width: 9
+    mathjax: null
     theme: cosmo
     code_folding: hide
     self_contained: false

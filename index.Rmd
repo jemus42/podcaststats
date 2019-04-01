@@ -43,7 +43,7 @@ relay %<>%
          network = "Relay.FM")
 
 atp %<>%
-  filter(!is.na(month))
+  filter(!is.na(month)) %>%
   mutate(number = as.character(number),
          year = year(date),
          date = as.POSIXct(date),
@@ -61,10 +61,10 @@ podcasts <- full_join(incomparable_master_wide, relay) %>%
 podcasts %>%
   group_by(network) %>%
   summarize(episodes     = n(),
-            duration_d   = round(sum(duration)/60/24),
-            duration_avg = round(mean(duration)),
-            firstep      = as.character(as.Date(min(date))),
-            lastep       = as.character(as.Date(max(date))),
+            duration_d   = round(sum(duration, na.rm = TRUE)/60/24),
+            duration_avg = round(mean(duration, na.rm = TRUE)),
+            firstep      = as.character(as.Date(min(date, na.rm = TRUE))),
+            lastep       = as.character(as.Date(max(date, na.rm = TRUE))),
             shows        = length(unique(podcast)),
             epspershow   = round(episodes/shows, 1)) %>%
   set_colnames(c("Network", "Episodes", "Duration (total, days)",

@@ -47,38 +47,22 @@ for (i in seq_len(nrow(incomparable_shows))) {
   incomparable_master <- bind_rows(incomparable_master, show)
 }
 
-rm(i, incomparable_show_partials, incomparable_shows, show)
+incomparable_segments <- get_podcast_segment_episodes()
 
 # Spreading guests
 incomparable_master_wide <- incomparable_master %>%
   widen_people() %>%
-  full_join(get_podcast_segment_episodes(),
+  full_join(incomparable_segments,
             by = c("number" = "number", "podcast" = "podcast"))
 
 # Appending the segments to the long dataset
 incomparable_master %<>%
-  full_join(get_podcast_segment_episodes(),
+  full_join(incomparable_segments,
             by = c("number" = "number", "podcast" = "podcast"))
+
+cache_podcast_data(incomparable_master_wide)
+cache_podcast_data(incomparable_master)
 
 #### ATP ####
 atp <- parse_atp_feed()
 cache_podcast_data(atp)
-
-#### Write to disk ####
-cache_podcast_data(incomparable_master_wide)
-cache_podcast_data(incomparable_master)
-
-# Write master set as CSV with ; as separator because Numbers likes that more than ,
-# incomparable_master_wide %>%
-#   mutate(summary = str_replace_all(summary, '\\s"', ' “'),
-#          summary = str_replace_all(summary, '"(\\s)*', '” '),
-#          summary = str_trim(summary, "right")) %>%
-#   arrange(desc(date)) %>%
-#   write.table(., "data/incomparable_master_wide.csv", sep = ";", row.names = F)
-#
-# incomparable_master %>%
-#   mutate(summary = str_replace_all(summary, '\\s"', ' “'),
-#          summary = str_replace_all(summary, '"(\\s)*', '” '),
-#          summary = str_trim(summary, "right")) %>%
-#   arrange(desc(date)) %>%
-#   write.table(., "data/incomparable_master.csv", sep = ";", row.names = F)
