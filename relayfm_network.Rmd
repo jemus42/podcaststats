@@ -79,7 +79,7 @@ readRDS("data/relay.rds") %>%
 
 ## Shows per Year
 
-```{r show_peryear, fig.height = 6, fig.width = 6}
+```{r show_peryear, fig.height = 6, fig.width = 10}
 relay %>%
   group_by(podcast, year) %>%
   tally %>%
@@ -88,12 +88,12 @@ relay %>%
   scale_y_continuous(breaks = seq(0, 1000, 100),
                      minor_breaks = seq(0, 1000, 25)) +
   scale_fill_viridis(discrete = TRUE, 
-                      guide = guide_legend(ncol = 1, keyheight = .75, )) +
+                      guide = guide_legend(ncol = 2, keyheight = 1.5)) +
   labs(x = "Year", y = "# of Episodes", fill = "Show",
        title = "Relay.fm", subtitle = "Episodes per Year",
        caption = caption) +
   theme_ipsum(grid = "y") +
-  theme(legend.key.size = unit(.5, "cm"))
+  theme(legend.key.size = unit(.2, "cm"))
 ```
 
 ## Shows per Week
@@ -137,32 +137,6 @@ relay %>%
        x = "Week of Year", y = "# fo Episodes", caption = caption) +
   theme_ipsum(grid = "y") +
   theme(axis.text.y = element_text(size = rel(.5))) 
-```
-
-### Regularity and Age
-
-```{r shows_perweek_perage}
-relay %>%
-  group_by(podcast) %>%
-  summarize(first_aired = min(date),
-            last_aired = max(date),
-            episodes = length(unique(number)),
-            duration = sum(duration)) %>%
-  mutate(lifetime_weeks = as.numeric(difftime(last_aired, first_aired, units = "weeks")),
-         episodes_per_week = episodes / lifetime_weeks,
-         duration_per_week = duration / lifetime_weeks) %>%
-  ggplot(aes(x = lifetime_weeks, y = episodes_per_week)) +
-  geom_point() +
-  geom_label_repel(aes(label = podcast), size = 3) +
-  geom_hline(aes(yintercept = mean(episodes_per_week)), 
-             linetype = "dotted", color = "blue") +
-  geom_vline(aes(xintercept = mean(lifetime_weeks)), 
-             linetype = "dotted", color = "blue") +
-  scale_y_continuous(breaks = seq(0, 5, .25), minor_breaks = seq(0, 5, .1)) +
-  labs(title = "Relay.fm", subtitle = "Show Lifetime and Weekly Output",
-       x = "Lifetime of Podcast in Weeks", y = "Average # of Episodes per Week",
-       caption = caption) +
-    theme_ipsum(grid = "y")
 ```
 
 
@@ -294,50 +268,6 @@ relay %>%
       theme_ipsum()
   }
 ```
-
-## Shitty Statistics
-
-The following is merely done for fun and for me to try out some things.  
-Nothing I do here should *actually* be considered statistically sound or something.
-
-The following plot shows the proportion of shows airing (or that used to air) on a given day which are retired or active.  
-We can infer from this that "monday shows" get retired more often, relatively speaking.
-
-```{r showstatus_plot_proportion}
-relay %>%
-  count(show_status, weekday) %>%
-  mutate(weekday = forcats::fct_rev(weekday)) %>%
-  group_by(weekday) %>%
-  mutate(p = n / sum(n)) %>%
-  ggplot(aes(x = weekday, p, fill = show_status)) +
-  geom_col() +
-  coord_flip() +
-  scale_y_percent() +
-  scale_fill_brewer(palette = "Dark2") +
-  labs(title = "Relay.fm",
-       subtitle = "Show Status by Publishing Day of Week",
-       x = "", y = "Proportion (within Day of Week)", fill = "Status", caption = caption) +
-  theme(legend.position = "top")
-```
-
-...Which, obviously, is bullshitty because podcasts don't work like live television, and when a show is published should not by any means indicate whether or not it will be retired. At least I can't think of any reason.
-
-To put it in statsy terms:
-
-```{r showstatus_logreg}
-relay %>%
-  mutate(status_bin = if_else(show_status == "Retired", 1, 0),
-         weekday    = factor(weekday, ordered = FALSE)) %>%
-  glm(formula = status_bin ~ weekday, data = ., family = binomial) %>%
-  sjPlot::sjt.glm(exp.coef = TRUE,
-                  separate.ci.col = FALSE)
-```
-
-Monday shows are 7 times more like to be retires than sunday shows (which is the reference level), while wednesday shows are 4 times more like. Also, friday shows are half as likely to be retired compared to monday shows.  
-
-Huh.  
-
-As I said, this is not methodologically sound, as I just dumped data into a logistic regression model and looked at the results, but **if** the next Relay show to be retires aired on wednesdays or mondays, I'll have my hands full with hindsight bias, so there's that.
 
 # People
 

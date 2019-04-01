@@ -1,7 +1,7 @@
 #### Setup stuff for each sub-analysis ####
 # Should be source'd on top of each Rmd
 #### Loading packages ####
-suppressPackageStartupMessages(library(sjPlot))
+# suppressPackageStartupMessages(library(sjPlot))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(knitr))
 suppressPackageStartupMessages(library(ggplot2))
