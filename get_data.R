@@ -22,6 +22,7 @@ relay %<>%
          weekday  = wday(date, label = T, abbr = F))
 
 cache_podcast_data(relay)
+write_delim(relay, "data/relay.csv", delim = ";")
 
 
 #### The Incomparable ####
