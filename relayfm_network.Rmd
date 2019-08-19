@@ -257,17 +257,57 @@ Be that as it may, here's a bit about the hosts.
 
 ```{r people, fig.height=9}
 relay %>%
-  separate(col = people, sep = ",\\s", into = paste0("Host", 1:10)) %>%
-  gather(role, person, starts_with("Host")) %>%
-  mutate(role = "Host") %>%
-  filter(!is.na(person)) %>%
-  count(person) %>%
-  ggplot(aes(x = reorder(person, n), y = n)) +
+  separate_rows(people, sep = ",\\s+") %>%
+  mutate(people = str_remove(people, ",") %>% str_trim(side = "both")) %>%
+  count(people) %>%
+  ggplot(aes(x = reorder(people, n), y = n)) +
   geom_col() +
   coord_flip() +
   labs(title = "Relay.fm",
        subtitle = "Person by Number of Episodes",
        x = "", y = "# of Episodes Hosted",
+       caption = caption)
+```
+
+## Host by hours per week of podcasting, says @lbutlr in the slack
+
+Sooo okay!
+
+```{r hosts_by_hours_by_weeks_active, fig.height = 9}
+relay %>%
+  separate_rows(people, sep = ",\\s+") %>%
+  mutate(people = str_remove(people, ",") %>% str_trim(side = "both")) %>%
+  group_by(people) %>%
+  summarize(
+    n = n(), 
+    duration = sum(duration), 
+    first_show = min(date),
+    last_show = max(date),
+    weeks_active = first_show %--% last_show / dweeks(1),
+    duration_per_week = duration / weeks_active
+  ) -> people_activity
+
+
+ggplot(people_activity, aes(x = reorder(people, duration_per_week), y = duration_per_week)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Relay.fm",
+       subtitle = "Total duration per host divided by number of weeks active (first to latest appearance)",
+       x = "", y = "Average Duration (mins)",
+       caption = caption)
+```
+
+## Period of host activity
+
+```{r relay_people_activity, fig.height = 9}
+ggplot(people_activity) +
+  geom_segment(aes(x = forcats::fct_reorder(people, first_show, .desc = TRUE), xend = people, 
+                   y = first_show, yend = last_show),
+               size = 2, alpha = .75) +
+  coord_flip() +
+    labs(title = "Relay.fm",
+       subtitle = "Period of hosting activity (first to most recent show), ordered by first appearance",
+       x = "", y = "Date of show",
        caption = caption)
 ```
 
