@@ -216,13 +216,12 @@ relay %>%
   ggplot(aes(x = duration)) +
   geom_histogram(binwidth = 2.5) +
   geom_density(aes(y = ..count.., group = 1), fill = "black", alpha = .3) +
-  scale_x_continuous(breaks = seq(0, 300, 15),
-                         minor_breaks = seq(0, 300, 5)) +
-  scale_y_continuous(breaks = seq(0, 300, 15),
-                         minor_breaks = seq(0, 300, 5)) +
+  scale_x_continuous(breaks = seq(0, 600, 30),
+                     minor_breaks = seq(0, 600, 5)) +
+  scale_y_continuous(breaks = seq(0, 600, 50)) +
   labs(title = "Relay.fm", subtitle = "Episode Durations",
            y = "Frequency", x = "Duration (mins)", caption = caption) +
-  theme_ipsum(grid = "y")
+  theme_ipsum(grid = "YX")
 ```
 
 
@@ -292,7 +291,7 @@ ggplot(people_activity, aes(x = reorder(people, duration_per_week), y = duration
   geom_col() +
   coord_flip() +
   labs(title = "Relay.fm",
-       subtitle = "Total duration per host divided by number of weeks active (first to latest appearance)",
+       subtitle = "Total duration per host divided by number of weeks active\n(First to latest appearance)",
        x = "", y = "Average Duration (mins)",
        caption = caption)
 ```
@@ -305,8 +304,8 @@ ggplot(people_activity) +
                    y = first_show, yend = last_show),
                size = 2, alpha = .75) +
   coord_flip() +
-    labs(title = "Relay.fm",
-       subtitle = "Period of hosting activity (first to most recent show), ordered by first appearance",
+  labs(title = "Relay.fm",
+       subtitle = "Period of hosting activity (first to most recent show)\nOrdered by first appearance",
        x = "", y = "Date of show",
        caption = caption)
 ```
