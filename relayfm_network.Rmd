@@ -160,7 +160,8 @@ relay %>%
   facet_grid(.~year, space = "free_x", scales = "free_x") +
   labs(title = "Relay.fm", subtitle = "Monthly Episode Output",
        x = "Month of Year", y = "Episodes Published", caption = caption) +
-  theme_ipsum()
+  theme_ipsum() +
+  theme(axis.text.x = element_text(size = rel(.9)))
   }
 ```
 
@@ -237,7 +238,8 @@ relay %>%
          {
            ggplot(., aes(x = forcats::fct_reorder(podcast, dur_mean), y = duration)) +
              geom_boxplot() +
-             stat_summary(fun.y = "mean", geom = "point", size = 2, color = "red") +
+             stat_summary(fun.y = "mean", geom = "point", size = 2, 
+                          color = "black", fill = "red", shape = 21) +
              coord_flip() +
              scale_y_continuous(breaks = seq(0, 300, 30),
                                 minor_breaks = seq(0, 300, 15)) +
@@ -248,30 +250,9 @@ relay %>%
          }
 ```
 
-### 95% CI
-
-```{r runtime_ci_pershow, fig.height=9}
-relay %>%
-  #filter(podcast != "B-Sides") %>%
-  group_by(podcast) %>%
-  mutate(dur_mean = mean(duration)) %>%
-  {
-    ggplot(., aes(x = forcats::fct_reorder(podcast, dur_mean), y = duration)) +
-      stat_summary(fun.data = mean_cl_normal, geom = "errorbar") +
-      stat_summary(fun.y = "mean", geom = "point", size = 2, color = "red") +
-      coord_flip() +
-      expand_limits(y = 0) +
-      scale_y_continuous(breaks = seq(0, 300, 15),
-                         minor_breaks = seq(0, 300, 5)) +
-      labs(title = "Relay.fm", subtitle =  "Episode Duration — 95% CI + Mean (red)",
-           x = "", y = "Duration (mins)", caption = caption) +
-      theme_ipsum()
-  }
-```
-
 # People
 
-Sadly I don't have a lot of data about people besides the hosts of each show. I *could* try to pry out the guests of shows out of each show's RSS feed, but sadly this information is not neatly presented in the feed, but rather would require an amount of regexing I am not prepared, and therere for not able to do.  
+Sadly I don't have a lot of data about people besides the hosts of each show. I *could* try to pry out the guests of shows out of each show's RSS feed, but sadly this information is not neatly presented in the feed, but rather would require an amount of regexing I am not prepared, and therefore not able to do.  
 Be that as it may, here's a bit about the hosts.
 
 ```{r people, fig.height=9}
