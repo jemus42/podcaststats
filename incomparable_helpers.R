@@ -3,7 +3,7 @@
 #### Parse date and times
 enhance_datetimes <- function(showstats) {
   require(lubridate)
-  showstats %<>%
+  showstats %>%
     filter(!is.na(number)) %>%
     mutate(duration = parse_duration(duration),
            date     = as.POSIXct(dmy(date)),
@@ -11,7 +11,6 @@ enhance_datetimes <- function(showstats) {
            month    = month(date, abbr = F, label = T),
            weekday  = wday(date, label = T, abbr = F)) %>%
     select(podcast, number, date, year, month, weekday, everything())
-  return(showstats)
 }
 
 #### Spread long to wide format
