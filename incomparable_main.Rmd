@@ -41,11 +41,11 @@ I had issues with my old code to parse the podcast data, so there may be some wo
 
 ## Panelists 
 
-### 2018 Panelists
+### 2019 Panelists
 
-```{r 2018_panelists, fig.height=9}
+```{r 2019_panelists, fig.height=9}
 incomparable %>% 
-  filter(year == 2018) %>%
+  filter(year == 2019) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>% 
@@ -56,7 +56,7 @@ incomparable %>%
             colnames = c("Person", "Guest", "Host", "Total Appearances"))
 
 incomparable %>% 
-  filter(year == 2018) %>%
+  filter(year == 2019) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>% 
