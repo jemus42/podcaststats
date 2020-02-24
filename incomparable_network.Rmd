@@ -12,7 +12,7 @@ editor_options:
 ```{r setup, include=FALSE}
 library(knitr)
 #### Data prep ####
-source("setup.R")
+source("00_setup.R")
 
 #### Global options ####
 options(max.print = "75")

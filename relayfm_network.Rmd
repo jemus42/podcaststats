@@ -23,7 +23,7 @@ opts_chunk$set(echo    = FALSE,
 opts_knit$set(width = 100)
 
 #### Data prep ####
-source("setup.R")
+source("00_setup.R")
 
 relay <- readRDS("data/relay.rds") %>% filter(year >= 2014)
 # shows <- relay %>% group_by(podcast) %>% tally() %>% arrange(desc(n)) %>% pull("podcast")

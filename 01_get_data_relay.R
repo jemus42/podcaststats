@@ -1,8 +1,8 @@
 #! /usr/bin/env Rscript
 #### Acquiring the data and chaching it
 
-source("setup.R")
-source("podcast_parsers.R")
+source("00_setup.R")
+source("00_podcast_parsers.R")
 
 #### Relay.fm ####
 relay_shows <- read_html("https://www.relay.fm/shows") %>%

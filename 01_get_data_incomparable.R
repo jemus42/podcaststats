@@ -1,11 +1,11 @@
 #! /usr/bin/env Rscript
 #### Acquiring the data and chaching it
 
-source("setup.R")
-source("podcast_parsers.R")
+source("00_setup.R")
+source("00_podcast_parsers.R")
 
 #### The Incomparable ####
-source("incomparable_helpers.R")
+source("00_incomparable_helpers.R")
 
 incomparable_shows <- read_html("https://www.theincomparable.com/shows/") %>%
   html_nodes("h3 a") %>%
