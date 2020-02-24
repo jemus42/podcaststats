@@ -48,8 +48,8 @@ incomparable_master_wide %<>%
          network = "The Incomparable")
 
 podcasts <- incomparable_master_wide %>%
-  full_join(relay) %>%
-  full_join(atp)
+  bind_rows(relay) %>%
+  bind_rows(atp)
 
 podcasts %>%
   group_by(network) %>%
@@ -78,9 +78,9 @@ podcasts %>%
   mutate(d_min = min(date),
          d_max = max(date)) %>%
   ggplot(aes(x = reorder(podcast, d_min), color = network)) +
-  geom_errorbar(aes(ymin = d_min, ymax = d_max),
-                width = .5, size = 2) +
+  geom_errorbar(aes(ymin = d_min, ymax = d_max), width = .5, size = 2) +
   scale_x_discrete(position = "top") +
+  scale_color_brewer(palette = "Dark2") +
   coord_flip() +
   theme(legend.position = "top") +
   labs(title = "All Podcasts Timeline", 
@@ -114,15 +114,16 @@ defocused <- readRDS("data/incomparable_master_wide.rds") %>%
                        year = as.numeric(year))
 
 recdiffs  <- readRDS("data/relay.rds") %>% 
-                mutate(date = as.POSIXct(date)) %>%
-                filter(podcast == "Reconcilable Differences")
+                filter(podcast == "Reconcilable Differences") %>%
+                mutate(date = as.POSIXct(date))
 
-data <- full_join(recdiffs, defocused)
+data <- bind_rows(recdiffs, defocused)
 
 ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
-  geom_violin(draw_quantiles = c(.25, .75), alpha = .7, show.legend = F) +
-  stat_summary(fun.y = mean, geom = "point", size = 2, show.legend = F) +
-  scale_color_brewer() +
+  geom_boxplot(alpha = .5, show.legend = FALSE) +
+  geom_violin(draw_quantiles = c(.25, .75), alpha = .5, show.legend = FALSE) +
+  stat_summary(fun.y = mean, geom = "point", size = 2, show.legend = FALSE) +
+  scale_fill_brewer(palette = "Dark2") +
   coord_flip() +
   theme(legend.position = "top") +
   labs(title = "Defocused vs. Reconcilable Differences",

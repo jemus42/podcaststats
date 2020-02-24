@@ -15,9 +15,7 @@ navbar:
           href: incomparable_network.html
     - text: "Relay FM"
       icon: fa-list-ul
-      menu:
-        - text: "Network"
-          href: relayfm_network.html
+      href: relayfm_network.html
     - text: "ATP"
       icon: fa-list-ul
       href: ATP.html
