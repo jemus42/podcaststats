@@ -1,32 +1,45 @@
 #### Setup stuff for each sub-analysis ####
 # Should be source'd on top of each Rmd
 #### Loading packages ####
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(knitr))
-suppressPackageStartupMessages(library(ggplot2))
-suppressPackageStartupMessages(library(DT))
-#suppressPackageStartupMessages(library(tadaatoolbox))
-suppressPackageStartupMessages(library(readr))
-suppressPackageStartupMessages(library(rvest))
-suppressPackageStartupMessages(library(magrittr))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(broom))
-suppressPackageStartupMessages(library(tidyr))
-suppressPackageStartupMessages(library(scales))
-suppressPackageStartupMessages(library(RColorBrewer))
-suppressPackageStartupMessages(library(stringr))
-suppressPackageStartupMessages(library(ggbeeswarm))
-suppressPackageStartupMessages(library(plotly))
-suppressPackageStartupMessages(library(scales))
-suppressPackageStartupMessages(library(viridis))
-suppressPackageStartupMessages(library(lubridate))
-suppressPackageStartupMessages(library(ggrepel))
-suppressPackageStartupMessages(library(hrbrthemes))
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(DT)
+library(readr)
+library(rvest)
+library(magrittr)
+library(dplyr)
+library(broom)
+library(tidyr)
+library(scales)
+library(RColorBrewer)
+library(stringr)
+library(ggbeeswarm)
+library(plotly)
+library(scales)
+library(viridis)
+library(lubridate)
+library(ggrepel)
+library(hrbrthemes)
 
 #### Knitr chunk options ####
-knitr::opts_chunk$set(fig.path = "assets/plots/", fig.align = "center",
-                      fig.retina = 2, echo = T, warning = F, message = F,
-                      cache.path = "assets/cache/", cache = F)
+knitr::opts_chunk$set(
+  fig.path = "assets/plots/",
+  fig.align = "center",
+  fig.retina = 2,
+  echo    = FALSE,
+  cache   = FALSE,
+  prompt  = FALSE,
+  tidy    = TRUE,
+  comment = NA,
+  message = FALSE,
+  warning = FALSE,
+  fig.retina = 2,
+  cache.path = "assets/cache/", cache = F
+)
+
+opts_knit$set(width = 75)
+
 
 #### Plotting presets ####
 caption <- paste0("podcasts.jemu.name – @jemus42\n",

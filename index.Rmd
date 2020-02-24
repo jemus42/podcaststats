@@ -11,15 +11,9 @@ editor_options:
 ```{r global_options, include=FALSE}
 source("00_setup.R")
 
-opts_chunk$set(echo    = FALSE,
-	             cache   = FALSE,
-               prompt  = FALSE,
-               tidy    = TRUE,
-               comment = NA,
-               message = FALSE,
-               warning = FALSE,
-               fig.retina = 2,
-               fig.path = "assets/main/")
+opts_chunk$set(
+  fig.path = "assets/main/"
+)
 
 relay <- readRDS("data/relay.rds")
 atp   <- readRDS("data/atp.rds")

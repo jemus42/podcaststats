@@ -4,15 +4,12 @@
 .Ruserdata
 
 # Ignore experiments script and old code
-experiments.R
-theincomparable
+99_fiddle.R
 
 # Ignore outputs
 _site
+assets
 
-# Ignore syncthing files
-.stfolder
-.stignore
-
+#
 *_files
 push.sh
