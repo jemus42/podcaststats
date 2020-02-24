@@ -1,5 +1,5 @@
 name: "Podcast Stats"
-output_dir: "."
+output_dir: "_site"
 navbar:
   title: "Podcast Stats"
   left:
@@ -28,9 +28,9 @@ output:
     highlight: kate
     fig_width: 9
     mathjax: null
-    theme: cosmo
+    theme: flatly
     code_folding: hide
     self_contained: false
     include:
-      after_body: _footer.html
-      in_header: piwik.html
+      after_body: html_includes/_footer.html
+      in_header: html_includes/piwik.html

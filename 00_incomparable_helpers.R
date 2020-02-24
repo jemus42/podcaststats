@@ -35,16 +35,16 @@ widen_people <- function(master) {
 # Thanks a lot, @l3viathan https://twitter.com/L3viathan2142/status/701009923841400833
 get_initial_stats <- function(urlpartial = "theincomparable", show_title = "The Incomparable") {
   require(readr)
-  require(magrittr)
 
   stats_url <- paste0("https://www.theincomparable.com/", urlpartial, "/stats.txt")
   message(stats_url)
   showstats <- read_lines(stats_url) %>%
-    str_c(., ";") %>%
+    str_c(";") %>%
     paste0(collapse = "\n") %>%
+    str_c("\n") %>% # Append extra newline at EOF to prevent failure for single-row files
     read_delim(file = ., delim = ";", quote = "",
-                          col_names = F, col_types = cols(X1 = col_character(),
-                                                          X3 = col_character()))
+                          col_names = FALSE, col_types = cols(X1 = col_character(),
+                                                              X3 = col_character()))
 
   if (ncol(showstats) == 5) {
     names(showstats) <- c("number", "date", "duration", "title", "host")
@@ -54,22 +54,18 @@ get_initial_stats <- function(urlpartial = "theincomparable", show_title = "The 
     names(showstats) <- c("number", "date", "duration", "title", "host", "guest")
   }
   showstats$podcast <- show_title
-  showstats %<>% select(podcast, everything())
-
-  return(showstats)
+  showstats %>% select(podcast, everything())
 }
 
-#### Preparations after initital collection of stats.txt ####
+#### Preparations after initial collection of stats.txt ####
 #### Extract host
 extract_show_hosts <- function(showstats) {
 
   comma_count <- max(str_count(showstats$host, ","), na.rm = T)
 
-  showstats %<>%
-    separate(host, into = paste0("host_", 1:(comma_count+1)), sep = "\\,\\s") %>%
+  showstats %>%
+    separate(host, into = paste0("host_", seq_len(comma_count + 1)), sep = "\\,\\s") %>%
     mutate(host_1 = str_trim(host_1, "both"))
-
-  return(showstats)
 }
 
 #### Further guest management
