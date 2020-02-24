@@ -8,22 +8,13 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-library(knitr)
+source("00_setup.R")
+
 #### Global options ####
 options(max.print = "75")
-opts_chunk$set(echo    = FALSE,
-	             cache   = FALSE,
-               prompt  = FALSE,
-               tidy    = TRUE,
-               comment = NA,
-               message = FALSE,
-               warning = FALSE,
-               fig.retina = 2,
-               fig.path = "assets/relay/")
-opts_knit$set(width = 100)
-
-#### Data prep ####
-source("00_setup.R")
+opts_chunk$set(
+  fig.path = "assets/plots/relay/"
+)
 
 relay <- readRDS("data/relay.rds") %>% filter(year >= 2014)
 # shows <- relay %>% group_by(podcast) %>% tally() %>% arrange(desc(n)) %>% pull("podcast")

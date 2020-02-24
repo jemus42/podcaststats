@@ -10,7 +10,6 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-#### Data prep ####
 source("00_setup.R")
 
 #### Global options ####

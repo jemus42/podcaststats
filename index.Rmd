@@ -1,9 +1,7 @@
 ---
 title: "Podcast Data for the Lulz"
 output:
-  html_document:
-    toc: true
-    code_folding: hide
+  html_document
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,7 +10,7 @@ editor_options:
 source("00_setup.R")
 
 opts_chunk$set(
-  fig.path = "assets/main/"
+  fig.path = "assets/plots/main/"
 )
 
 relay <- readRDS("data/relay.rds")

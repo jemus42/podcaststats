@@ -1,26 +1,25 @@
 #### Setup stuff for each sub-analysis ####
 # Should be source'd on top of each Rmd
 #### Loading packages ####
-library(dplyr)
-library(knitr)
-library(ggplot2)
-library(DT)
-library(readr)
-library(rvest)
 library(magrittr)
 library(dplyr)
-library(broom)
 library(tidyr)
-library(scales)
-library(RColorBrewer)
 library(stringr)
-library(ggbeeswarm)
-library(plotly)
-library(scales)
-library(viridis)
 library(lubridate)
+library(purrr)
+library(rvest)
+library(readr)
+
+library(knitr)
+library(ggplot2)
+library(scales)
 library(ggrepel)
 library(hrbrthemes)
+library(ggbeeswarm)
+library(plotly)
+library(DT)
+
+library(broom)
 
 #### Knitr chunk options ####
 knitr::opts_chunk$set(
@@ -28,14 +27,11 @@ knitr::opts_chunk$set(
   fig.align = "center",
   fig.retina = 2,
   echo    = FALSE,
-  cache   = FALSE,
   prompt  = FALSE,
-  tidy    = TRUE,
   comment = NA,
   message = FALSE,
   warning = FALSE,
-  fig.retina = 2,
-  cache.path = "assets/cache/", cache = F
+  fig.retina = 2
 )
 
 opts_knit$set(width = 75)
