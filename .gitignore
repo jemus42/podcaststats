@@ -8,10 +8,7 @@ experiments.R
 theincomparable
 
 # Ignore outputs
-*.html
-assets/*
-*.png
-site_libs
+_site
 
 # Ignore syncthing files
 .stfolder
