@@ -47,18 +47,21 @@ incomparable_master_wide %<>%
          year = year(date),
          network = "The Incomparable")
 
-podcasts <- full_join(incomparable_master_wide, relay) %>%
-              full_join(atp)
+podcasts <- incomparable_master_wide %>%
+  full_join(relay) %>%
+  full_join(atp)
 
 podcasts %>%
   group_by(network) %>%
-  summarize(episodes     = n(),
-            duration_d   = round(sum(duration, na.rm = TRUE)/60/24),
-            duration_avg = round(mean(duration, na.rm = TRUE)),
-            firstep      = as.character(as.Date(min(date, na.rm = TRUE))),
-            lastep       = as.character(as.Date(max(date, na.rm = TRUE))),
-            shows        = length(unique(podcast)),
-            epspershow   = round(episodes/shows, 1)) %>%
+  summarize(
+    episodes     = n(),
+    duration_d   = round(sum(duration, na.rm = TRUE)/60/24),
+    duration_avg = round(mean(duration, na.rm = TRUE)),
+    firstep      = as.character(as.Date(min(date, na.rm = TRUE))),
+    lastep       = as.character(as.Date(max(date, na.rm = TRUE))),
+    shows        = length(unique(podcast)),
+    epspershow   = round(episodes/shows, 1)
+  ) %>%
   set_colnames(c("Network", "Episodes", "Duration (total, days)",
                  "Duration (mean, mins)", "First Episode",
                  "Last Episode", "# of Shows", "Episodes per Show")) %>%
@@ -104,7 +107,7 @@ podcasts %>%
 
 ## Placeholder Quickie: Defocused vs. Reconcilable Differences
 
-```{r}
+```{r recdiffs_vs_defocused}
 defocused <- readRDS("data/incomparable_master_wide.rds") %>% 
                 filter(podcast == "Defocused") %>%
                 mutate(number = as.numeric(number),
@@ -119,6 +122,7 @@ data <- full_join(recdiffs, defocused)
 ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
   geom_violin(draw_quantiles = c(.25, .75), alpha = .7, show.legend = F) +
   stat_summary(fun.y = mean, geom = "point", size = 2, show.legend = F) +
+  scale_color_brewer() +
   coord_flip() +
   theme(legend.position = "top") +
   labs(title = "Defocused vs. Reconcilable Differences",

@@ -139,6 +139,8 @@ get_podcast_stats <- function(urlpartial = "theincomparable", show_title = "The 
     full_join(y = get_podcast_metadata(urlpartial),
               by = c("number" = "number")) %>%
     filter(!is.na(podcast)) %>%
+    filter(!is.na(date)) %>%
+    filter(!is.na(duration)) %>%
     arrange(desc(date)) %>%
     select(podcast, number, date, year, month, weekday,
            duration, title, person, role, category, topic, summary)
