@@ -61,12 +61,21 @@ label_n <- function(data, brackets = FALSE) {
 }
 
 #### Caching ####
-cache_podcast_data <- function(x, dir = "data", filename = NULL) {
+cache_podcast_data <- function(x, dir = "data", filename = NULL, csv = TRUE) {
   if (is.null(filename)) {
     filename <- deparse(substitute(x))
   }
-  path <- paste0(file.path(dir, filename), ".rds")
-  message("Saving ", filename, " to ", path)
+
+  path_rds <- paste0(file.path(dir, filename), ".rds")
+
+  cliapp::cli_alert_success("Saving ", filename, " to ", path_rds)
   saveRDS(x, path)
+
+  if (csv) {
+    path_csv <- paste0(file.path(dir, filename), ".csv")
+    cliapp::cli_alert_success("Saving ", filename, " to ", path_csv)
+    write_delim(x, path_csv, delim = ";")
+  }
+
 }
 
