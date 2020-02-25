@@ -15,7 +15,8 @@ opts_chunk$set(
 
 relay <- readRDS("data/relay.rds")
 atp   <- readRDS("data/atp.rds")
-incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds")
+incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds") %>%
+  filter(!is.na(date))
 ```
 
 I'm migrating this from the old location to here, cleaning up the code and improving it when I can.  
