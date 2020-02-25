@@ -68,12 +68,12 @@ cache_podcast_data <- function(x, dir = "data", filename = NULL, csv = TRUE) {
 
   path_rds <- paste0(file.path(dir, filename), ".rds")
 
-  cliapp::cli_alert_success("Saving ", filename, " to ", path_rds)
-  saveRDS(x, path)
+  cliapp::cli_alert_success("Saving {filename} to {path_rds}")
+  saveRDS(x, path_rds)
 
   if (csv) {
     path_csv <- paste0(file.path(dir, filename), ".csv")
-    cliapp::cli_alert_success("Saving ", filename, " to ", path_csv)
+    cliapp::cli_alert_success("Saving {filename} to {path_csv}")
     write_delim(x, path_csv, delim = ";")
   }
 
