@@ -118,7 +118,8 @@ podcasts %>%
 
 ```{r allshows_duration, fig.height=16}
 podcasts %>%
-  ggplot(aes(x = reorder(podcast, duration), y = duration, fill = network)) +
+  filter(!is.na(duration)) %>%
+  ggplot(aes(x = reorder(podcast, duration, FUN = mean), y = duration, fill = network)) +
   geom_boxplot() +
   coord_flip() +
   scale_fill_brewer(palette = "Dark2") +
