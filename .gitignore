@@ -9,6 +9,8 @@
 # Ignore outputs
 _site
 assets
+*.html
+site_libs
 
 #
 *_files
