@@ -1,5 +1,5 @@
 ---
-title: "Podcast Data for the Lulz"
+title: "Podcast Data for Fun and (not) Profit"
 output:
   html_document
 editor_options: 
@@ -19,10 +19,31 @@ incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds") %>%
   filter(!is.na(date))
 ```
 
-I'm migrating this from the old location to here, cleaning up the code and improving it when I can.  
-The new repo is located [here](https://github.com/jemus42/podcaststats).  
+This site is an automatically generated collection of plots and tables visualizing some metadata from my favorite podcasts/podcast networks.  
 
-This is still under maintenance, and I'll replace this text when I consider it done(ish).
+Included:
+
+- [**The Incomparable**](https://www.theincomparable.com/)
+- [**Accidental Tech Podcast (ATP)**](https://atp.fm/)
+- [**Realy.fm**](https://www.relay.fm/)
+
+Data includes episode runtimes, release dates, and hosts (in case of The Incomparable, also guests). 
+
+The data sources are:
+
+- **The Incomparable**: Home-brewed `stats.txt` files [Jason](https://twitter.com/jsnell) has set up for me to parse (thanks Jason <3)
+- **Relay.fm**: The [master RSS feed]("https://www.relay.fm/master/feed")
+- **ATP**: The [overcast feed](https://overcast.fm/itunes617416468/accidental-tech-podcast)
+
+Data collection and site/plot-recreation happens daily at midnight UTC.
+If you want to use this data for your own projects, you can download it from [here](/data)
+
+## Note
+
+This project is in a perpetual cycle of maintenance and "ain't nobody got time for that"-ness, which is primarily reflected in many of the plots not looking right.  
+The reason is that whenever I tweaked the plot dimensions so that the spacing allows for all the text to be readable, it only takes a few months for multiple new podcasts to appear.  
+Since the data collection and plot creation is automated and updated daily, this means the plots now have to fit more data, but since I haven't figured out a good way to auto-adjust the plot width accordingly, plots will look sqished after a few months.  
+
 
 ## All Shows
 
@@ -73,7 +94,7 @@ podcasts %>%
 
 From first to last published episode.
 
-```{r allshows_timeline, fig.height=12}
+```{r allshows_timeline, fig.height=16}
 podcasts %>%
   group_by(podcast) %>%
   mutate(d_min = min(date),
@@ -95,11 +116,12 @@ podcasts %>%
 
 ## All Shows by Duration
 
-```{r allshows_duration, fig.height=12}
+```{r allshows_duration, fig.height=16}
 podcasts %>%
   ggplot(aes(x = reorder(podcast, duration), y = duration, fill = network)) +
   geom_boxplot() +
   coord_flip() +
+  scale_fill_brewer(palette = "Dark2") +
   labs(title = "Podcasts by Duration", subtitle = "By Network",
        x = "", y = "Duration (mins)", fill = "Network") +
   theme(legend.position = "top")

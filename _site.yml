@@ -19,6 +19,10 @@ navbar:
     - text: "ATP"
       icon: fa-list-ul
       href: ATP.html
+  right:
+    - text: ""
+      icon: fa-github
+      href: "https://github.com/jemus42/podcaststats"
 output:
   html_document:
     toc: true
