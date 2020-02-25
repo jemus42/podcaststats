@@ -17,8 +17,10 @@ knitr::opts_chunk$set(
   fig.path = "assets/plots/incomparable_network/"
 )
 
-incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds")
-incomparable_master      <- readRDS("data/incomparable_master.rds")
+incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds") %>%
+    filter(!is.na(date))
+incomparable_master      <- readRDS("data/incomparable_master.rds") %>%
+    filter(!is.na(date))
 ```
 
 ## All Time Stats
