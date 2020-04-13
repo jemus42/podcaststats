@@ -13,7 +13,7 @@ source("00_setup.R")
 
 ## Global options
 #options(max.print = "75")
-opts_chunk$set(fig.path = "assets/atp/")
+opts_chunk$set(fig.path = "assets/plots/atp/")
 
 #opts_knit$set(width = 90)
 
