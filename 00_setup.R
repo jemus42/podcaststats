@@ -34,17 +34,18 @@ knitr::opts_chunk$set(
   fig.retina = 2
 )
 
-opts_knit$set(width = 75)
-
-
 #### Plotting presets ####
 caption <- paste0("podcasts.jemu.name – @jemus42\n",
                   format(lubridate::now("UTC"), format = "%F %H:%M %Z"))
 
 # Set default theme
 theme_set(
-  theme_ipsum(
-  )
+  theme_ipsum_rc(
+    plot_margin = margin(6, 6, 6, 6)
+  ) +
+    theme(
+      plot.title.position = "plot"
+    )
 )
 
 # Convenience function to display N
