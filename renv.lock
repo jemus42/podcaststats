@@ -186,15 +186,10 @@
     },
     "dplyr": {
       "Package": "dplyr",
-      "Version": "0.8.99.9002",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "tidyverse",
-      "RemoteRepo": "dplyr",
-      "RemoteRef": "master",
-      "RemoteSha": "648064b7e90f8aa2a697527c341b1363963ac93a",
-      "RemoteHost": "api.github.com",
-      "Hash": "3ba696a80682a205da8d43ab214c2a5a"
+      "Version": "0.8.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "57a42ddf80f429764ff7987128c3fd0a"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -487,6 +482,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "5e655fb54cceead0f095f22d7be33da3"
+    },
+    "plogr": {
+      "Package": "plogr",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "09eb987710984fc2905c7129c7d85e65"
     },
     "plotly": {
       "Package": "plotly",
