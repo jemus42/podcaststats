@@ -47,16 +47,19 @@ ggplot(atp, aes(x = date, y = duration)) +
                    date_labels = "%Y") +
   scale_y_continuous(breaks = seq(0, 300, 30),
                      minor_breaks = seq(0, 300, 15)) +
-  labs(title = "ATP Episode Durations",
-       x = "Date Published", y = "Duration (mins)", caption = caption) +
+  labs(
+    title = "ATP Episode Durations",
+    subtitle = "All episodes by duration",
+    x = "Date Published", y = "Duration (mins)", caption = caption
+  ) +
   theme_ipsum(grid = "XY")
 ```
 
 ### Duration by Month
 
-```{r atp_duration_month}
+```{r atp_duration_month, fig.height=6}
 atp %>%
-  ggplot(data = ., aes(x = month, y = duration)) +
+  ggplot(aes(x = month, y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
   #facet_grid(.~year, scales = "free_x", space = "free_x") +
@@ -65,9 +68,11 @@ atp %>%
     breaks = seq(0, 300, 30),
     minor_breaks = seq(0, 300, 15)
   ) +
-  labs(title = "ATP Episode Durations grouped by Month",
-       subtitle = "Duration by month with average (dot)",
-       x = "Month", y = "Duration (mins)", caption = caption) +
+  labs(
+    title = "ATP Episode Durations grouped by Month",
+    subtitle = "Duration by month with average (dot)",
+    x = "Month", y = "Duration (mins)", caption = caption
+  ) +
   theme_ipsum(grid = "Y") +
   theme(
     strip.text = element_text(size = rel(1)),
@@ -83,19 +88,22 @@ atp %>%
   scale_y_continuous(breaks = seq(0, 300, 15),
                      minor_breaks = seq(0, 300, 5)) +
   coord_flip() +
-  labs(title = "ATP Average Episode Duration by Month",
-       x = "Month", y = "Duration (mins) + 95% CI", caption = caption) +
+  labs(
+    title = "ATP Average Episode Duration by Month",
+    subtitle = "Duration by month (95% CI) with average (dot)",
+    x = "Month", y = "Duration (mins) + 95% CI", caption = caption
+  ) +
   theme_ipsum(grid = "Xx")
 ```
 
 ### Duration by Year
 
-```{r atp_duration_year}
+```{r atp_duration_year, fig.height=6}
 atp %>%
   mutate(month = month(date, label = T, abbr = T),
          year = year(date)) %>%
   group_by(year) %>%
-  ggplot(data = ., aes(x = as.factor(year), y = duration)) +
+  ggplot(aes(x = as.factor(year), y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
   scale_y_continuous(
@@ -104,6 +112,7 @@ atp %>%
   ) +
   labs(
     title = "ATP Episode Durations per Year",
+    subtitle = "Duration by year with average (dot)",
     x = "", y = "Duration (mins)", caption = caption
   ) +
   theme_ipsum(grid = "Y") +
