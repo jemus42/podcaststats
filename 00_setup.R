@@ -42,7 +42,10 @@ caption <- paste0("podcasts.jemu.name – @jemus42\n",
                   format(lubridate::now("UTC"), format = "%F %H:%M %Z"))
 
 # Set default theme
-theme_set(theme_ipsum())
+theme_set(
+  theme_ipsum(
+  )
+)
 
 # Convenience function to display N
 label_n <- function(data, brackets = FALSE) {

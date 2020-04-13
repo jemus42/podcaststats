@@ -23,6 +23,10 @@
       "Repository": "CRAN",
       "Hash": "a16cb2832248c7cff5a6f505e2aea45b"
     },
+    "Hmisc": {
+      "Package": "Hmisc",
+      "Source": "Repository"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-51.5",

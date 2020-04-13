@@ -146,7 +146,7 @@ data <- bind_rows(recdiffs, defocused)
 ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
   geom_boxplot(alpha = .5, show.legend = FALSE) +
   geom_violin(draw_quantiles = c(.25, .75), alpha = .5, show.legend = FALSE) +
-  stat_summary(fun.y = mean, geom = "point", size = 2, show.legend = FALSE) +
+  stat_summary(fun = mean, geom = "point", size = 2, show.legend = FALSE) +
   scale_fill_brewer(palette = "Dark2") +
   coord_flip() +
   theme(legend.position = "top") +
