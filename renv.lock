@@ -233,6 +233,13 @@
       "Repository": "CRAN",
       "Hash": "dad6793a5a1f73c8e91f1a1e3e834b05"
     },
+    "forcats": {
+      "Package": "forcats",
+      "Version": "0.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1cb4279e697650f0bd78cd3601ee7576"
+    },
     "gdtools": {
       "Package": "gdtools",
       "Version": "0.2.2",
@@ -347,10 +354,15 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.28",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "915a6f0134cdbdf016d7778bc80b2eda"
+      "Version": "1.28.5",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "yihui",
+      "RemoteRepo": "knitr",
+      "RemoteRef": "master",
+      "RemoteSha": "93b46ba9bb0e66aa0c0be7191713eab2d8108e17",
+      "Hash": "e5793e8694cfd53dd9924be3e67424cd"
     },
     "labeling": {
       "Package": "labeling",
@@ -564,10 +576,15 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.9.3-71",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "5c9a745f88b01530a75c2749ce70fb75"
+      "Version": "0.9.3-102",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteUsername": "rstudio",
+      "RemoteRepo": "renv",
+      "RemoteRef": "master",
+      "RemoteSha": "d3960c2ef51835fe6fbc1d1f50c8810d1edf9170",
+      "RemoteHost": "api.github.com",
+      "Hash": "d29986ee9010de7c961cd52465723154"
     },
     "reshape2": {
       "Package": "reshape2",
