@@ -21,6 +21,9 @@ library(DT)
 
 library(broom)
 
+# Dummy to make renv pick up ragg
+require(ragg)
+
 #### Knitr chunk options ####
 knitr::opts_chunk$set(
   fig.path = "assets/plots/",
@@ -31,7 +34,8 @@ knitr::opts_chunk$set(
   comment = NA,
   message = FALSE,
   warning = FALSE,
-  fig.retina = 2
+  fig.retina = 2,
+  dev = "ragg_png"
 )
 
 #### Plotting presets ####
@@ -44,7 +48,8 @@ theme_set(
     plot_margin = margin(6, 6, 6, 6)
   ) +
     theme(
-      plot.title.position = "plot"
+      plot.title.position = "plot",
+      panel.spacing.x = unit(5, "mm")
     )
 )
 
