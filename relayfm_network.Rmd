@@ -221,7 +221,7 @@ relay %>%
   {
    ggplot(., aes(x = forcats::fct_reorder(podcast, dur_mean), y = duration)) +
      geom_boxplot() +
-     stat_summary(fun.y = "mean", geom = "point", size = 2, 
+     stat_summary(fun = "mean", geom = "point", size = 2, 
                   color = "black", fill = "red", shape = 21) +
      coord_flip() +
      scale_y_continuous(breaks = seq(0, 300, 30),
