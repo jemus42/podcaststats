@@ -74,15 +74,16 @@ relay %>%
   group_by(podcast, year) %>%
   tally %>%
   ggplot(aes(x = as.factor(year), weight = n, fill = podcast)) +
-  geom_bar() +
+  geom_bar(show.legend = FALSE) +
   scale_y_continuous(breaks = seq(0, 1000, 100),
                      minor_breaks = seq(0, 1000, 25)) +
   scale_fill_viridis_d(guide = guide_legend(ncol = 2, keyheight = 1.5)) +
-  labs(x = "Year", y = "# of Episodes", fill = "Show",
-       title = "Relay.fm", subtitle = "Episodes per Year",
-       caption = caption) +
-  theme_ipsum(grid = "y") +
-  theme(legend.key.size = unit(.2, "cm"))
+  labs(
+    x = "Year", y = "# of Episodes", fill = "Show",
+    title = "Relay.fm", 
+    subtitle = "Episodes per Year. One color per show, but too many shows for a legible legend, sorry.",
+    caption = caption
+  )
 ```
 
 ## Shows per Week
@@ -98,13 +99,12 @@ relay %>%
   ggplot(data = ., aes(x = week, y = n)) +
   geom_point() +
   geom_smooth(method = lm, se = F, color = "red") +
-  scale_y_continuous(breaks = seq(0, 100, 5),
-                     minor_breaks = seq(0, 100, 1)) +
+  scale_y_continuous(breaks = seq(0, 100, 10),
+                     minor_breaks = seq(0, 100, 5)) +
   scale_x_continuous(breaks = seq(0, 55, 16)) +
   facet_wrap(~year) +
   labs(title = "Relay.fm", subtitle = "Weekly Episode Output",
-       x = "Week of Year", y = "Episodes Published", caption = caption) +
-  theme_ipsum(grid = "y")
+       x = "Week of Year", y = "Episodes Published", caption = caption)
   }
 ```
 
@@ -124,7 +124,6 @@ relay %>%
   facet_wrap(~podcast, ncol = 3) +
   labs(title = "Relay.fm", subtitle = "Episodes per Week in 2017",
        x = "Week of Year", y = "# fo Episodes", caption = caption) +
-  theme_ipsum(grid = "y") +
   theme(axis.text.y = element_text(size = rel(.5))) 
 ```
 
@@ -149,7 +148,6 @@ relay %>%
   facet_grid(.~year, space = "free_x", scales = "free_x") +
   labs(title = "Relay.fm", subtitle = "Monthly Episode Output",
        x = "Month of Year", y = "Episodes Published", caption = caption) +
-  theme_ipsum() +
   theme(axis.text.x = element_text(size = rel(.9)))
   }
 ```
@@ -162,16 +160,16 @@ relay %>%
 relay %>%
   filter(year >= 2011) %>%
   ggplot(aes(x = date, y = duration, color = podcast)) +
-  geom_point(alpha = .5) +
+  geom_point(alpha = .5, show.legend = FALSE) +
   scale_x_date(date_breaks = "1 years",
                date_labels = "%Y",
-               date_minor_breaks = "1 month") +
-  scale_y_continuous(breaks = seq(0, 300, 60),
-                     minor_breaks = seq(0, 300, 15),
+               minor_breaks = NULL) +
+  scale_y_continuous(breaks = seq(0, 1000, 60),
+                     minor_breaks = seq(0, 1000, 20),
                      limits = c(0, NA)) +
   scale_color_viridis_d(guide = guide_legend(ncol = 1, keyheight = .75, )) +
   labs(title = "Relay.fm",
-       subtitle = "Episode Durations of Every Episode Since 2011",
+       subtitle = "Episode Durations of Every Episode Since 2011. No legend, but one color per show.",
        x = "Date Published", y = "Duration (mins)", color = "Show",
        caption = caption)
 ```
@@ -192,7 +190,6 @@ relay %>%
       facet_wrap(~podcast, ncol = 5) +
       labs(title = "Relay.fm", subtitle = "Episode Durations",
            x = "Date Published", y = "Duration (mins)", caption = caption) +
-      theme_ipsum(grid = "y") +
       theme(axis.text.x = element_text(angle = 90, vjust = .5))
   }
 ```
@@ -205,11 +202,10 @@ relay %>%
   geom_histogram(binwidth = 2.5) +
   geom_density(aes(y = ..count.., group = 1), fill = "black", alpha = .3) +
   scale_x_continuous(breaks = seq(0, 600, 30),
-                     minor_breaks = seq(0, 600, 5)) +
+                     minor_breaks = seq(0, 600, 15)) +
   scale_y_continuous(breaks = seq(0, 600, 50)) +
   labs(title = "Relay.fm", subtitle = "Episode Durations",
-           y = "Frequency", x = "Duration (mins)", caption = caption) +
-  theme_ipsum(grid = "YX")
+           y = "Frequency", x = "Duration (mins)", caption = caption)
 ```
 
 
@@ -222,19 +218,18 @@ relay %>%
   #filter(podcast != "B-Sides") %>%
   group_by(podcast) %>%
   mutate(dur_mean = mean(duration)) %>%
-         {
-           ggplot(., aes(x = forcats::fct_reorder(podcast, dur_mean), y = duration)) +
-             geom_boxplot() +
-             stat_summary(fun.y = "mean", geom = "point", size = 2, 
-                          color = "black", fill = "red", shape = 21) +
-             coord_flip() +
-             scale_y_continuous(breaks = seq(0, 300, 30),
-                                minor_breaks = seq(0, 300, 15)) +
-             labs(title = "Relay.fm", 
-                  subtitle = "Episode Duration — Boxplot + Mean (red)",
-                  x = "", y = "Duration (mins)", caption = caption) +
-             theme_ipsum()
-         }
+  {
+   ggplot(., aes(x = forcats::fct_reorder(podcast, dur_mean), y = duration)) +
+     geom_boxplot() +
+     stat_summary(fun.y = "mean", geom = "point", size = 2, 
+                  color = "black", fill = "red", shape = 21) +
+     coord_flip() +
+     scale_y_continuous(breaks = seq(0, 300, 30),
+                        minor_breaks = seq(0, 300, 15)) +
+     labs(title = "Relay.fm", 
+          subtitle = "Episode Duration — Boxplot + Mean (red)",
+          x = "", y = "Duration (mins)", caption = caption)
+  }
 ```
 
 # People
