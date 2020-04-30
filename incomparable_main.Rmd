@@ -17,9 +17,9 @@ knitr::opts_chunk$set(
   fig.path = "assets/plots/incomparable_main/"
 )
 
-incomparable_wide <- readRDS("data/incomparable_master_wide.rds") %>% 
+incomparable_wide <- readRDS("data/incomparable_master_wide.rds") %>%
   filter(podcast == "The Incomparable")
-incomparable      <- readRDS("data/incomparable_master.rds") %>% 
+incomparable <- readRDS("data/incomparable_master.rds") %>%
   filter(podcast == "The Incomparable")
 ```
 
@@ -35,24 +35,26 @@ I had issues with my old code to parse the podcast data, so there may be some wo
 ### 2019 Panelists
 
 ```{r 2019_panelists, fig.height=9}
-incomparable %>% 
+incomparable %>%
   filter(year == 2019) %>%
   group_by(person, role) %>%
   tally() %>%
-  spread(role, n) %>% 
+  spread(role, n) %>%
   replace_na(list(guest = 0, host = 0)) %>%
   mutate(total = guest + host) %>%
   arrange(desc(total)) %>%
-  datatable(style = "bootstrap", 
-            colnames = c("Person", "Guest", "Host", "Total Appearances"))
+  datatable(
+    style = "bootstrap",
+    colnames = c("Person", "Guest", "Host", "Total Appearances")
+  )
 
-incomparable %>% 
+incomparable %>%
   filter(year == 2019) %>%
   group_by(person, role) %>%
   tally() %>%
-  spread(role, n) %>% 
+  spread(role, n) %>%
   replace_na(list(guest = 0, host = 0)) %>%
-  mutate(total = guest + host) %>% 
+  mutate(total = guest + host) %>%
   gather(role, n, guest, host) %>%
   {
     ggplot(data = ., aes(x = reorder(person, total), y = n, fill = role)) +
@@ -60,9 +62,11 @@ incomparable %>%
       coord_flip() +
       scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
       scale_fill_brewer(palette = "Set1", label = c("Guest", "Host")) +
-      labs(title = "The Incomparable — 2019", 
-           subtitle = "Panelists by # of Appearances",
-           x = "Panelist", y = "# of Appearances", fill = "Role") +
+      labs(
+        title = "The Incomparable — 2019",
+        subtitle = "Panelists by # of Appearances",
+        x = "Panelist", y = "# of Appearances", fill = "Role"
+      ) +
       theme(legend.position = "top")
   }
 ```
@@ -74,43 +78,56 @@ Because that's the easy one.
 ```{r runtime, fig.width=10}
 incomparable_wide %>%
   mutate(title_long = str_wrap(paste0(number, ": ", title), 20)) %>%
-{
-  ggplot(data = ., aes(x = date, y = duration)) +
-  geom_point(alpha = .75) +
-  geom_smooth(method = loess, se = F, color = "red") +
-  geom_label_repel(data = filter(., duration > 150), 
-                   aes(label = title_long), alpha = .8, size = 3) +
-  scale_x_datetime(date_breaks = "1 year", date_labels = "%Y",
-                   date_minor_breaks = "3 months") +
-  scale_y_continuous(breaks = seq(0, 500, 30),
-                     minor_breaks = seq(0, 500, 10),
-                     limits = c(0, NA)) +
-  labs(title = "The Incomparable Network: Main Show",
-       subtitle = "Episode Runtimes",
-       y = "Minutes", x = "Date Published",
-       caption = caption) +
-  theme_ipsum(grid = "y")
-}
+  {
+    ggplot(data = ., aes(x = date, y = duration)) +
+      geom_point(alpha = .75) +
+      geom_smooth(method = loess, se = F, color = "red") +
+      geom_label_repel(
+        data = filter(., duration > 150),
+        aes(label = title_long), alpha = .8, size = 3
+      ) +
+      scale_x_datetime(
+        date_breaks = "1 year", date_labels = "%Y",
+        date_minor_breaks = "3 months"
+      ) +
+      scale_y_continuous(
+        breaks = seq(0, 500, 30),
+        minor_breaks = seq(0, 500, 10),
+        limits = c(0, NA)
+      ) +
+      labs(
+        title = "The Incomparable Network: Main Show",
+        subtitle = "Episode Runtimes",
+        y = "Minutes", x = "Date Published",
+        caption = caption
+      ) +
+      theme_ipsum(grid = "y")
+  }
 ```
 
 Runtimes per year.
 
 ```{r runtime_year, fig.width=10}
-incomparable_wide %>%
-{
+incomparable_wide %>% {
   ggplot(data = ., aes(x = year, y = duration)) +
-  geom_point(alpha = .75, 
-             position = position_jitter(height = 0, width = .2)) +
-  geom_boxplot(outlier.alpha = 0, alpha = .5) +
-  stat_summary(fun = mean, geom = "point", color = "red") +
-  scale_y_continuous(breaks = seq(0, 500, 30),
-                     minor_breaks = seq(0, 500, 10),
-                     limits = c(0, NA)) +
-  labs(title = "The Incomparable Network: Main Show",
-       subtitle = "Episode Runtimes",
-       y = "Minutes", x = "Year Published",
-       caption = caption) +
-  theme_ipsum(grid = "y")
+    geom_point(
+      alpha = .75,
+      position = position_jitter(height = 0, width = .2)
+    ) +
+    geom_boxplot(outlier.alpha = 0, alpha = .5) +
+    stat_summary(fun = mean, geom = "point", color = "red") +
+    scale_y_continuous(
+      breaks = seq(0, 500, 30),
+      minor_breaks = seq(0, 500, 10),
+      limits = c(0, NA)
+    ) +
+    labs(
+      title = "The Incomparable Network: Main Show",
+      subtitle = "Episode Runtimes",
+      y = "Minutes", x = "Year Published",
+      caption = caption
+    ) +
+    theme_ipsum(grid = "y")
 }
 ```
 
@@ -125,9 +142,11 @@ incomparable %>%
   geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +
   geom_boxplot(alpha = .5, outlier.alpha = 0) +
   coord_flip() +
-  labs(title = "The Incomparable: Main Show",
-       subtitle = "Episode Runtimes",
-       y = "Duration (mins)", x = "Panelist",
-       caption = caption)
+  labs(
+    title = "The Incomparable: Main Show",
+    subtitle = "Episode Runtimes",
+    y = "Duration (mins)", x = "Panelist",
+    caption = caption
+  )
 ```
 

@@ -14,7 +14,7 @@ opts_chunk$set(
 )
 
 relay <- readRDS("data/relay.rds")
-atp   <- readRDS("data/atp.rds")
+atp <- readRDS("data/atp.rds")
 incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds") %>%
   filter(!is.na(date))
 ```
@@ -51,23 +51,29 @@ Here's a quick overview of the podcast data I've collected so far.
 
 ```{r allshows}
 relay %<>%
-  mutate(number = as.character(number),
-         year = year(date),
-         date = as.POSIXct(date),
-         network = "Relay.FM")
+  mutate(
+    number = as.character(number),
+    year = year(date),
+    date = as.POSIXct(date),
+    network = "Relay.FM"
+  )
 
 atp %<>%
   filter(!is.na(month)) %>%
-  mutate(number = as.character(number),
-         year = year(date),
-         date = as.POSIXct(date),
-         network = "ATP",
-         podcast = "ATP")
+  mutate(
+    number = as.character(number),
+    year = year(date),
+    date = as.POSIXct(date),
+    network = "ATP",
+    podcast = "ATP"
+  )
 
 incomparable_master_wide %<>%
-  mutate(number = as.character(number),
-         year = year(date),
-         network = "The Incomparable")
+  mutate(
+    number = as.character(number),
+    year = year(date),
+    network = "The Incomparable"
+  )
 
 podcasts <- incomparable_master_wide %>%
   bind_rows(relay) %>%
@@ -76,17 +82,19 @@ podcasts <- incomparable_master_wide %>%
 podcasts %>%
   group_by(network) %>%
   summarize(
-    episodes     = n(),
-    duration_d   = round(sum(duration, na.rm = TRUE)/60/24),
+    episodes = n(),
+    duration_d = round(sum(duration, na.rm = TRUE) / 60 / 24),
     duration_avg = round(mean(duration, na.rm = TRUE)),
-    firstep      = as.character(as.Date(min(date, na.rm = TRUE))),
-    lastep       = as.character(as.Date(max(date, na.rm = TRUE))),
-    shows        = length(unique(podcast)),
-    epspershow   = round(episodes/shows, 1)
+    firstep = as.character(as.Date(min(date, na.rm = TRUE))),
+    lastep = as.character(as.Date(max(date, na.rm = TRUE))),
+    shows = length(unique(podcast)),
+    epspershow = round(episodes / shows, 1)
   ) %>%
-  set_colnames(c("Network", "Episodes", "Duration (total, days)",
-                 "Duration (mean, mins)", "First Episode",
-                 "Last Episode", "# of Shows", "Episodes per Show")) %>%
+  set_colnames(c(
+    "Network", "Episodes", "Duration (total, days)",
+    "Duration (mean, mins)", "First Episode",
+    "Last Episode", "# of Shows", "Episodes per Show"
+  )) %>%
   datatable()
 ```
 
@@ -97,19 +105,23 @@ From first to last published episode.
 ```{r allshows_timeline, fig.height=16}
 podcasts %>%
   group_by(podcast) %>%
-  mutate(d_min = min(date),
-         d_max = max(date)) %>%
+  mutate(
+    d_min = min(date),
+    d_max = max(date)
+  ) %>%
   ggplot(aes(x = reorder(podcast, d_min), color = network)) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max), width = .5, size = 2) +
   scale_x_discrete(position = "top") +
   scale_color_brewer(palette = "Dark2") +
   coord_flip() +
   theme(legend.position = "top") +
-  labs(title = "All Podcasts Timeline", 
-       subtitle = "The Incomparable, Relay.fm, ATP",
-       x = "", y = "First to Latest Episode Date", 
-       color = "Network",
-       caption = caption) +
+  labs(
+    title = "All Podcasts Timeline",
+    subtitle = "The Incomparable, Relay.fm, ATP",
+    x = "", y = "First to Latest Episode Date",
+    color = "Network",
+    caption = caption
+  ) +
   theme(legend.position = "top")
 ```
 
@@ -123,8 +135,10 @@ podcasts %>%
   geom_boxplot() +
   coord_flip() +
   scale_fill_brewer(palette = "Dark2") +
-  labs(title = "Podcasts by Duration", subtitle = "By Network",
-       x = "", y = "Duration (mins)", fill = "Network") +
+  labs(
+    title = "Podcasts by Duration", subtitle = "By Network",
+    x = "", y = "Duration (mins)", fill = "Network"
+  ) +
   theme(legend.position = "top")
 ```
 
@@ -132,14 +146,16 @@ podcasts %>%
 ## Placeholder Quickie: Defocused vs. Reconcilable Differences
 
 ```{r recdiffs_vs_defocused}
-defocused <- readRDS("data/incomparable_master_wide.rds") %>% 
-                filter(podcast == "Defocused") %>%
-                mutate(number = as.numeric(number),
-                       year = as.numeric(year))
+defocused <- readRDS("data/incomparable_master_wide.rds") %>%
+  filter(podcast == "Defocused") %>%
+  mutate(
+    number = as.numeric(number),
+    year = as.numeric(year)
+  )
 
-recdiffs  <- readRDS("data/relay.rds") %>% 
-                filter(podcast == "Reconcilable Differences") %>%
-                mutate(date = as.POSIXct(date))
+recdiffs <- readRDS("data/relay.rds") %>%
+  filter(podcast == "Reconcilable Differences") %>%
+  mutate(date = as.POSIXct(date))
 
 data <- bind_rows(recdiffs, defocused)
 
@@ -150,7 +166,9 @@ ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
   scale_fill_brewer(palette = "Dark2") +
   coord_flip() +
   theme(legend.position = "top") +
-  labs(title = "Defocused vs. Reconcilable Differences",
-       subtitle = "Comparison of Show Durations (Violin Plot)", 
-       x = "", y = "Duration (mins)", fill = "Show")
+  labs(
+    title = "Defocused vs. Reconcilable Differences",
+    subtitle = "Comparison of Show Durations (Violin Plot)",
+    x = "", y = "Duration (mins)", fill = "Show"
+  )
 ```

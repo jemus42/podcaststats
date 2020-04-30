@@ -12,10 +12,10 @@ editor_options:
 source("00_setup.R")
 
 ## Global options
-#options(max.print = "75")
+# options(max.print = "75")
 opts_chunk$set(fig.path = "assets/plots/atp/")
 
-#opts_knit$set(width = 90)
+# opts_knit$set(width = 90)
 
 #### Data Prep ####
 atp <- readRDS("data/atp.rds") %>%
@@ -38,15 +38,21 @@ So… thanks Marco for saving me from the horrible fate that would have been a w
 ```{r atp_duration, fig.height=6, fig.width=10}
 ggplot(atp, aes(x = date, y = duration)) +
   geom_point(alpha = .5, size = 2) +
-  geom_label_repel(data = filter(atp, duration > 160),
-                   aes(label = title)) +
+  geom_label_repel(
+    data = filter(atp, duration > 160),
+    aes(label = title)
+  ) +
   expand_limits(y = 0) +
   geom_smooth(method = lm, formula = y ~ x, se = FALSE, color = "red") +
-  scale_x_datetime(breaks = date_breaks("1 year"), 
-                   minor_breaks = date_breaks("4 months"),
-                   date_labels = "%Y") +
-  scale_y_continuous(breaks = seq(0, 300, 30),
-                     minor_breaks = seq(0, 300, 15)) +
+  scale_x_datetime(
+    breaks = date_breaks("1 year"),
+    minor_breaks = date_breaks("4 months"),
+    date_labels = "%Y"
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, 300, 30),
+    minor_breaks = seq(0, 300, 15)
+  ) +
   labs(
     title = "ATP Episode Durations",
     subtitle = "All episodes by duration",
@@ -62,7 +68,7 @@ atp %>%
   ggplot(aes(x = month, y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
-  #facet_grid(.~year, scales = "free_x", space = "free_x") +
+  # facet_grid(.~year, scales = "free_x", space = "free_x") +
   scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
   scale_y_continuous(
     breaks = seq(0, 300, 30),
@@ -85,8 +91,10 @@ atp %>%
   ggplot(aes(x = reorder(month, dur_mean), y = duration)) +
   stat_summary(fun.data = mean_cl_boot, geom = "errorbar") +
   stat_summary(fun = "mean", geom = "point", color = "red", size = 2) +
-  scale_y_continuous(breaks = seq(0, 300, 15),
-                     minor_breaks = seq(0, 300, 5)) +
+  scale_y_continuous(
+    breaks = seq(0, 300, 15),
+    minor_breaks = seq(0, 300, 5)
+  ) +
   coord_flip() +
   labs(
     title = "ATP Average Episode Duration by Month",
@@ -100,8 +108,10 @@ atp %>%
 
 ```{r atp_duration_year, fig.height=6}
 atp %>%
-  mutate(month = month(date, label = T, abbr = T),
-         year = year(date)) %>%
+  mutate(
+    month = month(date, label = T, abbr = T),
+    year = year(date)
+  ) %>%
   group_by(year) %>%
   ggplot(aes(x = as.factor(year), y = duration)) +
   geom_boxplot() +
@@ -116,9 +126,11 @@ atp %>%
     x = "", y = "Duration (mins)", caption = caption
   ) +
   theme_ipsum(grid = "Y") +
-  theme(strip.text = element_text(size = rel(1)),
-        axis.text.x = element_text(size = rel(1.5)),
-        axis.ticks.x = element_blank())
+  theme(
+    strip.text = element_text(size = rel(1)),
+    axis.text.x = element_text(size = rel(1.5)),
+    axis.ticks.x = element_blank()
+  )
 ```
 
 ## Raw Data 
@@ -126,7 +138,9 @@ atp %>%
 ```{r atp_episodes_table}
 atp %>%
   mutate(duration = round(duration, 2)) %>%
-  datatable(style = "bootstrap", 
-            colnames = c("#", "Title", "Date", "Month", "Year", "Duration (mins)", "Summary"))
+  datatable(
+    style = "bootstrap",
+    colnames = c("#", "Title", "Date", "Month", "Year", "Duration (mins)", "Summary")
+  )
 ```
 

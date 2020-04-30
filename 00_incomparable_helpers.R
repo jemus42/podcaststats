@@ -24,11 +24,13 @@ enhance_datetimes <- function(showstats) {
 
   showstats %>%
     filter(!is.na(number)) %>%
-    mutate(duration = parse_duration(duration),
-           date     = as.POSIXct(dmy(date)),
-           year     = as.factor(year(date)),
-           month    = month(date, abbr = FALSE, label = TRUE),
-           weekday  = wday(date, label = TRUE, abbr = FALSE)) %>%
+    mutate(
+      duration = parse_duration(duration),
+      date = as.POSIXct(dmy(date)),
+      year = as.factor(year(date)),
+      month = month(date, abbr = FALSE, label = TRUE),
+      weekday = wday(date, label = TRUE, abbr = FALSE)
+    ) %>%
     select(podcast, number, date, year, month, weekday, everything())
 }
 
@@ -44,16 +46,17 @@ widen_people <- function(master) {
     unite(persons, starts_with("person_"), sep = ", ") %>%
     mutate(persons = str_replace_all(persons, ", NA", "")) %>%
     spread(key = role, value = persons) %>%
-    ungroup %>%
-    select(podcast, number, date, year, month, weekday,
-           duration, title, host, guest, category, topic, everything())
+    ungroup() %>%
+    select(
+      podcast, number, date, year, month, weekday,
+      duration, title, host, guest, category, topic, everything()
+    )
 }
 
 #### Handling the stats.txt ####
 #### Initial collection of the stats file
 # Thanks a lot, @l3viathan https://twitter.com/L3viathan2142/status/701009923841400833
 get_initial_stats <- function(urlpartial = "theincomparable", show_title = "The Incomparable") {
-
   stats_url <- paste0("https://www.theincomparable.com/", urlpartial, "/stats.txt")
   # message(stats_url)
 
@@ -70,7 +73,7 @@ get_initial_stats <- function(urlpartial = "theincomparable", show_title = "The 
     names(showstats) <- c("number", "date", "duration", "title", "host")
     showstats$guest <- "None"
   } else {
-    showstats        <- showstats[1:6]
+    showstats <- showstats[1:6]
     names(showstats) <- c("number", "date", "duration", "title", "host", "guest")
   }
 
@@ -90,8 +93,10 @@ extract_show_hosts <- function(showstats) {
 }
 
 #### Further guest management
-extract_show_guests <- function(showstats){
-  if (all(is.na(showstats$guest))) return(showstats)
+extract_show_guests <- function(showstats) {
+  if (all(is.na(showstats$guest))) {
+    return(showstats)
+  }
 
   comma_count <- max(str_count(showstats$guest, ","), na.rm = T)
 
@@ -101,7 +106,6 @@ extract_show_guests <- function(showstats){
     mutate(guest = str_trim(guest, side = "both")) %>%
     select(-position) %>%
     arrange(desc(date))
-
 }
 
 #### Collapsing the people
@@ -131,24 +135,28 @@ handle_people <- function(showstats) {
 }
 
 # The biggoe to bind them together ----
-get_podcast_stats <- function(urlpartial = "theincomparable", show_title = "The Incomparable"){
-    get_initial_stats(urlpartial, show_title) %>%
+get_podcast_stats <- function(urlpartial = "theincomparable", show_title = "The Incomparable") {
+  get_initial_stats(urlpartial, show_title) %>%
     enhance_datetimes() %>%
     handle_people() %>%
     select(-title) %>%
-    full_join(y = get_podcast_metadata(urlpartial),
-              by = c("number" = "number")) %>%
+    full_join(
+      y = get_podcast_metadata(urlpartial),
+      by = c("number" = "number")
+    ) %>%
     filter(!is.na(podcast)) %>%
     filter(!is.na(date)) %>%
     filter(!is.na(duration)) %>%
     arrange(desc(date)) %>%
-    select(podcast, number, date, year, month, weekday,
-           duration, title, person, role, category, topic, summary)
+    select(
+      podcast, number, date, year, month, weekday,
+      duration, title, person, role, category, topic, summary
+    )
 }
 
 #### Parsing the archive pages ####
 #### Getting summaries, topics and categories
-get_podcast_metadata <- function(urlpartial = "theincomparable"){
+get_podcast_metadata <- function(urlpartial = "theincomparable") {
   require(rvest)
   require(dplyr)
   require(stringr)
@@ -178,28 +186,28 @@ get_podcast_metadata <- function(urlpartial = "theincomparable"){
     html_nodes(css = ".entry-title a") %>%
     html_text()
 
-   categories <- archive_parsed %>%
-     html_nodes("#entry img") %>%
-     html_attr("alt")
+  categories <- archive_parsed %>%
+    html_nodes("#entry img") %>%
+    html_attr("alt")
 
-   if (identical(categories, character(0))) {
-     categories <- NA
-   }
+  if (identical(categories, character(0))) {
+    categories <- NA
+  }
 
-   topics <- archive_parsed %>%
-     html_nodes(".postdate+ .postdate") %>%
-     html_text() %>%
-     str_extract("•.*") %>%
-     str_replace_all("•", "")  %>%
-     str_trim("both")
+  topics <- archive_parsed %>%
+    html_nodes(".postdate+ .postdate") %>%
+    html_text() %>%
+    str_extract("•.*") %>%
+    str_replace_all("•", "") %>%
+    str_trim("both")
 
-   if (length(topics) != length(titles)) {
-     topics <- rep(NA, length(titles))
-   }
+  if (length(topics) != length(titles)) {
+    topics <- rep(NA, length(titles))
+  }
 
-   if (length(categories) != length(titles)) {
-     categories <- rep(NA, length(titles))
-   }
+  if (length(categories) != length(titles)) {
+    categories <- rep(NA, length(titles))
+  }
 
   tibble::tibble(
     number = epnums,
@@ -235,12 +243,12 @@ get_podcast_segment_episodes <- function() {
   inc <- map2_df(
     segments_incomparable$partial,
     segments_incomparable$name,
-    ~{
+    ~ {
       entry <- glue::glue("https://www.theincomparable.com/theincomparable/{.x}/archive") %>%
         read_html() %>%
         html_nodes(".entry-title a")
 
-      title  <- entry %>% html_text()
+      title <- entry %>% html_text()
 
       epnums <- entry %>%
         html_attr("href") %>%
@@ -251,7 +259,8 @@ get_podcast_segment_episodes <- function() {
         segment = .y,
         podcast = "The Incomparable"
       )
-    })
+    }
+  )
 
   # Get gameshow ----
   gs_raw <- read_html("https://www.theincomparable.com/gameshow/") %>%
@@ -269,15 +278,21 @@ get_podcast_segment_episodes <- function() {
 
   segments_gameshow <- tibble(partial = gs_partials, name = gs_titles)
 
-  gs <-  map2_df(segments_gameshow$partial, segments_gameshow$name,
-                 function(partial, name) {
-            url <- paste("https://www.theincomparable.com/gameshow",
-                         partial, "archive", sep = "/")
-            entry  <- read_html(url) %>% html_nodes(".entry-title a")
-            title  <- entry %>% html_text()
-            epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-            tibble(number = epnums, segment = name, podcast = "Game Show")
-          })
+  gs <- map2_df(
+    segments_gameshow$partial, segments_gameshow$name,
+    function(partial, name) {
+      url <- paste("https://www.theincomparable.com/gameshow",
+        partial, "archive",
+        sep = "/"
+      )
+      entry <- read_html(url) %>% html_nodes(".entry-title a")
+      title <- entry %>% html_text()
+      epnums <- entry %>%
+        html_attr("href") %>%
+        str_extract("\\d+")
+      tibble(number = epnums, segment = name, podcast = "Game Show")
+    }
+  )
 
   # Get teevee ----
   teevee_raw <- read_html("https://www.theincomparable.com/teevee/") %>%
@@ -290,15 +305,21 @@ get_podcast_segment_episodes <- function() {
     html_text()
   segments_teevee <- tibble(partial = teevee_partials, name = teevee_titles)
 
-  teevee <-  map2_df(segments_teevee$partial, segments_teevee$name,
-                            function(partial, name) {
-                url <- paste("https://www.theincomparable.com/teevee",
-                             partial, "archive", sep = "/")
-                entry  <- read_html(url) %>% html_nodes(".entry-title a")
-                title  <- entry %>% html_text()
-                epnums <- entry %>% html_attr("href") %>% str_extract("\\d+")
-                tibble(number = epnums, segment = name, podcast = "TeeVee")
-              })
+  teevee <- map2_df(
+    segments_teevee$partial, segments_teevee$name,
+    function(partial, name) {
+      url <- paste("https://www.theincomparable.com/teevee",
+        partial, "archive",
+        sep = "/"
+      )
+      entry <- read_html(url) %>% html_nodes(".entry-title a")
+      title <- entry %>% html_text()
+      epnums <- entry %>%
+        html_attr("href") %>%
+        str_extract("\\d+")
+      tibble(number = epnums, segment = name, podcast = "TeeVee")
+    }
+  )
 
   bind_rows(inc, gs, teevee)
 }

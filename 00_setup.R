@@ -29,8 +29,8 @@ knitr::opts_chunk$set(
   fig.path = "assets/plots/",
   fig.align = "center",
   fig.retina = 2,
-  echo    = FALSE,
-  prompt  = FALSE,
+  echo = FALSE,
+  prompt = FALSE,
   comment = NA,
   message = FALSE,
   warning = FALSE,
@@ -39,8 +39,10 @@ knitr::opts_chunk$set(
 )
 
 #### Plotting presets ####
-caption <- paste0("podcasts.jemu.name – @jemus42\n",
-                  format(lubridate::now("UTC"), format = "%F %H:%M %Z"))
+caption <- paste0(
+  "podcasts.jemu.name – @jemus42\n",
+  format(lubridate::now("UTC"), format = "%F %H:%M %Z")
+)
 
 # Set default theme
 theme_set(
@@ -85,6 +87,4 @@ cache_podcast_data <- function(x, dir = "data", filename = NULL, csv = TRUE) {
     cliapp::cli_alert_success("Saving {filename} to {path_csv}")
     write_delim(x, path_csv, delim = ";")
   }
-
 }
-
