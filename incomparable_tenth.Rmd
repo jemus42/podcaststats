@@ -51,6 +51,7 @@ incomparable %>%
   arrange(desc(total)) %>%
   select(rank, person, host, guest, total, total_perc) %>%
   datatable(
+    style = "bootstrap",
     colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
     rownames = FALSE,
     options = list(
@@ -69,5 +70,44 @@ incomparable %>%
 #     rank = rank(-total)
 #   ) %>%
 #   arrange(rank)
+```
+
+## By Segment
+
+The segments the dataset knows about, with episode count:
+
+```{r tenth-segments}
+incomparable_wide %>%
+  count(segment, sort = TRUE) %>%
+  replace_na(replace = list(segment = "(General)")) %>%
+  kable()
+```
+
+
+```{r tenth-segments-panelists}
+incomparable %>%
+  count(segment, person, role) %>%
+  filter(!is.na(segment)) %>%
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  mutate(
+    total = guest + host,
+    total_perc = total / nrow(incomparable_wide),
+    rank = rank(-total, ties.method = "min")
+  ) %>%
+  arrange(segment, desc(total)) %>%
+  select(segment, rank, person, host, guest, total, total_perc) %>%
+  datatable(
+    style = "bootstrap",
+    colnames = c("Segment", "Rank", "Person", "Host", "Guest", "Total", "Total %"), 
+    rownames = FALSE,
+    filter = "top",
+    extensions = "RowGroup",
+    options = list(
+       rowGroup = list(dataSrc = 0),
+       pageLength = 50,
+       lengthMenu = c(10, 25, 50, 75, 120)
+    )
+  ) %>%
+  formatPercentage(columns = 7, digits = 1)
 ```
 
