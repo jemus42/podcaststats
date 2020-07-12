@@ -35,6 +35,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE,
   fig.retina = 2,
+  cache = FALSE,
   dev = "ragg_png"
 )
 
