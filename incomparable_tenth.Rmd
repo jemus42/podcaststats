@@ -44,6 +44,7 @@ incomparable %>%
   count(person, role) %>%
   pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
   mutate(
+    person = factor(person),
     total = guest + host,
     total_perc = total / nrow(incomparable_wide),
     rank = rank(-total, ties.method = "min")
@@ -55,6 +56,7 @@ incomparable %>%
     colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
     rownames = FALSE,
     options = list(
+       filter = "top",
        pageLength = 25,
        lengthMenu = c(10, 25, 50, 100)
     )
@@ -90,6 +92,7 @@ incomparable %>%
   filter(!is.na(segment)) %>%
   pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
   mutate(
+    segment = factor(segment), person = factor(person),
     total = guest + host,
     total_perc = total / nrow(incomparable_wide),
     rank = rank(-total, ties.method = "min")
