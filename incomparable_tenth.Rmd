@@ -46,6 +46,8 @@ incomparable_wide %>%
 
 ## All the panelists!
 
+### By Number of Appearances
+
 ```{r tenth-panelists}
 incomparable %>%
   count(person, role) %>%
@@ -82,7 +84,7 @@ incomparable_wide %>%
   kable()
 ```
 
-Ranks within segment:
+Ranks and % withing each segment.
 
 ```{r tenth-panelists-segments}
 incomparable %>%
@@ -116,6 +118,8 @@ incomparable %>%
 ```
 
 ### By Duration of Appearance
+
+Duration per episode in which each eisode appears.
 
 ```{r tenth-panelists-duration}
 incomparable %>%
