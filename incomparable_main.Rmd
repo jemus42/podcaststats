@@ -32,11 +32,11 @@ I had issues with my old code to parse the podcast data, so there may be some wo
 
 ## Panelists 
 
-### 2019 Panelists
+### 2020 Panelists
 
-```{r 2019_panelists, fig.height=9}
+```{r 2020_panelists, fig.height=9}
 incomparable %>%
-  filter(year == 2019) %>%
+  filter(year == 2020) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>%
@@ -49,7 +49,7 @@ incomparable %>%
   )
 
 incomparable %>%
-  filter(year == 2019) %>%
+  filter(year == 2020) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>%
@@ -63,7 +63,7 @@ incomparable %>%
       scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
       scale_fill_brewer(palette = "Set1", label = c("Guest", "Host")) +
       labs(
-        title = "The Incomparable — 2019",
+        title = "The Incomparable — 2020",
         subtitle = "Panelists by # of Appearances",
         x = "Panelist", y = "# of Appearances", fill = "Role"
       ) +

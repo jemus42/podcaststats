@@ -1,0 +1,51 @@
+---
+title: "The Incomparable 10th Anniversary Special"
+date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
+author: "Lukas — @jemus42"
+output: 
+  html_document:
+    fig_height: 8
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+source("00_setup.R")
+
+#### Global options ####
+knitr::opts_chunk$set(
+  fig.path = "assets/plots/incomparable_tenth/"
+)
+
+incomparable_wide <- readRDS("data/incomparable_master_wide.rds") %>%
+  filter(podcast == "The Incomparable")
+incomparable <- readRDS("data/incomparable_master.rds") %>%
+  filter(podcast == "The Incomparable")
+```
+
+## All the panelists!
+
+```{r tenth-panelists}
+incomparable %>%
+  count(person, role) %>%
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  mutate(
+    total = guest + host,
+    total_perc = total / nrow(incomparable_wide)
+  ) %>%
+  arrange(desc(total)) %>%
+  datatable() %>%
+  formatPercentage(columns = 5, digits = 1)
+
+
+incomparable %>%
+  count(person, role) %>%
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  mutate(
+    total = guest + host,
+    total_perc = total / nrow(incomparable_wide),
+    rank = rank(-total)
+  ) %>%
+  arrange(rank)
+```
+
