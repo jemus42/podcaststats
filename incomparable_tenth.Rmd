@@ -62,16 +62,6 @@ incomparable %>%
     )
   ) %>%
   formatPercentage(columns = 6, digits = 1)
-
-# incomparable %>%
-#   count(person, role) %>%
-#   pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
-#   mutate(
-#     total = guest + host,
-#     total_perc = total / nrow(incomparable_wide),
-#     rank = rank(-total)
-#   ) %>%
-#   arrange(rank)
 ```
 
 ## By Segment
@@ -85,6 +75,7 @@ incomparable_wide %>%
   kable()
 ```
 
+Ranks within segment:
 
 ```{r tenth-segments-panelists}
 incomparable %>%
@@ -95,6 +86,10 @@ incomparable %>%
     segment = factor(segment), person = factor(person),
     total = guest + host,
     total_perc = total / nrow(incomparable_wide),
+    rank = rank(-total, ties.method = "min")
+  ) %>%
+  group_by(segment) %>%
+  mutate(
     rank = rank(-total, ties.method = "min")
   ) %>%
   arrange(segment, desc(total)) %>%
