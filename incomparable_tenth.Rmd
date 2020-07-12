@@ -53,10 +53,10 @@ incomparable %>%
   select(rank, person, host, guest, total, total_perc) %>%
   datatable(
     style = "bootstrap",
+    filter = "top",
     colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
     rownames = FALSE,
     options = list(
-       filter = "top",
        pageLength = 25,
        lengthMenu = c(10, 25, 50, 100)
     )
