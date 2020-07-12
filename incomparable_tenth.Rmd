@@ -11,6 +11,7 @@ editor_options:
 
 ```{r setup, include=FALSE}
 source("00_setup.R")
+library(epoxy)
 
 #### Global options ####
 knitr::opts_chunk$set(
@@ -25,6 +26,12 @@ incomparable <- readRDS("data/incomparable_master.rds") %>%
   filter(podcast == "The Incomparable") %>%
   filter(!str_detect(number, "[a-z]$"))
 ```
+
+```{glue tenth-summary, .transformer = epoxy_style_bold()}
+Since its first episode on {format(min(as.Date(incomparable_wide$date)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(incomparable_wide$duration)/60)} hours of content (roughly {round(sum(incomparable_wide$duration)/60/24)} days) across {nrow(incomparable_wide)} episodes.
+```
+
+
 
 The latest episode in the current dataset:
 
@@ -64,7 +71,7 @@ incomparable %>%
   formatPercentage(columns = 6, digits = 1)
 ```
 
-## By Segment
+### By Segment
 
 The segments the dataset knows about, with episode count:
 
@@ -77,7 +84,7 @@ incomparable_wide %>%
 
 Ranks within segment:
 
-```{r tenth-segments-panelists}
+```{r tenth-panelists-segments}
 incomparable %>%
   count(segment, person, role) %>%
   filter(!is.na(segment)) %>%
@@ -107,5 +114,34 @@ incomparable %>%
     )
   ) %>%
   formatPercentage(columns = 7, digits = 1)
+```
+
+### By Duration of Appearance
+
+```{r tenth-panelists-duration}
+incomparable %>%
+  group_by(person) %>%
+  summarize(mins = sum(duration)) %>%
+  mutate(
+    mins = round(mins, 1),
+    hours = round(mins/60, 1), 
+    days = round(hours/24, 1),
+    person = factor(person),
+    runtime_perc = mins / sum(incomparable_wide$duration),
+    rank = rank(-mins, ties.method = "min")
+  ) %>%
+  arrange(rank) %>%
+  select(rank, person, runtime_perc, mins, hours, days) %>%
+  datatable(
+    style = "bootstrap",
+    filter = "top",
+    colnames = c("Rank", "Person", "% of All", "Minutes", "Hours", "Days"), 
+    rownames = FALSE,
+    options = list(
+       pageLength = 25,
+       lengthMenu = c(10, 25, 50, 100)
+    )
+  ) %>%
+  formatPercentage(columns = 3, digits = 1)
 ```
 
