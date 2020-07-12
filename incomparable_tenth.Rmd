@@ -60,7 +60,7 @@ incomparable %>%
   mutate(
     person = factor(person),
     total = guest + host,
-    total_perc = total / nrow(incomparable_wide),
+    total_perc = round(total / nrow(incomparable_wide), 4),
     rank = rank(-total, ties.method = "min")
   ) %>%
   arrange(desc(total)) %>%
@@ -102,7 +102,7 @@ incomparable %>%
   ) %>%
   group_by(segment) %>%
   mutate(
-    total_perc = total / sum(host),
+    total_perc = round(total / sum(host), 4),
     rank = rank(-total, ties.method = "min")
   ) %>%
   arrange(segment, desc(total)) %>%
@@ -135,7 +135,7 @@ incomparable %>%
     hours = round(mins/60, 1), 
     days = round(hours/24, 1),
     person = factor(person),
-    runtime_perc = mins / sum(incomparable_wide$duration),
+    runtime_perc = round(mins / sum(incomparable_wide$duration), 4),
     rank = rank(-mins, ties.method = "min")
   ) %>%
   arrange(rank) %>%
