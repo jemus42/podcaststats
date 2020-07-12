@@ -18,9 +18,12 @@ knitr::opts_chunk$set(
 )
 
 incomparable_wide <- readRDS("data/incomparable_master_wide.rds") %>%
-  filter(podcast == "The Incomparable")
+  filter(podcast == "The Incomparable") %>%
+  filter(!str_detect(number, "[a-z]$"))
+
 incomparable <- readRDS("data/incomparable_master.rds") %>%
-  filter(podcast == "The Incomparable")
+  filter(podcast == "The Incomparable") %>%
+  filter(!str_detect(number, "[a-z]$"))
 ```
 
 ## All the panelists!
@@ -45,7 +48,6 @@ incomparable %>%
     )
   ) %>%
   formatPercentage(columns = 6, digits = 1)
-
 
 # incomparable %>%
 #   count(person, role) %>%
