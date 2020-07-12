@@ -31,21 +31,30 @@ incomparable %>%
   pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
   mutate(
     total = guest + host,
-    total_perc = total / nrow(incomparable_wide)
+    total_perc = total / nrow(incomparable_wide),
+    rank = rank(-total, ties.method = "min")
   ) %>%
   arrange(desc(total)) %>%
-  datatable() %>%
-  formatPercentage(columns = 5, digits = 1)
-
-
-incomparable %>%
-  count(person, role) %>%
-  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
-  mutate(
-    total = guest + host,
-    total_perc = total / nrow(incomparable_wide),
-    rank = rank(-total)
+  select(rank, person, host, guest, total, total_perc) %>%
+  datatable(
+    colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
+    rownames = FALSE,
+    options = list(
+       pageLength = 20,
+       lengthMenu = c(5, 10, 15, 20)
+    )
   ) %>%
-  arrange(rank)
+  formatPercentage(columns = 6, digits = 1)
+
+
+# incomparable %>%
+#   count(person, role) %>%
+#   pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+#   mutate(
+#     total = guest + host,
+#     total_perc = total / nrow(incomparable_wide),
+#     rank = rank(-total)
+#   ) %>%
+#   arrange(rank)
 ```
 
