@@ -26,6 +26,17 @@ incomparable <- readRDS("data/incomparable_master.rds") %>%
   filter(!str_detect(number, "[a-z]$"))
 ```
 
+The latest episode in the current dataset:
+
+```{r tenth-latest-data}
+incomparable_wide %>%
+  head(1) %>%
+  select(number, date, title, host, guest) %>%
+  mutate(date = as.Date(date)) %>%
+  kable()
+```
+
+
 ## All the panelists!
 
 ```{r tenth-panelists}
