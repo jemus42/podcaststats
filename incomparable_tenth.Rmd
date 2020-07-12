@@ -46,7 +46,12 @@ incomparable_wide %>%
 
 ## All the panelists!
 
+Here are some rankings of panelists (including hosts) across different metrics / subsets.  
+Special bonus episodes are not included (507b, 506b, 337b, 173z).
+
 ### By Number of Appearances
+
+Nothing special, just "appears in episode" counts.
 
 ```{r tenth-panelists}
 incomparable %>%
@@ -119,7 +124,7 @@ incomparable %>%
 
 ### By Duration of Appearance
 
-Duration per episode in which each eisode appears.
+Duration per episode in which each person appears, one episode can count towards multiple people's total of course.
 
 ```{r tenth-panelists-duration}
 incomparable %>%
