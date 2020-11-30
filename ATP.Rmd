@@ -8,12 +8,12 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, echo=FALSE, cache=FALSE, include=FALSE, eval=FALSE}
+```{r setup, echo=FALSE, cache=FALSE, include=FALSE}
 source("00_setup.R")
 
 ## Global options
 # options(max.print = "75")
-opts_chunk$set(fig.path = "assets/plots/atp/")
+opts_chunk$set(fig.path = "assets/plots/atp/", eval = FALSE)
 
 # opts_knit$set(width = 90)
 
