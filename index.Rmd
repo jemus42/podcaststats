@@ -14,7 +14,7 @@ opts_chunk$set(
 )
 
 relay <- readRDS("data/relay.rds")
-atp <- readRDS("data/atp.rds")
+# atp <- readRDS("data/atp.rds")
 incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds") %>%
   filter(!is.na(date))
 ```
@@ -58,15 +58,15 @@ relay %<>%
     network = "Relay.FM"
   )
 
-atp %<>%
-  filter(!is.na(month)) %>%
-  mutate(
-    number = as.character(number),
-    year = year(date),
-    date = as.POSIXct(date),
-    network = "ATP",
-    podcast = "ATP"
-  )
+# atp %<>%
+#   filter(!is.na(month)) %>%
+#   mutate(
+#     number = as.character(number),
+#     year = year(date),
+#     date = as.POSIXct(date),
+#     network = "ATP",
+#     podcast = "ATP"
+#   )
 
 incomparable_master_wide %<>%
   mutate(
@@ -76,8 +76,8 @@ incomparable_master_wide %<>%
   )
 
 podcasts <- incomparable_master_wide %>%
-  bind_rows(relay) %>%
-  bind_rows(atp)
+  bind_rows(relay)# %>%
+  # bind_rows(atp)
 
 podcasts %>%
   group_by(network) %>%
