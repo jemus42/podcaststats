@@ -13,10 +13,9 @@ opts_chunk$set(
   fig.path = "assets/plots/main/"
 )
 
-relay <- readRDS("data/relay.rds")
-# atp <- readRDS("data/atp.rds")
-incomparable_master_wide <- readRDS("data/incomparable_master_wide.rds") %>%
-  filter(!is.na(date))
+relay_episodes <- readRDS("data/relay_episodes.rds")
+atp <- readRDS("data/atp.rds")
+incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
 ```
 
 This site is an automatically generated collection of plots and tables visualizing some metadata from my favorite podcasts/podcast networks.  
@@ -50,34 +49,15 @@ Since the data collection and plot creation is automated and updated daily, this
 Here's a quick overview of the podcast data I've collected so far.  
 
 ```{r allshows}
-relay %<>%
+atp %<>%
   mutate(
-    number = as.character(number),
-    year = year(date),
-    date = as.POSIXct(date),
-    network = "Relay.FM"
+    network = "ATP",
+    show = "ATP"
   )
 
-# atp %<>%
-#   filter(!is.na(month)) %>%
-#   mutate(
-#     number = as.character(number),
-#     year = year(date),
-#     date = as.POSIXct(date),
-#     network = "ATP",
-#     podcast = "ATP"
-#   )
-
-incomparable_master_wide %<>%
-  mutate(
-    number = as.character(number),
-    year = year(date),
-    network = "The Incomparable"
-  )
-
-podcasts <- incomparable_master_wide %>%
-  bind_rows(relay)# %>%
-  # bind_rows(atp)
+podcasts <- incomparable_episodes %>%
+  bind_rows(relay_episodes) %>%
+  bind_rows(atp)
 
 podcasts %>%
   group_by(network) %>%
@@ -87,8 +67,9 @@ podcasts %>%
     duration_avg = round(mean(duration, na.rm = TRUE)),
     firstep = as.character(as.Date(min(date, na.rm = TRUE))),
     lastep = as.character(as.Date(max(date, na.rm = TRUE))),
-    shows = length(unique(podcast)),
-    epspershow = round(episodes / shows, 1)
+    shows = length(unique(show)),
+    epspershow = round(episodes / shows, 1),
+    .groups = "drop"
   ) %>%
   set_colnames(c(
     "Network", "Episodes", "Duration (total, days)",
@@ -104,12 +85,12 @@ From first to last published episode.
 
 ```{r allshows_timeline, fig.height=16}
 podcasts %>%
-  group_by(podcast) %>%
+  group_by(show) %>%
   mutate(
     d_min = min(date),
     d_max = max(date)
   ) %>%
-  ggplot(aes(x = reorder(podcast, d_min), color = network)) +
+  ggplot(aes(x = reorder(show, d_min), color = network)) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max), width = .5, size = 2) +
   scale_x_discrete(position = "top") +
   scale_color_brewer(palette = "Dark2") +
@@ -131,7 +112,7 @@ podcasts %>%
 ```{r allshows_duration, fig.height=16}
 podcasts %>%
   filter(!is.na(duration)) %>%
-  ggplot(aes(x = reorder(podcast, duration, FUN = mean), y = duration, fill = network)) +
+  ggplot(aes(x = reorder(show, duration, FUN = mean), y = duration, fill = network)) +
   geom_boxplot() +
   coord_flip() +
   scale_fill_brewer(palette = "Dark2") +
