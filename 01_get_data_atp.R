@@ -1,8 +1,6 @@
 #! /usr/bin/env Rscript
 
-source("00_setup.R")
-source("00_podcast_parsers.R")
+library(poddr)
 
-#### ATP ####
-atp <- parse_atp_feed()
-cache_podcast_data(atp)
+atp <- atp_get_episodes()
+cache_podcast_data(atp, csv = FALSE)

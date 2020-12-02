@@ -18,9 +18,9 @@ navbar:
     - text: "Relay FM"
       icon: fa-list-ul
       href: relayfm_network.html
-    # - text: "ATP"
-    #   icon: fa-list-ul
-    #   href: ATP.html
+    - text: "ATP"
+      icon: fa-list-ul
+      href: ATP.html
   right:
     - text: ""
       icon: fa-github
