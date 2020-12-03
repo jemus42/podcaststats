@@ -9,7 +9,7 @@ editor_options:
 ```{r global_options, include=FALSE}
 source("00_setup.R")
 
-opts_chunk$set(
+knitr::opts_chunk$set(
   fig.path = "assets/plots/main/"
 )
 
@@ -71,7 +71,7 @@ podcasts %>%
     epspershow = round(episodes / shows, 1),
     .groups = "drop"
   ) %>%
-  set_colnames(c(
+  set_names(c(
     "Network", "Episodes", "Duration (total, days)",
     "Duration (mean, mins)", "First Episode",
     "Last Episode", "# of Shows", "Episodes per Show"

@@ -11,11 +11,7 @@ editor_options:
 ```{r setup, echo=FALSE, cache=FALSE, include=FALSE}
 source("00_setup.R")
 
-## Global options
-# options(max.print = "75")
-opts_chunk$set(fig.path = "assets/plots/atp/")
-
-# opts_knit$set(width = 90)
+knitr::opts_chunk$set(fig.path = "assets/plots/atp/")
 
 #### Data Prep ####
 atp <- readRDS("data/atp.rds") %>%
@@ -23,7 +19,7 @@ atp <- readRDS("data/atp.rds") %>%
   mutate(date = as.POSIXct(date))
 
 #### Plot presets ####
-duration_mins <- "Duration (mins)"
+duration_mins <- "Duration (HH:MM:SS)"
 ```
 
 Data in this summary is [limited to the 100 most recent episodes](https://twitter.com/caseyliss/status/706885764236361728) in the feed.
@@ -55,7 +51,7 @@ ggplot(atp, aes(x = date, y = duration)) +
   labs(
     title = "ATP Episode Durations",
     subtitle = "All episodes by duration",
-    x = "Date Published", y = "Duration (mins)", caption = caption
+    x = "Date Published", y = duration_mins, caption = caption
   ) +
   theme_ipsum(grid = "XY")
 ```

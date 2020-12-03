@@ -18,17 +18,16 @@ knitr::opts_chunk$set(
   fig.path = "assets/plots/incomparable_tenth/"
 )
 
-incomparable_wide <- readRDS("data/incomparable_master_wide.rds") %>%
-  filter(podcast == "The Incomparable") %>%
+incomparable_wide <- readRDS("data/incomparable_episodes.rds") %>%
+  filter(show == "The Incomparable") %>%
+  # Excludes special episodes
   filter(!str_detect(number, "[a-z]$"))
 
-incomparable <- readRDS("data/incomparable_master.rds") %>%
-  filter(podcast == "The Incomparable") %>%
-  filter(!str_detect(number, "[a-z]$"))
+incomparable <- gather_people(incomparable_wide)
 ```
 
 ```{glue tenth-summary, .transformer = epoxy_style_bold()}
-Since its first episode on {format(min(as.Date(incomparable_wide$date)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(incomparable_wide$duration)/60)} hours of content (roughly {round(sum(incomparable_wide$duration)/60/24)} days) across {nrow(incomparable_wide)} episodes.
+Since its first episode on {format(min(as.Date(incomparable_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(incomparable_wide$duration, na.rm = TRUE)/60)} hours of content (roughly {round(sum(incomparable_wide$duration, na.rm = TRUE)/60/24)} days) across {nrow(incomparable_wide)} episodes.
 ```
 
 
@@ -40,7 +39,7 @@ incomparable_wide %>%
   head(1) %>%
   select(number, date, title, host, guest) %>%
   mutate(date = as.Date(date)) %>%
-  kable()
+  knitr::kable()
 ```
 
 
@@ -84,29 +83,29 @@ The segments the dataset knows about, with episode count:
 
 ```{r tenth-segments}
 incomparable_wide %>%
-  count(segment, sort = TRUE) %>%
-  replace_na(replace = list(segment = "(General)")) %>%
-  kable()
+  count(category, sort = TRUE) %>%
+  replace_na(replace = list(category = "General")) %>%
+  knitr::kable()
 ```
 
 Ranks and % withing each segment.
 
 ```{r tenth-panelists-segments}
 incomparable %>%
-  count(segment, person, role) %>%
-  filter(!is.na(segment)) %>%
+  count(category, person, role) %>%
+  filter(!is.na(category)) %>%
   pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
   mutate(
-    segment = factor(segment), person = factor(person),
+    segment = factor(category), person = factor(person),
     total = guest + host
   ) %>%
-  group_by(segment) %>%
+  group_by(category) %>%
   mutate(
     total_perc = round(total / sum(host), 4),
     rank = rank(-total, ties.method = "min")
   ) %>%
-  arrange(segment, desc(total)) %>%
-  select(segment, rank, person, host, guest, total, total_perc) %>%
+  arrange(category, desc(total)) %>%
+  select(category, rank, person, host, guest, total, total_perc) %>%
   datatable(
     style = "bootstrap",
     colnames = c("Segment", "Rank", "Person", "Host", "Guest", "Total", "Total %"), 
@@ -129,13 +128,13 @@ Duration per episode in which each person appears, one episode can count towards
 ```{r tenth-panelists-duration}
 incomparable %>%
   group_by(person) %>%
-  summarize(mins = sum(duration)) %>%
+  summarize(mins = sum(as.numeric(duration)/60)) %>%
   mutate(
     mins = round(mins, 1),
     hours = round(mins/60, 1), 
     days = round(hours/24, 1),
     person = factor(person),
-    runtime_perc = round(mins / sum(incomparable_wide$duration), 4),
+    runtime_perc = round(mins / sum(as.numeric(incomparable_wide$duration/60)), 4),
     rank = rank(-mins, ties.method = "min")
   ) %>%
   arrange(rank) %>%

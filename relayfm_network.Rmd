@@ -11,7 +11,7 @@ editor_options:
 source("00_setup.R")
 
 #### Global options ####
-opts_chunk$set(
+knitr::opts_chunk$set(
   fig.path = "assets/plots/relay/"
 )
 
@@ -26,7 +26,7 @@ shows <- relay_episodes %>%
   arrange(age) %>%
   pull("show")
 
-relay_episodes %<>%
+relay_episodes <- relay_episodes %>%
   mutate(
     show = factor(show, levels = shows, ordered = TRUE),
   )
@@ -51,13 +51,13 @@ progress <- round(thisyear / lastyear * 100, 1)
 ```
 
 
-[Relay.fm](https://relay.fm/) spans **`r length(shows)`** shows and a combined runtime of over **`r relay_episodes$duration %>% sum() %>% divide_by(60) %>% divide_by(24) %>% floor`** days spread across **`r nrow(relay_episodes)` episodes** since 2014.  
+[Relay.fm](https://relay.fm/) spans **`r length(shows)`** shows and a combined runtime of over **`r round(sum(relay_episodes$duration, na.rm = TRUE)/ddays(1))`** days spread across **`r nrow(relay_episodes)` episodes** since 2014.  
 
 In `r year(now())-1`, there were **`r lastyear`** episodes published, and we're currently about **`r progress`%** of the way there at **`r thisyear`** episodes this year.
 
 ## Shows by Age
 
-```{r shows_byage, fig.height=9}
+```{r shows_by_age, fig.height=9}
 relay_episodes %>%
   filter(year >= 2014) %>%
   group_by(show) %>%
@@ -82,7 +82,7 @@ relay_episodes %>%
 
 ## Shows per Year
 
-```{r show_peryear, fig.height = 6, fig.width = 10}
+```{r show_per_year, fig.height = 6, fig.width = 10}
 relay_episodes %>%
   filter(year >= 2014) %>%
   group_by(show, year) %>%
@@ -104,7 +104,7 @@ relay_episodes %>%
 
 ## Shows per Week
 
-```{r shows_perweek, fig.height=6, fig.width = 10}
+```{r shows_per_week, fig.height=6, fig.width = 10}
 relay_episodes %>%
   mutate(
     week = week(date),
@@ -132,7 +132,7 @@ relay_episodes %>%
 
 ### Regularity
 
-```{r shows_perweek_bars, fig.height=12, fig.width=11}
+```{r shows_per_week_bars, fig.height=12, fig.width=11}
 relay_episodes %>%
   mutate(
     week = isoweek(date),
@@ -156,7 +156,7 @@ relay_episodes %>%
 
 ## Shows per Month
 
-```{r shows_permonth}
+```{r shows_per_month}
 relay_episodes %>%
   mutate(
     month = month(date),
