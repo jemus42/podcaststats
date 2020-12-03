@@ -6,9 +6,10 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 library(lubridate)
+library(hms)
 library(purrr)
-library(rvest)
-library(readr)
+
+if (!requireNamespace("Hmisc")) install.packages("Hmisc")
 
 library(knitr)
 library(ggplot2)
@@ -52,40 +53,6 @@ theme_set(
   ) +
     theme(
       plot.title.position = "plot",
-      panel.spacing.x = unit(5, "mm")
+      panel.spacing.x = unit(2, "mm")
     )
 )
-
-# Convenience function to display N
-label_n <- function(data, brackets = FALSE) {
-  if (is.data.frame(data)) {
-    n <- nrow(data)
-  } else if (is.numeric(data) & length(data) == 1) {
-    n <- data
-  } else {
-    stop("'data' must be a data.frame or a numeric vector of length 1")
-  }
-  ret <- paste0("N = ", n)
-  if (brackets) {
-    ret <- paste0("(", ret, ")")
-  }
-  return(ret)
-}
-
-#### Caching ####
-cache_podcast_data <- function(x, dir = "data", filename = NULL, csv = TRUE) {
-  if (is.null(filename)) {
-    filename <- deparse(substitute(x))
-  }
-
-  path_rds <- paste0(file.path(dir, filename), ".rds")
-
-  cliapp::cli_alert_success("Saving {filename} to {path_rds}")
-  saveRDS(x, path_rds)
-
-  if (csv) {
-    path_csv <- paste0(file.path(dir, filename), ".csv")
-    cliapp::cli_alert_success("Saving {filename} to {path_csv}")
-    write_delim(x, path_csv, delim = ";")
-  }
-}

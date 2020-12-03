@@ -13,9 +13,9 @@ opts_chunk$set(
   fig.path = "assets/plots/main/"
 )
 
+incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
 relay_episodes <- readRDS("data/relay_episodes.rds")
 atp <- readRDS("data/atp.rds")
-incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
 ```
 
 This site is an automatically generated collection of plots and tables visualizing some metadata from my favorite podcasts/podcast networks.  
@@ -30,9 +30,9 @@ Data includes episode runtimes, release dates, and hosts (in case of The Incompa
 
 The data sources are:
 
-- **The Incomparable**: Home-brewed `stats.txt` files [Jason](https://twitter.com/jsnell) has set up for me to parse (thanks Jason <3)
+- **The Incomparable**: Home-brewed `stats.txt` files [Jason](https://twitter.com/jsnell) has set up for me to parse (thanks Jason <3) and some web-scraping of the individual show's archive pages.
 - **Relay.fm**: The [master RSS feed]("https://www.relay.fm/master/feed")
-- **ATP**: The [overcast feed](https://overcast.fm/itunes617416468/accidental-tech-podcast)
+- **ATP**: The [website](https://atp.fm)
 
 Data collection and site/plot-recreation happens daily at midnight UTC.
 If you want to use this data for your own projects, you can download it from [here](/data)
@@ -49,7 +49,7 @@ Since the data collection and plot creation is automated and updated daily, this
 Here's a quick overview of the podcast data I've collected so far.  
 
 ```{r allshows}
-atp %<>%
+atp <- atp %>%
   mutate(
     network = "ATP",
     show = "ATP"
@@ -127,29 +127,23 @@ podcasts %>%
 ## Placeholder Quickie: Defocused vs. Reconcilable Differences
 
 ```{r recdiffs_vs_defocused}
-defocused <- readRDS("data/incomparable_master_wide.rds") %>%
-  filter(podcast == "Defocused") %>%
-  mutate(
-    number = as.numeric(number),
-    year = as.numeric(year)
-  )
+defocused <- readRDS("data/incomparable_episodes.rds") %>%
+  filter(show == "Defocused")
 
-recdiffs <- readRDS("data/relay.rds") %>%
-  filter(podcast == "Reconcilable Differences") %>%
-  mutate(date = as.POSIXct(date))
+recdiffs <- readRDS("data/relay_episodes.rds") %>%
+  filter(show == "Reconcilable Differences")
 
-data <- bind_rows(recdiffs, defocused)
-
-ggplot(data = data, aes(x = podcast, y = duration, fill = podcast)) +
-  geom_boxplot(alpha = .5, show.legend = FALSE) +
-  geom_violin(draw_quantiles = c(.25, .75), alpha = .5, show.legend = FALSE) +
-  stat_summary(fun = mean, geom = "point", size = 2, show.legend = FALSE) +
-  scale_fill_brewer(palette = "Dark2") +
-  coord_flip() +
-  theme(legend.position = "top") +
-  labs(
-    title = "Defocused vs. Reconcilable Differences",
-    subtitle = "Comparison of Show Durations (Violin Plot)",
-    x = "", y = "Duration (mins)", fill = "Show"
-  )
+bind_rows(recdiffs, defocused) %>%
+  ggplot(aes(x = show, y = duration, fill = show)) +
+    geom_boxplot(alpha = .5, show.legend = FALSE) +
+    geom_violin(draw_quantiles = c(.25, .75), alpha = .5, show.legend = FALSE) +
+    stat_summary(fun = mean, geom = "point", size = 2, show.legend = FALSE) +
+    scale_fill_brewer(palette = "Dark2") +
+    coord_flip(ylim = c(hms(hours = 0), NA)) +
+    theme(legend.position = "top") +
+    labs(
+      title = "Defocused vs. Reconcilable Differences",
+      subtitle = "Comparison of Show Durations (Violin plot with mean and quantiles)",
+      x = "", y = "Duration (HH:MM:SS)", fill = "Show"
+    )
 ```
