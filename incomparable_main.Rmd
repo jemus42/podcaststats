@@ -17,10 +17,11 @@ knitr::opts_chunk$set(
   fig.path = "assets/plots/incomparable_main/"
 )
 
-incomparable_wide <- readRDS("data/incomparable_master_wide.rds") %>%
-  filter(podcast == "The Incomparable")
-incomparable <- readRDS("data/incomparable_master.rds") %>%
-  filter(podcast == "The Incomparable")
+incomparable_wide <- readRDS("data/incomparable_episodes.rds") %>%
+  filter(show == "The Incomparable")
+incomparable <- gather_people(incomparable_wide)
+
+current_year <- year(today() - months(3))
 ```
 
 ## Introduction
@@ -32,11 +33,11 @@ I had issues with my old code to parse the podcast data, so there may be some wo
 
 ## Panelists 
 
-### 2020 Panelists
+### `r current_year` Panelists
 
-```{r 2020_panelists, fig.height=9}
+```{r current_year_panelists, fig.height=9}
 incomparable %>%
-  filter(year == 2020) %>%
+  filter(year == current_year) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>%
@@ -49,7 +50,7 @@ incomparable %>%
   )
 
 incomparable %>%
-  filter(year == 2020) %>%
+  filter(year == current_year) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>%
@@ -63,7 +64,7 @@ incomparable %>%
       scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
       scale_fill_brewer(palette = "Set1", label = c("Guest", "Host")) +
       labs(
-        title = "The Incomparable — 2020",
+        title = glue::glue("The Incomparable — {current_year}"),
         subtitle = "Panelists by # of Appearances",
         x = "Panelist", y = "# of Appearances", fill = "Role"
       ) +
@@ -83,59 +84,54 @@ incomparable_wide %>%
       geom_point(alpha = .75) +
       geom_smooth(method = loess, se = F, color = "red") +
       geom_label_repel(
-        data = filter(., duration > 150),
+        data = slice_max(., duration, n = 5),
         aes(label = title_long), alpha = .8, size = 3
       ) +
-      scale_x_datetime(
-        date_breaks = "1 year", date_labels = "%Y",
-        date_minor_breaks = "3 months"
+      scale_x_date(
+        date_breaks = "1 year", date_labels = "%Y"
       ) +
-      scale_y_continuous(
-        breaks = seq(0, 500, 30),
-        minor_breaks = seq(0, 500, 10),
+      scale_y_time(
+        breaks = hms(minutes = seq(0, 1e5, 60)),
         limits = c(0, NA)
       ) +
       labs(
-        title = "The Incomparable Network: Main Show",
-        subtitle = "Episode Runtimes",
-        y = "Minutes", x = "Date Published",
+        title = "The Incomparable: Mothership",
+        subtitle = "Episode runtimes",
+        y = "Duration (HH:MM:SS)", x = "Date Published",
         caption = caption
-      ) +
-      theme_ipsum(grid = "y")
+      )
   }
 ```
 
 Runtimes per year.
 
 ```{r runtime_year, fig.width=10}
-incomparable_wide %>% {
-  ggplot(data = ., aes(x = year, y = duration)) +
+incomparable_wide %>% 
+  ggplot(aes(x = factor(year), y = duration)) +
     geom_point(
       alpha = .75,
       position = position_jitter(height = 0, width = .2)
     ) +
     geom_boxplot(outlier.alpha = 0, alpha = .5) +
     stat_summary(fun = mean, geom = "point", color = "red") +
-    scale_y_continuous(
-      breaks = seq(0, 500, 30),
-      minor_breaks = seq(0, 500, 10),
+    scale_y_time(
+      breaks = hms(minutes = seq(0, 1e5, 60)),
       limits = c(0, NA)
     ) +
     labs(
-      title = "The Incomparable Network: Main Show",
-      subtitle = "Episode Runtimes",
-      y = "Minutes", x = "Year Published",
+      title = "The Incomparable Network: Mothership",
+      subtitle = "Episode runtimes",
+      y = "Duration (HH:MM:SS)", x = "Year Published",
       caption = caption
-    ) +
-    theme_ipsum(grid = "y")
-}
+    )
+
 ```
 
 ## Runtime per Person
 
 ```{r runtime_person, fig.height=15}
 incomparable %>%
-  filter(year >= 2011, podcast == "The Incomparable") %>%
+  filter(year >= 2011) %>%
   group_by(person) %>%
   mutate(mean_duration = mean(duration)) %>%
   ggplot(data = ., aes(x = reorder(person, mean_duration), y = duration)) +
@@ -143,9 +139,9 @@ incomparable %>%
   geom_boxplot(alpha = .5, outlier.alpha = 0) +
   coord_flip() +
   labs(
-    title = "The Incomparable: Main Show",
-    subtitle = "Episode Runtimes",
-    y = "Duration (mins)", x = "Panelist",
+    title = "The Incomparable: Mothership",
+    subtitle = "Episode runtimes by panelist",
+    y = "Duration (HH:MM:SS)", x = "Panelist",
     caption = caption
   )
 ```

@@ -1,7 +1,7 @@
 #### Setup stuff for each sub-analysis ####
 # Should be source'd on top of each Rmd
 #### Loading packages ####
-library(magrittr)
+# library(magrittr)
 library(dplyr)
 library(tidyr)
 library(stringr)
@@ -9,9 +9,9 @@ library(lubridate)
 library(hms)
 library(purrr)
 
-if (!requireNamespace("Hmisc")) install.packages("Hmisc")
+library(poddr)
 
-library(knitr)
+# library(knitr)
 library(ggplot2)
 library(scales)
 library(ggrepel)
@@ -22,8 +22,9 @@ library(DT)
 
 library(broom)
 
-# Dummy to make renv pick up ragg
+# Dummy to make renv pick up ragg and Hmisc
 require(ragg)
+if (!requireNamespace("Hmisc")) install.packages("Hmisc")
 
 #### Knitr chunk options ####
 knitr::opts_chunk$set(
@@ -48,11 +49,12 @@ caption <- paste0(
 
 # Set default theme
 theme_set(
-  theme_ipsum_rc(
-    plot_margin = margin(6, 6, 6, 6)
+  theme_ipsum_pub(
+    plot_margin = margin(4, 4, 4, 4)
   ) +
     theme(
       plot.title.position = "plot",
-      panel.spacing.x = unit(2, "mm")
+      panel.spacing.x = unit(2, "mm"),
+      legend.position = "top"
     )
 )
