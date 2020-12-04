@@ -337,7 +337,7 @@ ggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration
 ```{r relay_people_activity, fig.height = 9}
 ggplot(people_activity) +
   geom_segment(aes(
-    x = forcats::fct_reorder(person, first_show, .desc = TRUE), xend = host,
+    x = forcats::fct_reorder(person, first_show, .desc = TRUE), xend = person,
     y = first_show, yend = last_show
   ),
   size = 2, alpha = .75
