@@ -23,6 +23,9 @@ navbar:
       href: ATP.html
   right:
     - text: ""
+      icon: fa-download
+      href: "/data"
+    - text: ""
       icon: fa-github
       href: "https://github.com/jemus42/podcaststats"
 output:
