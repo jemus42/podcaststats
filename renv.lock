@@ -706,15 +706,15 @@
     },
     "poddr": {
       "Package": "poddr",
-      "Version": "0.0.0.9000",
+      "Version": "0.0.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jemus42",
       "RemoteRepo": "poddr",
       "RemoteRef": "main",
-      "RemoteSha": "916f446a370bda5f296d3e9702ff9515d2b10388",
-      "Hash": "a3577f4244d2b53d7317f88d07d768d1"
+      "RemoteSha": "7f7819ea32f9888b4d5f2e3f71d428724aae8b4c",
+      "Hash": "e8e0b4ae46daaff0f52b05c4efa99426"
     },
     "polite": {
       "Package": "polite",

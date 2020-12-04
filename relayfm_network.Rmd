@@ -286,10 +286,9 @@ Be that as it may, here's a bit about the hosts.
 
 ```{r people, fig.height=9}
 relay_episodes %>%
-  separate_rows(host, sep = ",\\s+") %>%
-  mutate(host = str_remove(host, ",") %>% str_trim(side = "both")) %>%
-  count(host) %>%
-  ggplot(aes(x = reorder(host, n), y = n)) +
+  gather_people(people_col = "host") %>%
+  count(person) %>%
+  ggplot(aes(x = reorder(person, n), y = n)) +
   geom_col() +
   coord_flip() +
   labs(
@@ -305,9 +304,8 @@ Sooo okay!
 
 ```{r hosts_by_hours_by_weeks_active, fig.height = 9}
 relay_episodes %>%
-  separate_rows(host, sep = ",\\s+") %>%
-  mutate(host = str_remove(host, ",") %>% str_trim(side = "both")) %>%
-  group_by(host) %>%
+  gather_people(people_col = "host") %>%
+  group_by(person) %>%
   summarize(
     n = n(),
     duration = sum(duration, na.rm = TRUE),
@@ -320,7 +318,7 @@ relay_episodes %>%
   people_activity
 
 
-ggplot(people_activity, aes(x = reorder(host, duration_per_week), y = duration_per_week)) +
+ggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration_per_week)) +
   geom_col() +
   coord_flip() +
   scale_y_time(
@@ -339,7 +337,7 @@ ggplot(people_activity, aes(x = reorder(host, duration_per_week), y = duration_p
 ```{r relay_people_activity, fig.height = 9}
 ggplot(people_activity) +
   geom_segment(aes(
-    x = forcats::fct_reorder(host, first_show, .desc = TRUE), xend = host,
+    x = forcats::fct_reorder(person, first_show, .desc = TRUE), xend = host,
     y = first_show, yend = last_show
   ),
   size = 2, alpha = .75
