@@ -118,7 +118,7 @@ podcasts %>%
   scale_fill_brewer(palette = "Dark2") +
   labs(
     title = "Podcasts by Duration", subtitle = "By Network",
-    x = "", y = "Duration (mins)", fill = "Network"
+    x = "", y = "Duration (HH:MM:SS)", fill = "Network"
   ) +
   theme(legend.position = "top")
 ```

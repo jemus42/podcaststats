@@ -41,6 +41,9 @@ knitr::opts_chunk$set(
   dev = "ragg_png"
 )
 
+# For yearly review things, use the current(ish) year
+current_year <- year(today() - months(3))
+
 #### Plotting presets ####
 caption <- paste0(
   "podcasts.jemu.name – @jemus42\n",

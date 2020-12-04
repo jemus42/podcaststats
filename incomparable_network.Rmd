@@ -118,11 +118,11 @@ incomparable %>%
 ```
 
 
-## 2020 Hosts and Guests
+## `r current_year`` Hosts and Guests
 
-```{r 2020_panelists_network, fig.height=14}
+```{r currentyear_panelists_network, fig.height=14}
 incomparable %>%
-  filter(year == 2020) %>%
+  filter(year == current_year) %>%
   group_by(person, role) %>%
   tally() %>%
   spread(role, n) %>%
@@ -139,11 +139,11 @@ It was artisanally crafted as a gift to *The Incomparable* panelists and fans <3
 
 <small>* All the nice people _and_ Philip Mozolak</small>
 
-Here's a searchable and sortable list of all the episodes released in 2020 (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
+Here's a searchable and sortable list of all the episodes released in `r current_year` (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
 
-```{r 2020_panelists_network_fulltable}
+```{r currentyear_panelists_network_fulltable}
 incomparable %>%
-  filter(year == 2020) %>%
+  filter(year == current_year) %>%
   select(
     show, number, date,
     duration, title, person, role
@@ -165,19 +165,19 @@ incomparable %>%
   formatDate(3, method = "toDateString")
 ```
 
-## 2020 Shows
+## `r current_year` Shows
 
 TL;DR TeeVee is basially cheating.
 
-```{r incomparable_network_2020_shows}
+```{r incomparable_network_currentyear_shows}
 incomparable_wide %>%
-  filter(year == 2020) %>%
+  filter(year == current_year) %>%
   count(show) %>%
   ggplot(aes(x = reorder(show, n), y = n)) +
   geom_col() +
   coord_flip() +
   labs(
-    title = "The Incomparable Network — 2020",
+    title = glue::glue("The Incomparable Network — {current_year}"),
     subtitle = "Shows by episode count",
     x = "",
     y = "# of Episodes",
@@ -185,11 +185,11 @@ incomparable_wide %>%
   )
 ```
 
-## 2020 Episodes
+## `r current_year` Episodes
 
-```{r incomparable_network_2020_episodes, fig.height=6, fig.width=9}
+```{r incomparable_network_currentyear_episodes, fig.height=6, fig.width=9}
 incomparable_wide %>%
-  filter(year == 2020) %>%
+  filter(year == current_year) %>%
   mutate(date = round_date(date, unit = "week")) %>%
   count(date) %>%
   ggplot(aes(x = date, y = n)) +
@@ -199,7 +199,7 @@ incomparable_wide %>%
       date_labels = "%B"
     ) +
     labs(
-      title = "The Incomparable Network — 2020",
+      title = glue::glue("The Incomparable Network — {current_year}"),
       subtitle = "Shows per week",
       x = "",
       y = "# of Episodes per Week",

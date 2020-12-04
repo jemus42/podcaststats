@@ -20,8 +20,6 @@ knitr::opts_chunk$set(
 incomparable_wide <- readRDS("data/incomparable_episodes.rds") %>%
   filter(show == "The Incomparable")
 incomparable <- gather_people(incomparable_wide)
-
-current_year <- year(today() - months(3))
 ```
 
 ## Introduction
