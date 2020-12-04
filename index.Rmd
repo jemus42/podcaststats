@@ -43,6 +43,24 @@ This project is in a perpetual cycle of maintenance and "ain't nobody got time f
 The reason is that whenever I tweaked the plot dimensions so that the spacing allows for all the text to be readable, it only takes a few months for multiple new podcasts to appear.  
 Since the data collection and plot creation is automated and updated daily, this means the plots now have to fit more data, but since I haven't figured out a good way to auto-adjust the plot width accordingly, plots will look sqished after a few months.  
 
+## Current data
+
+The last time the data was updated and the date of the latest episode within each dataset.
+
+```{r current-data}
+tibble::tribble(
+  ~source, ~file_time, ~latest_episode,
+  "relay.fm", file.info("data/relay_episodes.rds")[["mtime"]], max(relay_episodes$date),
+  "The Incomparable", file.info("data/incomparable_episodes.rds")[["mtime"]], max(incomparable_episodes$date),
+  "ATP", file.info("data/atp.rds")[["mtime"]], max(atp$date)
+) %>%
+  arrange(desc(latest_episode)) %>%
+  knitr::kable(
+    col.names = c("Podcast/Network", "File Time", "Latest Episode")
+  )
+```
+
+
 
 ## All Shows
 
@@ -147,3 +165,4 @@ bind_rows(recdiffs, defocused) %>%
       x = "", y = "Duration (HH:MM:SS)", fill = "Show"
     )
 ```
+
