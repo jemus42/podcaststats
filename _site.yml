@@ -3,18 +3,17 @@ output_dir: "_site"
 navbar:
   title: "Podcast Stats"
   left:
-    - text: "Home"
-      icon: fa-home
+    - text: "Overview"
       href: index.html
     - text: "The Incomparable"
       icon: fa-list-ul
       menu:
         - text: "Main Show"
           href: incomparable_main.html
-        - text: "10th Anniversary Special"
-          href: incomparable_tenth.html
         - text: "Network Wide"
           href: incomparable_network.html
+        - text: "10th Anniversary Special"
+          href: incomparable_tenth.html
     - text: "Relay FM"
       icon: fa-list-ul
       href: relayfm_network.html
@@ -22,10 +21,10 @@ navbar:
       icon: fa-list-ul
       href: ATP.html
   right:
-    - text: ""
+    - text: "Data"
       icon: fa-download
       href: "/data"
-    - text: ""
+    - text: "Code"
       icon: fa-github
       href: "https://github.com/jemus42/podcaststats"
 output:
