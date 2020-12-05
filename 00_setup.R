@@ -44,6 +44,12 @@ knitr::opts_chunk$set(
 # For yearly review things, use the current(ish) year
 current_year <- year(today() - months(3))
 
+network_colors <- c(
+  "The Incomparable" = "#252D6D",
+  "relay.fm" = "#343F48",
+  "ATP" = "#BAC2CC"
+)
+
 #### Plotting presets ####
 caption <- paste0(
   "podcasts.jemu.name – @jemus42\n",
