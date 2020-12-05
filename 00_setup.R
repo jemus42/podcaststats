@@ -46,7 +46,7 @@ current_year <- year(today() - months(3))
 
 network_colors <- c(
   "The Incomparable" = "#252D6D",
-  "relay.fm" = "#343F48",
+  "relay.fm" = "#36667E",
   "ATP" = "#BAC2CC"
 )
 

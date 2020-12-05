@@ -133,7 +133,7 @@ podcasts %>%
   ggplot(aes(x = reorder(show, duration, FUN = mean), y = duration, fill = network)) +
   geom_boxplot() +
   coord_flip() +
-  scale_color_manual(values = network_colors) +
+  scale_fill_manual(values = network_colors) +
   labs(
     title = "Podcasts by Duration", subtitle = "By Network",
     x = "", y = "Duration (HH:MM:SS)", fill = "Network"
@@ -156,7 +156,7 @@ bind_rows(recdiffs, defocused) %>%
     geom_boxplot(alpha = .5, show.legend = FALSE) +
     geom_violin(draw_quantiles = c(.25, .75), alpha = .5, show.legend = FALSE) +
     stat_summary(fun = mean, geom = "point", size = 2, show.legend = FALSE) +
-    scale_color_manual(values = network_colors) +
+    scale_fill_brewer(palette = "Dark2") +
     coord_flip(ylim = c(hms(hours = 0), NA)) +
     theme(legend.position = "top") +
     labs(
