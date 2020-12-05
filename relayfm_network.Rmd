@@ -300,10 +300,11 @@ relay_episodes %>%
 
 ## Host by hours per week of podcasting, says @lbutlr in the slack
 
-Sooo okay!
+Sooo okay! Filtered by episodes aireing in 2014 or later though.
 
 ```{r hosts_by_hours_by_weeks_active, fig.height = 9}
 relay_episodes %>%
+  filter(year >= 2014) %>%
   gather_people(people_col = "host") %>%
   group_by(person) %>%
   summarize(
