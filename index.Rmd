@@ -1,5 +1,7 @@
 ---
 title: "Podcast Data for Fun and (not) Profit"
+date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
+author: "Lukas — @jemus42"
 output:
   html_document
 editor_options: 
