@@ -8,12 +8,10 @@ navbar:
     - text: "The Incomparable"
       icon: fa-list-ul
       menu:
-        - text: "Main Show"
+        - text: "The Mothership"
           href: incomparable_main.html
         - text: "Network Wide"
           href: incomparable_network.html
-        - text: "10th Anniversary Special"
-          href: incomparable_tenth.html
     - text: "Relay FM"
       icon: fa-list-ul
       href: relayfm_network.html

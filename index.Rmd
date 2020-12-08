@@ -17,7 +17,15 @@ knitr::opts_chunk$set(
 
 incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
 relay_episodes <- readRDS("data/relay_episodes.rds")
-atp <- readRDS("data/atp.rds")
+atp <- readRDS("data/atp.rds") %>%
+  mutate(
+    network = "ATP",
+    show = "ATP"
+  )
+
+podcasts <- incomparable_episodes %>%
+  bind_rows(relay_episodes) %>%
+  bind_rows(atp)
 ```
 
 This site is an automatically generated collection of plots and tables visualizing some metadata from my favorite podcasts/podcast networks.  
@@ -33,7 +41,7 @@ Data includes episode runtimes, release dates, and hosts (in case of The Incompa
 The data sources are:
 
 - **The Incomparable**: Home-brewed `stats.txt` files [Jason](https://twitter.com/jsnell) has set up for me to parse (thanks Jason <3) and some web-scraping of the individual show's archive pages.
-- **Relay.fm**: The [master RSS feed]("https://www.relay.fm/master/feed")
+- **Relay.fm**: The individual show RSS feeds and some mild web-scraping.
 - **ATP**: The [website](https://atp.fm)
 
 Data collection and site/plot-recreation happens daily at midnight UTC.
@@ -69,22 +77,10 @@ tibble::tribble(
 Here's a quick overview of the podcast data I've collected so far.  
 
 ```{r allshows}
-atp <- atp %>%
-  mutate(
-    network = "ATP",
-    show = "ATP"
-  )
-
-podcasts <- incomparable_episodes %>%
-  bind_rows(relay_episodes) %>%
-  bind_rows(atp)
-
 podcasts %>%
   group_by(network) %>%
   summarize(
     episodes = n(),
-    duration_d = round(sum(duration, na.rm = TRUE) / 60 / 24),
-    duration_avg = round(mean(duration, na.rm = TRUE)),
     firstep = as.character(as.Date(min(date, na.rm = TRUE))),
     lastep = as.character(as.Date(max(date, na.rm = TRUE))),
     shows = length(unique(show)),
@@ -92,14 +88,13 @@ podcasts %>%
     .groups = "drop"
   ) %>%
   set_names(c(
-    "Network", "Episodes", "Duration (total, days)",
-    "Duration (mean, mins)", "First Episode",
-    "Last Episode", "# of Shows", "Episodes per Show"
+    "Network", "Episodes", "First Episode",
+    "Last Episode", "# of Shows", "Avg Episodes per Show"
   )) %>%
   datatable()
 ```
 
-## All Shows Timeline
+### Timeline
 
 From first to last published episode.
 
@@ -127,7 +122,7 @@ podcasts %>%
 ```
 
 
-## All Shows by Duration
+### Duration
 
 ```{r allshows_duration, fig.height=16}
 podcasts %>%

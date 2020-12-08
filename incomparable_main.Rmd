@@ -27,7 +27,20 @@ incomparable <- gather_people(incomparable_wide)
 I would like to do a lot more with this, but currently time is scarce.  
 However, I want to fulfill [Jason's request](https://twitter.com/jsnell/status/800412064640483328), since I would love to be worthy of the title of *record keeper*.
 
-I had issues with my old code to parse the podcast data, so there may be some wonkyness in the data below. Please let me know if you find something that's obviously wrong (i.e. easy for me to check/verify).
+
+```{glue tenth-summary, .transformer = epoxy_style_bold()}
+Since its first episode on {format(min(as.Date(incomparable_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(incomparable_wide$duration, na.rm = TRUE)/60)} hours of content (roughly {round(sum(incomparable_wide$duration, na.rm = TRUE)/60/24)} days) across {nrow(incomparable_wide)} episodes.
+```
+
+The latest episode in the current dataset:
+
+```{r tenth-latest-data}
+incomparable_wide %>%
+  head(1) %>%
+  select(number, date, title, host, guest) %>%
+  mutate(date = as.Date(date)) %>%
+  knitr::kable()
+```
 
 ## Panelists 
 
@@ -44,7 +57,7 @@ incomparable %>%
   arrange(desc(total)) %>%
   datatable(
     style = "bootstrap",
-    colnames = c("Person", "Guest", "Host", "Total Appearances")
+    colnames = c("Person", "Guest", "Host", "Total")
   )
 
 incomparable %>%
@@ -69,6 +82,124 @@ incomparable %>%
       theme(legend.position = "top")
   }
 ```
+
+### All Time Stats
+
+Here are some rankings of panelists (including hosts) across different metrics / subsets.  
+Special bonus episodes are not included (507b, 506b, 337b, 173z).
+
+### By Number of Appearances
+
+Nothing special, just "appears in episode" counts.
+
+```{r tenth-panelists}
+incomparable %>%
+  # Filter out special episodes containing letters
+  filter(!str_detect(number, "[a-z]$")) %>%
+  count(person, role) %>%
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  mutate(
+    person = factor(person),
+    total = guest + host,
+    total_perc = round(total / nrow(incomparable_wide), 4),
+    rank = rank(-total, ties.method = "min")
+  ) %>%
+  arrange(desc(total)) %>%
+  select(rank, person, host, guest, total, total_perc) %>%
+  datatable(
+    style = "bootstrap",
+    filter = "top",
+    colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
+    rownames = FALSE,
+    options = list(
+       pageLength = 25,
+       lengthMenu = c(10, 25, 50, 100)
+    )
+  ) %>%
+  formatPercentage(columns = 6, digits = 1)
+```
+
+#### By Segment
+
+The segments the dataset knows about, with episode count:
+
+```{r tenth-segments}
+incomparable_wide %>%
+  # Filter out special episodes containing letters
+  filter(!str_detect(number, "[a-z]$")) %>%
+  count(category, sort = TRUE) %>%
+  replace_na(replace = list(category = "General")) %>%
+  knitr::kable()
+```
+
+Ranks and % withing each segment.
+
+```{r tenth-panelists-segments}
+incomparable %>%
+  # Filter out special episodes containing letters
+  filter(!str_detect(number, "[a-z]$")) %>%
+  count(category, person, role) %>%
+  filter(!is.na(category)) %>%
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  mutate(
+    segment = factor(category), person = factor(person),
+    total = guest + host
+  ) %>%
+  group_by(category) %>%
+  mutate(
+    total_perc = round(total / sum(host), 4),
+    rank = rank(-total, ties.method = "min")
+  ) %>%
+  arrange(category, desc(total)) %>%
+  select(category, rank, person, host, guest, total, total_perc) %>%
+  datatable(
+    style = "bootstrap",
+    colnames = c("Segment", "Rank", "Person", "Host", "Guest", "Total", "Total %"), 
+    rownames = FALSE,
+    filter = "top",
+    extensions = "RowGroup",
+    options = list(
+       rowGroup = list(dataSrc = 0),
+       pageLength = 50,
+       lengthMenu = c(10, 25, 50, 75, 120)
+    )
+  ) %>%
+  formatPercentage(columns = 7, digits = 1)
+```
+
+#### By Duration of Appearance
+
+Duration per episode in which each person appears, one episode can count towards multiple people's total of course.
+
+```{r tenth-panelists-duration}
+incomparable %>%
+  # Filter out special episodes containing letters
+  filter(!str_detect(number, "[a-z]$")) %>%
+  group_by(person) %>%
+  summarize(mins = sum(as.numeric(duration)/60)) %>%
+  mutate(
+    mins = round(mins, 1),
+    hours = round(mins/60, 1), 
+    days = round(hours/24, 1),
+    person = factor(person),
+    runtime_perc = round(mins / sum(as.numeric(incomparable_wide$duration/60)), 4),
+    rank = rank(-mins, ties.method = "min")
+  ) %>%
+  arrange(rank) %>%
+  select(rank, person, runtime_perc, mins, hours, days) %>%
+  datatable(
+    style = "bootstrap",
+    filter = "top",
+    colnames = c("Rank", "Person", "% of All", "Minutes", "Hours", "Days"), 
+    rownames = FALSE,
+    options = list(
+       pageLength = 25,
+       lengthMenu = c(10, 25, 50, 100)
+    )
+  ) %>%
+  formatPercentage(columns = 3, digits = 1)
+```
+
 
 ## Runtime
 
@@ -101,7 +232,7 @@ incomparable_wide %>%
   }
 ```
 
-Runtimes per year.
+### By Year
 
 ```{r runtime_year, fig.width=10}
 incomparable_wide %>% 
@@ -125,7 +256,7 @@ incomparable_wide %>%
 
 ```
 
-## Runtime per Person
+### Per Person
 
 ```{r runtime_person, fig.height=15}
 incomparable %>%
