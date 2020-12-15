@@ -56,47 +56,6 @@ ggplot(atp, aes(x = date, y = duration)) +
   theme_ipsum(grid = "XY")
 ```
 
-### Duration by Month
-
-```{r atp_duration_month, fig.height=6}
-atp %>%
-  ggplot(aes(x = month, y = duration)) +
-  geom_boxplot() +
-  stat_summary(fun = mean, geom = "point", color = "red") +
-  # facet_grid(.~year, scales = "free_x", space = "free_x") +
-  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
-  scale_y_time(
-    breaks = hms(minutes = seq(0, 1e6, 30))
-  ) +
-  labs(
-    title = "ATP Episode Durations grouped by Month",
-    subtitle = "Duration by month with average (dot)",
-    x = "Month", y = "Duration (mins)", caption = caption
-  ) +
-  theme_ipsum(grid = "Y") +
-  theme(
-    strip.text = element_text(size = rel(1)),
-    axis.text.x = element_text(size = rel(.9), hjust = 1)
-  )
-
-atp %>%
-  group_by(month) %>%
-  mutate(dur_mean = mean(duration)) %>%
-  ggplot(aes(x = reorder(month, dur_mean), y = duration)) +
-  stat_summary(fun.data = mean_cl_boot, geom = "errorbar") +
-  stat_summary(fun = "mean", geom = "point", color = "red", size = 2) +
-  scale_y_time(
-    breaks = hms(minutes = seq(0, 1e6, 15))
-  ) +
-  coord_flip() +
-  labs(
-    title = "ATP Average Episode Duration by Month",
-    subtitle = "Duration by month (95% CI) with average (dot)",
-    x = "Month", y = "Duration (mins) + 95% CI", caption = caption
-  ) +
-  theme_ipsum(grid = "Xx")
-```
-
 ### Duration by Year
 
 ```{r atp_duration_year, fig.height=6}
@@ -113,13 +72,41 @@ atp %>%
     subtitle = "Duration by year with average (dot)",
     x = "", y = "Duration (mins)", caption = caption
   ) +
-  theme_ipsum(grid = "Y") +
   theme(
     strip.text = element_text(size = rel(1)),
     axis.text.x = element_text(size = rel(1.5)),
-    axis.ticks.x = element_blank()
+    axis.ticks.x = element_blank(),
+    panel.grid.major.x = element_blank()
   )
 ```
+
+### Duration by Month
+
+```{r atp_duration_month, fig.height=6}
+atp %>%
+  ggplot(aes(x = month, y = duration)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", color = "red") +
+  # facet_grid(.~year, scales = "free_x", space = "free_x") +
+  scale_x_discrete(
+    guide = guide_axis(n.dodge = 2)
+  ) +
+  scale_y_time(
+    breaks = hms(minutes = seq(0, 1e6, 30))
+  ) +
+  labs(
+    title = "ATP Episode Durations grouped by Month",
+    subtitle = "Duration by month with average (dot)",
+    x = "Month", y = "Duration (mins)", caption = caption
+  ) +
+  theme(
+    strip.text = element_text(size = rel(1)),
+    axis.text.x = element_text(size = rel(.9), hjust = 1),
+    panel.grid.major.x = element_blank()
+  )
+```
+
+
 
 ## Raw Data 
 
