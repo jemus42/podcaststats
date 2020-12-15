@@ -286,7 +286,7 @@ Be that as it may, here's a bit about the hosts.
 
 ```{r people, fig.height=9}
 relay_episodes %>%
-  gather_people(people_col = "host") %>%
+  gather_people() %>%
   count(person) %>%
   ggplot(aes(x = reorder(person, n), y = n)) +
   geom_col() +
@@ -305,7 +305,7 @@ Sooo okay! Filtered by episodes aireing in 2014 or later though.
 ```{r hosts_by_hours_by_weeks_active, fig.height = 9}
 relay_episodes %>%
   filter(year >= 2014) %>%
-  gather_people(people_col = "host") %>%
+  gather_people() %>%
   group_by(person) %>%
   summarize(
     n = n(),
