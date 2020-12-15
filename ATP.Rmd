@@ -52,8 +52,7 @@ ggplot(atp, aes(x = date, y = duration)) +
     title = "ATP Episode Durations",
     subtitle = "All episodes by duration",
     x = "Date Published", y = duration_mins, caption = caption
-  ) +
-  theme_ipsum(grid = "XY")
+  ) 
 ```
 
 ### Duration by Year
@@ -87,7 +86,6 @@ atp %>%
   ggplot(aes(x = month, y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
-  # facet_grid(.~year, scales = "free_x", space = "free_x") +
   scale_x_discrete(
     guide = guide_axis(n.dodge = 2)
   ) +
