@@ -138,7 +138,7 @@ relay_episodes %>%
     week = isoweek(date),
     year_num = year(date)
   ) %>%
-  filter(year_num == year(today())) %>%
+  filter(year_num == current_year) %>%
   group_by(show, year, week) %>%
   tally() %>%
   ggplot(aes(x = week, y = n)) +
