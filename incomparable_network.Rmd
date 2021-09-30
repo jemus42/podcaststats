@@ -69,7 +69,7 @@ incomparable_wide %>%
   scale_y_time(
     breaks = hms(minutes = seq(0, 300, 30))
   ) +
-  scale_fill_viridis_d(option = "A", guide = FALSE) +
+  scale_fill_viridis_d(option = "A", guide = "none") +
   labs(
     title = "The Incomparable Network",
     subtitle = "All Episodes Since 2011 by Duration, Colored by Show",
