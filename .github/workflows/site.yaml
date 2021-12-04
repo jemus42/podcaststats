@@ -1,0 +1,49 @@
+on:
+  push:
+    branches: main
+
+name: Render & Deploy Site
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@master
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - uses: r-lib/actions/setup-renv@v1
+
+      - name: Install dependencies
+        run: |
+          renv::restore()
+        shell: Rscript {0}
+
+      - name: Get Data
+        run: |
+          library(poddr)
+
+          atp <- atp_get_episodes()
+          cache_podcast_data(atp, csv = FALSE)
+
+          relay_shows <- relay_get_shows()
+          relay_episodes <- relay_get_episodes(relay_shows)
+          cache_podcast_data(relay_shows)
+          cache_podcast_data(relay_episodes)
+
+          incomparable_shows <- incomparable_get_shows()
+          incomparable_episodes <- incomparable_get_episodes(incomparable_shows)
+
+          cache_podcast_data(incomparable_shows)
+          cache_podcast_data(incomparable_episodes)
+        shell: Rscript {0}
+
+      - name: Render Site
+        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+      - name: Commit results
+        run: |
+          git add -A
+          git commit -m 'Rebuild site' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
