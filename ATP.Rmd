@@ -104,6 +104,27 @@ atp %>%
   )
 ```
 
+## Weekday Heatmap
+
+```{r atp_release_weekday}
+atp %>%
+  mutate(year = forcats::fct_rev(factor(year))) %>%
+  count(year, weekday, .drop = FALSE) %>%
+  ggplot(aes(x = weekday, y = year, fill = n, color = n)) +
+  geom_tile() +
+  scale_color_viridis_c() +
+  scale_fill_viridis_c() +
+  labs(
+    title = "ATP Release Day",
+    subtitle = "Frequency of releases per day of week",
+    x = "Day of Week", y = "Year", caption = caption,
+    fill = "Count", color = "Count"
+  ) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
 
 
 ## Raw Data 
