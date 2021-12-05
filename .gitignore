@@ -15,3 +15,5 @@ site_libs
 #
 *_files
 push.sh
+
+log*.log
