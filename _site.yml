@@ -37,4 +37,4 @@ output:
     self_contained: false
     include:
       after_body: html_includes/_footer.html
-      in_header: html_includes/piwik.html
+      in_header: html_includes/matomo.html
