@@ -57,6 +57,8 @@ caption <- paste0(
 )
 
 # Set default theme
+hrbrthemes::import_public_sans()
+
 theme_set(
   theme_ipsum_pub(
     plot_margin = margin(4, 4, 4, 4)
