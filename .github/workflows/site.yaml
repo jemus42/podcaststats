@@ -19,7 +19,9 @@ jobs:
       - uses: r-lib/actions/setup-renv@v1
 
       - name: Install font
-        run: brew install --cask font-public-sans
+        run: | 
+          brew tap homebrew/cask-fonts
+          brew install --cask font-public-sans
 
       - name: Get ATP data
         run: |
