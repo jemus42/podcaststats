@@ -1,10 +1,9 @@
+name: Render & Deploy Site
 on:
-  schedule:
-      - cron:  "0 6 * * 0" # At 06:00 on Sunday.
   push:
     branches: main
-
-name: Render & Deploy Site
+  schedule:
+    - cron:  "0 6 * * 0" # At 06:00 on Sunday.
 
 jobs:
   build:
@@ -50,7 +49,7 @@ jobs:
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
 
       - name: Copy data to public directory
-        run: rm _site/data/.gitignore; cp data/* _site/data/
+        run: 'rm _site/data/.gitignore; cp data/* _site/data/'
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.3
