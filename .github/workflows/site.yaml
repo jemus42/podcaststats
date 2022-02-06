@@ -1,13 +1,14 @@
 name: Render & Deploy Site
 on:
   push:
-    branches: main
+    branches: 
+      - main
   schedule:
-    - cron:  "0 6 * * 0" # At 06:00 on Sunday.
+    - cron: "0 6 * * 0" # At 06:00 on Sunday.
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
 
