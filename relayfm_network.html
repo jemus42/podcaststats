@@ -37,28 +37,24 @@
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-<!-- Piwik -->
-<script type="text/javascript">
-  if (window.location.hostname != "127.0.0.1") {
-    var _paq = _paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-    _paq.push(["setCookieDomain", "*.podcasts.jemu.name"]);
-    _paq.push(["setDomains", ["*.r-intro.tadaa-data.de"]]);
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="//analytics.tadaa-data.de/";
-      _paq.push(['setTrackerUrl', u+'piwik.php']);
-      _paq.push(['setSiteId', '16']);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-  }
+<!-- Matomo -->
+<script>
+if (window.location.hostname != "127.0.0.1") {
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.jemu.name/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '5']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+}
 </script>
-<noscript><p><img src="//analytics.tadaa-data.de/piwik.php?idsite=16&rec=1" style="border:0;" alt="" /></p></noscript>
-
-<!-- End Piwik Code -->
+<noscript><p><img src="//matomo.jemu.name/matomo.php?idsite=5&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -403,7 +399,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Relay.fm — In Numbers</h1>
 <h4 class="author">Lukas — <span class="citation">@jemus42</span></h4>
-<h4 class="date">2022-02-05 16:02 UTC</h4>
+<h4 class="date">2022-02-06 11:33 UTC</h4>
 
 </div>
 
@@ -414,8 +410,8 @@ Yes, you can use these graphs for whatever. Maybe link back to me, that would be
 <p>Please note that there’s probably still stuff coming.</p>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
-<p><a href="https://relay.fm/">Relay.fm</a> spans <strong>48</strong> shows and a combined runtime of over <strong>280</strong> days spread across <strong>6390 episodes</strong> since 2014.</p>
-<p>In 2021, there were <strong>759</strong> episodes published, and we’re currently about <strong>9%</strong> of the way there at <strong>68</strong> episodes this year.</p>
+<p><a href="https://relay.fm/">Relay.fm</a> spans <strong>48</strong> shows and a combined runtime of over <strong>280</strong> days spread across <strong>6391 episodes</strong> since 2014.</p>
+<p>In 2021, there were <strong>759</strong> episodes published, and we’re currently about <strong>9.1%</strong> of the way there at <strong>69</strong> episodes this year.</p>
 <div id="shows-by-age" class="section level2">
 <h2>Shows by Age</h2>
 <p><img src="assets/plots/relay/shows_by_age-1.png" width="864" style="display: block; margin: auto;" /></p>
