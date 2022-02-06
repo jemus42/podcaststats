@@ -1,4 +1,6 @@
 on:
+  schedule:
+      - cron:  "0 6 * * 0" # At 06:00 on Sunday.
   push:
     branches: main
 
