@@ -44,8 +44,7 @@ The data sources are:
 - **Relay.fm**: The individual show RSS feeds and some mild web-scraping.
 - **ATP**: The [website](https://atp.fm)
 
-Data collection and site/plot-recreation happens daily at midnight UTC.
-If you want to use this data for your own projects, you can download it from [here](/data)
+Data collection and site/plot-recreation happens Sunday morning  (UTC).
 
 ## Note
 
@@ -69,8 +68,6 @@ tibble::tribble(
     col.names = c("Podcast/Network", "File Time", "Latest Episode")
   )
 ```
-
-
 
 ## All Shows
 
@@ -137,29 +134,3 @@ podcasts %>%
   ) +
   theme(legend.position = "top")
 ```
-
-
-## Placeholder Quickie: Defocused vs. Reconcilable Differences
-
-```{r recdiffs_vs_defocused}
-defocused <- readRDS("data/incomparable_episodes.rds") %>%
-  filter(show == "Defocused")
-
-recdiffs <- readRDS("data/relay_episodes.rds") %>%
-  filter(show == "Reconcilable Differences")
-
-bind_rows(recdiffs, defocused) %>%
-  ggplot(aes(x = show, y = duration, fill = show)) +
-    geom_boxplot(alpha = .5, show.legend = FALSE) +
-    geom_violin(draw_quantiles = c(.25, .75), alpha = .5, show.legend = FALSE) +
-    stat_summary(fun = mean, geom = "point", size = 2, show.legend = FALSE) +
-    scale_fill_brewer(palette = "Dark2") +
-    coord_flip(ylim = c(hms(hours = 0), NA)) +
-    theme(legend.position = "top") +
-    labs(
-      title = "Defocused vs. Reconcilable Differences",
-      subtitle = "Comparison of Show Durations (Violin plot with mean and quantiles)",
-      x = "", y = "Duration (HH:MM:SS)", fill = "Show"
-    )
-```
-
