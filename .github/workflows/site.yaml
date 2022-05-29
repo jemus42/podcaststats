@@ -1,7 +1,7 @@
 name: Render & Deploy Site
 on:
   push:
-    branches: 
+    branches:
       - main
   schedule:
     - cron: "0 6 * * 0" # At 06:00 on Sunday.
@@ -19,7 +19,7 @@ jobs:
       - uses: r-lib/actions/setup-renv@v1
 
       - name: Install font
-        run: | 
+        run: |
           brew tap homebrew/cask-fonts
           brew install --cask font-public-sans
 
@@ -50,6 +50,9 @@ jobs:
 
       - name: Render Site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+
+      - name: Render Data Index
+        run: Rscript -e 'rmarkdown::render("data/index.Rmd")'
 
       - name: Copy data to public directory
         run: 'rm _site/data/.gitignore; cp data/* _site/data/'
