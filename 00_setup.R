@@ -42,7 +42,7 @@ knitr::opts_chunk$set(
 )
 
 # For yearly review things, use the current(ish) year
-current_year <- year(today() - months(3))
+current_year <- year(today() - dmonths(3))
 
 network_colors <- c(
   "The Incomparable" = "#252D6D",
