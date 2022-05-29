@@ -1,0 +1,46 @@
+---
+title: "Raw Data"
+date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
+author: "Lukas — @jemus42"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(kableExtra)
+
+files <- fs::dir_ls(here::here("data"), regexp = "\\.csv$|\\.rds$")
+fs::file_info(files) %>%
+  select(path, size, change_time) %>%
+  mutate(path = fs::path_file(path)) %>%
+  kable() %>%
+  kable_styling()
+```
+
+Here's the raw data, refreshed every week or so.  
+Get the CSV file for import in arbitrary software, and the `.rds` file if you happen to use R.
+
+
+```{r table}
+tibble::tribble(
+  ~Network,           ~Content,  ~Format, ~Download,
+  "ATP",              "Episodes", "RDS",   "atp.rds",
+  "The Incomparable", "Shows",    "RDS",   "incomparable_shows.rds",
+  "The Incomparable", "Shows",    "CSV",   "incomparable_shows.csv",
+  "The Incomparable", "Episodes", "RDS",   "incomparable_shows.rds",
+  "The Incomparable", "Episodes", "CSV",   "incomparable_shows.csv",
+  "Relay.fm",         "Shows",    "RDS",   "relay_shows.rds",
+  "Relay.fm",         "Shows",    "CSV",   "relay_shows.csv",
+  "Relay.fm",         "Episodes", "RDS",   "relay_episodes.rds",
+  "Relay.fm",         "Episodes", "CSV",   "relay_episodes.csv"
+) %>%
+  # mutate(Network = factor(Network)) %>%
+  mutate(Download = glue::glue("<a href='/data/{Download}'>{Download}</a>")) %>%
+  kable(escape = FALSE, format = "html") %>%
+  kable_styling(full_width = TRUE) %>%
+  collapse_rows(1)
+```
+
