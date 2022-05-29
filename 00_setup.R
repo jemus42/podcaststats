@@ -60,7 +60,8 @@ caption <- paste0(
 # hrbrthemes::import_public_sans()
 
 theme_set(
-  theme_ipsum_pub(
+  theme_ipsum(
+    base_size = 15,
     plot_margin = margin(4, 4, 4, 4)
   ) +
     theme(
