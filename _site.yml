@@ -21,7 +21,7 @@ navbar:
   right:
     - text: "Data"
       icon: fa-download
-      href: "/data/index.html"
+      href: data.html
     - text: "Code"
       icon: fa-github
       href: "https://github.com/jemus42/podcaststats"

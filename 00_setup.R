@@ -61,7 +61,7 @@ caption <- paste0(
 
 theme_set(
   theme_ipsum(
-    base_size = 15,
+    base_size = 14,
     plot_margin = margin(4, 4, 4, 4)
   ) +
     theme(

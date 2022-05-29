@@ -2,7 +2,10 @@
 title: "Raw Data"
 date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
 author: "Lukas — @jemus42"
-output: html_document
+output: 
+  html_document: 
+    toc: false
+    toc_float: false
 editor_options: 
   chunk_output_type: console
 ---
