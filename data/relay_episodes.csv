@@ -1,11 +1,12 @@
 show;number;title;duration;date;year;month;weekday;host;network
+Analog(ue);202;Over Before it Begins;01:21:05;2022-06-19;2022;June;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);201;This Podcast is So Fire;01:36:11;2022-05-15;2022;May;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);200;The Some of Awe;01:49:50;2022-04-17;2022;April;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);199;A Little Bit of Personal News;01:17:39;2022-03-05;2022;March;Saturday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);198;I Reminded Nobody of Nothing;01:28:10;2022-02-06;2022;February;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);197;I Enjoy It But I’m Very Bad At It;01:27:05;2022-01-09;2022;January;Sunday;"Casey Liss;Myke Hurley";relay.fm
-Analog(ue);196;Why Do the Rules Exist?;01:16:51;2021-12-19;2021;December;Sunday;"Casey  Liss;Myke  Hurley";relay.fm
-Analog(ue);195;You Are What You Actually Are;01:06:27;2021-11-21;2021;November;Sunday;"Casey  Liss;Myke  Hurley";relay.fm
+Analog(ue);196;Why Do the Rules Exist?;01:16:51;2021-12-19;2021;December;Sunday;"Casey Liss;Myke Hurley";relay.fm
+Analog(ue);195;You Are What You Actually Are;01:06:27;2021-11-21;2021;November;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);194;One of the Best Whims I've Ever Had;01:50:55;2021-10-10;2021;October;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);193;Milestones Are Being Hit;01:19:44;2021-09-12;2021;September;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);192;Hello, Welcome to 3 Months Ago;01:15:02;2021-08-15;2021;August;Sunday;"Casey Liss;Myke Hurley";relay.fm
@@ -200,6 +201,8 @@ Analog(ue);4;You're Just Going to Cry for an Hour;01:04:00;2014-09-07;2014;Septe
 Analog(ue);3;White Whale Syndrome;00:53:21;2014-08-31;2014;August;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);2;Unstimulated Time is Wasted Time;00:52:46;2014-08-25;2014;August;Monday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);1;Putting It Into The Universe;01:21:48;2014-08-18;2014;August;Monday;"Casey Liss;Myke Hurley";relay.fm
+Automators;104;WWDC 2022 Awesomeness;01:25:23;2022-06-17;2022;June;Friday;"David Sparks;Rosemary Orchard";relay.fm
+Automators;103;Dan, the Automating Author, Moren;01:18:22;2022-06-03;2022;June;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;102;Automating DEVONThink;01:25:56;2022-05-20;2022;May;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;101;Red Sweaters and AppleScript Fun with Daniel Jalkut;01:42:05;2022-05-06;2022;May;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;100;Celebrating 100 Automations, and More;01:24:25;2022-04-23;2022;April;Saturday;"David Sparks;Rosemary Orchard";relay.fm
@@ -211,11 +214,11 @@ Automators;95;Keyboard Maestro Takes It Up to 10;01:38:59;2022-02-11;2022;Februa
 Automators;94;Legal Nerd-ness with Jeff Richardson;01:23:07;2022-01-28;2022;January;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;93;Automating MacSparky;01:39:30;2022-01-15;2022;January;Saturday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;92;If This, Then Dave Hamilton;01:30:47;2021-12-31;2021;December;Friday;"David Sparks;Rosemary Orchard";relay.fm
-Automators;91;Focus Modes, the Showdown;01:26:06;2021-12-17;2021;December;Friday;"David  Sparks;Rosemary  Orchard";relay.fm
-Automators;90;Holiday Automation 2021;01:28:14;2021-12-03;2021;December;Friday;"David  Sparks;Rosemary  Orchard";relay.fm
-Automators;89;Kelly Guimont, iPhone Automator;01:26:31;2021-11-19;2021;November;Friday;"David  Sparks;Rosemary  Orchard";relay.fm
-Automators;88;Automating with Ryan J A Murphy;01:24:11;2021-11-05;2021;November;Friday;"David  Sparks;Rosemary  Orchard";relay.fm
-Automators;87;Email Rules Automation;01:39:47;2021-10-22;2021;October;Friday;"David  Sparks;Rosemary  Orchard";relay.fm
+Automators;91;Focus Modes, the Showdown;01:26:06;2021-12-17;2021;December;Friday;"David Sparks;Rosemary Orchard";relay.fm
+Automators;90;Holiday Automation 2021;01:28:14;2021-12-03;2021;December;Friday;"David Sparks;Rosemary Orchard";relay.fm
+Automators;89;Kelly Guimont, iPhone Automator;01:26:31;2021-11-19;2021;November;Friday;"David Sparks;Rosemary Orchard";relay.fm
+Automators;88;Automating with Ryan J A Murphy;01:24:11;2021-11-05;2021;November;Friday;"David Sparks;Rosemary Orchard";relay.fm
+Automators;87;Email Rules Automation;01:39:47;2021-10-22;2021;October;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;86;Micro-Automations;01:36:44;2021-10-08;2021;October;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;85;iOS 15 Update & Shortcuts on macOS;01:12:47;2021-09-24;2021;September;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;84;Chris Lawley, the iPad Man;01:20:30;2021-09-10;2021;September;Friday;"David Sparks;Rosemary Orchard";relay.fm
@@ -385,6 +388,10 @@ B-Sides;4;Podcast Vagrant;00:04:40;2014-10-02;2014;October;Thursday;Relay FM Hos
 B-Sides;3;Need More Analog(ue)?;00:08:43;2014-09-21;2014;September;Sunday;Relay FM Hosts;relay.fm
 B-Sides;2;Calendaring with Federico;00:12:05;2014-09-11;2014;September;Thursday;Relay FM Hosts;relay.fm
 B-Sides;1;Launch Week Q&A;00:40:43;2014-08-25;2014;August;Monday;Relay FM Hosts;relay.fm
+Clockwise;456;I Just Like the Pictures;00:29:59;2022-06-22;2022;June;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;455;The Spock Raised Eyebrow;00:29:59;2022-06-15;2022;June;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;454;Wednesday Is the Leaf;00:29:59;2022-06-10;2022;June;Friday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;453;A Wolf Full of Toner;00:29:59;2022-06-01;2022;June;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;452;The Dogs Hate Mr. Sweepy;00:29:59;2022-05-25;2022;May;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;451;Blast My Retinas;00:29:51;2022-05-18;2022;May;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;450;Plural of Trackpad is Trackspad;00:29:59;2022-05-11;2022;May;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
@@ -406,16 +413,16 @@ Clockwise;435;Never Clean Out Your Inbox;00:29:57;2022-01-26;2022;January;Wednes
 Clockwise;434;ChatBoy110Pedia.com;00:29:59;2022-01-19;2022;January;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;433;My Work Nest is Pretty Well Feathered;00:29:53;2022-01-12;2022;January;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;432;By “Read” I Mean “Listen”;00:28:03;2022-01-05;2022;January;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
-Clockwise;431;Eat My Virtual Hat;00:29:55;2021-12-29;2021;December;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;430;Misinformation Tracing;00:28:48;2021-12-22;2021;December;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;429;The Intersection of Work and Our Firewall;00:29:59;2021-12-15;2021;December;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;428;I’m More of a Rudolph, Personally;00:29:39;2021-12-08;2021;December;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;427;Old Man Yells at Fail Whale;00:26:14;2021-12-01;2021;December;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;426;Little Bobby Tables;00:26:58;2021-11-24;2021;November;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;425;Neither Ultra Nor Fine;00:27:12;2021-11-17;2021;November;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;424;Who Doesn't Love Sensible Scissors?;00:29:55;2021-11-10;2021;November;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;423;A Psychic Toll;00:26:14;2021-11-03;2021;November;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
-Clockwise;422;Let’s Not Tie It to Facebook;00:29:59;2021-10-27;2021;October;Wednesday;"Dan  Moren;Mikah  Sargent";relay.fm
+Clockwise;431;Eat My Virtual Hat;00:29:55;2021-12-29;2021;December;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;430;Misinformation Tracing;00:28:48;2021-12-22;2021;December;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;429;The Intersection of Work and Our Firewall;00:29:59;2021-12-15;2021;December;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;428;I’m More of a Rudolph, Personally;00:29:39;2021-12-08;2021;December;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;427;Old Man Yells at Fail Whale;00:26:14;2021-12-01;2021;December;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;426;Little Bobby Tables;00:26:58;2021-11-24;2021;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;425;Neither Ultra Nor Fine;00:27:12;2021-11-17;2021;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;424;Who Doesn't Love Sensible Scissors?;00:29:55;2021-11-10;2021;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;423;A Psychic Toll;00:26:14;2021-11-03;2021;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;422;Let’s Not Tie It to Facebook;00:29:59;2021-10-27;2021;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;421;We're Pivoting to Tables;00:27:08;2021-10-20;2021;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;420;Get Back on That Train!;00:28:32;2021-10-13;2021;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;419;Zup Zup Zup Zup;00:29:39;2021-10-06;2021;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
@@ -785,6 +792,8 @@ Clockwise;56;Niche of Awesomeness;00:30:00;2014-10-02;2014;October;Thursday;"Dan
 Clockwise;55;Extreme Physical Butt Force;00:30:00;2014-09-24;2014;September;Wednesday;"Dan Moren;Jason Snell";relay.fm
 Clockwise;54;Government in Exile;00:30:00;2014-09-17;2014;September;Wednesday;"Dan Moren;Jason Snell";relay.fm
 Clockwise;0;Tamagotchi Plays You;00:29:12;2013-06-07;2013;June;Friday;"Dan Moren;Jason Snell";relay.fm
+Conduit;25;Caring to Care;01:07:51;2022-06-16;2022;June;Thursday;"Kathy Campbell;Jay Miller";relay.fm
+Conduit;24;Tiny Annoying Tasks;01:01:31;2022-06-02;2022;June;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;23;Making Do With What We Have;01:02:58;2022-05-19;2022;May;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;22;You Con Clean Things Up;01:00:52;2022-05-05;2022;May;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;21;Plan To Be Flexible;01:00:08;2022-04-21;2022;April;Thursday;"Kathy Campbell;Jay Miller";relay.fm
@@ -796,10 +805,10 @@ Conduit;16;A Good Friend Tells You What You Already Knew;00:49:14;2022-02-10;202
 Conduit;15;Jay Has Some Big Decisions ;00:51:32;2022-01-27;2022;January;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;14;Giving Ourselves the Appropriate Amount of Expectations;00:48:29;2022-01-13;2022;January;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;13;Happiness First, Productivity Second;00:44:30;2021-12-30;2021;December;Thursday;"Kathy Campbell;Jay Miller";relay.fm
-Conduit;12;Con Doing It Live!;00:47:15;2021-12-16;2021;December;Thursday;"Kathy  Campbell;Jay  Miller";relay.fm
-Conduit;11;HUUUUUUUGE Opportunities For You;00:47:18;2021-12-02;2021;December;Thursday;"Kathy  Campbell;Jay  Miller";relay.fm
-Conduit;10;Through the Hurt with Scotty Jackson;01:23:39;2021-11-18;2021;November;Thursday;"Kathy  Campbell;Jay  Miller";relay.fm
-Conduit;9;Decision Space (The TIRE Technique);00:42:14;2021-11-04;2021;November;Thursday;"Kathy  Campbell;Jay  Miller";relay.fm
+Conduit;12;Con Doing It Live!;00:47:15;2021-12-16;2021;December;Thursday;"Kathy Campbell;Jay Miller";relay.fm
+Conduit;11;HUUUUUUUGE Opportunities For You;00:47:18;2021-12-02;2021;December;Thursday;"Kathy Campbell;Jay Miller";relay.fm
+Conduit;10;Through the Hurt with Scotty Jackson;01:23:39;2021-11-18;2021;November;Thursday;"Kathy Campbell;Jay Miller";relay.fm
+Conduit;9;Decision Space (The TIRE Technique);00:42:14;2021-11-04;2021;November;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;8;Fear of Success, Because if I Succeed…;00:55:43;2021-10-21;2021;October;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;7;See, What We’re Not Gon’ Do… Saying No to Things!;01:00:24;2021-10-07;2021;October;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;6;Getting back into the Swing of Things 🏏;00:38:12;2021-09-23;2021;September;Thursday;"Kathy Campbell;Jay Miller";relay.fm
@@ -809,6 +818,10 @@ Conduit;3;Getting Away, Now!;00:39:48;2021-08-12;2021;August;Thursday;"Kathy Cam
 Conduit;2;When You Can’t Even (Or Odd);00:45:00;2021-07-29;2021;July;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;1;Our Systems: The Unicorn & Silk Sonic Methods;00:45:20;2021-07-15;2021;July;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;0;Episode 0 - It’s the Show!;00:10:21;2021-07-09;2021;July;Friday;"Kathy Campbell;Jay Miller";relay.fm
+Connected;403;He Can't Stop Merging;01:16:27;2022-06-22;2022;June;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;402;I'm Starting to Have That Feeling Again;01:28:01;2022-06-15;2022;June;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;401;Mouth Bells;01:46:22;2022-06-08;2022;June;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;400;The Rickies (WWDC 2022);01:35:56;2022-06-01;2022;June;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;399;Never Deal Abadhand;01:32:50;2022-05-25;2022;May;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;398;Moon is not a Number;01:17:45;2022-05-18;2022;May;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;397;Tier of Shame;01:27:07;2022-05-11;2022;May;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
@@ -830,16 +843,16 @@ Connected;382;It Does the Nib Nib;01:25:30;2022-01-26;2022;January;Wednesday;"Fe
 Connected;381;Roast my iPad Home Screen;01:46:09;2022-01-20;2022;January;Thursday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;380;Light, Fog, Aroma;01:34:43;2022-01-12;2022;January;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;379;The Rickies (January 2022);01:51:51;2022-01-06;2022;January;Thursday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
-Connected;378;2021 Year in Review: We Are Your Family;01:51:32;2021-12-29;2021;December;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
+Connected;378;2021 Year in Review: We Are Your Family;01:51:32;2021-12-29;2021;December;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;377;Connected Café 🍕🍺;01:36:39;2021-12-22;2021;December;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
-Connected;376;The Jape That Went Too Far;01:17:15;2021-12-16;2021;December;Thursday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
-Connected;375;Scatter My Content to The Sea;01:19:03;2021-12-08;2021;December;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
-Connected;374;Myke's Advocate;01:40:30;2021-12-01;2021;December;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
-Connected;373;★★★★★: How Dare You?!;01:42:15;2021-11-24;2021;November;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
-Connected;372;WhatsApp beta 2.21.24.5: What’s New?;01:20:15;2021-11-17;2021;November;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
-Connected;371;Roast my iPhone Home Screen;01:50:37;2021-11-10;2021;November;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
-Connected;370;MacBook Venti;01:23:40;2021-11-03;2021;November;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
-Connected;369;MagTricky.com;01:33:03;2021-10-27;2021;October;Wednesday;"Federico  Viticci;Stephen  Hackett;Myke  Hurley";relay.fm
+Connected;376;The Jape That Went Too Far;01:17:15;2021-12-16;2021;December;Thursday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;375;Scatter My Content to The Sea;01:19:03;2021-12-08;2021;December;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;374;Myke's Advocate;01:40:30;2021-12-01;2021;December;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;373;★★★★★: How Dare You?!;01:42:15;2021-11-24;2021;November;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;372;WhatsApp beta 2.21.24.5: What’s New?;01:20:15;2021-11-17;2021;November;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;371;Roast my iPhone Home Screen;01:50:37;2021-11-10;2021;November;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;370;MacBook Venti;01:23:40;2021-11-03;2021;November;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Connected;369;MagTricky.com;01:33:03;2021-10-27;2021;October;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;368;Eaten by the Italian Post Office;01:41:08;2021-10-20;2021;October;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;367;The Rickies (October 2021);01:33:51;2021-10-13;2021;October;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;366;5, 1, 4, 6, 9, 6, 3, 4, 7, 8, 2, 2, 3, 5, 9, 12, 12, 3, 4, 1, 5, 9, 11, 8, 6, 4, 11, 5, 1, 1, 2, 8, 8, 2, 8, 12, 3, 6, 6, 11, 12, 2, 6, 1, 9, 1, 7, 10;01:25:41;2021-10-06;2021;October;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
@@ -1208,15 +1221,16 @@ Connected;4;Stabbed by a Glass Corner;01:38:17;2014-09-10;2014;September;Wednesd
 Connected;3;Double Secret Briefing Area;01:16:41;2014-09-03;2014;September;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;2;The Pasta and The Pizza and The Sauce;01:29:06;2014-08-27;2014;August;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;1;Mindset of 2001;01:45:49;2014-08-18;2014;August;Monday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
+Cortex;130;The Crushing Unfairness;01:42:47;2022-06-13;2022;June;Monday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;129;The Wrong Kind of Munching;01:30:40;2022-05-24;2022;May;Tuesday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;128;Turn Left at the Big Tree!;01:24:19;2022-04-27;2022;April;Wednesday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;127;Why Don’t You Love Hawaii?;01:27:25;2022-03-30;2022;March;Wednesday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;126;Tempting the Universe;01:54:44;2022-03-08;2022;March;Tuesday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;125;Making 'The Interstate’s Forgotten Code';01:11:44;2022-02-21;2022;February;Monday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;124;Titles Are Hard;01:38:28;2022-01-25;2022;January;Tuesday;"CGP Grey;Myke Hurley";relay.fm
-Cortex;123;2022 Yearly Themes;01:58:48;2021-12-16;2021;December;Thursday;"CGP  Grey;Myke  Hurley";relay.fm
-Cortex;122;State of the Apps 2022;02:46:27;2021-11-18;2021;November;Thursday;"CGP  Grey;Myke  Hurley";relay.fm
-Cortex;121;Travelling Confidence;01:39:20;2021-10-27;2021;October;Wednesday;"CGP  Grey;Myke  Hurley";relay.fm
+Cortex;123;2022 Yearly Themes;01:58:48;2021-12-16;2021;December;Thursday;"CGP Grey;Myke Hurley";relay.fm
+Cortex;122;State of the Apps 2022;02:46:27;2021-11-18;2021;November;Thursday;"CGP Grey;Myke Hurley";relay.fm
+Cortex;121;Travelling Confidence;01:39:20;2021-10-27;2021;October;Wednesday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;120;Episode Out of Time: Rio Heist;01:32:04;2021-09-15;2021;September;Wednesday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;119;Thinking, Fast and Slow;01:43:23;2021-08-24;2021;August;Tuesday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;118;Season of Uncertainty;01:22:50;2021-07-13;2021;July;Tuesday;"CGP Grey;Myke Hurley";relay.fm
@@ -1337,6 +1351,7 @@ Cortex;4;Posting Day;01:41:33;2015-06-26;2015;June;Friday;"CGP Grey;Myke Hurley"
 Cortex;3;Good for Brain Health;01:32:12;2015-06-19;2015;June;Friday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;2;Redundant Office;01:14:47;2015-06-12;2015;June;Friday;"CGP Grey;Myke Hurley";relay.fm
 Cortex;1;I Don't Really Like Work;01:26:51;2015-06-03;2015;June;Wednesday;"CGP Grey;Myke Hurley";relay.fm
+Departures;8;Relay FM Host Balderdash II;01:00:07;2022-06-22;2022;June;Wednesday;Jason Snell;relay.fm
 Departures;7;Relay FM Host Balderdash (Bonus Edition);00:45:48;2021-09-20;2021;September;Monday;Jason Snell;relay.fm
 Departures;6;Relay FM Podcastathon for St. Jude (2021);08:13:17;2021-09-19;2021;September;Sunday;"Myke Hurley;Stephen Hackett";relay.fm
 Departures;5;2021 Q&A: Relay FM Turns 7;00:57:33;2021-08-17;2021;August;Tuesday;"Myke Hurley;Stephen Hackett";relay.fm
@@ -1344,6 +1359,8 @@ Departures;4;Relay FM Podcastathon for St. Jude (2020);06:58:20;2020-09-20;2020;
 Departures;3;2020 Q&A and Podcastathon Announcement;00:45:01;2020-08-18;2020;August;Tuesday;Relay FM Hosts;relay.fm
 Departures;2;Relay FM Podcastathon for St. Jude (2019);06:06:42;2019-09-22;2019;September;Sunday;Relay FM Hosts;relay.fm
 Departures;1;Relay FM Family Feud;02:00:32;2019-08-23;2019;August;Friday;"Jason Snell;Myke Hurley;Stephen Hackett";relay.fm
+Downstream;20;Entertainment Chess Move;01:09:04;2022-06-14;2022;June;Tuesday;"Jason Snell;Julia Alexander";relay.fm
+Downstream;19;Billionaires are Strange Creatures;01:07:52;2022-05-31;2022;May;Tuesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;18;10,000 Other Tentacles;01:17:59;2022-05-17;2022;May;Tuesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;17;A Lighthouse, But No Captain;01:17:59;2022-05-04;2022;May;Wednesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;16;Avatar of the Industry;00:43:11;2022-04-22;2022;April;Friday;"Jason Snell;Julia Alexander";relay.fm
@@ -1355,14 +1372,16 @@ Downstream;11;Paramount's Paramount;01:07:33;2022-02-22;2022;February;Tuesday;"J
 Downstream;10;C Against C;01:08:56;2022-02-08;2022;February;Tuesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;9;Little Crown Jewel;01:01:44;2022-01-25;2022;January;Tuesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;8;Everyone's Talking About Bruno;01:07:28;2022-01-11;2022;January;Tuesday;"Jason Snell;Julia Alexander";relay.fm
-Downstream;7;The All-Letters Edition;00:37:21;2021-12-28;2021;December;Tuesday;"Jason  Snell;Julia  Alexander";relay.fm
-Downstream;6;All Four Quadrants;00:55:35;2021-12-15;2021;December;Wednesday;"Jason  Snell;Julia  Alexander";relay.fm
-Downstream;5;The Netflix Connected Universe;01:07:58;2021-12-01;2021;December;Wednesday;"Jason  Snell;Julia  Alexander";relay.fm
-Downstream;4;Sorry, World!;01:11:10;2021-11-17;2021;November;Wednesday;"Jason  Snell;Julia  Alexander";relay.fm
-Downstream;3;Snackable Trash;01:14:23;2021-11-03;2021;November;Wednesday;"Jason  Snell;Julia  Alexander";relay.fm
+Downstream;7;The All-Letters Edition;00:37:21;2021-12-28;2021;December;Tuesday;"Jason Snell;Julia Alexander";relay.fm
+Downstream;6;All Four Quadrants;00:55:35;2021-12-15;2021;December;Wednesday;"Jason Snell;Julia Alexander";relay.fm
+Downstream;5;The Netflix Connected Universe;01:07:58;2021-12-01;2021;December;Wednesday;"Jason Snell;Julia Alexander";relay.fm
+Downstream;4;Sorry, World!;01:11:10;2021-11-17;2021;November;Wednesday;"Jason Snell;Julia Alexander";relay.fm
+Downstream;3;Snackable Trash;01:14:23;2021-11-03;2021;November;Wednesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;2;Churn and Return;01:08:36;2021-10-20;2021;October;Wednesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;1;Movies are Back! Movies are Dead!;00:55:28;2021-10-06;2021;October;Wednesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;0;Welcome to Downstream;00:57:55;2021-09-29;2021;September;Wednesday;"Jason Snell;Julia Alexander";relay.fm
+Focused;154;Building a Second Brain, with Tiago Forte;01:04:29;2022-06-21;2022;June;Tuesday;"David Sparks;Mike Schmitz";relay.fm
+Focused;153;A Wandering Mind, with Kourosh Dini;00:59:44;2022-06-07;2022;June;Tuesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;152;Mental Models;01:19:30;2022-05-24;2022;May;Tuesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;151;The Bento Method, with Francesco D'Alessio;01:06:46;2022-05-11;2022;May;Wednesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;150;Optimize for Intentionality;01:28:22;2022-04-26;2022;April;Tuesday;"David Sparks;Mike Schmitz";relay.fm
@@ -1374,11 +1393,11 @@ Focused;145;Focus & Your Environment;01:21:39;2022-02-15;2022;February;Tuesday;"
 Focused;144;Enough, with Patrick Rhone;01:26:21;2022-02-01;2022;February;Tuesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;143;Thinking Annually;01:30:54;2022-01-18;2022;January;Tuesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;142;Sparky Gets Focused;01:12:07;2022-01-04;2022;January;Tuesday;"David Sparks;Mike Schmitz";relay.fm
-Focused;141;You Never Arrive;01:16:48;2021-12-22;2021;December;Wednesday;"David  Sparks;Mike  Schmitz";relay.fm
-Focused;140;Your Brain is Not a Computer with Cory Hixson;01:19:17;2021-12-07;2021;December;Tuesday;"David  Sparks;Mike  Schmitz";relay.fm
-Focused;139;Soundtracks & Self-Talk;01:09:05;2021-11-23;2021;November;Tuesday;"David  Sparks;Mike  Schmitz";relay.fm
-Focused;138;Hyper-Scheduling Revisited;01:34:46;2021-11-09;2021;November;Tuesday;"David  Sparks;Mike  Schmitz";relay.fm
-Focused;137;Managing Busy;01:21:03;2021-10-27;2021;October;Wednesday;"David  Sparks;Mike  Schmitz";relay.fm
+Focused;141;You Never Arrive;01:16:48;2021-12-22;2021;December;Wednesday;"David Sparks;Mike Schmitz";relay.fm
+Focused;140;Your Brain is Not a Computer with Cory Hixson;01:19:17;2021-12-07;2021;December;Tuesday;"David Sparks;Mike Schmitz";relay.fm
+Focused;139;Soundtracks & Self-Talk;01:09:05;2021-11-23;2021;November;Tuesday;"David Sparks;Mike Schmitz";relay.fm
+Focused;138;Hyper-Scheduling Revisited;01:34:46;2021-11-09;2021;November;Tuesday;"David Sparks;Mike Schmitz";relay.fm
+Focused;137;Managing Busy;01:21:03;2021-10-27;2021;October;Wednesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;136;Social Focus, with Taylor Jacobson;01:22:26;2021-10-12;2021;October;Tuesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;135;Don't Eat the Frog, with Jesse J. Anderson;01:20:09;2021-09-28;2021;September;Tuesday;"David Sparks;Mike Schmitz";relay.fm
 Focused;134;Finding Space with Sean McCabe;01:35:45;2021-09-14;2021;September;Tuesday;"David Sparks;Mike Schmitz";relay.fm
@@ -1517,11 +1536,11 @@ Focused;2;Booked Up With Myself;00:25:22;2016-08-09;2016;August;Tuesday;"David S
 Focused;1;The Temptation of Yes;00:35:43;2016-07-26;2016;July;Tuesday;"David Sparks;Jason Snell;David Sparks;Jason Snell";relay.fm
 Liftoff;168;Apollo 16;00:36:47;2022-04-20;2022;April;Wednesday;"Jason Snell;Stephen Hackett";relay.fm
 Liftoff;167;Back in the VAB;00:30:28;2022-04-19;2022;April;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
-Liftoff;166;JWST and the Future of Liftoff;00:26:56;2021-12-27;2021;December;Monday;"Jason  Snell;Stephen  Hackett";relay.fm
-Liftoff;165;Forever Expanded in our Hearts;00:37:33;2021-12-14;2021;December;Tuesday;"Jason  Snell;Stephen  Hackett";relay.fm
-Liftoff;164;A Dashcam for a Space Probe;00:38:54;2021-11-30;2021;November;Tuesday;"Jason  Snell;Stephen  Hackett";relay.fm
-Liftoff;163;What Does it Look Like Under the Bus?;00:40:49;2021-11-16;2021;November;Tuesday;"Jason  Snell;Stephen  Hackett";relay.fm
-Liftoff;162;Mixed-Use Business Park in Space;00:40:55;2021-11-02;2021;November;Tuesday;"Jason  Snell;Stephen  Hackett";relay.fm
+Liftoff;166;JWST and the Future of Liftoff;00:26:56;2021-12-27;2021;December;Monday;"Jason Snell;Stephen Hackett";relay.fm
+Liftoff;165;Forever Expanded in our Hearts;00:37:33;2021-12-14;2021;December;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
+Liftoff;164;A Dashcam for a Space Probe;00:38:54;2021-11-30;2021;November;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
+Liftoff;163;What Does it Look Like Under the Bus?;00:40:49;2021-11-16;2021;November;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
+Liftoff;162;Mixed-Use Business Park in Space;00:40:55;2021-11-02;2021;November;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
 Liftoff;161;Now It’s Very Much Precedented;00:39:17;2021-10-19;2021;October;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
 Liftoff;160;Hot Jupiters in Colorado;00:54:23;2021-10-05;2021;October;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
 Liftoff;159;Fun Stuff in Science;00:43:32;2021-09-21;2021;September;Tuesday;"Jason Snell;Stephen Hackett";relay.fm
@@ -1684,6 +1703,10 @@ Liftoff;3;Poke His Twin;00:45:11;2015-09-14;2015;September;Monday;"Jason Snell;S
 Liftoff;2;The Moon;00:53:30;2015-08-31;2015;August;Monday;"Jason Snell;Stephen Hackett";relay.fm
 Liftoff;1;Space Salad;00:47:27;2015-08-17;2015;August;Monday;"Jason Snell;Stephen Hackett";relay.fm
 Liftoff;0;Jason & Stephen Talk Space;00:50:35;2015-08-15;2015;August;Saturday;"Jason Snell;Stephen Hackett";relay.fm
+Mac Power Users;645;Live Q&A with Stephen and David;01:38:35;2022-06-19;2022;June;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;644;Some Cool Mac Utilities;01:25:11;2022-06-12;2022;June;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;643;WWDC 2022;01:19:37;2022-06-07;2022;June;Tuesday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;642;Shortcuts for Mac;01:28:54;2022-05-29;2022;May;Sunday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;641;Catching up with Federico Viticci;01:43:30;2022-05-22;2022;May;Sunday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;640;The iPhone App Roundup;01:41:56;2022-05-15;2022;May;Sunday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;639;Software Club: Greg Pierce and Drafts;01:22:10;2022-05-08;2022;May;Sunday;"David Sparks;Stephen Hackett";relay.fm
@@ -1705,15 +1728,15 @@ Mac Power Users;624;Apple Apps That Need Some Polishing;01:42:01;2022-01-23;2022
 Mac Power Users;623;Collaboration and Project Planning;01:35:47;2022-01-16;2022;January;Sunday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;622;Exploring HomeKit with Shane Whatley;01:48:25;2022-01-09;2022;January;Sunday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;621;Sparky Freedom;01:21:38;2022-01-03;2022;January;Monday;"David Sparks;Stephen Hackett";relay.fm
-Mac Power Users;620;The State of Apple in 2021;02:19:20;2021-12-26;2021;December;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;619;Home Studio Updates;01:52:40;2021-12-19;2021;December;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;618;Making Movies at Pixar, with John Soliman;01:45:02;2021-12-12;2021;December;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;617;Back in Whack;02:00:47;2021-12-05;2021;December;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;616;The Quality Will be Ensured, with Daniel Jalkut;01:59:14;2021-11-28;2021;November;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;615;The Clipboard Manager Roundup;01:29:13;2021-11-21;2021;November;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;614;The 2021 MPU Gift Guide;01:34:23;2021-11-14;2021;November;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;613;The Future of Work, with Sean McCabe;01:43:42;2021-11-07;2021;November;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
-Mac Power Users;612;macOS Monterey & MacBook Pro Impressions;01:49:20;2021-10-31;2021;October;Sunday;"David  Sparks;Stephen  Hackett";relay.fm
+Mac Power Users;620;The State of Apple in 2021;02:19:20;2021-12-26;2021;December;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;619;Home Studio Updates;01:52:40;2021-12-19;2021;December;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;618;Making Movies at Pixar, with John Soliman;01:45:02;2021-12-12;2021;December;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;617;Back in Whack;02:00:47;2021-12-05;2021;December;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;616;The Quality Will be Ensured, with Daniel Jalkut;01:59:14;2021-11-28;2021;November;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;615;The Clipboard Manager Roundup;01:29:13;2021-11-21;2021;November;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;614;The 2021 MPU Gift Guide;01:34:23;2021-11-14;2021;November;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;613;The Future of Work, with Sean McCabe;01:43:42;2021-11-07;2021;November;Sunday;"David Sparks;Stephen Hackett";relay.fm
+Mac Power Users;612;macOS Monterey & MacBook Pro Impressions;01:49:20;2021-10-31;2021;October;Sunday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;611;Unleashed, Indeed;01:48:15;2021-10-20;2021;October;Wednesday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;610;iPad Workflows;01:44:21;2021-10-14;2021;October;Thursday;"David Sparks;Stephen Hackett";relay.fm
 Mac Power Users;609;"""Sir, Get out of the E-waste""";01:30:33;2021-10-10;2021;October;Sunday;"David Sparks;Stephen Hackett";relay.fm
@@ -2325,6 +2348,7 @@ Mac Power Users;4;Staying in Sync;00:31:29;2009-06-04;2009;June;Thursday;David S
 Mac Power Users;3;Going Paperless;01:33:41;2009-05-23;2009;May;Saturday;David Sparks;relay.fm
 Mac Power Users;2;All About E-Mail (Part 2);00:22:15;2009-05-12;2009;May;Tuesday;David Sparks;relay.fm
 Mac Power Users;1;All About E-Mail;01:17:57;2009-05-05;2009;May;Tuesday;David Sparks;relay.fm
+Make Do;103;Finding Time, and Time off;00:36:00;2022-06-08;2022;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;102;With Mike Hendley!;00:43:07;2022-05-08;2022;May;Sunday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;101;Make Do 101;00:40:26;2022-04-24;2022;April;Sunday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;100;It Counts!;00:50:58;2022-04-06;2022;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
@@ -2334,10 +2358,10 @@ Make Do;97;Huge Fan;00:37:15;2022-02-25;2022;February;Friday;"Tiffany Arment;Jul
 Make Do;96;Ambition And ADHD Is A Dangerous Combo;00:34:09;2022-02-09;2022;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;95;Feelin' It;00:33:12;2022-01-26;2022;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;94;Color Me Intrigued;00:30:45;2022-01-12;2022;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;93;Aims and Aspirations;00:38:51;2021-12-17;2021;December;Friday;"Tiffany  Arment;Julia  Skott";relay.fm
-Make Do;92;Get To Giving!;00:43:50;2021-12-02;2021;December;Thursday;"Tiffany  Arment;Julia  Skott";relay.fm
-Make Do;91;Who Knows Where Ideas Come From;00:37:07;2021-11-18;2021;November;Thursday;"Tiffany  Arment;Julia  Skott";relay.fm
-Make Do;90;Interior Inspirations;00:35:25;2021-11-03;2021;November;Wednesday;"Tiffany  Arment;Julia  Skott";relay.fm
+Make Do;93;Aims and Aspirations;00:38:51;2021-12-17;2021;December;Friday;"Tiffany Arment;Julia Skott";relay.fm
+Make Do;92;Get To Giving!;00:43:50;2021-12-02;2021;December;Thursday;"Tiffany Arment;Julia Skott";relay.fm
+Make Do;91;Who Knows Where Ideas Come From;00:37:07;2021-11-18;2021;November;Thursday;"Tiffany Arment;Julia Skott";relay.fm
+Make Do;90;Interior Inspirations;00:35:25;2021-11-03;2021;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;89;Grief and Good Times;00:34:36;2021-10-20;2021;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;88;More Market, More Making!;00:39:55;2021-08-25;2021;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;87;Your Phone As An Art Tool;00:41:38;2021-08-13;2021;August;Friday;"Tiffany Arment;Julia Skott";relay.fm
@@ -2427,6 +2451,10 @@ Make Do;4;From The Pen Show – Double Broad, Double Feature!;01:20:19;2018-05-0
 Make Do;3;Why Do We Make? (”Hello. I am achiever. Please notice.”);00:32:40;2018-04-18;2018;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;2;A Room of One’s Own;00:37:35;2018-04-04;2018;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
 Make Do;1;”Lowercase a, art.”;00:27:19;2018-03-21;2018;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
+Material;365;The Death of Google Has Been Greatly Exaggerated ;01:19:26;2022-06-23;2022;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;364;How to Minister to Artificial Intelligence ;01:16:46;2022-06-17;2022;June;Friday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;363;No More Spoilers;01:09:57;2022-06-10;2022;June;Friday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;362;Farewell To Thee, Google Duo ;01:09:22;2022-06-03;2022;June;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;361;No Rage Buying;01:17:01;2022-05-27;2022;May;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;360;Blame It On The Watch;01:17:32;2022-05-20;2022;May;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;359;What Isn't Google Releasing This Year? ;01:22:05;2022-05-13;2022;May;Friday;"Andy Ihnatko;Florence Ion";relay.fm
@@ -2449,15 +2477,15 @@ Material;343;Thank You For Being A Friend;00:57:38;2022-01-21;2022;January;Frida
 Material;342;Podcastable Pain;01:00:13;2022-01-14;2022;January;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;341;Counting On ;01:07:05;2022-01-08;2022;January;Saturday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;340;A Googley Look Back ;01:12:38;2021-12-31;2021;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
-Material;339;It's A Wonderful Phone ;00:58:39;2021-12-24;2021;December;Friday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;338;Keep Your Phone in Your Pocket;01:16:05;2021-12-17;2021;December;Friday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;337;Hawkeye The Pixel Guy;01:18:21;2021-12-10;2021;December;Friday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;336;Is “Don’t Be Evil” Legally Binding?;01:05:21;2021-12-03;2021;December;Friday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;335;Quite Credible;01:17:31;2021-11-25;2021;November;Thursday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;334;On The Back Foot;01:09:29;2021-11-20;2021;November;Saturday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;333;The Passion Of The Pixel;01:19:32;2021-11-13;2021;November;Saturday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;332;Andy Takes Manhattan ;01:19:21;2021-11-04;2021;November;Thursday;"Andy  Ihnatko;Florence  Ion";relay.fm
-Material;331;The Hamster Wheel Of Life;01:15:11;2021-10-29;2021;October;Friday;"Andy  Ihnatko;Florence  Ion";relay.fm
+Material;339;It's A Wonderful Phone ;00:58:39;2021-12-24;2021;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;338;Keep Your Phone in Your Pocket;01:16:05;2021-12-17;2021;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;337;Hawkeye The Pixel Guy;01:18:21;2021-12-10;2021;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;336;Is “Don’t Be Evil” Legally Binding?;01:05:21;2021-12-03;2021;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;335;Quite Credible;01:17:31;2021-11-25;2021;November;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;334;On The Back Foot;01:09:29;2021-11-20;2021;November;Saturday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;333;The Passion Of The Pixel;01:19:32;2021-11-13;2021;November;Saturday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;332;Andy Takes Manhattan ;01:19:21;2021-11-04;2021;November;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;331;The Hamster Wheel Of Life;01:15:11;2021-10-29;2021;October;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;330;Andy's Pixel Journey;01:14:37;2021-10-23;2021;October;Saturday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;329;It Comes In Threes;01:10:58;2021-10-16;2021;October;Saturday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;328;It Happens;01:07:22;2021-10-12;2021;October;Tuesday;"Andy Ihnatko;Florence Ion";relay.fm
@@ -2688,7 +2716,7 @@ Material;104;O Bixby, Bixby! Wherefore Art Thou Bixby;01:11:00;2017-06-23;2017;J
 Material;103;Coalers And Uties;01:19:54;2017-06-15;2017;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;102;Wholesome Wondrous Distinguished Conference;01:12:53;2017-06-08;2017;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;101;Here Kitty Kitty;01:16:49;2017-06-01;2017;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
-Material;100;Please, I Have Children!;01:11:55;2017-05-24;2017;May;Wednesday;"Andy  Ihnatko;Florence  Ion";relay.fm
+Material;100;Please, I Have Children!;01:11:55;2017-05-24;2017;May;Wednesday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;99;I/O 2017, The Good, The Bad, The Kotlin;00:47:35;2017-05-18;2017;May;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;98;Oscillating Fan Sounds;01:17:32;2017-05-11;2017;May;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;97;Paws For The Applause;01:17:14;2017-05-04;2017;May;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
@@ -2789,6 +2817,7 @@ Material;3;Google When? Google Now!;00:55:12;2015-07-16;2015;July;Thursday;"Andy
 Material;2;Wear a Fit Cat Rocket Ship;00:53:08;2015-07-09;2015;July;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;1;Switcheroo;00:44:14;2015-07-02;2015;July;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;0;The Google Car is Coming... For You;00:40:47;2015-07-02;2015;July;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
+Originality;35;35: Lean Into Your Creative Genius;00:54:04;2022-06-23;2022;June;Thursday;"Aleen Simms;K Tempest Bradford";relay.fm
 Originality;34;The Revival of Originality;00:48:55;2022-05-06;2022;May;Friday;"Aleen Simms;K Tempest Bradford";relay.fm
 Originality;33;I Feel My Body Rejecting This;00:52:17;2022-04-11;2022;April;Monday;"Aleen Simms;K Tempest Bradford";relay.fm
 Originality;32;Comparison is a Killer;00:51:29;2020-02-13;2020;February;Thursday;"Aleen Simms;K Tempest Bradford";relay.fm
@@ -2833,9 +2862,9 @@ Parallel;67;A Character on My Own Show;01:00:42;2022-02-04;2022;February;Friday;
 Parallel;66;Beyond Gaming: Designing VR Experiences for People with Disabilities;00:35:17;2022-01-19;2022;January;Wednesday;Shelly Brisbin;relay.fm
 Parallel;65;Accessibility is a Spectrum for Gamers, Too;00:57:40;2021-12-23;2021;December;Thursday;Shelly Brisbin;relay.fm
 Parallel;64;What Does It Mean to be a Cyborg?;00:50:33;2021-12-09;2021;December;Thursday;Shelly Brisbin;relay.fm
-Parallel;63;The Standards Can't Tell You Where Delight Is;00:31:59;2021-11-23;2021;November;Tuesday;Shelly  Brisbin;relay.fm
-Parallel;62;UX Design and Cognitive Disability;00:49:08;2021-11-09;2021;November;Tuesday;Shelly  Brisbin;relay.fm
-Parallel;61;How to Make Extended Reality an Accessible Reality;00:29:33;2021-10-26;2021;October;Tuesday;Shelly  Brisbin;relay.fm
+Parallel;63;The Standards Can't Tell You Where Delight Is;00:31:59;2021-11-23;2021;November;Tuesday;Shelly Brisbin;relay.fm
+Parallel;62;UX Design and Cognitive Disability;00:49:08;2021-11-09;2021;November;Tuesday;Shelly Brisbin;relay.fm
+Parallel;61;How to Make Extended Reality an Accessible Reality;00:29:33;2021-10-26;2021;October;Tuesday;Shelly Brisbin;relay.fm
 Parallel;60;Tech Inclusion and Indigenous Peoples;00:42:17;2021-10-14;2021;October;Thursday;Shelly Brisbin;relay.fm
 Parallel;59;Apple Event: Takes Served at a Pleasing Temperature;01:03:56;2021-09-21;2021;September;Tuesday;Shelly Brisbin;relay.fm
 Parallel;58;#GAAD: Beyond the Hashtag;00:38:26;2021-09-15;2021;September;Wednesday;Shelly Brisbin;relay.fm
@@ -2897,6 +2926,8 @@ Parallel;3;The One with Sal Soghoian (Bonus Show);01:03:57;2018-08-29;2018;Augus
 Parallel;2;I Mix Like a Human;01:22:09;2018-08-21;2018;August;Tuesday;Shelly Brisbin;relay.fm
 Parallel;1;I Wish All Computers Were Orange;00:56:35;2018-08-07;2018;August;Tuesday;Shelly Brisbin;relay.fm
 Parallel;0;Introducing Parallel;00:06:48;2018-08-03;2018;August;Friday;Shelly Brisbin;relay.fm
+Pictorial;62;Keith Haring;00:38:52;2022-06-21;2022;June;Tuesday;"Betty Chen;Quinn Rose";relay.fm
+Pictorial;61;The Milk of Dreams;00:37:27;2022-06-07;2022;June;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;60;The Venice Biennale;00:49:33;2022-05-24;2022;May;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;59;Augusta Savage;00:32:33;2022-05-10;2022;May;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;58;Cave Paintings & Handprints;00:32:21;2022-04-26;2022;April;Tuesday;"Betty Chen;Quinn Rose";relay.fm
@@ -2907,10 +2938,10 @@ Pictorial;54;Saturn Devouring His Son;00:32:47;2022-02-22;2022;February;Tuesday;
 Pictorial;53;Methods for Viewing Art;00:38:57;2022-02-08;2022;February;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;52;Sarah Hatton;00:28:31;2022-01-25;2022;January;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;51;Concert Posters;00:41:31;2022-01-11;2022;January;Tuesday;"Betty Chen;Quinn Rose";relay.fm
-Pictorial;50;Art Musicals;00:30:15;2021-12-14;2021;December;Tuesday;"Betty  Chen;Quinn  Rose";relay.fm
-Pictorial;49;The Florida Highwaymen;00:34:22;2021-11-30;2021;November;Tuesday;"Betty  Chen;Quinn  Rose";relay.fm
-Pictorial;48;Take the Money and Run;00:33:24;2021-11-16;2021;November;Tuesday;"Betty  Chen;Quinn  Rose";relay.fm
-Pictorial;47;Hindu Art;00:34:12;2021-11-02;2021;November;Tuesday;"Betty  Chen;Quinn  Rose";relay.fm
+Pictorial;50;Art Musicals;00:30:15;2021-12-14;2021;December;Tuesday;"Betty Chen;Quinn Rose";relay.fm
+Pictorial;49;The Florida Highwaymen;00:34:22;2021-11-30;2021;November;Tuesday;"Betty Chen;Quinn Rose";relay.fm
+Pictorial;48;Take the Money and Run;00:33:24;2021-11-16;2021;November;Tuesday;"Betty Chen;Quinn Rose";relay.fm
+Pictorial;47;Hindu Art;00:34:12;2021-11-02;2021;November;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;46;Jewish Art;00:32:42;2021-10-19;2021;October;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;45;Christian Art;00:42:14;2021-10-05;2021;October;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;44;Islamic Art;00:32:37;2021-09-21;2021;September;Tuesday;"Betty Chen;Quinn Rose";relay.fm
@@ -2957,6 +2988,8 @@ Pictorial;4;Sonia Delaunay;00:34:55;2020-01-14;2020;January;Tuesday;"Betty Chen;
 Pictorial;3;Follow the Money;00:39:34;2019-12-31;2019;December;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;2;Postcards as Art;00:26:16;2019-12-17;2019;December;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;1;Can Artificial Intelligence Make Art?;00:33:30;2019-12-03;2019;December;Tuesday;"Betty Chen;Quinn Rose";relay.fm
+Reconcilable Differences;185;A Shirt’s Journey;01:16:37;2022-06-24;2022;June;Friday;"Merlin Mann;John Siracusa";relay.fm
+Reconcilable Differences;184;Back Door Preparation;01:49:21;2022-06-11;2022;June;Saturday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;183;The Pinching Opportunities;01:51:49;2022-05-27;2022;May;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;182;Disapproval Has a Scent;01:43:57;2022-05-13;2022;May;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;181;I Saw Your Wife;02:15:56;2022-04-29;2022;April;Friday;"Merlin Mann;John Siracusa";relay.fm
@@ -2968,11 +3001,11 @@ Reconcilable Differences;176;The Curse of Convenience;01:39:50;2022-02-19;2022;F
 Reconcilable Differences;175;One Giant Mountain;01:48:05;2022-02-05;2022;February;Saturday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;174;Cardamom & Turmeric;01:25:55;2022-01-21;2022;January;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;173;The Chicken Project;01:41:00;2022-01-06;2022;January;Thursday;"Merlin Mann;John Siracusa";relay.fm
-Reconcilable Differences;172;First, Make a Hole;01:51:28;2021-12-24;2021;December;Friday;"Merlin  Mann;John  Siracusa";relay.fm
-Reconcilable Differences;171;Time Off;01:32:49;2021-12-10;2021;December;Friday;"Merlin  Mann;John  Siracusa";relay.fm
-Reconcilable Differences;170;Overton Shame Window;01:48:35;2021-11-27;2021;November;Saturday;"Merlin  Mann;John  Siracusa";relay.fm
-Reconcilable Differences;169;Open Up the Frog;01:32:43;2021-11-13;2021;November;Saturday;"Merlin  Mann;John  Siracusa";relay.fm
-Reconcilable Differences;168;The Robes of Science;01:39:21;2021-10-29;2021;October;Friday;"Merlin  Mann;John  Siracusa";relay.fm
+Reconcilable Differences;172;First, Make a Hole;01:51:28;2021-12-24;2021;December;Friday;"Merlin Mann;John Siracusa";relay.fm
+Reconcilable Differences;171;Time Off;01:32:49;2021-12-10;2021;December;Friday;"Merlin Mann;John Siracusa";relay.fm
+Reconcilable Differences;170;Overton Shame Window;01:48:35;2021-11-27;2021;November;Saturday;"Merlin Mann;John Siracusa";relay.fm
+Reconcilable Differences;169;Open Up the Frog;01:32:43;2021-11-13;2021;November;Saturday;"Merlin Mann;John Siracusa";relay.fm
+Reconcilable Differences;168;The Robes of Science;01:39:21;2021-10-29;2021;October;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;167;A Close Italian Reading;01:41:13;2021-10-15;2021;October;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;166;Our Monster;01:15:58;2021-09-30;2021;September;Thursday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;165;In the Drift;01:34:11;2021-09-17;2021;September;Friday;"Merlin Mann;John Siracusa";relay.fm
@@ -3146,8 +3179,8 @@ Remaster;107;Elden Ring, Gran Turismo, and the 'Purity' of Video Games.;01:02:57
 Remaster;106;Pokémon Legends: Arceus;01:08:21;2022-02-16;2022;February;Wednesday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;105;Microsoft buys Activision Blizzard;01:03:50;2022-01-26;2022;January;Wednesday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;104;Game of the Year 2021;00:56:47;2021-12-30;2021;December;Thursday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
-Remaster;103;What We’re Playing Right Now;00:57:46;2021-11-25;2021;November;Thursday;"Federico  Viticci;Shahid  Kamal Ahmad;Myke  Hurley";relay.fm
-Remaster;102;OLED Switch and Metroid Dread;01:08:54;2021-10-27;2021;October;Wednesday;"Federico  Viticci;Shahid  Kamal Ahmad;Myke  Hurley";relay.fm
+Remaster;103;What We’re Playing Right Now;00:57:46;2021-11-25;2021;November;Thursday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
+Remaster;102;OLED Switch and Metroid Dread;01:08:54;2021-10-27;2021;October;Wednesday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;101;Emulation;01:00:56;2021-09-23;2021;September;Thursday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;100;A Celebration of Favourites;01:07:15;2021-08-27;2021;August;Friday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;99;Handhelds Are Back!;01:01:21;2021-07-25;2021;July;Sunday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
@@ -3249,6 +3282,7 @@ Remaster;4;State of the Union: Microsoft;00:46:21;2016-02-19;2016;February;Frida
 Remaster;3;State of the Union: iOS;00:56:37;2016-02-08;2016;February;Monday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;2;State of the Union: Nintendo;01:05:04;2016-01-21;2016;January;Thursday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;1;Passion in a Can;01:03:54;2016-01-08;2016;January;Friday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
+Roboism;58;I Want the Chicken Nuggets;00:41:44;2022-06-01;2022;June;Wednesday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;57;Monday Morning Political Consultant ;01:03:00;2022-05-12;2022;May;Thursday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;56;Elongated Muskrat ;00:57:34;2022-04-28;2022;April;Thursday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;55;Tech Isn't Forgiving;00:56:23;2022-04-15;2022;April;Friday;"Kathy Campbell;Alex Cox";relay.fm
@@ -3256,8 +3290,8 @@ Roboism;54;Titanic Salads;01:00:16;2022-03-31;2022;March;Thursday;"Kathy Campbel
 Roboism;53;Finger Dancing;00:56:09;2022-03-18;2022;March;Friday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;52;Not Bruno;00:58:58;2022-02-03;2022;February;Thursday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;51;Rose, Thorn, and Bud ;00:58:22;2022-01-06;2022;January;Thursday;"Kathy Campbell;Alex Cox";relay.fm
-Roboism;50;My Soul is Very Expensive;00:57:48;2021-11-16;2021;November;Tuesday;"Kathy  Campbell;Alex  Cox";relay.fm
-Roboism;49;Cardigan Karens;01:02:38;2021-11-02;2021;November;Tuesday;"Kathy  Campbell;Alex  Cox";relay.fm
+Roboism;50;My Soul is Very Expensive;00:57:48;2021-11-16;2021;November;Tuesday;"Kathy Campbell;Alex Cox";relay.fm
+Roboism;49;Cardigan Karens;01:02:38;2021-11-02;2021;November;Tuesday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;48;Something Something Sherlock Joke;01:01:56;2021-09-22;2021;September;Wednesday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;47;A Forklift That Can't Outrun Humans ;00:56:06;2021-09-08;2021;September;Wednesday;"Kathy Campbell;Alex Cox";relay.fm
 Roboism;46;Bipples;00:58:29;2021-08-25;2021;August;Wednesday;"Kathy Campbell;Alex Cox";relay.fm
@@ -3306,6 +3340,10 @@ Roboism;4;A Single Piece of Toast;00:31:05;2017-06-27;2017;June;Tuesday;"Savanna
 Roboism;3;You Have to Be Invited In ;00:40:49;2017-06-16;2017;June;Friday;"Savannah Million;Alex Cox";relay.fm
 Roboism;2;The Bees Are Getting Angrier ;00:26:31;2017-05-30;2017;May;Tuesday;"Savannah Million;Alex Cox";relay.fm
 Roboism;1;A Beautiful Smoosh Bot;00:26:07;2017-05-15;2017;May;Monday;"Savannah Million;Alex Cox";relay.fm
+Rocket;391;The Winds of Crypto Winter;00:56:30;2022-06-23;2022;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;390;Two of Them;00:59:33;2022-06-16;2022;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;389;WWDC All The Way Down;01:10:47;2022-06-09;2022;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;388;Terminée!;00:53:54;2022-06-02;2022;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;387;Talking Tesla;01:01:13;2022-05-26;2022;May;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;386;Winning the Pie;00:56:28;2022-05-19;2022;May;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;385;Solemn Thoughts!;01:07:05;2022-05-12;2022;May;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
@@ -3328,15 +3366,15 @@ Rocket;369;Crypto.com Presents;01:02:57;2022-01-20;2022;January;Thursday;"Christ
 Rocket;368;Wordle Wriddles;00:59:50;2022-01-13;2022;January;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;367;Verdicts;01:06:08;2022-01-06;2022;January;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;366;Delicious Tumblr Drama;00:55:58;2021-12-30;2021;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
-Rocket;365;Best and Worst of 2021;00:59:45;2021-12-23;2021;December;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;364;Internet on Fire;00:47:00;2021-12-16;2021;December;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;363;Enhanced Pants;00:54:56;2021-12-09;2021;December;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;362; Jack In, Jack Out;NA;2021-12-02;2021;December;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;361;Imaginary Notre Dame;00:52:13;2021-11-26;2021;November;Friday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;360;Conflicts of Interest;00:59:18;2021-11-18;2021;November;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;359;Sideloading is for Cybercriminals;00:55:56;2021-11-11;2021;November;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;358;Anna Delvey's Crypto Corner;00:59:16;2021-11-04;2021;November;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
-Rocket;357;Facebook Papers;00:58:07;2021-10-28;2021;October;Thursday;"Christina  Warren;Brianna  Wu;Simone  De Rochefort";relay.fm
+Rocket;365;Best and Worst of 2021;00:59:45;2021-12-23;2021;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;364;Internet on Fire;00:47:00;2021-12-16;2021;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;363;Enhanced Pants;00:54:56;2021-12-09;2021;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;362; Jack In, Jack Out;NA;2021-12-02;2021;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;361;Imaginary Notre Dame;00:52:13;2021-11-26;2021;November;Friday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;360;Conflicts of Interest;00:59:18;2021-11-18;2021;November;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;359;Sideloading is for Cybercriminals;00:55:56;2021-11-11;2021;November;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;358;Anna Delvey's Crypto Corner;00:59:16;2021-11-04;2021;November;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+Rocket;357;Facebook Papers;00:58:07;2021-10-28;2021;October;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;356;Macbook Prose;01:09:17;2021-10-21;2021;October;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;355;TWONKA;00:54:21;2021-10-14;2021;October;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;354;Not the Bad Art Friend;00:56:22;2021-10-07;2021;October;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
@@ -3693,6 +3731,7 @@ Rocket;4;I Cannot Be Left Shark;01:24:58;2015-02-05;2015;February;Thursday;"Chri
 Rocket;3;Representative Warren Has No Comment;01:11:34;2015-01-30;2015;January;Friday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;2;Truly Outrageous ;01:18:45;2015-01-26;2015;January;Monday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;1;Pilot;01:14:06;2015-01-19;2015;January;Monday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
+The Backmarkers;8;Canadian Grand Prix Review;00:37:06;2022-06-19;2022;June;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;7;Monaco Grand Prix Review;01:06:41;2022-05-29;2022;May;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;6;Spain Grand Prix Review;01:01:38;2022-05-22;2022;May;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;5;Miami Grand Prix Review;01:02:10;2022-05-08;2022;May;Sunday;"Austin Evans;Myke Hurley";relay.fm
@@ -3700,6 +3739,9 @@ The Backmarkers;4;Imola Grand Prix Reaction;00:59:00;2022-04-24;2022;April;Sunda
 The Backmarkers;3;Are Ferrari Unstoppable? - F1 2022 Australian Grand Prix Review;01:05:24;2022-04-10;2022;April;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;2;Why F1 is AMAZING Now - Saudi Arabian Grand Prix Review;01:04:52;2022-03-27;2022;March;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;1;F1 2022 is BACK! Bahrain Grand Prix Review;01:03:24;2022-03-20;2022;March;Sunday;"Austin Evans;Myke Hurley";relay.fm
+The Pen Addict;518;Just Spell it Lewis;01:08:00;2022-06-16;2022;June;Thursday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;517;Ride or Die Hobonichi;01:01:58;2022-06-08;2022;June;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;516;A Selection of Odd Recordings;00:53:22;2022-06-01;2022;June;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;515;Peter Piper Picked A Pen of Pepper;01:00:08;2022-05-25;2022;May;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;514;Through the Moon;00:59:37;2022-05-18;2022;May;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;513;What Do You Think About Nuts?;01:08:18;2022-05-11;2022;May;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
@@ -3721,16 +3763,16 @@ The Pen Addict;498;Caveats!;01:05:06;2022-01-26;2022;January;Wednesday;"Brad Dow
 The Pen Addict;497;Here's My Desk Computer, Here's My Desk Cup;00:53:33;2022-01-19;2022;January;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;496;Pen TMZ;00:51:12;2022-01-12;2022;January;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;495;Parter Jocker;01:00:08;2022-01-05;2022;January;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
-The Pen Addict;494;The Centre is Twisty;01:14:28;2021-12-29;2021;December;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;493;A Guy Named Dean;01:10:19;2021-12-22;2021;December;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;492;I Can Tell You Don't Like It;01:00:50;2021-12-15;2021;December;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;491;The Symphony;01:06:12;2021-12-08;2021;December;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;490;Orange-Flavored Pens;00:54:31;2021-12-01;2021;December;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;489;The Radiation in This Pen Is Not Harmful;00:50:20;2021-11-24;2021;November;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;488;Your Warranty is Voided;00:59:38;2021-11-18;2021;November;Thursday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;487;The State of Stationery;01:01:31;2021-11-10;2021;November;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;486;Write-O;01:04:45;2021-11-03;2021;November;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
-The Pen Addict;485;Every Month Has a Month;00:55:09;2021-10-27;2021;October;Wednesday;"Brad  Dowdy;Myke  Hurley";relay.fm
+The Pen Addict;494;The Centre is Twisty;01:14:28;2021-12-29;2021;December;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;493;A Guy Named Dean;01:10:19;2021-12-22;2021;December;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;492;I Can Tell You Don't Like It;01:00:50;2021-12-15;2021;December;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;491;The Symphony;01:06:12;2021-12-08;2021;December;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;490;Orange-Flavored Pens;00:54:31;2021-12-01;2021;December;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;489;The Radiation in This Pen Is Not Harmful;00:50:20;2021-11-24;2021;November;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;488;Your Warranty is Voided;00:59:38;2021-11-18;2021;November;Thursday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;487;The State of Stationery;01:01:31;2021-11-10;2021;November;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;486;Write-O;01:04:45;2021-11-03;2021;November;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
+The Pen Addict;485;Every Month Has a Month;00:55:09;2021-10-27;2021;October;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;484;Don't Lie about Being in Antarctica;01:13:02;2021-10-20;2021;October;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;483;You've Lost That Lovin' Feeling;01:22:04;2021-10-13;2021;October;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;482;It's a Medium Nib, It's Fine;01:01:15;2021-10-06;2021;October;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
@@ -4220,8 +4262,8 @@ Thoroughly Considered;79;An Ever-Widening Funnel;00:51:07;2022-04-21;2022;April;
 Thoroughly Considered;78;Daylight Adjustment Number;01:06:54;2022-03-24;2022;March;Thursday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;77;Frozen, Comfortable, Bubble;01:00:46;2022-02-23;2022;February;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;76;Tom’s Future Corner;00:54:50;2022-01-12;2022;January;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
-Thoroughly Considered;75;We Got to Finish Something;00:52:46;2021-12-16;2021;December;Thursday;"Dan  Provost;Tom  Gerhardt;Myke  Hurley";relay.fm
-Thoroughly Considered;74;Biannual Holiday Gift Giving Guide(lines);00:55:44;2021-11-18;2021;November;Thursday;"Dan  Provost;Tom  Gerhardt;Myke  Hurley";relay.fm
+Thoroughly Considered;75;We Got to Finish Something;00:52:46;2021-12-16;2021;December;Thursday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
+Thoroughly Considered;74;Biannual Holiday Gift Giving Guide(lines);00:55:44;2021-11-18;2021;November;Thursday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;73;I Am Very Particular About Hat Shape;01:08:19;2021-10-20;2021;October;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;72;All Roads Lead to a Heat Sealed Pouch;00:59:56;2021-09-22;2021;September;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;71;Glue Flange;00:35:27;2021-08-18;2021;August;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
@@ -4294,13 +4336,14 @@ Thoroughly Considered;4;How The Money Comes In;00:48:07;2015-11-12;2015;November
 Thoroughly Considered;3;Onward;00:40:11;2015-10-28;2015;October;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;2;Launching;00:38:43;2015-10-05;2015;October;Monday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;1;Introductions;00:20:55;2015-09-21;2015;September;Monday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
+Top Four;88;Goldfish Crackers;00:52:55;2022-05-31;2022;May;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;87;Peeps 🐤;00:44:59;2022-04-08;2022;April;Friday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;86;Overplayed Songs;00:33:42;2022-03-29;2022;March;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;85;Series Finales 📺;00:49:42;2022-02-28;2022;February;Monday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;84;Jams, Jellies, Marmalades, and Compotes;00:37:40;2022-01-31;2022;January;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;83;Road-Trip Songs 🚙🎶;00:45:34;2021-12-22;2021;December;Wednesday;"Marco  Arment;Tiffany  Arment";relay.fm
-Top Four;82;Flavors;00:48:53;2021-11-30;2021;November;Tuesday;"Marco  Arment;Tiffany  Arment";relay.fm
-Top Four;81;Halloween Monsters 🧟🧛🏻‍♀️🤡👻🕷🦇🐺;00:34:56;2021-10-26;2021;October;Tuesday;"Marco  Arment;Tiffany  Arment";relay.fm
+Top Four;83;Road-Trip Songs 🚙🎶;00:45:34;2021-12-22;2021;December;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
+Top Four;82;Flavors;00:48:53;2021-11-30;2021;November;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
+Top Four;81;Halloween Monsters 🧟🧛🏻‍♀️🤡👻🕷🦇🐺;00:34:56;2021-10-26;2021;October;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;80;Hal's Pairings;00:44:57;2021-09-30;2021;September;Thursday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;79;Fla•Vor•Ice;00:28:28;2021-08-30;2021;August;Monday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;78;Pasta Shapes 🍝;00:50:40;2021-07-29;2021;July;Thursday;"Marco Arment;Tiffany Arment";relay.fm
@@ -4381,6 +4424,8 @@ Top Four;4;Worst Weezer Singles;00:39:56;2015-09-28;2015;September;Monday;"Marco
 Top Four;3;Reality TV Shows;00:54:35;2015-09-15;2015;September;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;2;TV Shows;00:51:27;2015-08-30;2015;August;Sunday;"Marco Arment;Tiffany Arment";relay.fm
 Top Four;1;Video Games;00:56:08;2015-08-17;2015;August;Monday;"Marco Arment;Tiffany Arment";relay.fm
+Under the Radar;245;Slope of Enlightenment;00:29:20;2022-06-24;2022;June;Friday;"Marco Arment;David Smith";relay.fm
+Under the Radar;244;WWDC 2022 Special;00:44:34;2022-06-08;2022;June;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;243;Workplace Christmas;00:29:41;2022-05-25;2022;May;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;242;Setup Update;00:29:47;2022-05-11;2022;May;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;241;Farewell, Feed Wrangler;00:29:38;2022-04-29;2022;April;Friday;"Marco Arment;David Smith";relay.fm
@@ -4392,10 +4437,10 @@ Under the Radar;236;Be A Little Annoying;00:29:59;2022-02-18;2022;February;Frida
 Under the Radar;235;Color-Picking;00:29:34;2022-02-02;2022;February;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;234;Should You Do It?;00:29:50;2022-01-19;2022;January;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;233;The Road (Still) Ahead;00:29:28;2022-01-05;2022;January;Wednesday;"Marco Arment;David Smith";relay.fm
-Under the Radar;232;SF Symbols;00:29:40;2021-12-08;2021;December;Wednesday;"Marco  Arment;David  Smith";relay.fm
-Under the Radar;231;Support Expectations;00:29:53;2021-11-23;2021;November;Tuesday;"Marco  Arment;David  Smith";relay.fm
-Under the Radar;230;Tackling the Redesign;00:29:53;2021-11-10;2021;November;Wednesday;"Marco  Arment;David  Smith";relay.fm
-Under the Radar;229;Money, Time, and M1 Max Macs;00:29:23;2021-10-27;2021;October;Wednesday;"Marco  Arment;David  Smith";relay.fm
+Under the Radar;232;SF Symbols;00:29:40;2021-12-08;2021;December;Wednesday;"Marco Arment;David Smith";relay.fm
+Under the Radar;231;Support Expectations;00:29:53;2021-11-23;2021;November;Tuesday;"Marco Arment;David Smith";relay.fm
+Under the Radar;230;Tackling the Redesign;00:29:53;2021-11-10;2021;November;Wednesday;"Marco Arment;David Smith";relay.fm
+Under the Radar;229;Money, Time, and M1 Max Macs;00:29:23;2021-10-27;2021;October;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;228;Ask For Money;00:29:35;2021-10-14;2021;October;Thursday;"Marco Arment;David Smith";relay.fm
 Under the Radar;227;Adopting High-Profile iOS Features;00:29:41;2021-09-29;2021;September;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;226;A Quiet Fall;00:29:49;2021-09-17;2021;September;Friday;"Marco Arment;David Smith";relay.fm
@@ -4624,6 +4669,7 @@ Under the Radar;4;Unexpected Complexity;00:28:01;2015-11-25;2015;November;Wednes
 Under the Radar;3;Ergonomics;00:28:06;2015-11-18;2015;November;Wednesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;2;Time for Swift;00:28:28;2015-11-10;2015;November;Tuesday;"Marco Arment;David Smith";relay.fm
 Under the Radar;1;Adapting to the Market;00:27:03;2015-11-04;2015;November;Wednesday;"Marco Arment;David Smith";relay.fm
+Ungeniused;152;Six Flags;00:08:20;2022-05-31;2022;May;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;151;Six Flags New Orleans;00:15:00;2022-05-17;2022;May;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;150;Thingmaker;00:11:45;2022-05-03;2022;May;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;149;The Easy-Bake Oven & Juicero;00:10:08;2022-04-19;2022;April;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
@@ -4633,9 +4679,9 @@ Ungeniused;146;Memphis Tanker Truck Disaster;00:08:49;2022-03-08;2022;March;Tues
 Ungeniused;145;The Spacecraft Cemetery;00:09:44;2022-02-22;2022;February;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;144;The Costa Concordia Disaster;00:15:31;2022-01-25;2022;January;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;143;Sleeved Blankets;00:09:53;2022-01-11;2022;January;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
-Ungeniused;142;Spite Houses;00:10:32;2021-12-14;2021;December;Tuesday;"Stephen  Hackett;Myke  Hurley";relay.fm
-Ungeniused;141;The Spaghetti-Tree Hoax;00:07:38;2021-11-16;2021;November;Tuesday;"Stephen  Hackett;Myke  Hurley";relay.fm
-Ungeniused;140;Flamingos 🦩;00:12:59;2021-11-02;2021;November;Tuesday;"Stephen  Hackett;Myke  Hurley";relay.fm
+Ungeniused;142;Spite Houses;00:10:32;2021-12-14;2021;December;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
+Ungeniused;141;The Spaghetti-Tree Hoax;00:07:38;2021-11-16;2021;November;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
+Ungeniused;140;Flamingos 🦩;00:12:59;2021-11-02;2021;November;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;139;Big Food;00:12:10;2021-10-05;2021;October;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;138;Tardigrades;00:08:49;2021-09-21;2021;September;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;137;The San Francisco Cable Car System;00:16:17;2021-09-07;2021;September;Tuesday;"Stephen Hackett;Myke Hurley";relay.fm
@@ -4775,6 +4821,10 @@ Ungeniused;4;Inventors Killed by Their Own Inventions;00:15:18;2016-07-21;2016;J
 Ungeniused;3;The Ghost Army & Inflatable Tanks;00:17:35;2016-07-07;2016;July;Thursday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;2;Dancing Mania;00:19:40;2016-06-23;2016;June;Thursday;"Stephen Hackett;Myke Hurley";relay.fm
 Ungeniused;1;Action Park;00:40:34;2016-06-08;2016;June;Wednesday;"Stephen Hackett;Myke Hurley";relay.fm
+Upgrade;412;Justin, Don't Do It;01:19:41;2022-06-21;2022;June;Tuesday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;411;180% Different for Me;01:57:22;2022-06-12;2022;June;Sunday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;410;Apple Park Vibe Check;01:47:09;2022-06-07;2022;June;Tuesday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;409;The WWDC Keynote Draft 2022;01:36:43;2022-05-30;2022;May;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;408;Upgrade VR;01:38:24;2022-05-23;2022;May;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;407;Inexplicable Billboards;01:29:09;2022-05-16;2022;May;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;406;Are You Phishing Me Right Now?;01:23:01;2022-05-09;2022;May;Monday;"Jason Snell;Myke Hurley";relay.fm
@@ -4796,16 +4846,16 @@ Upgrade;391;They're Great Uphill;01:22:22;2022-01-24;2022;January;Monday;"Jason 
 Upgrade;390;🦓🦅🦜🐧;01:31:35;2022-01-17;2022;January;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;389;I Have Extra Buttons;01:25:57;2022-01-10;2022;January;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;388;The Year of the Headset;01:41:43;2022-01-03;2022;January;Monday;"Jason Snell;Myke Hurley";relay.fm
-Upgrade;387;The 2021 Upgradies;02:28:08;2021-12-27;2021;December;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;386;The Tube Man Ecosystem;01:27:26;2021-12-20;2021;December;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;385;Millie Metre;01:33:08;2021-12-13;2021;December;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;384;Don't Fear the Laser;01:40:42;2021-12-06;2021;December;Monday;"Dan  Moren;Jason  Snell";relay.fm
-Upgrade;383;Dongletown Hotel;01:23:00;2021-11-29;2021;November;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;382;Hey Car, Stop;01:20:25;2021-11-22;2021;November;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;381;Get Used to Disappointment;01:13:57;2021-11-15;2021;November;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;380;Hey Self, Don't Do It!;01:29:48;2021-11-08;2021;November;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;379;They Feed on Memory Bandwidth;01:29:37;2021-11-01;2021;November;Monday;"Jason  Snell;Myke  Hurley";relay.fm
-Upgrade;378;The Maximum Macintosh;01:30:20;2021-10-25;2021;October;Monday;"Jason  Snell;Myke  Hurley";relay.fm
+Upgrade;387;The 2021 Upgradies;02:28:08;2021-12-27;2021;December;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;386;The Tube Man Ecosystem;01:27:26;2021-12-20;2021;December;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;385;Millie Metre;01:33:08;2021-12-13;2021;December;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;384;Don't Fear the Laser;01:40:42;2021-12-06;2021;December;Monday;"Dan Moren;Jason Snell";relay.fm
+Upgrade;383;Dongletown Hotel;01:23:00;2021-11-29;2021;November;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;382;Hey Car, Stop;01:20:25;2021-11-22;2021;November;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;381;Get Used to Disappointment;01:13:57;2021-11-15;2021;November;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;380;Hey Self, Don't Do It!;01:29:48;2021-11-08;2021;November;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;379;They Feed on Memory Bandwidth;01:29:37;2021-11-01;2021;November;Monday;"Jason Snell;Myke Hurley";relay.fm
+Upgrade;378;The Maximum Macintosh;01:30:20;2021-10-25;2021;October;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;377;Most Importantly, Compressor;01:22:39;2021-10-18;2021;October;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;376;The 2021 October Event Draft;01:05:26;2021-10-14;2021;October;Thursday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;375;My Watch Is My Cake;01:09:48;2021-10-11;2021;October;Monday;"Jason Snell;Myke Hurley";relay.fm
@@ -5098,7 +5148,7 @@ Upgrade;89;Can We Use a Tracking Pixel?;01:22:59;2016-05-16;2016;May;Monday;"Jas
 Upgrade;88;Happy Apple Watch Users;01:21:58;2016-05-09;2016;May;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;87;Unchartable Tidbits;01:36:40;2016-05-02;2016;May;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;86;The Cloud With the Question Mark;01:19:31;2016-04-25;2016;April;Monday;"Jason Snell;Myke Hurley";relay.fm
-Upgrade;85;Talk to this Cylinder;01:22:05;2016-04-18;2016;April;Monday;Jason  Snell;relay.fm
+Upgrade;85;Talk to this Cylinder;01:22:05;2016-04-18;2016;April;Monday;Jason Snell;relay.fm
 Upgrade;84;Peek it, But Don't Pop it!;01:23:28;2016-04-11;2016;April;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;83;I Love Infuriating You;01:20:31;2016-04-04;2016;April;Monday;"Jason Snell;Myke Hurley";relay.fm
 Upgrade;82;Baby Pro;01:25:58;2016-03-28;2016;March;Monday;"Jason Snell;Myke Hurley";relay.fm
@@ -5374,109 +5424,109 @@ Canvas;4;Photo Editing;00:43:33;2016-02-19;2016;February;Friday;"Federico Viticc
 Canvas;3;Photo Management;00:54:58;2016-02-05;2016;February;Friday;"Federico Viticci;Fraser Speirs";relay.fm
 Canvas;2;Document Providers;00:37:32;2016-01-22;2016;January;Friday;"Federico Viticci;Fraser Speirs";relay.fm
 Canvas;1;Download and Upload Files;00:31:29;2016-01-08;2016;January;Friday;"Federico Viticci;Fraser Speirs";relay.fm
-CMD Space;103;Everything in Moderation, with Matt Haughey;00:58:29;2014-07-10;2014;July;Thursday;Myke  Hurley;relay.fm
-CMD Space;102;The Best Of Both Worlds, with Jared Sinclair;00:53:20;2014-07-03;2014;July;Thursday;Myke  Hurley;relay.fm
-CMD Space;101;Own your identity, with Bryan Irace and Matthew Bischoff;00:53:15;2014-06-18;2014;June;Wednesday;Myke  Hurley;relay.fm
-CMD Space;100;'What Do You Like To Be Known For?', with Myke Hurley;00:57:22;2014-06-11;2014;June;Wednesday;Myke  Hurley;relay.fm
-CMD Space;99;Being Creative, with Jack Conte;00:44:52;2014-06-04;2014;June;Wednesday;Myke  Hurley;relay.fm
-CMD Space;98;The Return of Upcoming.org, with Andy Baio;00:51:54;2014-05-28;2014;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;97;It All Started at WWDC, with Padraig Kennedy and Oisin Prendiville of Supertop;00:53:09;2014-05-21;2014;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;96;Not Many Original Thoughts, with Casey Liss;00:41:41;2014-05-14;2014;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;95;Playing It Cool, with Dan Moren;00:55:39;2014-05-07;2014;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;94;Words Are My Thing, with Brent Simmons;00:53:27;2014-04-30;2014;April;Wednesday;Myke  Hurley;relay.fm
-CMD Space;93;A Bit Of A Know-It-All, with Ken Jennings;00:37:53;2014-04-23;2014;April;Wednesday;Myke  Hurley;relay.fm
-CMD Space;92;A New Lingua Franca, with Horace Dediu;00:49:47;2014-04-16;2014;April;Wednesday;Myke  Hurley;relay.fm
-CMD Space;91;Honesty, Luck and Hard Work, with Russ Frushtick;00:44:11;2014-04-10;2014;April;Thursday;Myke  Hurley;relay.fm
-CMD Space;90;The First Bar, with Merlin Mann;01:03:28;2014-03-31;2014;March;Monday;Myke  Hurley;relay.fm
-CMD Space;89;Opportunity Knocks, with Casey Liss;01:04:17;2014-03-26;2014;March;Wednesday;Myke  Hurley;relay.fm
-CMD Space;88;Great Songs Everyday, with Jonathan Mann;01:01:10;2014-03-20;2014;March;Thursday;Myke  Hurley;relay.fm
-CMD Space;87;Developing A Podcast App, with Russell Ivanovic;01:19:36;2014-03-14;2014;March;Friday;Myke  Hurley;relay.fm
-CMD Space;86;Imagination Breeding Creation, with Faith Korpi;01:02:39;2014-03-05;2014;March;Wednesday;Myke  Hurley;relay.fm
-CMD Space;85;Being a Geek, with John Siracusa;01:05:26;2014-02-24;2014;February;Monday;Myke  Hurley;relay.fm
-CMD Space;84;Doing What You Want To Do, with Brett Terpstra;00:56:20;2014-02-17;2014;February;Monday;Myke  Hurley;relay.fm
-CMD Space;83;Great perspective, with Tim Stevens;00:58:07;2014-02-14;2014;February;Friday;Myke  Hurley;relay.fm
-CMD Space;82;Up and Coming, with Eva Giselle;00:36:24;2014-02-05;2014;February;Wednesday;Myke  Hurley;relay.fm
-CMD Space;81;Podcast Advertising, with Lex Friedman;00:49:45;2014-01-29;2014;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;80;The Next Chapter, with Tom Merritt;00:58:17;2014-01-22;2014;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;79;Selling Shovels, with Steve Streza;00:51:08;2014-01-15;2014;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;78;The Sweet Setup, with Shawn Blanc;01:01:26;2014-01-08;2014;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;77;Primary Source Material, with John Roderick;01:04:16;2014-01-03;2014;January;Friday;Myke  Hurley;relay.fm
-CMD Space;76;Illustrated words, with Jessica Hische;00:44:56;2013-12-23;2013;December;Monday;Myke  Hurley;relay.fm
-CMD Space;75;Telling Stories People Want To Read, with Glenn Fleishman;01:09:47;2013-12-18;2013;December;Wednesday;Myke  Hurley;relay.fm
-CMD Space;74;Awesome On The Internet, with Veronica Belmont;00:30:24;2013-12-10;2013;December;Tuesday;Myke  Hurley;relay.fm
-CMD Space;73;Motivating Independence, with Andy Baio;01:24:20;2013-12-04;2013;December;Wednesday;Myke  Hurley;relay.fm
-CMD Space;72;The Place Where Ideas Come From, with Neven Mrgan;00:47:39;2013-11-27;2013;November;Wednesday;Myke  Hurley;relay.fm
-CMD Space;71;Procrastinating Strategically, with Max Temkin;01:08:04;2013-11-20;2013;November;Wednesday;Myke  Hurley;relay.fm
-CMD Space;70;Focusing On The Outcome, with Dave Wiskus;01:04:53;2013-11-13;2013;November;Wednesday;Myke  Hurley;relay.fm
-CMD Space;69;Going The Distance, with Jason Fried;00:45:42;2013-11-11;2013;November;Monday;Myke  Hurley;relay.fm
-CMD Space;68;Producing Apps, with David Barnard;01:31:26;2013-10-30;2013;October;Wednesday;Myke  Hurley;relay.fm
-CMD Space;67;Thinkup, with Gina Trapani;00:54:19;2013-10-23;2013;October;Wednesday;Myke  Hurley;relay.fm
-CMD Space;66;iOS 7 and Lickability, with Matthew Bischoff;00:44:36;2013-10-17;2013;October;Thursday;Myke  Hurley;relay.fm
-CMD Space;65;Feeling Alone and Afraid, with Chase Reeves;01:03:39;2013-10-09;2013;October;Wednesday;Myke  Hurley;relay.fm
-CMD Space;64;Making Up Apple News, with John Moltz;00:43:44;2013-10-02;2013;October;Wednesday;Myke  Hurley;relay.fm
-CMD Space;63;Being @applespotlight, with Rob Wensing;00:40:55;2013-09-25;2013;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;62;Making Software Better, with Loren Brichter;00:37:21;2013-09-18;2013;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;61;Being Your Own Person, with Casey Liss;00:45:43;2013-09-11;2013;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;60;Getting Fussy and Serious, with Dan Provost and Tom Gerhardt of Studio Neat;00:55:27;2013-09-04;2013;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;59;Being Unique and Awesome, with Christina Warren;00:55:28;2013-08-28;2013;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;58;Delight is in the Details, with Shawn Blanc;01:01:57;2013-08-21;2013;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;57;Digital and Physical things, with Jim Coudal;01:11:55;2013-08-16;2013;August;Friday;Myke  Hurley;relay.fm
-CMD Space;56;Comics and T-shirts, with Rich Stevens;00:49:05;2013-08-14;2013;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;55;Sassy Dad Jokes, with Scott Simpson;01:02:04;2013-08-07;2013;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;54;Consoles, Conferences and Conversations, with Guy English;00:54:08;2013-07-31;2013;July;Wednesday;Myke  Hurley;relay.fm
-CMD Space;53;Being Pseudonymous, with Dr. Drang;01:03:49;2013-07-24;2013;July;Wednesday;Myke  Hurley;relay.fm
-CMD Space;52;At the Forefront of Publishing, with Serenity Caldwell;00:51:02;2013-07-17;2013;July;Wednesday;Myke  Hurley;relay.fm
-CMD Space;51;Creating a Typeface, with Mike Rohde and Delve Withrington;00:53:32;2013-07-10;2013;July;Wednesday;Myke  Hurley;relay.fm
-CMD Space;50;Being Editor In Chief, with Tim Stevens;00:48:28;2013-07-03;2013;July;Wednesday;Myke  Hurley;relay.fm
-CMD Space;49;The Nice Guy Reporter, with Ellis Hamburger;00:46:45;2013-06-26;2013;June;Wednesday;Myke  Hurley;relay.fm
-CMD Space;48;A Fresh Start, with Marco Arment;01:01:03;2013-06-19;2013;June;Wednesday;Myke  Hurley;relay.fm
-CMD Space;47;Listener Support, with Jesse Thorn;00:38:02;2013-06-12;2013;June;Wednesday;Myke  Hurley;relay.fm
-CMD Space;46;Developing For A Living, with David Smith;00:52:07;2013-06-05;2013;June;Wednesday;Myke  Hurley;relay.fm
-CMD Space;45;Pre-WWDC Apple, with Stephen Hackett;01:12:28;2013-05-29;2013;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;44;Apple and Education, with Fraser Speirs;00:56:07;2013-05-22;2013;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;43;Option+CMD+H, with Merlin Mann;01:26:25;2013-05-16;2013;May;Thursday;Myke  Hurley;relay.fm
-CMD Space;42;Petrified on a Weekly Basis, with Moisés Chiullan;00:53:50;2013-05-15;2013;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;41;Creating a Passionate Fan-base, with Brian Brushwood;00:46:38;2013-05-08;2013;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;40;Loving Things, with Jeff Cannata;00:45:53;2013-05-01;2013;May;Wednesday;Myke  Hurley;relay.fm
-CMD Space;39;Crowd Support, with Jonathan Coulton;00:32:54;2013-04-24;2013;April;Wednesday;Myke  Hurley;relay.fm
-CMD Space;38;Inbox Zero and New Projects, with Merlin Mann;01:18:10;2013-04-11;2013;April;Thursday;Myke  Hurley;relay.fm
-CMD Space;37;Business Doesn’t Have to be Evil, with Brett Kelly;01:03:46;2013-04-10;2013;April;Wednesday;Myke  Hurley;relay.fm
-CMD Space;36;Creating a Radio Drama, with Jason Snell;00:46:17;2013-04-03;2013;April;Wednesday;Myke  Hurley;relay.fm
-CMD Space;35;Blogging 2.0, with Jon Mitchell;00:52:06;2013-03-27;2013;March;Wednesday;Myke  Hurley;relay.fm
-CMD Space;34;A Man of the Internet, with John Siracusa;01:04:25;2013-03-19;2013;March;Tuesday;Myke  Hurley;relay.fm
-CMD Space;33;A Big Announcement, with Dan Benjamin;00:58:29;2013-03-13;2013;March;Wednesday;Myke  Hurley;relay.fm
-CMD Space;32;Writing, Podcasting and Comedy, with Lex Friedman;00:57:53;2013-03-06;2013;March;Wednesday;Myke  Hurley;relay.fm
-CMD Space;31;Free Accounts and Developer Incentives, with Dalton Caldwell and Bill Kunz;01:38:50;2013-02-27;2013;February;Wednesday;Myke  Hurley;relay.fm
-CMD Space;30;Dropping Out Of School, with Steve Streza;01:15:27;2013-02-20;2013;February;Wednesday;Myke  Hurley;relay.fm
-CMD Space;29;Making Great Apps, with Michael Simmons;00:46:22;2013-02-13;2013;February;Wednesday;Myke  Hurley;relay.fm
-CMD Space;28;Technology and Music, with John Roderick;01:19:24;2013-02-08;2013;February;Friday;Myke  Hurley;relay.fm
-CMD Space;27;Making Software and Selling It, with Daniel Jalkut;01:15:01;2013-01-29;2013;January;Tuesday;Myke  Hurley;relay.fm
-CMD Space;26;A 'Full-Time' Masterclass, with Shawn Blanc;01:07:56;2013-01-23;2013;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;25;Discussing The Magazine, with Marco Arment;01:13:06;2013-01-16;2013;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;24;Making and Creating, with Gina Trapani;01:02:20;2013-01-09;2013;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;23;The Currency Of Confidence, with Rene Ritchie;00:57:02;2013-01-02;2013;January;Wednesday;Myke  Hurley;relay.fm
-CMD Space;22;The Golden Headphone Awards 2013;00:34:36;2012-12-23;2012;December;Sunday;Myke  Hurley;relay.fm
-CMD Space;21;Not Wasting Time, with Matthew Panzarino;01:10:51;2012-12-19;2012;December;Wednesday;Myke  Hurley;relay.fm
-CMD Space;20;Twitterrific, with Gedeon Maheux;01:07:08;2012-12-12;2012;December;Wednesday;Myke  Hurley;relay.fm
-CMD Space;19;Sketchnotes and Fantastical, with Mike Rohde and Michael Simmons;01:06:13;2012-12-03;2012;December;Monday;Myke  Hurley;relay.fm
-CMD Space;18;Creating on the Mac, with Don McAllister;01:03:44;2012-11-28;2012;November;Wednesday;Myke  Hurley;relay.fm
-CMD Space;17;Gameboy English Lessons, with Federico Viticci;01:08:34;2012-11-21;2012;November;Wednesday;Myke  Hurley;relay.fm
-CMD Space;16;The Diary of a Liveblogger, with Jason Snell;01:05:06;2012-11-14;2012;November;Wednesday;Myke  Hurley;relay.fm
-CMD Space;15;Now The Hard Work Begins, with Dalton Caldwell;00:54:26;2012-11-07;2012;November;Wednesday;Myke  Hurley;relay.fm
-CMD Space;14;Obvious App Design, with Nik Fletcher;00:47:01;2012-10-21;2012;October;Sunday;Myke  Hurley;relay.fm
-CMD Space;13;Mad Science and Bizarre Coding, with Brett Terpstra;01:02:44;2012-10-17;2012;October;Wednesday;Myke  Hurley;relay.fm
-CMD Space;12;Life After Tech Journalism, with MG Siegler;01:05:37;2012-10-10;2012;October;Wednesday;Myke  Hurley;relay.fm
-CMD Space;11;A Podcasting Masterclass, with Dan Benjamin;00:57:46;2012-10-03;2012;October;Wednesday;Myke  Hurley;relay.fm
-CMD Space;10;It's a Community, Not an Industry, with Tom Merritt;00:57:29;2012-09-26;2012;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;9;Implementing Style, with Adam Lisagor;00:50:56;2012-09-19;2012;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;8;The iPhone 5 Event, with Stephen Hackett;01:34:13;2012-09-12;2012;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;7;Cultivating Ideas, with David Sparks;01:20:10;2012-09-05;2012;September;Wednesday;Myke  Hurley;relay.fm
-CMD Space;6;Blogging and Secrets, with Jim Dalrymple;00:52:17;2012-08-29;2012;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;5;Being A Harsh Self Critic, with Marco Arment;01:23:41;2012-08-28;2012;August;Tuesday;Myke  Hurley;relay.fm
-CMD Space;4;Paywalls, with Ben Brooks;00:48:11;2012-08-22;2012;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;3;Memberships and Being Classy with Shawn Blanc;01:10:13;2012-08-15;2012;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;2;Light Pink Looks Likes Gray To Me, With Jason Snell;00:53:29;2012-08-08;2012;August;Wednesday;Myke  Hurley;relay.fm
-CMD Space;1;I'm Yelling At Me, With Merlin Mann;01:41:27;2012-08-01;2012;August;Wednesday;Myke  Hurley;relay.fm
+CMD Space;103;Everything in Moderation, with Matt Haughey;00:58:29;2014-07-10;2014;July;Thursday;Myke Hurley;relay.fm
+CMD Space;102;The Best Of Both Worlds, with Jared Sinclair;00:53:20;2014-07-03;2014;July;Thursday;Myke Hurley;relay.fm
+CMD Space;101;Own your identity, with Bryan Irace and Matthew Bischoff;00:53:15;2014-06-18;2014;June;Wednesday;Myke Hurley;relay.fm
+CMD Space;100;'What Do You Like To Be Known For?', with Myke Hurley;00:57:22;2014-06-11;2014;June;Wednesday;Myke Hurley;relay.fm
+CMD Space;99;Being Creative, with Jack Conte;00:44:52;2014-06-04;2014;June;Wednesday;Myke Hurley;relay.fm
+CMD Space;98;The Return of Upcoming.org, with Andy Baio;00:51:54;2014-05-28;2014;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;97;It All Started at WWDC, with Padraig Kennedy and Oisin Prendiville of Supertop;00:53:09;2014-05-21;2014;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;96;Not Many Original Thoughts, with Casey Liss;00:41:41;2014-05-14;2014;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;95;Playing It Cool, with Dan Moren;00:55:39;2014-05-07;2014;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;94;Words Are My Thing, with Brent Simmons;00:53:27;2014-04-30;2014;April;Wednesday;Myke Hurley;relay.fm
+CMD Space;93;A Bit Of A Know-It-All, with Ken Jennings;00:37:53;2014-04-23;2014;April;Wednesday;Myke Hurley;relay.fm
+CMD Space;92;A New Lingua Franca, with Horace Dediu;00:49:47;2014-04-16;2014;April;Wednesday;Myke Hurley;relay.fm
+CMD Space;91;Honesty, Luck and Hard Work, with Russ Frushtick;00:44:11;2014-04-10;2014;April;Thursday;Myke Hurley;relay.fm
+CMD Space;90;The First Bar, with Merlin Mann;01:03:28;2014-03-31;2014;March;Monday;Myke Hurley;relay.fm
+CMD Space;89;Opportunity Knocks, with Casey Liss;01:04:17;2014-03-26;2014;March;Wednesday;Myke Hurley;relay.fm
+CMD Space;88;Great Songs Everyday, with Jonathan Mann;01:01:10;2014-03-20;2014;March;Thursday;Myke Hurley;relay.fm
+CMD Space;87;Developing A Podcast App, with Russell Ivanovic;01:19:36;2014-03-14;2014;March;Friday;Myke Hurley;relay.fm
+CMD Space;86;Imagination Breeding Creation, with Faith Korpi;01:02:39;2014-03-05;2014;March;Wednesday;Myke Hurley;relay.fm
+CMD Space;85;Being a Geek, with John Siracusa;01:05:26;2014-02-24;2014;February;Monday;Myke Hurley;relay.fm
+CMD Space;84;Doing What You Want To Do, with Brett Terpstra;00:56:20;2014-02-17;2014;February;Monday;Myke Hurley;relay.fm
+CMD Space;83;Great perspective, with Tim Stevens;00:58:07;2014-02-14;2014;February;Friday;Myke Hurley;relay.fm
+CMD Space;82;Up and Coming, with Eva Giselle;00:36:24;2014-02-05;2014;February;Wednesday;Myke Hurley;relay.fm
+CMD Space;81;Podcast Advertising, with Lex Friedman;00:49:45;2014-01-29;2014;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;80;The Next Chapter, with Tom Merritt;00:58:17;2014-01-22;2014;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;79;Selling Shovels, with Steve Streza;00:51:08;2014-01-15;2014;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;78;The Sweet Setup, with Shawn Blanc;01:01:26;2014-01-08;2014;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;77;Primary Source Material, with John Roderick;01:04:16;2014-01-03;2014;January;Friday;Myke Hurley;relay.fm
+CMD Space;76;Illustrated words, with Jessica Hische;00:44:56;2013-12-23;2013;December;Monday;Myke Hurley;relay.fm
+CMD Space;75;Telling Stories People Want To Read, with Glenn Fleishman;01:09:47;2013-12-18;2013;December;Wednesday;Myke Hurley;relay.fm
+CMD Space;74;Awesome On The Internet, with Veronica Belmont;00:30:24;2013-12-10;2013;December;Tuesday;Myke Hurley;relay.fm
+CMD Space;73;Motivating Independence, with Andy Baio;01:24:20;2013-12-04;2013;December;Wednesday;Myke Hurley;relay.fm
+CMD Space;72;The Place Where Ideas Come From, with Neven Mrgan;00:47:39;2013-11-27;2013;November;Wednesday;Myke Hurley;relay.fm
+CMD Space;71;Procrastinating Strategically, with Max Temkin;01:08:04;2013-11-20;2013;November;Wednesday;Myke Hurley;relay.fm
+CMD Space;70;Focusing On The Outcome, with Dave Wiskus;01:04:53;2013-11-13;2013;November;Wednesday;Myke Hurley;relay.fm
+CMD Space;69;Going The Distance, with Jason Fried;00:45:42;2013-11-11;2013;November;Monday;Myke Hurley;relay.fm
+CMD Space;68;Producing Apps, with David Barnard;01:31:26;2013-10-30;2013;October;Wednesday;Myke Hurley;relay.fm
+CMD Space;67;Thinkup, with Gina Trapani;00:54:19;2013-10-23;2013;October;Wednesday;Myke Hurley;relay.fm
+CMD Space;66;iOS 7 and Lickability, with Matthew Bischoff;00:44:36;2013-10-17;2013;October;Thursday;Myke Hurley;relay.fm
+CMD Space;65;Feeling Alone and Afraid, with Chase Reeves;01:03:39;2013-10-09;2013;October;Wednesday;Myke Hurley;relay.fm
+CMD Space;64;Making Up Apple News, with John Moltz;00:43:44;2013-10-02;2013;October;Wednesday;Myke Hurley;relay.fm
+CMD Space;63;Being @applespotlight, with Rob Wensing;00:40:55;2013-09-25;2013;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;62;Making Software Better, with Loren Brichter;00:37:21;2013-09-18;2013;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;61;Being Your Own Person, with Casey Liss;00:45:43;2013-09-11;2013;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;60;Getting Fussy and Serious, with Dan Provost and Tom Gerhardt of Studio Neat;00:55:27;2013-09-04;2013;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;59;Being Unique and Awesome, with Christina Warren;00:55:28;2013-08-28;2013;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;58;Delight is in the Details, with Shawn Blanc;01:01:57;2013-08-21;2013;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;57;Digital and Physical things, with Jim Coudal;01:11:55;2013-08-16;2013;August;Friday;Myke Hurley;relay.fm
+CMD Space;56;Comics and T-shirts, with Rich Stevens;00:49:05;2013-08-14;2013;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;55;Sassy Dad Jokes, with Scott Simpson;01:02:04;2013-08-07;2013;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;54;Consoles, Conferences and Conversations, with Guy English;00:54:08;2013-07-31;2013;July;Wednesday;Myke Hurley;relay.fm
+CMD Space;53;Being Pseudonymous, with Dr. Drang;01:03:49;2013-07-24;2013;July;Wednesday;Myke Hurley;relay.fm
+CMD Space;52;At the Forefront of Publishing, with Serenity Caldwell;00:51:02;2013-07-17;2013;July;Wednesday;Myke Hurley;relay.fm
+CMD Space;51;Creating a Typeface, with Mike Rohde and Delve Withrington;00:53:32;2013-07-10;2013;July;Wednesday;Myke Hurley;relay.fm
+CMD Space;50;Being Editor In Chief, with Tim Stevens;00:48:28;2013-07-03;2013;July;Wednesday;Myke Hurley;relay.fm
+CMD Space;49;The Nice Guy Reporter, with Ellis Hamburger;00:46:45;2013-06-26;2013;June;Wednesday;Myke Hurley;relay.fm
+CMD Space;48;A Fresh Start, with Marco Arment;01:01:03;2013-06-19;2013;June;Wednesday;Myke Hurley;relay.fm
+CMD Space;47;Listener Support, with Jesse Thorn;00:38:02;2013-06-12;2013;June;Wednesday;Myke Hurley;relay.fm
+CMD Space;46;Developing For A Living, with David Smith;00:52:07;2013-06-05;2013;June;Wednesday;Myke Hurley;relay.fm
+CMD Space;45;Pre-WWDC Apple, with Stephen Hackett;01:12:28;2013-05-29;2013;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;44;Apple and Education, with Fraser Speirs;00:56:07;2013-05-22;2013;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;43;Option+CMD+H, with Merlin Mann;01:26:25;2013-05-16;2013;May;Thursday;Myke Hurley;relay.fm
+CMD Space;42;Petrified on a Weekly Basis, with Moisés Chiullan;00:53:50;2013-05-15;2013;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;41;Creating a Passionate Fan-base, with Brian Brushwood;00:46:38;2013-05-08;2013;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;40;Loving Things, with Jeff Cannata;00:45:53;2013-05-01;2013;May;Wednesday;Myke Hurley;relay.fm
+CMD Space;39;Crowd Support, with Jonathan Coulton;00:32:54;2013-04-24;2013;April;Wednesday;Myke Hurley;relay.fm
+CMD Space;38;Inbox Zero and New Projects, with Merlin Mann;01:18:10;2013-04-11;2013;April;Thursday;Myke Hurley;relay.fm
+CMD Space;37;Business Doesn’t Have to be Evil, with Brett Kelly;01:03:46;2013-04-10;2013;April;Wednesday;Myke Hurley;relay.fm
+CMD Space;36;Creating a Radio Drama, with Jason Snell;00:46:17;2013-04-03;2013;April;Wednesday;Myke Hurley;relay.fm
+CMD Space;35;Blogging 2.0, with Jon Mitchell;00:52:06;2013-03-27;2013;March;Wednesday;Myke Hurley;relay.fm
+CMD Space;34;A Man of the Internet, with John Siracusa;01:04:25;2013-03-19;2013;March;Tuesday;Myke Hurley;relay.fm
+CMD Space;33;A Big Announcement, with Dan Benjamin;00:58:29;2013-03-13;2013;March;Wednesday;Myke Hurley;relay.fm
+CMD Space;32;Writing, Podcasting and Comedy, with Lex Friedman;00:57:53;2013-03-06;2013;March;Wednesday;Myke Hurley;relay.fm
+CMD Space;31;Free Accounts and Developer Incentives, with Dalton Caldwell and Bill Kunz;01:38:50;2013-02-27;2013;February;Wednesday;Myke Hurley;relay.fm
+CMD Space;30;Dropping Out Of School, with Steve Streza;01:15:27;2013-02-20;2013;February;Wednesday;Myke Hurley;relay.fm
+CMD Space;29;Making Great Apps, with Michael Simmons;00:46:22;2013-02-13;2013;February;Wednesday;Myke Hurley;relay.fm
+CMD Space;28;Technology and Music, with John Roderick;01:19:24;2013-02-08;2013;February;Friday;Myke Hurley;relay.fm
+CMD Space;27;Making Software and Selling It, with Daniel Jalkut;01:15:01;2013-01-29;2013;January;Tuesday;Myke Hurley;relay.fm
+CMD Space;26;A 'Full-Time' Masterclass, with Shawn Blanc;01:07:56;2013-01-23;2013;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;25;Discussing The Magazine, with Marco Arment;01:13:06;2013-01-16;2013;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;24;Making and Creating, with Gina Trapani;01:02:20;2013-01-09;2013;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;23;The Currency Of Confidence, with Rene Ritchie;00:57:02;2013-01-02;2013;January;Wednesday;Myke Hurley;relay.fm
+CMD Space;22;The Golden Headphone Awards 2013;00:34:36;2012-12-23;2012;December;Sunday;Myke Hurley;relay.fm
+CMD Space;21;Not Wasting Time, with Matthew Panzarino;01:10:51;2012-12-19;2012;December;Wednesday;Myke Hurley;relay.fm
+CMD Space;20;Twitterrific, with Gedeon Maheux;01:07:08;2012-12-12;2012;December;Wednesday;Myke Hurley;relay.fm
+CMD Space;19;Sketchnotes and Fantastical, with Mike Rohde and Michael Simmons;01:06:13;2012-12-03;2012;December;Monday;Myke Hurley;relay.fm
+CMD Space;18;Creating on the Mac, with Don McAllister;01:03:44;2012-11-28;2012;November;Wednesday;Myke Hurley;relay.fm
+CMD Space;17;Gameboy English Lessons, with Federico Viticci;01:08:34;2012-11-21;2012;November;Wednesday;Myke Hurley;relay.fm
+CMD Space;16;The Diary of a Liveblogger, with Jason Snell;01:05:06;2012-11-14;2012;November;Wednesday;Myke Hurley;relay.fm
+CMD Space;15;Now The Hard Work Begins, with Dalton Caldwell;00:54:26;2012-11-07;2012;November;Wednesday;Myke Hurley;relay.fm
+CMD Space;14;Obvious App Design, with Nik Fletcher;00:47:01;2012-10-21;2012;October;Sunday;Myke Hurley;relay.fm
+CMD Space;13;Mad Science and Bizarre Coding, with Brett Terpstra;01:02:44;2012-10-17;2012;October;Wednesday;Myke Hurley;relay.fm
+CMD Space;12;Life After Tech Journalism, with MG Siegler;01:05:37;2012-10-10;2012;October;Wednesday;Myke Hurley;relay.fm
+CMD Space;11;A Podcasting Masterclass, with Dan Benjamin;00:57:46;2012-10-03;2012;October;Wednesday;Myke Hurley;relay.fm
+CMD Space;10;It's a Community, Not an Industry, with Tom Merritt;00:57:29;2012-09-26;2012;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;9;Implementing Style, with Adam Lisagor;00:50:56;2012-09-19;2012;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;8;The iPhone 5 Event, with Stephen Hackett;01:34:13;2012-09-12;2012;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;7;Cultivating Ideas, with David Sparks;01:20:10;2012-09-05;2012;September;Wednesday;Myke Hurley;relay.fm
+CMD Space;6;Blogging and Secrets, with Jim Dalrymple;00:52:17;2012-08-29;2012;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;5;Being A Harsh Self Critic, with Marco Arment;01:23:41;2012-08-28;2012;August;Tuesday;Myke Hurley;relay.fm
+CMD Space;4;Paywalls, with Ben Brooks;00:48:11;2012-08-22;2012;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;3;Memberships and Being Classy with Shawn Blanc;01:10:13;2012-08-15;2012;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;2;Light Pink Looks Likes Gray To Me, With Jason Snell;00:53:29;2012-08-08;2012;August;Wednesday;Myke Hurley;relay.fm
+CMD Space;1;I'm Yelling At Me, With Merlin Mann;01:41:27;2012-08-01;2012;August;Wednesday;Myke Hurley;relay.fm
 Disruption;90;Game Over: Thank You For Playing;00:59:21;2018-01-08;2018;January;Monday;"Brianna Wu;Georgia Dow;Steve Lubitz";relay.fm
 Disruption;89;You're Protecting the Bumper;01:04:15;2018-01-02;2018;January;Tuesday;"Brianna Wu;Georgia Dow;Steve Lubitz";relay.fm
 Disruption;88;88: Porsch-UH;01:09:15;2017-12-18;2017;December;Monday;"Brianna Wu;Georgia Dow;Steve Lubitz";relay.fm
@@ -5676,9 +5726,9 @@ Download;3;The S Stands for 'Sandbox';00:56:02;2017-05-12;2017;May;Friday;"Jason
 Download;2;Television Is Technology;01:02:54;2017-05-04;2017;May;Thursday;"Jason Snell;Stephen Hackett";relay.fm
 Download;1;Wardrobe Philosophy;00:59:10;2017-04-27;2017;April;Thursday;"Jason Snell;Stephen Hackett";relay.fm
 Flashback;25;On PC Clones & The End of the Road for IBM’s Personal Computer Business;00:38:49;2022-01-06;2022;January;Thursday;"Quinn Nelson;Stephen Hackett";relay.fm
-Flashback;24;Later IBM PC Models;00:45:43;2021-12-03;2021;December;Friday;"Quinn  Nelson;Stephen  Hackett";relay.fm
-Flashback;23;IBM's Search for an Operating System;00:26:06;2021-11-23;2021;November;Tuesday;"Quinn  Nelson;Stephen  Hackett";relay.fm
-Flashback;22;Building the Personal Computer;00:28:19;2021-11-04;2021;November;Thursday;"Quinn  Nelson;Stephen  Hackett";relay.fm
+Flashback;24;Later IBM PC Models;00:45:43;2021-12-03;2021;December;Friday;"Quinn Nelson;Stephen Hackett";relay.fm
+Flashback;23;IBM's Search for an Operating System;00:26:06;2021-11-23;2021;November;Tuesday;"Quinn Nelson;Stephen Hackett";relay.fm
+Flashback;22;Building the Personal Computer;00:28:19;2021-11-04;2021;November;Thursday;"Quinn Nelson;Stephen Hackett";relay.fm
 Flashback;21;The International Business Machines Corporation;00:45:06;2021-10-21;2021;October;Thursday;"Quinn Nelson;Stephen Hackett";relay.fm
 Flashback;20;Windows Vista;00:48:16;2021-06-03;2021;June;Thursday;"Quinn Nelson;Stephen Hackett";relay.fm
 Flashback;19;The Apple Lisa;00:38:04;2021-05-21;2021;May;Friday;"Quinn Nelson;Stephen Hackett";relay.fm
@@ -6051,10 +6101,10 @@ Playing for Fun;3;Threes and Flipflop Solitaire;00:32:37;2018-04-05;2018;April;T
 Playing for Fun;2;Celeste;00:41:21;2018-03-06;2018;March;Tuesday;"Tiffany Arment;Myke Hurley";relay.fm
 Playing for Fun;1;Super Mario Odyssey;00:40:55;2018-02-15;2018;February;Thursday;"Tiffany Arment;Myke Hurley";relay.fm
 Presentable;123;Finale;00:11:12;2021-12-31;2021;December;Friday;Jeff Veen;relay.fm
-Presentable;122;How Writing a Book Can Help Your Career;00:42:28;2021-12-22;2021;December;Wednesday;Jeff  Veen;relay.fm
-Presentable;121;What Do You Want to Be When You Grow Up?;00:36:47;2021-11-30;2021;November;Tuesday;Jeff  Veen;relay.fm
-Presentable;120;Designing for Life and Death Situations;00:47:09;2021-11-19;2021;November;Friday;Jeff  Veen;relay.fm
-Presentable;119;Should You Go to Design School?;00:47:10;2021-11-08;2021;November;Monday;Jeff  Veen;relay.fm
+Presentable;122;How Writing a Book Can Help Your Career;00:42:28;2021-12-22;2021;December;Wednesday;Jeff Veen;relay.fm
+Presentable;121;What Do You Want to Be When You Grow Up?;00:36:47;2021-11-30;2021;November;Tuesday;Jeff Veen;relay.fm
+Presentable;120;Designing for Life and Death Situations;00:47:09;2021-11-19;2021;November;Friday;Jeff Veen;relay.fm
+Presentable;119;Should You Go to Design School?;00:47:10;2021-11-08;2021;November;Monday;Jeff Veen;relay.fm
 Presentable;118;The Path to Product Management;00:48:46;2021-10-14;2021;October;Thursday;Jeff Veen;relay.fm
 Presentable;117;Crafting Conversations with Things;00:49:25;2021-09-30;2021;September;Thursday;Jeff Veen;relay.fm
 Presentable;116;Cultivating the Practice of Effective Feedback;00:41:45;2021-09-15;2021;September;Wednesday;Jeff Veen;relay.fm
@@ -6510,10 +6560,10 @@ The Test Drivers;50;The Need for Speed;00:57:38;2022-02-28;2022;February;Monday;
 The Test Drivers;49;Rocket League, but with People;00:56:00;2022-02-15;2022;February;Tuesday;"Austin Evans;Myke Hurley";relay.fm
 The Test Drivers;48;Microsoft Owns Gaming;00:54:28;2022-01-28;2022;January;Friday;"Austin Evans;Myke Hurley";relay.fm
 The Test Drivers;47;The CES That Wasn't;00:58:32;2022-01-13;2022;January;Thursday;"Austin Evans;Myke Hurley";relay.fm
-The Test Drivers;46;Test Drive to Survive: 2021;01:12:23;2021-12-30;2021;December;Thursday;"Austin  Evans;Myke  Hurley";relay.fm
-The Test Drivers;45;The MacBook Dilemma;01:00:32;2021-12-13;2021;December;Monday;"Austin  Evans;Myke  Hurley";relay.fm
-The Test Drivers;44;Do You Know Who I Am?;01:11:08;2021-11-21;2021;November;Sunday;"Austin  Evans;Myke  Hurley";relay.fm
-The Test Drivers;43;We Can Finally Talk about the Pixel;01:16:47;2021-11-05;2021;November;Friday;"Austin  Evans;Myke  Hurley";relay.fm
+The Test Drivers;46;Test Drive to Survive: 2021;01:12:23;2021-12-30;2021;December;Thursday;"Austin Evans;Myke Hurley";relay.fm
+The Test Drivers;45;The MacBook Dilemma;01:00:32;2021-12-13;2021;December;Monday;"Austin Evans;Myke Hurley";relay.fm
+The Test Drivers;44;Do You Know Who I Am?;01:11:08;2021-11-21;2021;November;Sunday;"Austin Evans;Myke Hurley";relay.fm
+The Test Drivers;43;We Can Finally Talk about the Pixel;01:16:47;2021-11-05;2021;November;Friday;"Austin Evans;Myke Hurley";relay.fm
 The Test Drivers;42;Techtober is Unstoppable;01:29:17;2021-10-23;2021;October;Saturday;"Austin Evans;Myke Hurley";relay.fm
 The Test Drivers;41;Switching to iPhone 13… Right?;01:13:48;2021-10-01;2021;October;Friday;"Austin Evans;Myke Hurley";relay.fm
 The Test Drivers;40;iPad mini – The Apple Interview;00:57:09;2021-09-23;2021;September;Thursday;"Austin Evans;Myke Hurley";relay.fm
