@@ -1087,10 +1087,10 @@
       "RemoteUsername": "jemus42",
       "RemoteRepo": "poddr",
       "RemoteRef": "main",
-      "RemoteSha": "7fe9503018a0344ae8bd99acab5c5410ab67903c",
+      "RemoteSha": "fd4ed0ea10ae10def6b958db498dd8774d32e22b",
       "RemoteHost": "api.github.com",
       "Remotes": "gadenbuie/epoxy",
-      "Hash": "eced94e9b5acc8ac1be82bfe673c37dc",
+      "Hash": "3aa6a268eceb0978dd9bbfb3d999b968",
       "Requirements": [
         "dplyr",
         "glue",
