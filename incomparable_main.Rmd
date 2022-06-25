@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 
 incomparable_wide <- readRDS("data/incomparable_episodes.rds") %>%
-  filter(show == "The Incomparable")
+  filter(show == "The Incomparable Mothership")
 incomparable <- gather_people(incomparable_wide)
 ```
 
@@ -119,11 +119,11 @@ incomparable %>%
   formatPercentage(columns = 6, digits = 1)
 ```
 
-#### By Segment
+#### By Segment (currently defunct)
 
 The segments the dataset knows about, with episode count:
 
-```{r tenth-segments}
+```{r tenth-segments, eval=FALSE,include=FALSE}
 incomparable_wide %>%
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) %>%
@@ -134,7 +134,7 @@ incomparable_wide %>%
 
 Ranks and % withing each segment.
 
-```{r tenth-panelists-segments}
+```{r tenth-panelists-segments, eval=FALSE,include=FALSE}
 incomparable %>%
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) %>%
@@ -268,7 +268,7 @@ incomparable %>%
   geom_boxplot(alpha = .5, outlier.alpha = 0) +
   coord_flip() +
   labs(
-    title = "The Incomparable: Mothership",
+    title = "The Incomparable Mothership",
     subtitle = "Episode runtimes by panelist",
     y = "Duration (HH:MM:SS)", x = "Panelist",
     caption = caption
