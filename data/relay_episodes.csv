@@ -1,4 +1,5 @@
 show;number;title;duration;date;year;month;weekday;host;network
+Analog(ue);207;You’re the Worst in the Best Way;01:19:53;2022-11-06;2022;November;Sunday;Relay FM;relay.fm
 Analog(ue);206;An Incredibly British Thing Happening;01:34:49;2022-10-09;2022;October;Sunday;Relay FM;relay.fm
 Analog(ue);205;The Best and Worst Person for This Job;01:39:45;2022-09-11;2022;September;Sunday;Relay FM;relay.fm
 Analog(ue);204;Let Me Go Google Some Charts;01:13:39;2022-08-07;2022;August;Sunday;Relay FM;relay.fm
@@ -402,6 +403,7 @@ B-Sides;4;Podcast Vagrant;00:04:40;2014-10-02;2014;October;Thursday;Relay FM;rel
 B-Sides;3;Need More Analog(ue)?;00:08:43;2014-09-21;2014;September;Sunday;Relay FM;relay.fm
 B-Sides;2;Calendaring with Federico;00:12:05;2014-09-11;2014;September;Thursday;Relay FM;relay.fm
 B-Sides;1;Launch Week Q&A;00:40:43;2014-08-25;2014;August;Monday;Relay FM;relay.fm
+Clockwise;476;I Cheated With Two Questions;00:29:59;2022-11-09;2022;November;Wednesday;Relay FM;relay.fm
 Clockwise;475;A Potato Will Arrive;00:29:59;2022-11-02;2022;November;Wednesday;Relay FM;relay.fm
 Clockwise;474;Bobbing for Apple Watches;00:28:21;2022-10-26;2022;October;Wednesday;Relay FM;relay.fm
 Clockwise;473;Solar Eclipse Potato;00:29:59;2022-10-19;2022;October;Wednesday;Relay FM;relay.fm
@@ -861,6 +863,7 @@ Conduit;3;Getting Away, Now!;00:39:48;2021-08-12;2021;August;Thursday;Relay FM;r
 Conduit;2;When You Can’t Even (Or Odd);00:45:00;2021-07-29;2021;July;Thursday;Relay FM;relay.fm
 Conduit;1;Our Systems: The Unicorn & Silk Sonic Methods;00:45:20;2021-07-15;2021;July;Thursday;Relay FM;relay.fm
 Conduit;0;Episode 0 - It’s the Show!;00:10:21;2021-07-09;2021;July;Friday;Relay FM;relay.fm
+Connected;423;I Know What a Parrot Is;01:39:22;2022-11-09;2022;November;Wednesday;Relay FM;relay.fm
 Connected;422;Rearranging Water in the Same Bucket;01:19:41;2022-11-02;2022;November;Wednesday;Relay FM;relay.fm
 Connected;421;The Shins (The Body Part);01:32:51;2022-10-26;2022;October;Wednesday;Relay FM;relay.fm
 Connected;420;2 Regular 2 Pro;01:30:49;2022-10-19;2022;October;Wednesday;Relay FM;relay.fm
@@ -1457,6 +1460,7 @@ Downstream;3;Snackable Trash;01:14:23;2021-11-03;2021;November;Wednesday;Relay F
 Downstream;2;Churn and Return;01:08:36;2021-10-20;2021;October;Wednesday;Relay FM;relay.fm
 Downstream;1;Movies are Back! Movies are Dead!;00:55:28;2021-10-06;2021;October;Wednesday;Relay FM;relay.fm
 Downstream;0;Welcome to Downstream;00:57:55;2021-09-29;2021;September;Wednesday;Relay FM;relay.fm
+Focused;164;Mind Mapping;01:10:57;2022-11-08;2022;November;Tuesday;Relay FM;relay.fm
 Focused;163;The Laws of Creativity, with Joey Cofone;01:01:51;2022-10-25;2022;October;Tuesday;Relay FM;relay.fm
 Focused;162;Perfectionism;01:04:00;2022-10-11;2022;October;Tuesday;Relay FM;relay.fm
 Focused;161;Stolen Focus, with Jean MacDonald;01:22:22;2022-09-27;2022;September;Tuesday;Relay FM;relay.fm
@@ -1790,6 +1794,7 @@ Liftoff;3;Poke His Twin;00:45:11;2015-09-14;2015;September;Monday;Relay FM;relay
 Liftoff;2;The Moon;00:53:30;2015-08-31;2015;August;Monday;Relay FM;relay.fm
 Liftoff;1;Space Salad;00:47:27;2015-08-17;2015;August;Monday;Relay FM;relay.fm
 Liftoff;0;Jason & Stephen Talk Space;00:50:35;2015-08-15;2015;August;Saturday;Relay FM;relay.fm
+Mac Power Users;665;Covered in Paper Cuts;01:23:51;2022-11-06;2022;November;Sunday;Relay FM;relay.fm
 Mac Power Users;664;macOS Ventura & iPadOS 16;01:44:51;2022-10-30;2022;October;Sunday;Relay FM;relay.fm
 Mac Power Users;663;HomeKit Check-In;01:57:25;2022-10-23;2022;October;Sunday;Relay FM;relay.fm
 Mac Power Users;662;Navigating Apple Maps;01:40:46;2022-10-16;2022;October;Sunday;Relay FM;relay.fm
@@ -2557,6 +2562,8 @@ Make Do;4;From The Pen Show – Double Broad, Double Feature!;01:20:19;2018-05-0
 Make Do;3;Why Do We Make? (”Hello. I am achiever. Please notice.”);00:32:40;2018-04-18;2018;April;Wednesday;Relay FM;relay.fm
 Make Do;2;A Room of One’s Own;00:37:35;2018-04-04;2018;April;Wednesday;Relay FM;relay.fm
 Make Do;1;”Lowercase a, art.”;00:27:19;2018-03-21;2018;March;Wednesday;Relay FM;relay.fm
+Material;385;According to an Email ;01:11:24;2022-11-11;2022;November;Friday;Relay FM;relay.fm
+Material;384;Grey Text ;01:30:26;2022-11-09;2022;November;Wednesday;Relay FM;relay.fm
 Material;383;No Defense;01:09:15;2022-10-28;2022;October;Friday;Relay FM;relay.fm
 Material;382;Clock’s Ticking;01:10:05;2022-10-22;2022;October;Saturday;Relay FM;relay.fm
 Material;381;Pixels Pixels Pixels;01:13:17;2022-10-15;2022;October;Saturday;Relay FM;relay.fm
@@ -2941,6 +2948,7 @@ Material;3;Google When? Google Now!;00:55:12;2015-07-16;2015;July;Thursday;Relay
 Material;2;Wear a Fit Cat Rocket Ship;00:53:08;2015-07-09;2015;July;Thursday;Relay FM;relay.fm
 Material;1;Switcheroo;00:44:14;2015-07-02;2015;July;Thursday;Relay FM;relay.fm
 Material;0;The Google Car is Coming... For You;00:40:47;2015-07-02;2015;July;Thursday;Relay FM;relay.fm
+Originality;38;It’s Been a Long Process;01:09:29;2022-11-10;2022;November;Thursday;Relay FM;relay.fm
 Originality;37;Fuzzy Woo-Woo Business;01:00:26;2022-09-30;2022;September;Friday;Relay FM;relay.fm
 Originality;36;Make Believe About Dragons;00:50:36;2022-08-09;2022;August;Tuesday;Relay FM;relay.fm
 Originality;35;35: Lean Into Your Creative Genius;00:54:04;2022-06-23;2022;June;Thursday;Relay FM;relay.fm
@@ -3120,6 +3128,7 @@ Pictorial;4;Sonia Delaunay;00:34:55;2020-01-14;2020;January;Tuesday;Relay FM;rel
 Pictorial;3;Follow the Money;00:39:34;2019-12-31;2019;December;Tuesday;Relay FM;relay.fm
 Pictorial;2;Postcards as Art;00:26:16;2019-12-17;2019;December;Tuesday;Relay FM;relay.fm
 Pictorial;1;Can Artificial Intelligence Make Art?;00:33:30;2019-12-03;2019;December;Tuesday;Relay FM;relay.fm
+Reconcilable Differences;195;Sloppy Focus;01:43:41;2022-11-12;2022;November;Saturday;Relay FM;relay.fm
 Reconcilable Differences;194;Hard Four;01:29:54;2022-10-28;2022;October;Friday;Relay FM;relay.fm
 Reconcilable Differences;193;The Wrong Helen;01:31:30;2022-10-14;2022;October;Friday;Relay FM;relay.fm
 Reconcilable Differences;192;The End Table is Not Your Enemy;01:29:03;2022-09-30;2022;September;Friday;Relay FM;relay.fm
@@ -3314,6 +3323,7 @@ Reconcilable Differences;4;Ohio Intervention;01:31:35;2015-07-02;2015;July;Thurs
 Reconcilable Differences;3;Helena Sell;02:23:00;2015-06-18;2015;June;Thursday;Relay FM;relay.fm
 Reconcilable Differences;2;Thrown to the Wolves of Puberty;01:48:33;2015-06-11;2015;June;Thursday;Relay FM;relay.fm
 Reconcilable Differences;1;We All Ruined It Together;02:09:01;2015-06-03;2015;June;Wednesday;Relay FM;relay.fm
+Remaster;113;Games Are Life;00:45:23;2022-11-11;2022;November;Friday;Relay FM;relay.fm
 Remaster;112;Google Stadia and Cyberpunk 2077;00:56:34;2022-10-13;2022;October;Thursday;Relay FM;relay.fm
 Remaster;111;The Deck Boys Git Gud;01:07:26;2022-09-02;2022;September;Friday;Relay FM;relay.fm
 Remaster;110;The Steam Deck;00:47:27;2022-08-04;2022;August;Thursday;Relay FM;relay.fm
@@ -3486,6 +3496,7 @@ Roboism;4;A Single Piece of Toast;00:31:05;2017-06-27;2017;June;Tuesday;Relay FM
 Roboism;3;You Have to Be Invited In ;00:40:49;2017-06-16;2017;June;Friday;Relay FM;relay.fm
 Roboism;2;The Bees Are Getting Angrier ;00:26:31;2017-05-30;2017;May;Tuesday;Relay FM;relay.fm
 Roboism;1;A Beautiful Smoosh Bot;00:26:07;2017-05-15;2017;May;Monday;Relay FM;relay.fm
+Rocket;411;TWiT Takeover!;01:39:55;2022-11-10;2022;November;Thursday;Relay FM;relay.fm
 Rocket;410;Twitter Is Over;01:06:39;2022-11-03;2022;November;Thursday;Relay FM;relay.fm
 Rocket;409;Rest In Piece, Lightning;01:10:36;2022-10-27;2022;October;Thursday;Relay FM;relay.fm
 Rocket;408;Passing on Apple;00:59:38;2022-10-20;2022;October;Thursday;Relay FM;relay.fm
@@ -3915,6 +3926,7 @@ The Backmarkers;4;Imola Grand Prix Reaction;00:59:00;2022-04-24;2022;April;Sunda
 The Backmarkers;3;Are Ferrari Unstoppable? - F1 2022 Australian Grand Prix Review;01:05:24;2022-04-10;2022;April;Sunday;Relay FM;relay.fm
 The Backmarkers;2;Why F1 is AMAZING Now - Saudi Arabian Grand Prix Review;01:04:52;2022-03-27;2022;March;Sunday;Relay FM;relay.fm
 The Backmarkers;1;F1 2022 is BACK! Bahrain Grand Prix Review;01:03:24;2022-03-20;2022;March;Sunday;Relay FM;relay.fm
+The Pen Addict;538;Lukewarm Takes;00:55:13;2022-11-09;2022;November;Wednesday;Relay FM;relay.fm
 The Pen Addict;537;Adjusted in the Wrong Direction;00:58:14;2022-11-02;2022;November;Wednesday;Relay FM;relay.fm
 The Pen Addict;536;Strange and Cherry;00:55:24;2022-10-26;2022;October;Wednesday;Relay FM;relay.fm
 The Pen Addict;535;A Fine Mist of Yama;00:56:09;2022-10-19;2022;October;Wednesday;Relay FM;relay.fm
@@ -4632,6 +4644,7 @@ Top Four;4;Worst Weezer Singles;00:39:56;2015-09-28;2015;September;Monday;Relay 
 Top Four;3;Reality TV Shows;00:54:35;2015-09-15;2015;September;Tuesday;Relay FM;relay.fm
 Top Four;2;TV Shows;00:51:27;2015-08-30;2015;August;Sunday;Relay FM;relay.fm
 Top Four;1;Video Games;00:56:08;2015-08-17;2015;August;Monday;Relay FM;relay.fm
+Under the Radar;255;The Discontinuity Principle;00:29:47;2022-11-09;2022;November;Wednesday;Relay FM;relay.fm
 Under the Radar;254;New and Different;00:29:37;2022-10-27;2022;October;Thursday;Relay FM;relay.fm
 Under the Radar;253;Motivation Slumps;00:29:47;2022-10-11;2022;October;Tuesday;Relay FM;relay.fm
 Under the Radar;252;Apple Watch Ultra;00:29:37;2022-09-28;2022;September;Wednesday;Relay FM;relay.fm
@@ -5048,6 +5061,7 @@ Ungeniused;4;Inventors Killed by Their Own Inventions;00:15:18;2016-07-21;2016;J
 Ungeniused;3;The Ghost Army & Inflatable Tanks;00:17:35;2016-07-07;2016;July;Thursday;Relay FM;relay.fm
 Ungeniused;2;Dancing Mania;00:19:40;2016-06-23;2016;June;Thursday;Relay FM;relay.fm
 Ungeniused;1;Action Park;00:40:34;2016-06-08;2016;June;Wednesday;Relay FM;relay.fm
+Upgrade;432;Upgrade (With Special Offers);01:24:52;2022-11-07;2022;November;Monday;Relay FM;relay.fm
 Upgrade;431;Charty Charty Money Charts;01:32:10;2022-10-31;2022;October;Monday;Relay FM;relay.fm
 Upgrade;430;Other Kickstands Are Available;02:10:20;2022-10-24;2022;October;Monday;Relay FM;relay.fm
 Upgrade;429;Freedom Doors;01:27:20;2022-10-17;2022;October;Monday;Relay FM;relay.fm
