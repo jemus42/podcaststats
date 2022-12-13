@@ -14,8 +14,8 @@ source("00_setup.R")
 knitr::opts_chunk$set(fig.path = "assets/plots/atp/")
 
 #### Data Prep ####
-atp <- readRDS("data/atp.rds") %>%
-  filter(!is.na(month), !is.na(duration)) %>%
+atp <- readRDS("data/atp.rds") |>
+  filter(!is.na(month), !is.na(duration)) |>
   mutate(date = as.POSIXct(date))
 
 #### Plot presets ####
@@ -58,8 +58,8 @@ ggplot(atp, aes(x = date, y = duration)) +
 ### Duration by Year
 
 ```{r atp_duration_year, fig.height=6}
-atp %>%
-  group_by(year) %>%
+atp |>
+  group_by(year) |>
   ggplot(aes(x = as.factor(year), y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
@@ -82,7 +82,7 @@ atp %>%
 ### Duration by Month
 
 ```{r atp_duration_month, fig.height=6}
-atp %>%
+atp |>
   ggplot(aes(x = month, y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
@@ -107,9 +107,9 @@ atp %>%
 ## Weekday Heatmap
 
 ```{r atp_release_weekday}
-atp %>%
-  mutate(year = forcats::fct_rev(factor(year))) %>%
-  count(year, weekday, .drop = FALSE) %>%
+atp |>
+  mutate(year = forcats::fct_rev(factor(year))) |>
+  count(year, weekday, .drop = FALSE) |>
   ggplot(aes(x = weekday, y = year, fill = n, color = n)) +
   geom_tile() +
   scale_color_viridis_c() +
@@ -130,12 +130,12 @@ atp %>%
 ## Raw Data 
 
 ```{r atp_episodes_table}
-atp %>%
+atp |>
   mutate(
     duration = round(duration/60, 2),
     date = as_date(date)
-  ) %>%
-  select(number, title, duration, date, year, month) %>%
+  ) |>
+  select(number, title, duration, date, year, month) |>
   datatable(
     style = "bootstrap",
     colnames = c("#", "Title", "Duration (mins)", "Date", "Year", "Month")

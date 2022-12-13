@@ -16,15 +16,15 @@ library(dplyr)
 library(kableExtra)
 
 files <- fs::dir_ls(here::here("data"), regexp = "\\.csv$|\\.rds$")
-fs::file_info(files) %>%
-  select(path, size, change_time) %>%
-  mutate(path = fs::path_file(path)) %>%
-  kable() %>%
+fs::file_info(files) |>
+  select(path, size, change_time) |>
+  mutate(path = fs::path_file(path)) |>
+  kable() |>
   kable_styling()
 ```
 
 Here's the raw data, refreshed every week or so.  
-Get the CSV file for import in arbitrary software, and the `.rds` file if you happen to use R.
+Get the CSV file for import in arbitrary software, and the RDS file if you happen to use R.
 
 
 ```{r table}
@@ -39,11 +39,11 @@ tibble::tribble(
   "Relay.fm",         "Shows",    "CSV",   "relay_shows.csv",
   "Relay.fm",         "Episodes", "RDS",   "relay_episodes.rds",
   "Relay.fm",         "Episodes", "CSV",   "relay_episodes.csv"
-) %>%
-  # mutate(Network = factor(Network)) %>%
-  mutate(Download = glue::glue("<a href='/data/{Download}'>{Download}</a>")) %>%
-  kable(escape = FALSE, format = "html") %>%
-  kable_styling(full_width = TRUE) %>%
+) |>
+  # mutate(Network = factor(Network)) |>
+  mutate(Download = glue::glue("<a href='/data/{Download}'>{Download}</a>")) |>
+  kable(escape = FALSE, format = "html") |>
+  kable_styling(full_width = TRUE) |>
   collapse_rows(1)
 ```
 

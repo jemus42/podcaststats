@@ -17,14 +17,16 @@ knitr::opts_chunk$set(
 
 incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
 relay_episodes <- readRDS("data/relay_episodes.rds")
-atp <- readRDS("data/atp.rds") %>%
+atp <- readRDS("data/atp.rds") |>
   mutate(
     network = "ATP",
     show = "ATP"
-  )
+  ) |>
+  # Exclude episodes with missing data until bonus episodes are parsed properly
+  filter(!is.na(duration))
 
-podcasts <- incomparable_episodes %>%
-  bind_rows(relay_episodes) %>%
+podcasts <- incomparable_episodes |>
+  bind_rows(relay_episodes) |>
   bind_rows(atp)
 ```
 
@@ -62,11 +64,12 @@ tibble::tribble(
   "relay.fm", file.info("data/relay_episodes.rds")[["mtime"]], max(relay_episodes$date),
   "The Incomparable", file.info("data/incomparable_episodes.rds")[["mtime"]], max(incomparable_episodes$date),
   "ATP", file.info("data/atp.rds")[["mtime"]], max(atp$date)
-) %>%
-  arrange(desc(latest_episode)) %>%
+) |>
+  arrange(desc(latest_episode)) |>
   knitr::kable(
     col.names = c("Podcast/Network", "File Time", "Latest Episode")
-  )
+  ) |>
+  kableExtra::kable_styling()
 ```
 
 ## All Shows
@@ -74,8 +77,8 @@ tibble::tribble(
 Here's a quick overview of the podcast data I've collected so far.  
 
 ```{r allshows}
-podcasts %>%
-  group_by(network) %>%
+podcasts |>
+  group_by(network) |>
   summarize(
     episodes = n(),
     firstep = as.character(as.Date(min(date, na.rm = TRUE))),
@@ -83,11 +86,11 @@ podcasts %>%
     shows = length(unique(show)),
     epspershow = round(episodes / shows, 1),
     .groups = "drop"
-  ) %>%
+  ) |>
   set_names(c(
     "Network", "Episodes", "First Episode",
     "Last Episode", "# of Shows", "Avg Episodes per Show"
-  )) %>%
+  )) |>
   datatable()
 ```
 
@@ -96,14 +99,14 @@ podcasts %>%
 From first to last published episode.
 
 ```{r allshows_timeline, fig.height=16}
-podcasts %>%
-  group_by(show) %>%
+podcasts |>
+  group_by(show) |>
   mutate(
     d_min = min(date),
     d_max = max(date)
-  ) %>%
+  ) |>
   ggplot(aes(x = reorder(show, d_min), color = network)) +
-  geom_errorbar(aes(ymin = d_min, ymax = d_max), width = .5, size = 2) +
+  geom_errorbar(aes(ymin = d_min, ymax = d_max), width = 1, size = 1) +
   scale_x_discrete(position = "top") +
   scale_color_manual(values = network_colors) +
   coord_flip() +
@@ -112,7 +115,7 @@ podcasts %>%
     title = "All Podcasts Timeline",
     subtitle = "The Incomparable, Relay.fm, ATP",
     x = "", y = "First to Latest Episode Date",
-    color = "Network",
+    color = NULL,
     caption = caption
   ) +
   theme(legend.position = "top")
@@ -122,15 +125,15 @@ podcasts %>%
 ### Duration
 
 ```{r allshows_duration, fig.height=16}
-podcasts %>%
-  filter(!is.na(duration)) %>%
+podcasts |>
+  filter(!is.na(duration)) |>
   ggplot(aes(x = reorder(show, duration, FUN = mean), y = duration, fill = network)) +
   geom_boxplot() +
   coord_flip() +
   scale_fill_manual(values = network_colors) +
   labs(
     title = "Podcasts by Duration", subtitle = "By Network",
-    x = "", y = "Duration (HH:MM:SS)", fill = "Network"
+    x = "", y = "Duration (HH:MM:SS)", fill = NULL
   ) +
   theme(legend.position = "top")
 ```

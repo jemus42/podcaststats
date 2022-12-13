@@ -16,17 +16,17 @@ knitr::opts_chunk$set(
 )
 
 relay_shows <- readRDS("data/relay_shows.rds")
-relay_episodes <- readRDS("data/relay_episodes.rds") %>% 
-  #filter(year >= 2014) %>%
+relay_episodes <- readRDS("data/relay_episodes.rds") |> 
+  #filter(year >= 2014) |>
   left_join(relay_shows, by = "show")
 
-shows <- relay_episodes %>%
-  group_by(show) %>%
-  summarise(age = min(date)) %>%
-  arrange(age) %>%
+shows <- relay_episodes |>
+  group_by(show) |>
+  summarise(age = min(date)) |>
+  arrange(age) |>
   pull("show")
 
-relay_episodes <- relay_episodes %>%
+relay_episodes <- relay_episodes |>
   mutate(
     show = factor(show, levels = shows, ordered = TRUE),
   )
@@ -41,11 +41,11 @@ Please note that there's probably still stuff coming.
 # Overview
 
 ```{r text_placeholders, echo=F}
-lastyear <- relay_episodes %>%
-  filter(year == year(now()) - 1) %>%
+lastyear <- relay_episodes |>
+  filter(year == year(now()) - 1) |>
   nrow()
-thisyear <- relay_episodes %>%
-  filter(year == year(now())) %>%
+thisyear <- relay_episodes |>
+  filter(year == year(now())) |>
   nrow()
 progress <- round(thisyear / lastyear * 100, 1)
 ```
@@ -58,13 +58,13 @@ In `r year(now())-1`, there were **`r lastyear`** episodes published, and we're 
 ## Shows by Age
 
 ```{r shows_by_age, fig.height=9}
-relay_episodes %>%
-  filter(year >= 2014) %>%
-  group_by(show) %>%
+relay_episodes |>
+  filter(year >= 2014) |>
+  group_by(show) |>
   mutate(
     d_min = min(date),
     d_max = max(date)
-  ) %>%
+  ) |>
   ggplot(aes(x = reorder(show, d_min), color = show_status)) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max),
     width = .5, size = 2, alpha = .75
@@ -83,10 +83,10 @@ relay_episodes %>%
 ## Shows per Year
 
 ```{r show_per_year, fig.height = 6, fig.width = 10}
-relay_episodes %>%
-  filter(year >= 2014) %>%
-  group_by(show, year) %>%
-  tally() %>%
+relay_episodes |>
+  filter(year >= 2014) |>
+  group_by(show, year) |>
+  tally() |>
   ggplot(aes(x = as.factor(year), weight = n, fill = show)) +
   geom_bar(show.legend = FALSE) +
   scale_y_continuous(
@@ -105,42 +105,40 @@ relay_episodes %>%
 ## Shows per Week
 
 ```{r shows_per_week, fig.height=6, fig.width = 10}
-relay_episodes %>%
+relay_episodes |>
   mutate(
     week = week(date),
     year_num = year(date)
-  ) %>%
-  filter(year_num >= 2014) %>%
-  group_by(year, week) %>%
-  tally() %>%
-  {
-    ggplot(data = ., aes(x = week, y = n)) +
-      geom_point() +
-      geom_smooth(method = lm, se = F, color = "red") +
-      scale_y_continuous(
-        breaks = seq(0, 100, 10),
-        minor_breaks = seq(0, 100, 5)
-      ) +
-      scale_x_continuous(breaks = seq(0, 55, 16)) +
-      facet_wrap(~year) +
-      labs(
-        title = "Relay.fm: Weekly Episode Output",
-        x = "Week of Year", y = "Episodes Published", caption = caption
-      )
-  }
+  ) |>
+  filter(year_num >= 2014) |>
+  group_by(year, week) |>
+  tally() |>
+  ggplot(aes(x = week, y = n)) +
+    geom_point() +
+    geom_smooth(method = lm, se = F, color = "red") +
+    scale_y_continuous(
+      breaks = seq(0, 100, 10),
+      minor_breaks = seq(0, 100, 5)
+    ) +
+    scale_x_continuous(breaks = seq(0, 55, 16)) +
+    facet_wrap(~year) +
+    labs(
+      title = "Relay.fm: Weekly Episode Output",
+      x = "Week of Year", y = "Episodes Published", caption = caption
+    )
 ```
 
 ### Regularity
 
 ```{r shows_per_week_bars, fig.height=12, fig.width=11}
-relay_episodes %>%
+relay_episodes |>
   mutate(
     week = isoweek(date),
     year_num = year(date)
-  ) %>%
-  filter(year_num == current_year) %>%
-  group_by(show, year, week) %>%
-  tally() %>%
+  ) |>
+  filter(year_num == current_year) |>
+  group_by(show, year, week) |>
+  tally() |>
   ggplot(aes(x = week, y = n)) +
   geom_col() +
   # scale_y_continuous(breaks = seq(0, 10, 1)) +
@@ -157,33 +155,32 @@ relay_episodes %>%
 ## Shows per Month
 
 ```{r shows_per_month}
-relay_episodes %>%
+relay_episodes |>
   mutate(
     month = month(date),
     year_num = year(date)
-  ) %>%
-  filter(year_num >= 2014) %>%
-  group_by(year, month) %>%
-  tally() %>%
-  {
-    ggplot(data = ., aes(x = month, y = n)) +
-      geom_point() +
-      geom_smooth(method = lm, se = F, color = "red") +
-      scale_y_continuous(
-        breaks = seq(0, 1e6, 10),
-        minor_breaks = seq(0, 1e6, 5)
-      ) +
-      scale_x_continuous(
-        breaks = seq(0, 13, 2),
-        minor_breaks = seq(0, 13, 1)
-      ) +
-      facet_grid(. ~ year, space = "free_x", scales = "free_x") +
-      labs(
-        title = "Relay.fm: Monthly Episode Output",
-        x = "Month of Year", y = "Episodes Published", caption = caption
-      ) +
-      theme(axis.text.x = element_text(size = rel(.9)))
-  }
+  ) |>
+  filter(year_num >= 2014) |>
+  group_by(year, month) |>
+  tally() |>
+  ggplot(aes(x = month, y = n)) +
+    geom_point() +
+    geom_smooth(method = lm, se = F, color = "red") +
+    scale_y_continuous(
+      breaks = seq(0, 1e6, 10),
+      minor_breaks = seq(0, 1e6, 5)
+    ) +
+    scale_x_continuous(
+      breaks = seq(0, 13, 2),
+      minor_breaks = seq(0, 13, 1)
+    ) +
+    facet_grid(. ~ year, space = "free_x", scales = "free_x") +
+    labs(
+      title = "Relay.fm: Monthly Episode Output",
+      x = "Month of Year", y = "Episodes Published", caption = caption
+    ) +
+    theme(axis.text.x = element_text(size = rel(.9)))
+
 ```
 
 # Runtimes
@@ -191,8 +188,8 @@ relay_episodes %>%
 ## All Shows
 
 ```{r runtime_allshows_scatter, fig.height=7, fig.width=10}
-relay_episodes %>%
-  filter(year >= 2014, duration <= hms(hours = 4)) %>%
+relay_episodes |>
+  filter(year >= 2014, duration <= hms(hours = 4)) |>
   ggplot(aes(x = date, y = duration, color = show)) +
   geom_point(alpha = .5, show.legend = FALSE) +
   scale_x_date(
@@ -215,8 +212,8 @@ relay_episodes %>%
 
 
 ```{r runtime_allshows, fig.height=15, fig.width=15}
-relay_episodes %>%
-  filter(show != "B-Sides", year >= 2014) %>%
+relay_episodes |>
+  filter(show != "B-Sides", year >= 2014) |>
   ggplot(aes(x = date, y = duration)) +
     geom_point() +
     expand_limits(y = 0) +
@@ -239,8 +236,8 @@ relay_episodes %>%
 ### Histogram
 
 ```{r runtime_allshows_hist, fig.width=9, fig.height=7}
-relay_episodes %>%
-  filter(duration <= hms(hours = 3)) %>%
+relay_episodes |>
+  filter(duration <= hms(hours = 3)) |>
   ggplot(aes(x = duration)) +
   geom_histogram(binwidth = 120, color = "white") +
   scale_x_time(
@@ -260,8 +257,8 @@ relay_episodes %>%
 ### Boxplots 
 
 ```{r runtime_avg_pershow, fig.height=9}
-relay_episodes %>%
-  group_by(show) %>%
+relay_episodes |>
+  group_by(show) |>
   ggplot(aes(x = forcats::fct_reorder(show, duration, .fun = mean), y = duration)) +
     geom_boxplot() +
     stat_summary(
@@ -285,9 +282,9 @@ Sadly I don't have a lot of data about people besides the hosts of each show. I 
 Be that as it may, here's a bit about the hosts.
 
 ```{r people, fig.height=9}
-relay_episodes %>%
-  gather_people() %>%
-  count(person) %>%
+relay_episodes |>
+  gather_people() |>
+  count(person) |>
   ggplot(aes(x = reorder(person, n), y = n)) +
   geom_col() +
   coord_flip() +
@@ -303,10 +300,10 @@ relay_episodes %>%
 Sooo okay! Filtered by episodes aireing in 2014 or later though.
 
 ```{r hosts_by_hours_by_weeks_active, fig.height = 9}
-relay_episodes %>%
-  filter(year >= 2014) %>%
-  gather_people() %>%
-  group_by(person) %>%
+relay_episodes |>
+  filter(year >= 2014) |>
+  gather_people() |>
+  group_by(person) |>
   summarize(
     n = n(),
     duration = sum(duration, na.rm = TRUE),

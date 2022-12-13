@@ -20,23 +20,22 @@ library(ggbeeswarm)
 library(plotly)
 library(DT)
 
-library(broom)
 
 # Dummy to make renv pick up ragg and Hmisc
-require(ragg)
-if (!requireNamespace("Hmisc")) install.packages("Hmisc")
+if (FALSE) {
+  library(ragg)
+  library(Hmisc)
+}
 
 #### Knitr chunk options ####
 knitr::opts_chunk$set(
   fig.path = "assets/plots/",
   fig.align = "center",
-  fig.retina = 2,
   echo = FALSE,
   prompt = FALSE,
   comment = NA,
   message = FALSE,
   warning = FALSE,
-  fig.retina = 2,
   cache = FALSE,
   dev = "ragg_png"
 )
@@ -62,7 +61,8 @@ caption <- paste0(
 theme_set(
   theme_ipsum(
     base_size = 14,
-    plot_margin = margin(4, 4, 4, 4)
+    plot_margin = margin(4, 4, 4, 4),
+    axis_text_size = 12
   ) +
     theme(
       plot.title.position = "plot",

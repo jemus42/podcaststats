@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
   fig.path = "assets/plots/incomparable_main/"
 )
 
-incomparable_wide <- readRDS("data/incomparable_episodes.rds") %>%
+incomparable_wide <- readRDS("data/incomparable_episodes.rds") |>
   filter(show == "The Incomparable Mothership")
 incomparable <- gather_people(incomparable_wide)
 ```
@@ -28,59 +28,64 @@ I would like to do a lot more with this, but currently time is scarce.
 However, I want to fulfill [Jason's request](https://twitter.com/jsnell/status/800412064640483328), since I would love to be worthy of the title of *record keeper*.
 
 
-```{glue tenth-summary, .transformer = epoxy_style_bold()}
+```{epoxy tenth-summary, .transformer = epoxy_style_bold()}
 Since its first episode on {format(min(as.Date(incomparable_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(incomparable_wide$duration, na.rm = TRUE)/dhours(1))} hours of content (roughly {round(sum(incomparable_wide$duration, na.rm = TRUE)/ddays(1))} days) across {nrow(incomparable_wide)} episodes.
 ```
 
 The latest episode in the current dataset:
 
 ```{r tenth-latest-data}
-incomparable_wide %>%
-  head(1) %>%
-  select(number, date, title, host, guest) %>%
-  mutate(date = as.Date(date)) %>%
-  knitr::kable()
+incomparable_wide |>
+  head(1) |>
+  select(number, date, title, host, guest) |>
+  mutate(
+    date = as.Date(date),
+    guest = stringr::str_replace_all(guest, ";", ", ")
+  ) |>
+  knitr::kable(col.names = c("#", "Date", "Title", "Host", "Guests")) |>
+  kableExtra::kable_styling()
 ```
 
 ## Panelists 
 
 ### `r current_year` Panelists
 
+
+```{epoxy panelists-head, .transformer = epoxy_style_bold()}
+There were {nrow(filter(incomparable_wide, year == current_year))} episodes published in {current_year}. Here's a breakdown by host and guest counts.
+```
+
 ```{r current_year_panelists, fig.height=9}
-incomparable %>%
-  filter(year == current_year) %>%
-  group_by(person, role) %>%
-  tally() %>%
-  spread(role, n) %>%
-  replace_na(list(guest = 0, host = 0)) %>%
-  mutate(total = guest + host) %>%
-  arrange(desc(total)) %>%
+panelist_breakdown <- incomparable |>
+  filter(year == current_year) |>
+  group_by(person, role) |>
+  tally() |>
+  spread(role, n) |>
+  replace_na(list(guest = 0, host = 0)) |>
+  mutate(total = guest + host)
+
+panelist_breakdown |>
+  arrange(desc(total)) |>
   datatable(
     style = "bootstrap",
     colnames = c("Person", "Guest", "Host", "Total")
   )
 
-incomparable %>%
-  filter(year == current_year) %>%
-  group_by(person, role) %>%
-  tally() %>%
-  spread(role, n) %>%
-  replace_na(list(guest = 0, host = 0)) %>%
-  mutate(total = guest + host) %>%
-  gather(role, n, guest, host) %>%
-  {
-    ggplot(data = ., aes(x = reorder(person, total), y = n, fill = role)) +
-      geom_col(color = "black", alpha = .6) +
-      coord_flip() +
-      scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
-      scale_fill_brewer(palette = "Set1", label = c("Guest", "Host")) +
-      labs(
-        title = glue::glue("The Incomparable — {current_year}"),
-        subtitle = "Panelists by # of Appearances",
-        x = "Panelist", y = "# of Appearances", fill = "Role"
-      ) +
-      theme(legend.position = "top")
-  }
+panelist_breakdown_long <- panelist_breakdown |>
+  gather(role, n, guest, host) 
+
+
+ggplot(data = panelist_breakdown_long, aes(x = reorder(person, total), y = n, fill = role)) +
+  geom_col(color = "black", alpha = .6) +
+  coord_flip() +
+  scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
+  scale_fill_brewer(palette = "Dark2", label = c("Guest", "Host")) +
+  labs(
+    title = glue::glue("The Incomparable — {current_year}"),
+    subtitle = "Panelists by # of Appearances",
+    x = "Panelist", y = "# of Appearances", fill = "Role"
+  ) +
+  theme(legend.position = "top")
 ```
 
 ### All Time Stats
@@ -93,19 +98,19 @@ Special bonus episodes are not included (507b, 506b, 337b, 173z).
 Nothing special, just "appears in episode" counts.
 
 ```{r tenth-panelists}
-incomparable %>%
+incomparable |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) %>%
-  count(person, role) %>%
-  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  filter(!str_detect(number, "[a-z]$")) |>
+  count(person, role) |>
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) |>
   mutate(
     person = factor(person),
     total = guest + host,
     total_perc = round(total / nrow(incomparable_wide), 4),
     rank = rank(-total, ties.method = "min")
-  ) %>%
-  arrange(desc(total)) %>%
-  select(rank, person, host, guest, total, total_perc) %>%
+  ) |>
+  arrange(desc(total)) |>
+  select(rank, person, host, guest, total, total_perc) |>
   datatable(
     style = "bootstrap",
     filter = "top",
@@ -115,7 +120,7 @@ incomparable %>%
        pageLength = 25,
        lengthMenu = c(10, 25, 50, 100)
     )
-  ) %>%
+  ) |>
   formatPercentage(columns = 6, digits = 1)
 ```
 
@@ -124,34 +129,34 @@ incomparable %>%
 The segments the dataset knows about, with episode count:
 
 ```{r tenth-segments, eval=FALSE,include=FALSE}
-incomparable_wide %>%
+incomparable_wide |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) %>%
-  count(category, sort = TRUE) %>%
-  replace_na(replace = list(category = "General")) %>%
+  filter(!str_detect(number, "[a-z]$")) |>
+  count(category, sort = TRUE) |>
+  replace_na(replace = list(category = "General")) |>
   knitr::kable()
 ```
 
 Ranks and % withing each segment.
 
 ```{r tenth-panelists-segments, eval=FALSE,include=FALSE}
-incomparable %>%
+incomparable |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) %>%
-  count(category, person, role) %>%
-  filter(!is.na(category)) %>%
-  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  filter(!str_detect(number, "[a-z]$")) |>
+  count(category, person, role) |>
+  filter(!is.na(category)) |>
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) |>
   mutate(
     segment = factor(category), person = factor(person),
     total = guest + host
-  ) %>%
-  group_by(category) %>%
+  ) |>
+  group_by(category) |>
   mutate(
     total_perc = round(total / sum(host), 4),
     rank = rank(-total, ties.method = "min")
-  ) %>%
-  arrange(category, desc(total)) %>%
-  select(category, rank, person, host, guest, total, total_perc) %>%
+  ) |>
+  arrange(category, desc(total)) |>
+  select(category, rank, person, host, guest, total, total_perc) |>
   datatable(
     style = "bootstrap",
     colnames = c("Segment", "Rank", "Person", "Host", "Guest", "Total", "Total %"), 
@@ -163,7 +168,7 @@ incomparable %>%
        pageLength = 50,
        lengthMenu = c(10, 25, 50, 75, 120)
     )
-  ) %>%
+  ) |>
   formatPercentage(columns = 7, digits = 1)
 ```
 
@@ -172,11 +177,11 @@ incomparable %>%
 Duration per episode in which each person appears, one episode can count towards multiple people's total of course.
 
 ```{r tenth-panelists-duration}
-incomparable %>%
+incomparable |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) %>%
-  group_by(person) %>%
-  summarize(mins = sum(as.numeric(duration)/60)) %>%
+  filter(!str_detect(number, "[a-z]$")) |>
+  group_by(person) |>
+  summarize(mins = sum(as.numeric(duration)/60)) |>
   mutate(
     mins = round(mins, 1),
     hours = round(mins/60, 1), 
@@ -184,9 +189,9 @@ incomparable %>%
     person = factor(person),
     runtime_perc = round(mins / sum(as.numeric(incomparable_wide$duration/60)), 4),
     rank = rank(-mins, ties.method = "min")
-  ) %>%
-  arrange(rank) %>%
-  select(rank, person, runtime_perc, mins, hours, days) %>%
+  ) |>
+  arrange(rank) |>
+  select(rank, person, runtime_perc, mins, hours, days) |>
   datatable(
     style = "bootstrap",
     filter = "top",
@@ -196,7 +201,7 @@ incomparable %>%
        pageLength = 25,
        lengthMenu = c(10, 25, 50, 100)
     )
-  ) %>%
+  ) |>
   formatPercentage(columns = 3, digits = 1)
 ```
 
@@ -206,36 +211,36 @@ incomparable %>%
 Because that's the easy one.
 
 ```{r runtime, fig.width=10}
-incomparable_wide %>%
-  mutate(title_long = str_wrap(paste0(number, ": ", title), 20)) %>%
-  {
-    ggplot(data = ., aes(x = date, y = duration)) +
-      geom_point(alpha = .75) +
-      geom_smooth(method = loess, se = F, color = "red") +
-      geom_label_repel(
-        data = slice_max(., duration, n = 5),
-        aes(label = title_long), alpha = .8, size = 3
-      ) +
-      scale_x_date(
-        date_breaks = "1 year", date_labels = "%Y"
-      ) +
-      scale_y_time(
-        breaks = hms(minutes = seq(0, 1e5, 60)),
-        limits = c(0, NA)
-      ) +
-      labs(
-        title = "The Incomparable: Mothership",
-        subtitle = "Episode runtimes",
-        y = "Duration (HH:MM:SS)", x = "Date Published",
-        caption = caption
-      )
-  }
+tmp <- incomparable_wide |>
+  mutate(title_long = str_wrap(paste0(number, ": ", title), 20))
+
+ggplot(tmp, aes(x = date, y = duration)) +
+  geom_point(alpha = .75) +
+  geom_smooth(method = loess, formula = y ~ x, se = FALSE, color = "red") +
+  geom_label_repel(
+    data = slice_max(tmp, duration, n = 8),
+    aes(label = title_long), alpha = .8, size = 3
+  ) +
+  scale_x_date(
+    date_breaks = "1 year", date_labels = "%Y"
+  ) +
+  scale_y_time(
+    breaks = hms(minutes = seq(0, 1e5, 60)),
+    limits = c(0, NA)
+  ) +
+  labs(
+    title = "The Incomparable: Mothership",
+    subtitle = "Episode runtimes",
+    y = "Duration (HH:MM:SS)", x = "Date Published",
+    caption = caption
+  )
+  
 ```
 
 ### By Year
 
 ```{r runtime_year, fig.width=10}
-incomparable_wide %>% 
+incomparable_wide |> 
   ggplot(aes(x = factor(year), y = duration)) +
     geom_point(
       alpha = .75,
@@ -258,12 +263,12 @@ incomparable_wide %>%
 
 ### Per Person
 
-```{r runtime_person, fig.height=15}
-incomparable %>%
-  filter(year >= 2011) %>%
-  group_by(person) %>%
-  mutate(mean_duration = mean(duration)) %>%
-  ggplot(data = ., aes(x = reorder(person, mean_duration), y = duration)) +
+```{r runtime_person, fig.height=18}
+incomparable |>
+  filter(year >= 2011) |>
+  group_by(person) |>
+  mutate(mean_duration = mean(duration)) |>
+  ggplot(aes(x = reorder(person, mean_duration), y = duration)) +
   geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +
   geom_boxplot(alpha = .5, outlier.alpha = 0) +
   coord_flip() +

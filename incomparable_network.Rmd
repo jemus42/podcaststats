@@ -25,23 +25,23 @@ incomparable <- gather_people(incomparable_wide)
 
 All shows on the network, first and last episode timeline.
 
-```{r incomparable_network_timeline, fig.height=8}
-incomparable_wide %>%
-  group_by(show) %>%
+```{r incomparable_network_timeline, fig.height=12}
+incomparable_wide |>
+  group_by(show) |>
   mutate(
     d_min = min(date),
     d_max = max(date)
-  ) %>%
+  ) |>
   ggplot(aes(x = reorder(show, d_min))) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max),
-    width = .5, size = 2, alpha = .75, color = "black"
+    width = .5, size = 1, alpha = .75, color = "#2C2E6A"
   ) +
   coord_flip() +
   scale_x_discrete(position = "top") +
   labs(
     x = "", y = "First to Last Episode Date",
     title = "The Incomparable Network",
-    subtitle = "Show Timelines",
+    subtitle = "Show Timelines: First and last known episode dates",
     caption = caption
   )
 ```
@@ -50,8 +50,8 @@ incomparable_wide %>%
 All episodes since 2011.
 
 ```{r incomparable_network_alltime}
-incomparable_wide %>%
-  count(show) %>%
+incomparable_wide |>
+  count(show) |>
   ggplot(aes(x = reorder(show, n), y = n)) +
   geom_col() +
   coord_flip() +
@@ -62,8 +62,8 @@ incomparable_wide %>%
     caption = caption
   )
 
-incomparable_wide %>%
-  filter(year >= 2011) %>%
+incomparable_wide |>
+  filter(year >= 2011) |>
   ggplot(aes(x = date, y = duration, fill = show)) +
   geom_point(shape = 21, color = "black", alpha = .5) +
   scale_y_time(
@@ -77,10 +77,10 @@ incomparable_wide %>%
     caption = caption
   )
 
-incomparable_wide %>%
-  filter(year >= 2011) %>%
-  count(year, month) %>%
-  ggplot(data = ., aes(x = month, y = n)) +
+incomparable_wide |>
+  filter(year >= 2011) |>
+  count(year, month) |>
+  ggplot(aes(x = month, y = n)) +
   geom_point(color = "black", alpha = .75) +
   facet_wrap(~year, nrow = 1, scales = "free_x") +
   labs(
@@ -95,16 +95,16 @@ incomparable_wide %>%
 Episode duration by the 15 people most frequently appearing on the network:
 
 ```{r top_15_people_duration}
-incomparable %>%
-  filter(year >= 2011) %>%
-  count(person) %>%
-  top_n(15) %>%
-  pull(person) -> top_15
+top_15 <- incomparable |>
+  filter(year >= 2011) |>
+  count(person) |>
+  top_n(15) |>
+  pull(person)
 
-incomparable %>%
-  filter(person %in% top_15) %>%
-  group_by(person) %>%
-  mutate(mean_duration = mean(duration)) %>%
+incomparable |>
+  filter(person %in% top_15) |>
+  group_by(person) |>
+  mutate(mean_duration = mean(duration)) |>
   ggplot(aes(x = reorder(person, mean_duration), y = duration)) +
   geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +
   geom_boxplot(alpha = .5, outlier.alpha = 0) +
@@ -121,14 +121,14 @@ incomparable %>%
 ## `r current_year`` Hosts and Guests
 
 ```{r currentyear_panelists_network, fig.height=14}
-incomparable %>%
-  filter(year == current_year) %>%
-  group_by(person, role) %>%
-  tally() %>%
-  spread(role, n) %>%
-  replace_na(list(guest = 0, host = 0)) %>%
-  mutate(total = guest + host) %>%
-  arrange(desc(total)) %>%
+incomparable |>
+  filter(year == current_year) |>
+  group_by(person, role) |>
+  tally() |>
+  spread(role, n) |>
+  replace_na(list(guest = 0, host = 0)) |>
+  mutate(total = guest + host) |>
+  arrange(desc(total)) |>
   datatable(style = "bootstrap", colnames = c("Person", "Guest", "Host", "Total Appearances"))
 ```
 
@@ -142,18 +142,18 @@ It was artisanally crafted as a gift to *The Incomparable* panelists and fans <3
 Here's a searchable and sortable list of all the episodes released in `r current_year` (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
 
 ```{r currentyear_panelists_network_fulltable}
-incomparable %>%
-  filter(year == current_year) %>%
+incomparable |>
+  filter(year == current_year) |>
   select(
     show, number, date,
     duration, title, person, role
-  ) %>%
+  ) |>
   mutate(
     #duration = round(duration, 2),
     date = lubridate::as_date(date),
     show = factor(show)
-  ) %>%
-  arrange(desc(date)) %>%
+  ) |>
+  arrange(desc(date)) |>
   datatable(
     style = "bootstrap", filter = "top",
     colnames = c(
@@ -161,7 +161,7 @@ incomparable %>%
       "Duration (mins)", "Title", "Person",
       "Role"
     )
-  ) %>%
+  ) |>
   formatDate(3, method = "toDateString")
 ```
 
@@ -170,9 +170,9 @@ incomparable %>%
 TL;DR TeeVee is basially cheating.
 
 ```{r incomparable_network_currentyear_shows}
-incomparable_wide %>%
-  filter(year == current_year) %>%
-  count(show) %>%
+incomparable_wide |>
+  filter(year == current_year) |>
+  count(show) |>
   ggplot(aes(x = reorder(show, n), y = n)) +
   geom_col() +
   coord_flip() +
@@ -188,10 +188,10 @@ incomparable_wide %>%
 ## `r current_year` Episodes
 
 ```{r incomparable_network_currentyear_episodes, fig.height=6, fig.width=9}
-incomparable_wide %>%
-  filter(year == current_year) %>%
-  mutate(date = round_date(date, unit = "week")) %>%
-  count(date) %>%
+incomparable_wide |>
+  filter(year == current_year) |>
+  mutate(date = round_date(date, unit = "week")) |>
+  count(date) |>
   ggplot(aes(x = date, y = n)) +
     geom_col() +
     scale_x_date(
@@ -214,9 +214,9 @@ incomparable_wide %>%
 All in all, *The Incomparable* published `r round(sum(incomparable_wide$duration) / dminutes(1))` minutes of content, or `r round(sum(incomparable_wide$duration) / dweeks(1))` weeks, which are numbers that exists as a concept in your head but not in reality.
 
 ```{r incomparable_network_episodes_peryear}
-incomparable_wide %>%
-  filter(year >= 2011) %>%
-  count(year) %>%
+incomparable_wide |>
+  filter(year >= 2011) |>
+  count(year) |>
   ggplot(aes(x = factor(year), y = n)) +
     geom_col() +
     labs(
