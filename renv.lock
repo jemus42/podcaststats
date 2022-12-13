@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.1",
+    "Version": "4.2.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -193,26 +193,6 @@
       "Hash": "9fe98599ca456d6552421db0d6772d8f",
       "Requirements": [
         "bit"
-      ]
-    },
-    "broom": {
-      "Package": "broom",
-      "Version": "1.0.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c948329889c7b24a4201df3aef5058c2",
-      "Requirements": [
-        "backports",
-        "dplyr",
-        "ellipsis",
-        "generics",
-        "ggplot2",
-        "glue",
-        "purrr",
-        "rlang",
-        "stringr",
-        "tibble",
-        "tidyr"
       ]
     },
     "bslib": {
@@ -1114,16 +1094,15 @@
     },
     "poddr": {
       "Package": "poddr",
-      "Version": "0.2.1",
+      "Version": "0.2.4",
       "Source": "GitHub",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "jemus42",
       "RemoteRepo": "poddr",
       "RemoteRef": "main",
-      "RemoteSha": "203ef2dedb4379c1266c7bd5c7d35e0aef76f2a4",
-      "RemoteHost": "api.github.com",
-      "Remotes": "gadenbuie/epoxy",
-      "Hash": "df2f74b608720bda7bb7f3ccfbfcea98",
+      "RemoteSha": "2817a47869a354fc0ec6ccbe4c60643707d38f7a",
+      "Hash": "0545aa1ee79e6185f5d115530b002f44",
       "Requirements": [
         "dplyr",
         "glue",
@@ -1137,8 +1116,7 @@
         "rvest",
         "stringr",
         "tibble",
-        "tidyr",
-        "xml2"
+        "tidyr"
       ]
     },
     "polite": {
