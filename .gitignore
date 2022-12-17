@@ -17,3 +17,6 @@ site_libs
 push.sh
 
 log*.log
+
+/.quarto/
+_freeze

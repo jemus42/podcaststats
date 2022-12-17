@@ -1,22 +1,17 @@
 ---
-title: "The Incomparable"
-date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
-author: "Lukas — @jemus42"
-output: 
-  html_document:
-    fig_height: 8
+title-block-style: plain
+title: "The Mothership"
+knitr:
+  opts_chunk: 
+    fig_path: "plots/incomparable_mothership/"
 editor_options: 
   chunk_output_type: console
 ---
 
+{{< include _setup.qmd >}}
+
+
 ```{r setup, include=FALSE}
-source("00_setup.R")
-
-#### Global options ####
-knitr::opts_chunk$set(
-  fig.path = "assets/plots/incomparable_main/"
-)
-
 incomparable_wide <- readRDS("data/incomparable_episodes.rds") |>
   filter(show == "The Incomparable Mothership")
 incomparable <- gather_people(incomparable_wide)
@@ -55,7 +50,7 @@ incomparable_wide |>
 There were {nrow(filter(incomparable_wide, year == current_year))} episodes published in {current_year}. Here's a breakdown by host and guest counts.
 ```
 
-```{r current_year_panelists, fig.height=9}
+```{r current_year_panelists_tab, fig.height=9}
 panelist_breakdown <- incomparable |>
   filter(year == current_year) |>
   group_by(person, role) |>
@@ -66,11 +61,16 @@ panelist_breakdown <- incomparable |>
 
 panelist_breakdown |>
   arrange(desc(total)) |>
-  datatable(
-    style = "bootstrap",
-    colnames = c("Person", "Guest", "Host", "Total")
+  rename_with(stringr::str_to_title) |>
+  reactable(
+    
   )
+```
 
+
+Looking at it as a bar chart is not really helping I guess but sure why not.
+
+```{r current_year_panelists_plot, fig.height=9}
 panelist_breakdown_long <- panelist_breakdown |>
   gather(role, n, guest, host) 
 
@@ -210,7 +210,9 @@ incomparable |>
 
 Because that's the easy one.
 
-```{r runtime, fig.width=10}
+```{r runtime}
+#| column: screen-inset-shaded
+#| fig-width: 10
 tmp <- incomparable_wide |>
   mutate(title_long = str_wrap(paste0(number, ": ", title), 20))
 
@@ -239,7 +241,9 @@ ggplot(tmp, aes(x = date, y = duration)) +
 
 ### By Year
 
-```{r runtime_year, fig.width=10}
+```{r runtime_year}
+#| column: screen-inset-shaded
+#| fig-width: 8
 incomparable_wide |> 
   ggplot(aes(x = factor(year), y = duration)) +
     geom_point(
@@ -263,7 +267,9 @@ incomparable_wide |>
 
 ### Per Person
 
-```{r runtime_person, fig.height=18}
+```{r runtime_person}
+#| column: screen-inset-shaded
+#| fig-height: 18
 incomparable |>
   filter(year >= 2011) |>
   group_by(person) |>

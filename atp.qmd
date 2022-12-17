@@ -8,8 +8,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+{{< include _setup.qmd >}}
+
+
 ```{r setup, echo=FALSE, cache=FALSE, include=FALSE}
-source("00_setup.R")
 
 knitr::opts_chunk$set(fig.path = "assets/plots/atp/")
 

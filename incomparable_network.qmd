@@ -1,16 +1,13 @@
 ---
-title: "The Incomparable: Network Wide"
-date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
-author: "Lukas — @jemus42"
-output: 
-  html_document:
-    fig_height: 8
+title: "The Incomparable Network"
 editor_options: 
   chunk_output_type: console
 ---
 
+{{< include _setup.qmd >}}
+
+
 ```{r setup, include=FALSE}
-source("00_setup.R")
 
 #### Global options ####
 knitr::opts_chunk$set(

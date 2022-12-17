@@ -1,7 +1,8 @@
-#### Setup stuff for each sub-analysis ####
-# Should be source'd on top of each Rmd
-#### Loading packages ####
-# library(magrittr)
+
+
+```{r}
+#| include: false
+
 library(dplyr)
 library(tidyr)
 library(stringr)
@@ -19,6 +20,7 @@ library(hrbrthemes)
 library(ggbeeswarm)
 library(plotly)
 library(DT)
+library(reactable)
 
 
 # Dummy to make renv pick up ragg and Hmisc
@@ -67,6 +69,9 @@ theme_set(
     theme(
       plot.title.position = "plot",
       panel.spacing.x = unit(2, "mm"),
-      legend.position = "top"
+      legend.position = "top",
+      plot.caption.position = "plot"
     )
 )
+
+```

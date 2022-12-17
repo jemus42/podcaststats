@@ -1,0 +1,56 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!ignored.qmd"
+    - "!ignored-dir/"
+  resources:
+    - "*.rds"
+    - "*.csv"
+
+website:
+  title: "Podcast Stats"
+  navbar:
+    search: true
+    left:
+      - href: index.qmd
+        text: Overview
+      - text: The Incomparable
+        menu:
+        - href: incomparable_mothership.qmd
+          text: The Motshership
+        - href: incomparable_network.qmd
+          text: The Network
+      - text: Relay FM
+        href: relayfm_network.qmd
+      - text: ATP
+        href: atp.qmd
+    right:
+      - href: data.qmd
+        text: Data
+      - href: "https://github.com/jemus42/podcaststats"
+        text: ""
+        icon: github
+  open-graph: true
+  page-footer:
+    center:
+      - text: "About"
+        href: about.qmd
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    anchor-sections: true
+    smooth-scroll: true
+    link-external-icon: true
+    published-title: "Last Updated"
+    author: "Lukas Burk"
+    date: now
+    date-format: "MMMM D, H:mm (z)"
+    code-fold: true
+    page-layout: full
+

@@ -2,15 +2,14 @@
 title: "Podcast Data for Fun and (not) Profit"
 date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
 author: "Lukas — @jemus42"
-output:
-  html_document
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r global_options, include=FALSE}
-source("00_setup.R")
+{{< include _setup.qmd >}}
 
+
+```{r global_options, include=FALSE}
 knitr::opts_chunk$set(
   fig.path = "assets/plots/main/"
 )
@@ -91,14 +90,19 @@ podcasts |>
     "Network", "Episodes", "First Episode",
     "Last Episode", "# of Shows", "Avg Episodes per Show"
   )) |>
-  datatable()
+  reactable(
+    rownames = FALSE
+  )
 ```
 
 ### Timeline
 
 From first to last published episode.
 
-```{r allshows_timeline, fig.height=16}
+```{r allshows_timeline}
+#| column: screen-inset-shaded
+#| fig-height: 18
+#| fig-width: 10
 podcasts |>
   group_by(show) |>
   mutate(
@@ -113,7 +117,7 @@ podcasts |>
   theme(legend.position = "top") +
   labs(
     title = "All Podcasts Timeline",
-    subtitle = "The Incomparable, Relay.fm, ATP",
+    subtitle = "The Incomparable, Relay FM, ATP",
     x = "", y = "First to Latest Episode Date",
     color = NULL,
     caption = caption
@@ -124,7 +128,11 @@ podcasts |>
 
 ### Duration
 
-```{r allshows_duration, fig.height=16}
+```{r allshows_duration}
+#| column: screen-inset-shaded
+#| fig-height: 18
+#| fig-width: 10
+
 podcasts |>
   filter(!is.na(duration)) |>
   ggplot(aes(x = reorder(show, duration, FUN = mean), y = duration, fill = network)) +
@@ -133,7 +141,8 @@ podcasts |>
   scale_fill_manual(values = network_colors) +
   labs(
     title = "Podcasts by Duration", subtitle = "By Network",
-    x = "", y = "Duration (HH:MM:SS)", fill = NULL
+    x = "", y = "Duration (H:M:S)", fill = NULL,
+    caption = caption
   ) +
   theme(legend.position = "top")
 ```
