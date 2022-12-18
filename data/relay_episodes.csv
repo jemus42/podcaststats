@@ -1,4 +1,5 @@
 show;number;title;duration;date;year;month;weekday;host;network
+Analog(ue);208;The Casey is Dramatic Episode;01:49:02;2022-12-17;2022;December;Saturday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);207;You’re the Worst in the Best Way;01:19:53;2022-11-06;2022;November;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);206;An Incredibly British Thing Happening;01:34:49;2022-10-09;2022;October;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);205;The Best and Worst Person for This Job;01:39:45;2022-09-11;2022;September;Sunday;"Casey Liss;Myke Hurley";relay.fm
@@ -206,6 +207,7 @@ Analog(ue);4;You're Just Going to Cry for an Hour;01:04:00;2014-09-07;2014;Septe
 Analog(ue);3;White Whale Syndrome;00:53:21;2014-08-31;2014;August;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);2;Unstimulated Time is Wasted Time;00:52:46;2014-08-25;2014;August;Monday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);1;Putting It Into The Universe;01:21:48;2014-08-18;2014;August;Monday;"Casey Liss;Myke Hurley";relay.fm
+Automators;117;Magic Online Automations with Make;01:34:22;2022-12-16;2022;December;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;116;Brett Terpstra's Automation Tricks;01:21:42;2022-12-02;2022;December;Friday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;115;Automating the Future, with Simon Støvring;01:30:13;2022-11-19;2022;November;Saturday;"David Sparks;Rosemary Orchard";relay.fm
 Automators;114;macOS Ventura: The Automated AppDate;01:36:10;2022-11-05;2022;November;Saturday;"David Sparks;Rosemary Orchard";relay.fm
@@ -405,6 +407,7 @@ B-Sides;4;Podcast Vagrant;00:04:40;2014-10-02;2014;October;Thursday;Relay FM Hos
 B-Sides;3;Need More Analog(ue)?;00:08:43;2014-09-21;2014;September;Sunday;Relay FM Hosts;relay.fm
 B-Sides;2;Calendaring with Federico;00:12:05;2014-09-11;2014;September;Thursday;Relay FM Hosts;relay.fm
 B-Sides;1;Launch Week Q&A;00:40:43;2014-08-25;2014;August;Monday;Relay FM Hosts;relay.fm
+Clockwise;481;A Series of Shortcuts;00:29:59;2022-12-14;2022;December;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;480;Science and I Disagree;00:29:59;2022-12-07;2022;December;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;479;Beyoncé Beyoncé Beyoncé Beyoncé Beyoncé Beyoncé;00:29:59;2022-11-30;2022;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;478;Atop My Turkey Tree;00:29:59;2022-11-23;2022;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
@@ -412,8 +415,8 @@ Clockwise;477;That's Probably a Funny Joke;00:29:59;2022-11-16;2022;November;Wed
 Clockwise;476;I Cheated With Two Questions;00:29:59;2022-11-09;2022;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;475;A Potato Will Arrive;00:29:59;2022-11-02;2022;November;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;474;Bobbing for Apple Watches;00:28:21;2022-10-26;2022;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
-Clockwise;473;Solar Eclipse Potato;00:29:59;2022-10-19;2022;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
-Clockwise;472;Your Avatars Have Legs;00:29:32;2022-10-12;2022;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
+Clockwise;473;Solar Eclipse Potato;00:29:59;2022-10-19;2022;October;Wednesday;"Dan Moren;Jason Snell";relay.fm
+Clockwise;472;Your Avatars Have Legs;00:29:32;2022-10-12;2022;October;Wednesday;"Dan Moren;Jason Snell";relay.fm
 Clockwise;471;"I Have $3; I'm Just Mad";00:29:59;2022-10-05;2022;October;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;470;A Pinball Podcast;00:29:59;2022-09-28;2022;September;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;469;The Name of the Color Is Fingerprints;00:29:59;2022-09-21;2022;September;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
@@ -833,6 +836,7 @@ Clockwise;56;Niche of Awesomeness;00:30:00;2014-10-02;2014;October;Thursday;"Dan
 Clockwise;55;Extreme Physical Butt Force;00:30:00;2014-09-24;2014;September;Wednesday;"Dan Moren;Jason Snell";relay.fm
 Clockwise;54;Government in Exile;00:30:00;2014-09-17;2014;September;Wednesday;"Dan Moren;Jason Snell";relay.fm
 Clockwise;0;Tamagotchi Plays You;00:29:12;2013-06-07;2013;June;Friday;"Dan Moren;Jason Snell";relay.fm
+Conduit;38;Scrape, Scrap, and Survive;00:34:56;2022-12-15;2022;December;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;37;Systems Check Fall 2022 - Systems Don’t Solve Everything ;01:36:48;2022-12-01;2022;December;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;36;Brain Bags 🧠 🎒👜👛;00:51:26;2022-11-17;2022;November;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;35;Serious Unicorning Around;00:54:55;2022-11-03;2022;November;Thursday;"Kathy Campbell;Jay Miller";relay.fm
@@ -871,6 +875,7 @@ Conduit;3;Getting Away, Now!;00:39:48;2021-08-12;2021;August;Thursday;"Kathy Cam
 Conduit;2;When You Can’t Even (Or Odd);00:45:00;2021-07-29;2021;July;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;1;Our Systems: The Unicorn & Silk Sonic Methods;00:45:20;2021-07-15;2021;July;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;0;Episode 0 - It’s the Show!;00:10:21;2021-07-09;2021;July;Friday;"Kathy Campbell;Jay Miller";relay.fm
+Connected;428;Timery (Taylor's Version);01:27:25;2022-12-15;2022;December;Thursday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;427;Therapy for an Apple Blogger;01:01:37;2022-12-07;2022;December;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;426;Just a Cable Away;01:23:18;2022-11-30;2022;November;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;425;Indenting Left Again;00:56:00;2022-11-23;2022;November;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
@@ -1440,9 +1445,10 @@ Departures;7;Relay FM Host Balderdash (Bonus Edition);00:45:48;2021-09-20;2021;S
 Departures;6;Relay FM Podcastathon for St. Jude (2021);08:13:17;2021-09-19;2021;September;Sunday;"Myke Hurley;Stephen Hackett";relay.fm
 Departures;5;2021 Q&A: Relay FM Turns 7;00:57:33;2021-08-17;2021;August;Tuesday;"Myke Hurley;Stephen Hackett";relay.fm
 Departures;4;Relay FM Podcastathon for St. Jude (2020);06:58:20;2020-09-20;2020;September;Sunday;"Myke Hurley;Stephen Hackett";relay.fm
-Departures;3;2020 Q&A and Podcastathon Announcement;00:45:01;2020-08-18;2020;August;Tuesday;Relay FM Hosts;relay.fm
-Departures;2;Relay FM Podcastathon for St. Jude (2019);06:06:42;2019-09-22;2019;September;Sunday;Relay FM Hosts;relay.fm
+Departures;3;2020 Q&A and Podcastathon Announcement;00:45:01;2020-08-18;2020;August;Tuesday;"Myke Hurley;Stephen Hackett";relay.fm
+Departures;2;Relay FM Podcastathon for St. Jude (2019);06:06:42;2019-09-22;2019;September;Sunday;"Myke Hurley;Stephen Hackett";relay.fm
 Departures;1;Relay FM Family Feud;02:00:32;2019-08-23;2019;August;Friday;"Jason Snell;Myke Hurley;Stephen Hackett";relay.fm
+Downstream;33;So Thirsty for Content;01:04:07;2022-12-13;2022;December;Tuesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;32;Disney Bobs;01:13:01;2022-11-29;2022;November;Tuesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;31;Yeah, Disney's Fine;00:57:36;2022-11-15;2022;November;Tuesday;"Jason Snell;Julia Alexander";relay.fm
 Downstream;30;I'm Fun to Have Drinks With;01:05:31;2022-11-01;2022;November;Tuesday;"Jason Snell;Julia Alexander";relay.fm
@@ -2484,109 +2490,110 @@ Mac Power Users;4;Staying in Sync;00:31:29;2009-06-04;2009;June;Thursday;David S
 Mac Power Users;3;Going Paperless;01:33:41;2009-05-23;2009;May;Saturday;David Sparks;relay.fm
 Mac Power Users;2;All About E-Mail (Part 2);00:22:15;2009-05-12;2009;May;Tuesday;David Sparks;relay.fm
 Mac Power Users;1;All About E-Mail;01:17:57;2009-05-05;2009;May;Tuesday;David Sparks;relay.fm
-Make Do;103;Finding Time, and Time off;00:36:00;2022-06-08;2022;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;102;With Mike Hendley!;00:43:07;2022-05-08;2022;May;Sunday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;101;Make Do 101;00:40:26;2022-04-24;2022;April;Sunday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;100;It Counts!;00:50:58;2022-04-06;2022;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;99;My Goblin Cottagecore Heart;00:35:04;2022-03-23;2022;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;98;Taking The Extra Step;00:29:12;2022-03-09;2022;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;97;Huge Fan;00:37:15;2022-02-25;2022;February;Friday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;96;Ambition And ADHD Is A Dangerous Combo;00:34:09;2022-02-09;2022;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;95;Feelin' It;00:33:12;2022-01-26;2022;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;94;Color Me Intrigued;00:30:45;2022-01-12;2022;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;93;Aims and Aspirations;00:38:51;2021-12-17;2021;December;Friday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;92;Get To Giving!;00:43:50;2021-12-02;2021;December;Thursday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;91;Who Knows Where Ideas Come From;00:37:07;2021-11-18;2021;November;Thursday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;90;Interior Inspirations;00:35:25;2021-11-03;2021;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;89;Grief and Good Times;00:34:36;2021-10-20;2021;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;88;More Market, More Making!;00:39:55;2021-08-25;2021;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;87;Your Phone As An Art Tool;00:41:38;2021-08-13;2021;August;Friday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;86;Can We Just Not?;00:37:38;2021-07-28;2021;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;85;How Ya Doing?;00:35:47;2021-07-14;2021;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;84;Show Report!;00:44:51;2021-06-30;2021;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;83;Josh Millard And The Cubes;00:49:30;2021-06-16;2021;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;82;Rejected and Dejected;00:32:56;2021-06-02;2021;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;81;What's In A Name?;00:41:23;2021-05-19;2021;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;80;Pins and Pens and Prioritizing;00:38:57;2021-05-05;2021;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;79;When Thing Turns To Art;00:38:35;2021-04-21;2021;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;78;One Big Leap For Podkind;00:33:33;2021-04-07;2021;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;77;Sharing Is Caring;00:48:55;2021-03-24;2021;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;76;Confidence and Consternation;00:37:34;2021-03-10;2021;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;75;Creation in Isolation;00:39:02;2021-02-24;2021;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;74;Tik Tok, Don't Stop;00:28:15;2021-02-10;2021;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;73;Just Kidding ;00:38:14;2021-01-27;2021;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;72;2020 Visions;00:39:42;2021-01-13;2021;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;71;John Siracusa and the Game Loop of Art;00:59:23;2020-12-23;2020;December;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;70;Gift Guide!;00:42:30;2020-12-09;2020;December;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;69;Commission, Commission, What's Your Mission?;00:42:01;2020-11-25;2020;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;68;Losing An Identity?;00:30:50;2020-11-11;2020;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;67;More A's To Your Qs!;00:54:21;2020-10-28;2020;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;66;"Done Is Beautiful; Simple Is Hard";00:35:44;2020-10-14;2020;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;65;Glass and New Things;00:41:33;2020-09-30;2020;September;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;64;Keeping It Real;00:49:32;2020-09-16;2020;September;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;63;Getting Good as Heck;00:44:55;2020-09-02;2020;September;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;62;Tiff Did The Thing!;00:38:11;2020-08-19;2020;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;61;A Whack on the Side of the Head;00:44:45;2020-08-05;2020;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;60;I Give You Three Tasks;00:30:49;2020-07-22;2020;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;59;Apathy, Empathy, and Inspiration;00:34:51;2020-07-08;2020;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;58;When You Just Can't Even;00:33:33;2020-06-24;2020;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;57;Routines and Rituals;00:38:53;2020-05-27;2020;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;56;Eating The Elephant One Bite At A Time;00:46:44;2020-05-13;2020;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;55;K. Tempest Bradford and The Power of Narrative;00:53:43;2020-04-29;2020;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;54;Don't Tell Me How To Hobby;00:40:46;2020-04-15;2020;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;53;Stu-stu-studio;00:44:29;2020-04-01;2020;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;52;Give In, Give Up, Let Go.;00:49:14;2020-03-18;2020;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;51;Thank... You?;00:49:09;2020-03-04;2020;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;50;To Write With Light;00:52:15;2020-02-19;2020;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;49;Little Boxes, All The Same;00:46:53;2020-02-05;2020;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;48; The Not-So-Distant Future;00:36:33;2020-01-22;2020;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;47;Brain Potatoes;00:44:09;2019-12-25;2019;December;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;46;A No-Good Heartbreaker, A Liar And A Cheat;00:48:11;2019-12-11;2019;December;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;45;A Safe Place To Get Lost;00:59:38;2019-11-27;2019;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;44;Keeping It Cosy;00:45:29;2019-11-13;2019;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;43;Julia: Journalist Jabber;00:52:49;2019-10-30;2019;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;42;They Say The Neon Lights Are Bright;01:13:44;2019-10-16;2019;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;41;Oh Noez, I’m Monetizing My Hobby!;00:39:11;2019-10-02;2019;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;40;Back To Life, Back To Reality;00:27:24;2019-09-18;2019;September;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;39;Afternoons with Gerhard;00:34:42;2019-09-04;2019;September;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;38;Give Me A Q! Give Me An A!;00:36:21;2019-08-21;2019;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;37;"""You're Just Coloring""";00:33:03;2019-08-07;2019;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;36;Self. Help?;00:33:26;2019-07-24;2019;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;35;Merlin Mann and Vulnerability;01:11:27;2019-07-10;2019;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;34;Be Nice To Your Past Self;00:43:26;2019-06-26;2019;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;33;And All That Class;00:39:16;2019-06-12;2019;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;32;Failing Forward;00:39:48;2019-05-29;2019;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;31;What’s Your Type?;00:34:01;2019-05-15;2019;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;30;I Know You Are But What Am I?;00:24:37;2019-05-01;2019;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;29;Reunited And It Feels So... Good?;00:36:36;2019-04-17;2019;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;28;"""The Artist Is Resident""";00:48:16;2019-04-03;2019;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;27;Take The Cake ;00:54:41;2019-03-20;2019;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;26;”Do Women Have To Be Naked To Get Into The Met Museum?”;00:52:03;2019-03-06;2019;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;25;Out and About;00:43:19;2019-02-20;2019;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;24;When Art Really Is Pain;00:42:12;2019-02-06;2019;February;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;23;It All Sparks Joy, OK?;00:43:59;2019-01-23;2019;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;22;We Need A Resolution;00:52:38;2019-01-09;2019;January;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;21;2018 - That Was The Year That Was;00:40:04;2018-12-26;2018;December;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;20;Happy handmade!;00:48:22;2018-12-12;2018;December;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;19;Studiomate Jamie in: ”Let’s Not Make This About Boats”;00:58:24;2018-11-28;2018;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;18;The Myth of the Tragic Artist;00:53:56;2018-11-14;2018;November;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;17;Words, Words, Words;00:40:46;2018-10-31;2018;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;16;Spoopy Decorations, Do-overs, and Some Fun News!;00:45:15;2018-10-17;2018;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;15;Inktober;00:33:50;2018-10-03;2018;October;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;14;Doodles, Self-Worth, and Inspiration, Question Mark?;00:36:16;2018-09-19;2018;September;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;13;Sew, Sew, Sew Your Coat;00:39:24;2018-09-05;2018;September;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;12;Paint With All the Colors of, You Know;00:48:55;2018-08-22;2018;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;11;Posers and Impostors – Looking the Part;00:37:47;2018-08-08;2018;August;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;10;Ready, Set – Challenges;00:42:23;2018-07-25;2018;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;9;Content and Intent – Being Political;00:53:39;2018-07-11;2018;July;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;8;Figuring out our Feelings;00:45:49;2018-06-27;2018;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;7;Too Cool for School;00:36:44;2018-06-13;2018;June;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;6;”Give Me Worth” – selling your art;00:49:01;2018-05-30;2018;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;5;Baller at Whales – Social Media, Inspiration, and Fails;00:33:51;2018-05-16;2018;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;4;From The Pen Show – Double Broad, Double Feature!;01:20:19;2018-05-02;2018;May;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;3;Why Do We Make? (”Hello. I am achiever. Please notice.”);00:32:40;2018-04-18;2018;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;2;A Room of One’s Own;00:37:35;2018-04-04;2018;April;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
-Make Do;1;”Lowercase a, art.”;00:27:19;2018-03-21;2018;March;Wednesday;"Tiffany Arment;Julia Skott";relay.fm
+Make Do;103;Finding Time, and Time off;00:36:00;2022-06-08;2022;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;102;With Mike Hendley!;00:43:07;2022-05-08;2022;May;Sunday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;101;Make Do 101;00:40:26;2022-04-24;2022;April;Sunday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;100;It Counts!;00:50:58;2022-04-06;2022;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;99;My Goblin Cottagecore Heart;00:35:04;2022-03-23;2022;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;98;Taking The Extra Step;00:29:12;2022-03-09;2022;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;97;Huge Fan;00:37:15;2022-02-25;2022;February;Friday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;96;Ambition And ADHD Is A Dangerous Combo;00:34:09;2022-02-09;2022;February;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;95;Feelin' It;00:33:12;2022-01-26;2022;January;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;94;Color Me Intrigued;00:30:45;2022-01-12;2022;January;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;93;Aims and Aspirations;00:38:51;2021-12-17;2021;December;Friday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;92;Get To Giving!;00:43:50;2021-12-02;2021;December;Thursday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;91;Who Knows Where Ideas Come From;00:37:07;2021-11-18;2021;November;Thursday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;90;Interior Inspirations;00:35:25;2021-11-03;2021;November;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;89;Grief and Good Times;00:34:36;2021-10-20;2021;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;88;More Market, More Making!;00:39:55;2021-08-25;2021;August;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;87;Your Phone As An Art Tool;00:41:38;2021-08-13;2021;August;Friday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;86;Can We Just Not?;00:37:38;2021-07-28;2021;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;85;How Ya Doing?;00:35:47;2021-07-14;2021;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;84;Show Report!;00:44:51;2021-06-30;2021;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;83;Josh Millard And The Cubes;00:49:30;2021-06-16;2021;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;82;Rejected and Dejected;00:32:56;2021-06-02;2021;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;81;What's In A Name?;00:41:23;2021-05-19;2021;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;80;Pins and Pens and Prioritizing;00:38:57;2021-05-05;2021;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;79;When Thing Turns To Art;00:38:35;2021-04-21;2021;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;78;One Big Leap For Podkind;00:33:33;2021-04-07;2021;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;77;Sharing Is Caring;00:48:55;2021-03-24;2021;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;76;Confidence and Consternation;00:37:34;2021-03-10;2021;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;75;Creation in Isolation;00:39:02;2021-02-24;2021;February;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;74;Tik Tok, Don't Stop;00:28:15;2021-02-10;2021;February;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;73;Just Kidding ;00:38:14;2021-01-27;2021;January;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;72;2020 Visions;00:39:42;2021-01-13;2021;January;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;71;John Siracusa and the Game Loop of Art;00:59:23;2020-12-23;2020;December;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;70;Gift Guide!;00:42:30;2020-12-09;2020;December;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;69;Commission, Commission, What's Your Mission?;00:42:01;2020-11-25;2020;November;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;68;Losing An Identity?;00:30:50;2020-11-11;2020;November;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;67;More A's To Your Qs!;00:54:21;2020-10-28;2020;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;66;"Done Is Beautiful; Simple Is Hard";00:35:44;2020-10-14;2020;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;65;Glass and New Things;00:41:33;2020-09-30;2020;September;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;64;Keeping It Real;00:49:32;2020-09-16;2020;September;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;63;Getting Good as Heck;00:44:55;2020-09-02;2020;September;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;62;Tiff Did The Thing!;00:38:11;2020-08-19;2020;August;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;61;A Whack on the Side of the Head;00:44:45;2020-08-05;2020;August;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;60;I Give You Three Tasks;00:30:49;2020-07-22;2020;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;59;Apathy, Empathy, and Inspiration;00:34:51;2020-07-08;2020;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;58;When You Just Can't Even;00:33:33;2020-06-24;2020;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;57;Routines and Rituals;00:38:53;2020-05-27;2020;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;56;Eating The Elephant One Bite At A Time;00:46:44;2020-05-13;2020;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;55;K. Tempest Bradford and The Power of Narrative;00:53:43;2020-04-29;2020;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;54;Don't Tell Me How To Hobby;00:40:46;2020-04-15;2020;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;53;Stu-stu-studio;00:44:29;2020-04-01;2020;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;52;Give In, Give Up, Let Go.;00:49:14;2020-03-18;2020;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;51;Thank... You?;00:49:09;2020-03-04;2020;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;50;To Write With Light;00:52:15;2020-02-19;2020;February;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;49;Little Boxes, All The Same;00:46:53;2020-02-05;2020;February;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;48; The Not-So-Distant Future;00:36:33;2020-01-22;2020;January;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;47;Brain Potatoes;00:44:09;2019-12-25;2019;December;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;46;A No-Good Heartbreaker, A Liar And A Cheat;00:48:11;2019-12-11;2019;December;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;45;A Safe Place To Get Lost;00:59:38;2019-11-27;2019;November;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;44;Keeping It Cosy;00:45:29;2019-11-13;2019;November;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;43;Julia: Journalist Jabber;00:52:49;2019-10-30;2019;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;42;They Say The Neon Lights Are Bright;01:13:44;2019-10-16;2019;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;41;Oh Noez, I’m Monetizing My Hobby!;00:39:11;2019-10-02;2019;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;40;Back To Life, Back To Reality;00:27:24;2019-09-18;2019;September;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;39;Afternoons with Gerhard;00:34:42;2019-09-04;2019;September;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;38;Give Me A Q! Give Me An A!;00:36:21;2019-08-21;2019;August;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;37;"""You're Just Coloring""";00:33:03;2019-08-07;2019;August;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;36;Self. Help?;00:33:26;2019-07-24;2019;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;35;Merlin Mann and Vulnerability;01:11:27;2019-07-10;2019;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;34;Be Nice To Your Past Self;00:43:26;2019-06-26;2019;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;33;And All That Class;00:39:16;2019-06-12;2019;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;32;Failing Forward;00:39:48;2019-05-29;2019;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;31;What’s Your Type?;00:34:01;2019-05-15;2019;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;30;I Know You Are But What Am I?;00:24:37;2019-05-01;2019;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;29;Reunited And It Feels So... Good?;00:36:36;2019-04-17;2019;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;28;"""The Artist Is Resident""";00:48:16;2019-04-03;2019;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;27;Take The Cake ;00:54:41;2019-03-20;2019;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;26;”Do Women Have To Be Naked To Get Into The Met Museum?”;00:52:03;2019-03-06;2019;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;25;Out and About;00:43:19;2019-02-20;2019;February;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;24;When Art Really Is Pain;00:42:12;2019-02-06;2019;February;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;23;It All Sparks Joy, OK?;00:43:59;2019-01-23;2019;January;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;22;We Need A Resolution;00:52:38;2019-01-09;2019;January;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;21;2018 - That Was The Year That Was;00:40:04;2018-12-26;2018;December;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;20;Happy handmade!;00:48:22;2018-12-12;2018;December;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;19;Studiomate Jamie in: ”Let’s Not Make This About Boats”;00:58:24;2018-11-28;2018;November;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;18;The Myth of the Tragic Artist;00:53:56;2018-11-14;2018;November;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;17;Words, Words, Words;00:40:46;2018-10-31;2018;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;16;Spoopy Decorations, Do-overs, and Some Fun News!;00:45:15;2018-10-17;2018;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;15;Inktober;00:33:50;2018-10-03;2018;October;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;14;Doodles, Self-Worth, and Inspiration, Question Mark?;00:36:16;2018-09-19;2018;September;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;13;Sew, Sew, Sew Your Coat;00:39:24;2018-09-05;2018;September;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;12;Paint With All the Colors of, You Know;00:48:55;2018-08-22;2018;August;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;11;Posers and Impostors – Looking the Part;00:37:47;2018-08-08;2018;August;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;10;Ready, Set – Challenges;00:42:23;2018-07-25;2018;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;9;Content and Intent – Being Political;00:53:39;2018-07-11;2018;July;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;8;Figuring out our Feelings;00:45:49;2018-06-27;2018;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;7;Too Cool for School;00:36:44;2018-06-13;2018;June;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;6;”Give Me Worth” – selling your art;00:49:01;2018-05-30;2018;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;5;Baller at Whales – Social Media, Inspiration, and Fails;00:33:51;2018-05-16;2018;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;4;From The Pen Show – Double Broad, Double Feature!;01:20:19;2018-05-02;2018;May;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;3;Why Do We Make? (”Hello. I am achiever. Please notice.”);00:32:40;2018-04-18;2018;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;2;A Room of One’s Own;00:37:35;2018-04-04;2018;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Make Do;1;”Lowercase a, art.”;00:27:19;2018-03-21;2018;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Material;390;Inflection Point ;01:18:16;2022-12-16;2022;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;389;A Simple Tweak, a Familiar Tool;00:48:35;2022-12-09;2022;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;388;Naughtiness;01:06:32;2022-12-02;2022;December;Friday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;387;Gobble, Gobble ;01:15:31;2022-11-23;2022;November;Wednesday;"Andy Ihnatko;Florence Ion";relay.fm
@@ -2876,7 +2883,7 @@ Material;104;O Bixby, Bixby! Wherefore Art Thou Bixby;01:11:00;2017-06-23;2017;J
 Material;103;Coalers And Uties;01:19:54;2017-06-15;2017;June;Thursday;"Andy Ihnatko;Russell Ivanovic";relay.fm
 Material;102;Wholesome Wondrous Distinguished Conference;01:12:53;2017-06-08;2017;June;Thursday;"Andy Ihnatko;Russell Ivanovic";relay.fm
 Material;101;Here Kitty Kitty;01:16:49;2017-06-01;2017;June;Thursday;"Andy Ihnatko;Russell Ivanovic";relay.fm
-Material;100;Please, I Have Children!;01:11:55;2017-05-24;2017;May;Wednesday;"Andy Ihnatko;Florence Ion";relay.fm
+Material;100;Please, I Have Children!;01:11:55;2017-05-24;2017;May;Wednesday;"Andy Ihnatko;Russell Ivanovic";relay.fm
 Material;99;I/O 2017, The Good, The Bad, The Kotlin;00:47:35;2017-05-18;2017;May;Thursday;"Andy Ihnatko;Russell Ivanovic";relay.fm
 Material;98;Oscillating Fan Sounds;01:17:32;2017-05-11;2017;May;Thursday;"Andy Ihnatko;Russell Ivanovic";relay.fm
 Material;97;Paws For The Applause;01:17:14;2017-05-04;2017;May;Thursday;"Andy Ihnatko;Russell Ivanovic";relay.fm
@@ -3529,6 +3536,7 @@ Roboism;4;A Single Piece of Toast;00:31:05;2017-06-27;2017;June;Tuesday;"Savanna
 Roboism;3;You Have to Be Invited In ;00:40:49;2017-06-16;2017;June;Friday;"Savannah Million;Alex Cox";relay.fm
 Roboism;2;The Bees Are Getting Angrier ;00:26:31;2017-05-30;2017;May;Tuesday;"Savannah Million;Alex Cox";relay.fm
 Roboism;1;A Beautiful Smoosh Bot;00:26:07;2017-05-15;2017;May;Monday;"Savannah Million;Alex Cox";relay.fm
+Rocket;416;S-tier Repercussions;01:08:57;2022-12-15;2022;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;415;Hit The Booster;00:55:42;2022-12-08;2022;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;414;Bad Boys of Tech;01:10:53;2022-12-01;2022;December;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;413;Okay let's talk about the polycule;01:04:55;2022-11-25;2022;November;Friday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
@@ -3965,6 +3973,7 @@ The Backmarkers;4;Imola Grand Prix Reaction;00:59:00;2022-04-24;2022;April;Sunda
 The Backmarkers;3;Are Ferrari Unstoppable? - F1 2022 Australian Grand Prix Review;01:05:24;2022-04-10;2022;April;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;2;Why F1 is AMAZING Now - Saudi Arabian Grand Prix Review;01:04:52;2022-03-27;2022;March;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;1;F1 2022 is BACK! Bahrain Grand Prix Review;01:03:24;2022-03-20;2022;March;Sunday;"Austin Evans;Myke Hurley";relay.fm
+The Pen Addict;543;Sketchnotes, Revisited;01:07:38;2022-12-14;2022;December;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;542;This Love Has Conditions;00:59:20;2022-12-07;2022;December;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;541;Holiday Gift Guide 2022;01:06:35;2022-11-30;2022;November;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;540;Just Do the Job Brad!;00:54:30;2022-11-23;2022;November;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
@@ -4507,14 +4516,15 @@ The Pen Addict;4;Paper Chase;00:36:54;2012-03-01;2012;March;Thursday;"Brad Dowdy
 The Pen Addict;3;No Joy on the Pen Aisle;00:32:43;2012-02-23;2012;February;Thursday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;2;My Favorite Pens;00:37:24;2012-02-16;2012;February;Thursday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;1;Glossary;00:33:00;2012-02-09;2012;February;Thursday;"Brad Dowdy;Myke Hurley";relay.fm
+Thoroughly Considered;91;This is Going Great So Far I Think;01:00:51;2022-12-15;2022;December;Thursday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;90;The Last Detail with Alex Cox;01:06:06;2022-12-09;2022;December;Friday;Alex Cox;relay.fm
 Thoroughly Considered;89;Stretchy and Smudgy;01:07:11;2022-11-17;2022;November;Thursday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
-Thoroughly Considered;88;The Last Detail with Jason Snell;01:03:21;2022-11-03;2022;November;Thursday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
+Thoroughly Considered;88;The Last Detail with Jason Snell;01:03:21;2022-11-03;2022;November;Thursday;"Dan Provost;Tom Gerhardt";relay.fm
 Thoroughly Considered;87;We Should Probably Cut This;01:01:58;2022-10-19;2022;October;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;86;Merciless Fundraising;01:13:37;2022-09-19;2022;September;Monday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
-Thoroughly Considered;85;The Last Detail with Betty Chen;01:08:28;2022-09-06;2022;September;Tuesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
+Thoroughly Considered;85;The Last Detail with Betty Chen;01:08:28;2022-09-06;2022;September;Tuesday;"Dan Provost;Tom Gerhardt";relay.fm
 Thoroughly Considered;84;Empathy Machine;00:58:21;2022-08-11;2022;August;Thursday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
-Thoroughly Considered;83;The Last Detail with Adam Lisagor;00:55:30;2022-08-02;2022;August;Tuesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
+Thoroughly Considered;83;The Last Detail with Adam Lisagor;00:55:30;2022-08-02;2022;August;Tuesday;"Dan Provost;Tom Gerhardt";relay.fm
 Thoroughly Considered;82;Design is Compromise;00:59:45;2022-07-18;2022;July;Monday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;81;Mark Three;00:30:40;2022-06-29;2022;June;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;80;Jony Ive’s Favorite Things;00:38:47;2022-05-18;2022;May;Wednesday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
@@ -4597,99 +4607,99 @@ Thoroughly Considered;3;Onward;00:40:11;2015-10-28;2015;October;Wednesday;"Dan P
 Thoroughly Considered;2;Launching;00:38:43;2015-10-05;2015;October;Monday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Thoroughly Considered;1;Introductions;00:20:55;2015-09-21;2015;September;Monday;"Dan Provost;Tom Gerhardt;Myke Hurley";relay.fm
 Top Four;94;Adventure Time Characters;00:51:20;2022-11-29;2022;November;Tuesday;"Marco Arment;Tiff Arment";relay.fm
-Top Four;93;Halloween Music 🎃🎶;00:56:13;2022-10-23;2022;October;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;92;Nut Butters;01:05:29;2022-09-30;2022;September;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;91;Hot Dogs 🌭;00:57:51;2022-08-30;2022;August;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;90;Bodies of Water;00:42:28;2022-07-30;2022;July;Saturday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;89;Weird Al Song Parodies;00:45:34;2022-06-30;2022;June;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;88;Goldfish Crackers;00:52:55;2022-05-31;2022;May;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;87;Peeps 🐤;00:44:59;2022-04-08;2022;April;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;86;Overplayed Songs;00:33:42;2022-03-29;2022;March;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;85;Series Finales 📺;00:49:42;2022-02-28;2022;February;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;84;Jams, Jellies, Marmalades, and Compotes;00:37:40;2022-01-31;2022;January;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;83;Road-Trip Songs 🚙🎶;00:45:34;2021-12-22;2021;December;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;82;Flavors;00:48:53;2021-11-30;2021;November;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;81;Halloween Monsters 🧟🧛🏻‍♀️🤡👻🕷🦇🐺;00:34:56;2021-10-26;2021;October;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;80;Hal's Pairings;00:44:57;2021-09-30;2021;September;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;79;Fla•Vor•Ice;00:28:28;2021-08-30;2021;August;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;78;Pasta Shapes 🍝;00:50:40;2021-07-29;2021;July;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;77;Simpsons Characters;00:38:29;2021-06-28;2021;June;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;76;Seafood 🐟🦞🍤🦀🦪🍋🧈;00:43:14;2021-05-27;2021;May;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;75;Beer Types 🍻;00:52:02;2021-04-30;2021;April;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;74;Apple Products 📱💻🖥⌚️;01:23:40;2021-03-31;2021;March;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;73;Lettuces 🥬;00:49:18;2021-02-23;2021;February;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;72;Pop Tarts;01:20:37;2021-01-30;2021;January;Saturday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;71;Christmas Episodes of The Office;00:57:48;2020-12-21;2020;December;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;70;'90s-Representative Songs 💿;00:55:36;2020-11-30;2020;November;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;69;Card Games ♦️♣️♥️♠️;00:55:09;2020-10-31;2020;October;Saturday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;68;Smencils ✏️👃;01:00:49;2020-09-28;2020;September;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;67;Sports ⚾️🏹🥌⛳️🤺🏓🏄🏽;00:51:51;2020-08-28;2020;August;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;66;Face Masks 😷;01:01:38;2020-07-29;2020;July;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;65;Chex Mix Pieces;00:29:56;2020-06-26;2020;June;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;64;Taco Toppings 🌮;00:34:21;2020-05-05;2020;May;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;63;Minecraft Mobs;00:48:40;2020-04-30;2020;April;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;62;Best Bluths;00:38:03;2020-03-24;2020;March;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;61;Candy Heart Phrases ❤️🧡💛💚💙💜🤍;00:42:19;2020-02-14;2020;February;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;60;Waters🚰;00:45:39;2020-01-30;2020;January;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;59;Royal Dansk Butter Cookies;00:47:20;2019-12-22;2019;December;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;58;Cheeses 🧀;00:59:23;2019-11-27;2019;November;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;57;One-Hit Wonder Albums;00:45:44;2019-10-31;2019;October;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;56;Instant Coffee ☕💨;00:55:29;2019-09-20;2019;September;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;55;LaCroix Flavors;00:54:17;2019-08-30;2019;August;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;54;Emoji! 📅;00:36:17;2019-07-17;2019;July;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;53;Band Names;00:27:50;2019-06-27;2019;June;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;52;Eggs 🥚🍳;00:31:55;2019-05-29;2019;May;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;51;Heist Movies;00:50:59;2019-04-30;2019;April;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;50;Nuts 🥜🌰🥥🌽🍺;00:32:27;2019-03-29;2019;March;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;49;TV Couples;00:34:09;2019-02-14;2019;February;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;48;“Milks” 🥛;00:50:36;2019-01-29;2019;January;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;47;Holiday Traditions;00:34:18;2018-12-20;2018;December;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;46;Woodland Creatures 🦔🐿🦉🦆🦌🐇;00:33:40;2018-11-19;2018;November;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;45;Breakfasts 🥐🍳🍰🥞🍕🥓☕️;00:42:57;2018-10-26;2018;October;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;44;School Supplies ✏️📓🖊;00:49:16;2018-09-09;2018;September;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;43;Beach Movies 🏖;00:45:13;2018-08-25;2018;August;Saturday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;42;F•R•I•E•N•D•S;00:54:53;2018-07-30;2018;July;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;41;21 Pringles and One Prongle;00:55:29;2018-06-26;2018;June;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;40;'90s Albums 💿;01:02:25;2018-05-24;2018;May;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;39;Merch 💸;00:41:11;2018-04-10;2018;April;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;38;Tracks in Mario Kart 8 Deluxe;00:36:54;2018-03-25;2018;March;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;37;Valentine's Chocolate Boxes 💝;00:34:28;2018-02-12;2018;February;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;36;Misheard Eddie Vedder Lyrics;00:48:01;2018-01-21;2018;January;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;35;Pies 🥧;00:35:41;2017-12-12;2017;December;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;34;Stardew Valley Singles;01:23:57;2017-11-08;2017;November;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;33;Pumpkin Spice Everything 🎃;01:08:31;2017-10-17;2017;October;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;32;Fall-tivities 🌰🍂;00:30:31;2017-09-19;2017;September;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;31;Nightmare Vacations;00:50:36;2017-08-19;2017;August;Saturday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;30;Summer Songs 😎;00:47:57;2017-07-19;2017;July;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;29;Ben & Jerry’s Ice Cream Flavors;01:01:59;2017-06-27;2017;June;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;28;Kid Shows Tolerable To Adults;00:25:51;2017-05-26;2017;May;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;27;Girl Scout Cookies 🍪;00:37:53;2017-04-18;2017;April;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;26;Holidays 🐰🎄🌭🏈🎉🎃🍺;00:38:30;2017-03-21;2017;March;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;25;Dog Breeds 🐶;01:08:58;2017-02-09;2017;February;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;24;Vegetables 🍆🥒🌽🥕🌶;00:34:22;2017-01-19;2017;January;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;23;Christmas Movies 🎄;01:09:40;2016-12-08;2016;December;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;22;Thanksgiving Side Dishes;00:29:09;2016-11-26;2016;November;Saturday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;21;Fifty Flavors of Lies;00:38:13;2016-10-11;2016;October;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;20;Jelly Belly Teaser;00:00:58;2016-10-08;2016;October;Saturday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;19;Cereals From A Van 🚐;00:19:22;2016-09-18;2016;September;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;18;Childhood Console Games 🎮;00:50:24;2016-09-07;2016;September;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;17;Movie Genres;00:23:34;2016-08-11;2016;August;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;16;Starbucks Cold Drinks;00:46:12;2016-07-11;2016;July;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;15;Top Gear Episodes;01:15:04;2016-06-12;2016;June;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;14;Pizza Toppings 🍕;00:45:04;2016-05-20;2016;May;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;13;Bagel Flavors;00:41:06;2016-04-13;2016;April;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;12;Star Wars Movies;01:14:10;2016-03-13;2016;March;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;11;Dunkin’ Donuts 🍩;00:48:35;2016-02-11;2016;February;Thursday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;10;Starbucks Hot Drinks;00:35:41;2016-01-13;2016;January;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;9;Christmas Music;00:59:16;2015-12-09;2015;December;Wednesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;8;Take-Out Food;00:46:39;2015-11-23;2015;November;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;7;Halloween Candy;00:22:56;2015-11-02;2015;November;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;6;Board Games;01:06:54;2015-10-27;2015;October;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;5;Podcasts;00:51:34;2015-10-16;2015;October;Friday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;4;Worst Weezer Singles;00:39:56;2015-09-28;2015;September;Monday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;3;Reality TV Shows;00:54:35;2015-09-15;2015;September;Tuesday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;2;TV Shows;00:51:27;2015-08-30;2015;August;Sunday;"Marco Arment;Tiffany Arment";relay.fm
-Top Four;1;Video Games;00:56:08;2015-08-17;2015;August;Monday;"Marco Arment;Tiffany Arment";relay.fm
+Top Four;93;Halloween Music 🎃🎶;00:56:13;2022-10-23;2022;October;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;92;Nut Butters;01:05:29;2022-09-30;2022;September;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;91;Hot Dogs 🌭;00:57:51;2022-08-30;2022;August;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;90;Bodies of Water;00:42:28;2022-07-30;2022;July;Saturday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;89;Weird Al Song Parodies;00:45:34;2022-06-30;2022;June;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;88;Goldfish Crackers;00:52:55;2022-05-31;2022;May;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;87;Peeps 🐤;00:44:59;2022-04-08;2022;April;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;86;Overplayed Songs;00:33:42;2022-03-29;2022;March;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;85;Series Finales 📺;00:49:42;2022-02-28;2022;February;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;84;Jams, Jellies, Marmalades, and Compotes;00:37:40;2022-01-31;2022;January;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;83;Road-Trip Songs 🚙🎶;00:45:34;2021-12-22;2021;December;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;82;Flavors;00:48:53;2021-11-30;2021;November;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;81;Halloween Monsters 🧟🧛🏻‍♀️🤡👻🕷🦇🐺;00:34:56;2021-10-26;2021;October;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;80;Hal's Pairings;00:44:57;2021-09-30;2021;September;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;79;Fla•Vor•Ice;00:28:28;2021-08-30;2021;August;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;78;Pasta Shapes 🍝;00:50:40;2021-07-29;2021;July;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;77;Simpsons Characters;00:38:29;2021-06-28;2021;June;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;76;Seafood 🐟🦞🍤🦀🦪🍋🧈;00:43:14;2021-05-27;2021;May;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;75;Beer Types 🍻;00:52:02;2021-04-30;2021;April;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;74;Apple Products 📱💻🖥⌚️;01:23:40;2021-03-31;2021;March;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;73;Lettuces 🥬;00:49:18;2021-02-23;2021;February;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;72;Pop Tarts;01:20:37;2021-01-30;2021;January;Saturday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;71;Christmas Episodes of The Office;00:57:48;2020-12-21;2020;December;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;70;'90s-Representative Songs 💿;00:55:36;2020-11-30;2020;November;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;69;Card Games ♦️♣️♥️♠️;00:55:09;2020-10-31;2020;October;Saturday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;68;Smencils ✏️👃;01:00:49;2020-09-28;2020;September;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;67;Sports ⚾️🏹🥌⛳️🤺🏓🏄🏽;00:51:51;2020-08-28;2020;August;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;66;Face Masks 😷;01:01:38;2020-07-29;2020;July;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;65;Chex Mix Pieces;00:29:56;2020-06-26;2020;June;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;64;Taco Toppings 🌮;00:34:21;2020-05-05;2020;May;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;63;Minecraft Mobs;00:48:40;2020-04-30;2020;April;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;62;Best Bluths;00:38:03;2020-03-24;2020;March;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;61;Candy Heart Phrases ❤️🧡💛💚💙💜🤍;00:42:19;2020-02-14;2020;February;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;60;Waters🚰;00:45:39;2020-01-30;2020;January;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;59;Royal Dansk Butter Cookies;00:47:20;2019-12-22;2019;December;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;58;Cheeses 🧀;00:59:23;2019-11-27;2019;November;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;57;One-Hit Wonder Albums;00:45:44;2019-10-31;2019;October;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;56;Instant Coffee ☕💨;00:55:29;2019-09-20;2019;September;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;55;LaCroix Flavors;00:54:17;2019-08-30;2019;August;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;54;Emoji! 📅;00:36:17;2019-07-17;2019;July;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;53;Band Names;00:27:50;2019-06-27;2019;June;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;52;Eggs 🥚🍳;00:31:55;2019-05-29;2019;May;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;51;Heist Movies;00:50:59;2019-04-30;2019;April;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;50;Nuts 🥜🌰🥥🌽🍺;00:32:27;2019-03-29;2019;March;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;49;TV Couples;00:34:09;2019-02-14;2019;February;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;48;“Milks” 🥛;00:50:36;2019-01-29;2019;January;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;47;Holiday Traditions;00:34:18;2018-12-20;2018;December;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;46;Woodland Creatures 🦔🐿🦉🦆🦌🐇;00:33:40;2018-11-19;2018;November;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;45;Breakfasts 🥐🍳🍰🥞🍕🥓☕️;00:42:57;2018-10-26;2018;October;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;44;School Supplies ✏️📓🖊;00:49:16;2018-09-09;2018;September;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;43;Beach Movies 🏖;00:45:13;2018-08-25;2018;August;Saturday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;42;F•R•I•E•N•D•S;00:54:53;2018-07-30;2018;July;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;41;21 Pringles and One Prongle;00:55:29;2018-06-26;2018;June;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;40;'90s Albums 💿;01:02:25;2018-05-24;2018;May;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;39;Merch 💸;00:41:11;2018-04-10;2018;April;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;38;Tracks in Mario Kart 8 Deluxe;00:36:54;2018-03-25;2018;March;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;37;Valentine's Chocolate Boxes 💝;00:34:28;2018-02-12;2018;February;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;36;Misheard Eddie Vedder Lyrics;00:48:01;2018-01-21;2018;January;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;35;Pies 🥧;00:35:41;2017-12-12;2017;December;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;34;Stardew Valley Singles;01:23:57;2017-11-08;2017;November;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;33;Pumpkin Spice Everything 🎃;01:08:31;2017-10-17;2017;October;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;32;Fall-tivities 🌰🍂;00:30:31;2017-09-19;2017;September;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;31;Nightmare Vacations;00:50:36;2017-08-19;2017;August;Saturday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;30;Summer Songs 😎;00:47:57;2017-07-19;2017;July;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;29;Ben & Jerry’s Ice Cream Flavors;01:01:59;2017-06-27;2017;June;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;28;Kid Shows Tolerable To Adults;00:25:51;2017-05-26;2017;May;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;27;Girl Scout Cookies 🍪;00:37:53;2017-04-18;2017;April;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;26;Holidays 🐰🎄🌭🏈🎉🎃🍺;00:38:30;2017-03-21;2017;March;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;25;Dog Breeds 🐶;01:08:58;2017-02-09;2017;February;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;24;Vegetables 🍆🥒🌽🥕🌶;00:34:22;2017-01-19;2017;January;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;23;Christmas Movies 🎄;01:09:40;2016-12-08;2016;December;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;22;Thanksgiving Side Dishes;00:29:09;2016-11-26;2016;November;Saturday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;21;Fifty Flavors of Lies;00:38:13;2016-10-11;2016;October;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;20;Jelly Belly Teaser;00:00:58;2016-10-08;2016;October;Saturday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;19;Cereals From A Van 🚐;00:19:22;2016-09-18;2016;September;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;18;Childhood Console Games 🎮;00:50:24;2016-09-07;2016;September;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;17;Movie Genres;00:23:34;2016-08-11;2016;August;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;16;Starbucks Cold Drinks;00:46:12;2016-07-11;2016;July;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;15;Top Gear Episodes;01:15:04;2016-06-12;2016;June;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;14;Pizza Toppings 🍕;00:45:04;2016-05-20;2016;May;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;13;Bagel Flavors;00:41:06;2016-04-13;2016;April;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;12;Star Wars Movies;01:14:10;2016-03-13;2016;March;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;11;Dunkin’ Donuts 🍩;00:48:35;2016-02-11;2016;February;Thursday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;10;Starbucks Hot Drinks;00:35:41;2016-01-13;2016;January;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;9;Christmas Music;00:59:16;2015-12-09;2015;December;Wednesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;8;Take-Out Food;00:46:39;2015-11-23;2015;November;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;7;Halloween Candy;00:22:56;2015-11-02;2015;November;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;6;Board Games;01:06:54;2015-10-27;2015;October;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;5;Podcasts;00:51:34;2015-10-16;2015;October;Friday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;4;Worst Weezer Singles;00:39:56;2015-09-28;2015;September;Monday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;3;Reality TV Shows;00:54:35;2015-09-15;2015;September;Tuesday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;2;TV Shows;00:51:27;2015-08-30;2015;August;Sunday;"Marco Arment;Tiff Arment";relay.fm
+Top Four;1;Video Games;00:56:08;2015-08-17;2015;August;Monday;"Marco Arment;Tiff Arment";relay.fm
 Under the Radar;257;Working in Public;00:29:47;2022-12-09;2022;December;Friday;"Marco Arment;David Smith";relay.fm
 Under the Radar;256;Optimizing Paywalls;00:29:53;2022-11-21;2022;November;Monday;"Marco Arment;David Smith";relay.fm
 Under the Radar;255;The Discontinuity Principle;00:29:47;2022-11-09;2022;November;Wednesday;"Marco Arment;David Smith";relay.fm
@@ -6398,24 +6408,24 @@ Mixed Feelings;4;No I in Team;00:48:22;2016-12-01;2016;December;Thursday;"Gillia
 Mixed Feelings;3;Sugar Mountain;00:48:25;2016-11-17;2016;November;Thursday;"Gillian Parker;Quinn Rose";relay.fm
 Mixed Feelings;2;We All Need Each Other;00:36:40;2016-11-10;2016;November;Thursday;"Gillian Parker;Quinn Rose";relay.fm
 Mixed Feelings;1;Legally Dubious Methods;00:46:36;2016-11-03;2016;November;Thursday;"Gillian Parker;Quinn Rose";relay.fm
-Playing for Fun;18;Uncharted 4;01:22:51;2019-07-30;2019;July;Tuesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;17;Plants vs. Zombies and World of Goo;00:39:46;2019-06-28;2019;June;Friday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;16;Minecraft;00:43:58;2019-05-26;2019;May;Sunday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;15;Pokémon: Let's Go;00:57:25;2019-04-22;2019;April;Monday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;14;Half-Life 2;01:04:42;2019-03-28;2019;March;Thursday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;13;The Funsies 2019;01:09:26;2019-02-25;2019;February;Monday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;12;The Jackbox Party Pack;00:46:33;2019-01-28;2019;January;Monday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;11;Half-Life;00:52:25;2018-12-17;2018;December;Monday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;10;Mario and Rabbids: Kingdom Battle;00:50:21;2018-11-14;2018;November;Wednesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;9;Splatoon 2;00:53:49;2018-10-02;2018;October;Tuesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;8;Stardew Valley;00:50:01;2018-09-18;2018;September;Tuesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;7;The Legend of Zelda: Breath of the Wild;01:29:08;2018-08-22;2018;August;Wednesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;6;Don't Starve;00:51:57;2018-07-10;2018;July;Tuesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;5;Firewatch;00:55:21;2018-06-09;2018;June;Saturday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;4;Portal 2 Co-Op;00:58:38;2018-05-02;2018;May;Wednesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;3;Threes and Flipflop Solitaire;00:32:37;2018-04-05;2018;April;Thursday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;2;Celeste;00:41:21;2018-03-06;2018;March;Tuesday;"Tiffany Arment;Myke Hurley";relay.fm
-Playing for Fun;1;Super Mario Odyssey;00:40:55;2018-02-15;2018;February;Thursday;"Tiffany Arment;Myke Hurley";relay.fm
+Playing for Fun;18;Uncharted 4;01:22:51;2019-07-30;2019;July;Tuesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;17;Plants vs. Zombies and World of Goo;00:39:46;2019-06-28;2019;June;Friday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;16;Minecraft;00:43:58;2019-05-26;2019;May;Sunday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;15;Pokémon: Let's Go;00:57:25;2019-04-22;2019;April;Monday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;14;Half-Life 2;01:04:42;2019-03-28;2019;March;Thursday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;13;The Funsies 2019;01:09:26;2019-02-25;2019;February;Monday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;12;The Jackbox Party Pack;00:46:33;2019-01-28;2019;January;Monday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;11;Half-Life;00:52:25;2018-12-17;2018;December;Monday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;10;Mario and Rabbids: Kingdom Battle;00:50:21;2018-11-14;2018;November;Wednesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;9;Splatoon 2;00:53:49;2018-10-02;2018;October;Tuesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;8;Stardew Valley;00:50:01;2018-09-18;2018;September;Tuesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;7;The Legend of Zelda: Breath of the Wild;01:29:08;2018-08-22;2018;August;Wednesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;6;Don't Starve;00:51:57;2018-07-10;2018;July;Tuesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;5;Firewatch;00:55:21;2018-06-09;2018;June;Saturday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;4;Portal 2 Co-Op;00:58:38;2018-05-02;2018;May;Wednesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;3;Threes and Flipflop Solitaire;00:32:37;2018-04-05;2018;April;Thursday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;2;Celeste;00:41:21;2018-03-06;2018;March;Tuesday;"Tiff Arment;Myke Hurley";relay.fm
+Playing for Fun;1;Super Mario Odyssey;00:40:55;2018-02-15;2018;February;Thursday;"Tiff Arment;Myke Hurley";relay.fm
 Presentable;123;Finale;00:11:12;2021-12-31;2021;December;Friday;Jeff Veen;relay.fm
 Presentable;122;How Writing a Book Can Help Your Career;00:42:28;2021-12-22;2021;December;Wednesday;Jeff Veen;relay.fm
 Presentable;121;What Do You Want to Be When You Grow Up?;00:36:47;2021-11-30;2021;November;Tuesday;Jeff Veen;relay.fm
