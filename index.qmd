@@ -1,29 +1,18 @@
 ---
 title: "Podcast Data for Fun and (not) Profit"
-date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
-author: "Lukas — @jemus42"
+# knitr: 
+#  opts_chunk: 
+#    fig.align: center
 editor_options: 
   chunk_output_type: console
 ---
 
-{{< include _setup.qmd >}}
+```{r}
+#| file: _common.R
+#| include: false
+```
 
-
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(
-  fig.path = "assets/plots/main/"
-)
-
-incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
-relay_episodes <- readRDS("data/relay_episodes.rds")
-atp <- readRDS("data/atp.rds") |>
-  mutate(
-    network = "ATP",
-    show = "ATP"
-  ) |>
-  # Exclude episodes with missing data until bonus episodes are parsed properly
-  filter(!is.na(duration))
-
+```{r setup, include=FALSE}
 podcasts <- incomparable_episodes |>
   bind_rows(relay_episodes) |>
   bind_rows(atp)
@@ -35,7 +24,7 @@ Included:
 
 - [**The Incomparable**](https://www.theincomparable.com/)
 - [**Accidental Tech Podcast (ATP)**](https://atp.fm/)
-- [**Realy.fm**](https://www.relay.fm/)
+- [**Relay FM**](https://www.relay.fm/)
 
 Data includes episode runtimes, release dates, and hosts (in case of The Incomparable, also guests). 
 
@@ -47,11 +36,12 @@ The data sources are:
 
 Data collection and site/plot-recreation happens Sunday morning  (UTC).
 
-## Note
-
+:::{.callout-note}
 This project is in a perpetual cycle of maintenance and "ain't nobody got time for that"-ness, which is primarily reflected in many of the plots not looking right.  
 The reason is that whenever I tweaked the plot dimensions so that the spacing allows for all the text to be readable, it only takes a few months for multiple new podcasts to appear.  
 Since the data collection and plot creation is automated and updated daily, this means the plots now have to fit more data, but since I haven't figured out a good way to auto-adjust the plot width accordingly, plots will look squished after a few months.  
+:::
+
 
 ## Current data
 
@@ -91,7 +81,7 @@ podcasts |>
     "Last Episode", "# of Shows", "Avg Episodes per Show"
   )) |>
   reactable(
-    rownames = FALSE
+    rownames = FALSE 
   )
 ```
 
@@ -99,10 +89,10 @@ podcasts |>
 
 From first to last published episode.
 
-```{r allshows_timeline}
-#| column: screen-inset-shaded
-#| fig-height: 18
+```{r allshows-timeline}
+#| fig-height: 16
 #| fig-width: 10
+# column: screen-inset-shaded
 podcasts |>
   group_by(show) |>
   mutate(
@@ -110,7 +100,7 @@ podcasts |>
     d_max = max(date)
   ) |>
   ggplot(aes(x = reorder(show, d_min), color = network)) +
-  geom_errorbar(aes(ymin = d_min, ymax = d_max), width = 1, size = 1) +
+  geom_errorbar(aes(ymin = d_min, ymax = d_max), width = 1, linewidth = 1) +
   scale_x_discrete(position = "top") +
   scale_color_manual(values = network_colors) +
   coord_flip() +
@@ -128,10 +118,10 @@ podcasts |>
 
 ### Duration
 
-```{r allshows_duration}
-#| column: screen-inset-shaded
+```{r allshows-duration}
 #| fig-height: 18
 #| fig-width: 10
+# column: screen-inset-shaded
 
 podcasts |>
   filter(!is.na(duration)) |>

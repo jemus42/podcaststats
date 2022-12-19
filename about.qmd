@@ -1,5 +1,18 @@
 ---
 title: "About"
+about:
+  template: solana
+  #image: profile.jpg
+  links:
+    - icon: mastodon
+      text: Mastodon
+      href: https://norden.social/@jemsu
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com/jemus42
+    - icon: github
+      text: Github
+      href: https://github.com/jemus42
 ---
 
 This is a hobby/procrastination project.  

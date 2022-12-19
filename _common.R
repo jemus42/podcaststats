@@ -1,8 +1,3 @@
-
-
-
-```{r}
-#| include: false
 library(dplyr)
 library(tidyr)
 library(stringr)
@@ -18,7 +13,7 @@ library(scales)
 library(ggrepel)
 library(hrbrthemes)
 library(ggbeeswarm)
-library(plotly)
+#library(plotly)
 library(DT)
 library(reactable)
 
@@ -28,10 +23,7 @@ if (FALSE) {
   library(ragg)
   library(Hmisc)
 }
-```
 
-```{r}
-#| include: false
 incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
 
 mothership_wide <- incomparable_episodes |>
@@ -40,7 +32,7 @@ mothership_wide <- incomparable_episodes |>
 mothership_long <- gather_people(mothership_wide)
 
 relay_shows <- readRDS("data/relay_shows.rds")
-relay_episodes <- readRDS("data/relay_episodes.rds") 
+relay_episodes <- readRDS("data/relay_episodes.rds")
 
 atp <- readRDS("data/atp.rds") |>
   mutate(
@@ -49,15 +41,15 @@ atp <- readRDS("data/atp.rds") |>
   ) |>
   # Exclude episodes with missing data until bonus episodes are parsed properly
   filter(!is.na(duration))
-```
 
 
-```{r}
-#| include: false
+
 #### Knitr chunk options ####
-knitr::opts_chunk$set(
+#knitr::opts_chunk$set(
   #fig.path = "assets/plots/",
-  fig.align = "center"
+
+  #fig.align = "center"
+
   # echo = FALSE,
   # prompt = FALSE,
   # comment = NA,
@@ -65,7 +57,7 @@ knitr::opts_chunk$set(
   # warning = FALSE,
   # cache = FALSE,
   # dev = "ragg_png"
-)
+#)
 
 # For yearly review things, use the current(ish) year
 current_year <- year(today() - dmonths(3))
@@ -81,6 +73,8 @@ caption <- paste0(
   "podcasts.jemu.name\n",
   format(lubridate::now("UTC"), format = "%F %H:%M %Z")
 )
+
+duration_mins <- "Duration (H:M:S)"
 
 # Set default theme
 # hrbrthemes::import_public_sans()
@@ -98,5 +92,3 @@ theme_set(
       plot.caption.position = "plot"
     )
 )
-
-```

@@ -7,9 +7,17 @@ project:
   resources:
     - "*.rds"
     - "*.csv"
+  preview:
+    port: 4555
+    browser: false
 
 website:
   title: "Podcast Stats"
+  description: ""
+  open-graph: true
+  twitter-card:
+    creator: "@jemus42"
+  site-url: "https://podcasts.jemu.name"
   navbar:
     search: true
     left:
@@ -31,11 +39,11 @@ website:
       - href: "https://github.com/jemus42/podcaststats"
         text: ""
         icon: github
-  open-graph: true
   page-footer:
     center:
       - text: "About"
         href: about.qmd
+  body-header: _includes/matomo.html
 
 format:
   html:
@@ -47,10 +55,15 @@ format:
     anchor-sections: true
     smooth-scroll: true
     link-external-icon: true
-    published-title: "Last Updated"
+    published-title: "Updated"
     author: "Lukas Burk"
     date: now
     date-format: "MMMM D, H:mm (z)"
-    code-fold: true
     page-layout: full
+    code-fold: true
+    code-tools: false
+    fig-align: "right"
 
+knitr:
+ opts_chunk:
+   fig.align: center

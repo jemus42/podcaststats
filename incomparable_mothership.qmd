@@ -1,5 +1,4 @@
 ---
-title-block-style: plain
 title: "The Mothership"
 knitr:
   opts_chunk: 
@@ -8,13 +7,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-{{< include _setup.qmd >}}
-
-
-```{r setup, include=FALSE}
-incomparable_wide <- readRDS("data/incomparable_episodes.rds") |>
-  filter(show == "The Incomparable Mothership")
-incomparable <- gather_people(incomparable_wide)
+```{r}
+#| file: _common.R
+#| include: false
 ```
 
 ## Introduction
@@ -24,20 +19,24 @@ However, I want to fulfill [Jason's request](https://twitter.com/jsnell/status/8
 
 
 ```{epoxy tenth-summary, .transformer = epoxy_style_bold()}
-Since its first episode on {format(min(as.Date(incomparable_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(incomparable_wide$duration, na.rm = TRUE)/dhours(1))} hours of content (roughly {round(sum(incomparable_wide$duration, na.rm = TRUE)/ddays(1))} days) across {nrow(incomparable_wide)} episodes.
+Since its first episode on {format(min(as.Date(mothership_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(mothership_wide$duration, na.rm = TRUE)/dhours(1))} hours of content (roughly {round(sum(mothership_wide$duration, na.rm = TRUE)/ddays(1))} days) across {nrow(mothership_wide)} episodes.
 ```
 
 The latest episode in the current dataset:
 
 ```{r tenth-latest-data}
-incomparable_wide |>
+mothership_wide |>
   head(1) |>
   select(number, date, title, host, guest) |>
   mutate(
     date = as.Date(date),
-    guest = stringr::str_replace_all(guest, ";", ", ")
+    title = glue::glue("<a href=\"https://www.theincomparable.com/theincomparable/{number}\">{title}</a>"),
+    guest = and::and(stringr::str_split(guest, ";", simplify = TRUE))
   ) |>
-  knitr::kable(col.names = c("#", "Date", "Title", "Host", "Guests")) |>
+  knitr::kable(
+    col.names = c("#", "Date", "Title", "Host", "Guests"),
+    escape = FALSE
+  ) |>
   kableExtra::kable_styling()
 ```
 
@@ -47,11 +46,11 @@ incomparable_wide |>
 
 
 ```{epoxy panelists-head, .transformer = epoxy_style_bold()}
-There were {nrow(filter(incomparable_wide, year == current_year))} episodes published in {current_year}. Here's a breakdown by host and guest counts.
+There were {nrow(filter(mothership_wide, year == current_year))} episodes published in {current_year}. Here's a breakdown by host and guest counts.
 ```
 
 ```{r current_year_panelists_tab, fig.height=9}
-panelist_breakdown <- incomparable |>
+panelist_breakdown <- mothership_long |>
   filter(year == current_year) |>
   group_by(person, role) |>
   tally() |>
@@ -62,9 +61,7 @@ panelist_breakdown <- incomparable |>
 panelist_breakdown |>
   arrange(desc(total)) |>
   rename_with(stringr::str_to_title) |>
-  reactable(
-    
-  )
+  reactable()
 ```
 
 
@@ -98,7 +95,7 @@ Special bonus episodes are not included (507b, 506b, 337b, 173z).
 Nothing special, just "appears in episode" counts.
 
 ```{r tenth-panelists}
-incomparable |>
+mothership_long |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   count(person, role) |>
@@ -106,7 +103,7 @@ incomparable |>
   mutate(
     person = factor(person),
     total = guest + host,
-    total_perc = round(total / nrow(incomparable_wide), 4),
+    total_perc = round(total / nrow(mothership_wide), 4),
     rank = rank(-total, ties.method = "min")
   ) |>
   arrange(desc(total)) |>
@@ -129,7 +126,7 @@ incomparable |>
 The segments the dataset knows about, with episode count:
 
 ```{r tenth-segments, eval=FALSE,include=FALSE}
-incomparable_wide |>
+mothership_wide |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   count(category, sort = TRUE) |>
@@ -140,7 +137,7 @@ incomparable_wide |>
 Ranks and % withing each segment.
 
 ```{r tenth-panelists-segments, eval=FALSE,include=FALSE}
-incomparable |>
+mothership_long |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   count(category, person, role) |>
@@ -177,7 +174,7 @@ incomparable |>
 Duration per episode in which each person appears, one episode can count towards multiple people's total of course.
 
 ```{r tenth-panelists-duration}
-incomparable |>
+mothership_long |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   group_by(person) |>
@@ -187,7 +184,7 @@ incomparable |>
     hours = round(mins/60, 1), 
     days = round(hours/24, 1),
     person = factor(person),
-    runtime_perc = round(mins / sum(as.numeric(incomparable_wide$duration/60)), 4),
+    runtime_perc = round(mins / sum(as.numeric(mothership_wide$duration/60)), 4),
     rank = rank(-mins, ties.method = "min")
   ) |>
   arrange(rank) |>
@@ -213,7 +210,7 @@ Because that's the easy one.
 ```{r runtime}
 #| column: screen-inset-shaded
 #| fig-width: 10
-tmp <- incomparable_wide |>
+tmp <- mothership_wide |>
   mutate(title_long = str_wrap(paste0(number, ": ", title), 20))
 
 ggplot(tmp, aes(x = date, y = duration)) +
@@ -244,7 +241,7 @@ ggplot(tmp, aes(x = date, y = duration)) +
 ```{r runtime_year}
 #| column: screen-inset-shaded
 #| fig-width: 8
-incomparable_wide |> 
+mothership_wide |> 
   ggplot(aes(x = factor(year), y = duration)) +
     geom_point(
       alpha = .75,
@@ -270,7 +267,7 @@ incomparable_wide |>
 ```{r runtime_person}
 #| column: screen-inset-shaded
 #| fig-height: 18
-incomparable |>
+mothership_long |>
   filter(year >= 2011) |>
   group_by(person) |>
   mutate(mean_duration = mean(duration)) |>
