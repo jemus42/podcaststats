@@ -50,6 +50,36 @@ There were {nrow(filter(mothership_wide, year == current_year))} episodes publis
 ```
 
 ```{r current_year_panelists_tab, fig.height=9}
+mothership_long |>
+  # Filter out special episodes containing letters
+  filter(!str_detect(number, "[a-z]$"), year == current_year) |>
+  count(person, role) |>
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) |>
+  mutate(
+    person = factor(person),
+    total = guest + host,
+    total_perc = scales::label_percent(.accuracy = .1)(total / nrow(mothership_wide)),
+    rank = rank(-total, ties.method = "min")
+  ) |>
+  arrange(desc(total)) |>
+  select(rank, person, host, guest, total, total_perc) |>
+  reactable(
+    columns = list(
+      rank = colDef(name = "Rank", sortable = TRUE),
+      person = colDef(name = "Person", filterable = TRUE, sortable = TRUE),
+      host = colDef(name = "Host", sortable = TRUE),
+      guest = colDef(name = "Guest", sortable = TRUE),
+      total = colDef(name = "Total", sortable = TRUE),
+      total_perc = colDef(name = "Total (%)", sortable = TRUE)
+    )
+  )
+```
+
+
+Looking at it as a bar chart is not really helping I guess but sure why not.
+
+```{r current_year_panelists_plot}
+#| fig-height: 9
 panelist_breakdown <- mothership_long |>
   filter(year == current_year) |>
   group_by(person, role) |>
@@ -58,16 +88,6 @@ panelist_breakdown <- mothership_long |>
   replace_na(list(guest = 0, host = 0)) |>
   mutate(total = guest + host)
 
-panelist_breakdown |>
-  arrange(desc(total)) |>
-  rename_with(stringr::str_to_title) |>
-  reactable()
-```
-
-
-Looking at it as a bar chart is not really helping I guess but sure why not.
-
-```{r current_year_panelists_plot, fig.height=9}
 panelist_breakdown_long <- panelist_breakdown |>
   gather(role, n, guest, host) 
 
@@ -103,29 +123,41 @@ mothership_long |>
   mutate(
     person = factor(person),
     total = guest + host,
-    total_perc = round(total / nrow(mothership_wide), 4),
+    total_perc = scales::label_percent(.accuracy = .1)(total / nrow(mothership_wide)),
     rank = rank(-total, ties.method = "min")
   ) |>
   arrange(desc(total)) |>
   select(rank, person, host, guest, total, total_perc) |>
-  datatable(
-    style = "bootstrap",
-    filter = "top",
-    colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
-    rownames = FALSE,
-    options = list(
-       pageLength = 25,
-       lengthMenu = c(10, 25, 50, 100)
+  reactable(
+    columns = list(
+      rank = colDef(name = "Rank", sortable = TRUE),
+      person = colDef(name = "Person", filterable = TRUE, sortable = TRUE),
+      host = colDef(name = "Host", sortable = TRUE),
+      guest = colDef(name = "Guest", sortable = TRUE),
+      total = colDef(name = "Total", sortable = TRUE),
+      total_perc = colDef(name = "Total (%)", sortable = TRUE)
     )
-  ) |>
-  formatPercentage(columns = 6, digits = 1)
+  )
+  
+  # datatable(
+  #   style = "bootstrap",
+  #   filter = "top",
+  #   colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
+  #   rownames = FALSE,
+  #   options = list(
+  #      pageLength = 25,
+  #      lengthMenu = c(10, 25, 50, 100)
+  #   )
+  # ) |>
+  # formatPercentage(columns = 6, digits = 1)
 ```
 
-#### By Segment (currently defunct)
+<!--
+#### By Segment
 
 The segments the dataset knows about, with episode count:
 
-```{r tenth-segments, eval=FALSE,include=FALSE}
+```{r tenth-segments}
 mothership_wide |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
@@ -136,7 +168,7 @@ mothership_wide |>
 
 Ranks and % withing each segment.
 
-```{r tenth-panelists-segments, eval=FALSE,include=FALSE}
+```{r tenth-panelists-segments}
 mothership_long |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
@@ -169,6 +201,8 @@ mothership_long |>
   formatPercentage(columns = 7, digits = 1)
 ```
 
+--->
+
 #### By Duration of Appearance
 
 Duration per episode in which each person appears, one episode can count towards multiple people's total of course.
@@ -184,22 +218,21 @@ mothership_long |>
     hours = round(mins/60, 1), 
     days = round(hours/24, 1),
     person = factor(person),
-    runtime_perc = round(mins / sum(as.numeric(mothership_wide$duration/60)), 4),
+    runtime_perc = scales::label_percent(accuracy = .1)(mins / sum(as.numeric(mothership_wide$duration/60))),
     rank = rank(-mins, ties.method = "min")
   ) |>
   arrange(rank) |>
   select(rank, person, runtime_perc, mins, hours, days) |>
-  datatable(
-    style = "bootstrap",
-    filter = "top",
-    colnames = c("Rank", "Person", "% of All", "Minutes", "Hours", "Days"), 
-    rownames = FALSE,
-    options = list(
-       pageLength = 25,
-       lengthMenu = c(10, 25, 50, 100)
+  reactable(
+    columns = list(
+      rank = colDef(name = "Rank", sortable = TRUE),
+      person = colDef(name = "Person", filterable = TRUE, sortable = TRUE),
+      runtime_perc = colDef(name = "% of All", sortable = TRUE),
+      mins = colDef(name = "Minutes", sortable = TRUE),
+      hours = colDef(name = "Hours", sortable = TRUE),
+      days = colDef(name = "Days", sortable = TRUE)
     )
-  ) |>
-  formatPercentage(columns = 3, digits = 1)
+  )
 ```
 
 
@@ -208,8 +241,8 @@ mothership_long |>
 Because that's the easy one.
 
 ```{r runtime}
-#| column: screen-inset-shaded
 #| fig-width: 10
+# column: screen-inset-shaded
 tmp <- mothership_wide |>
   mutate(title_long = str_wrap(paste0(number, ": ", title), 20))
 
@@ -239,8 +272,8 @@ ggplot(tmp, aes(x = date, y = duration)) +
 ### By Year
 
 ```{r runtime_year}
-#| column: screen-inset-shaded
 #| fig-width: 8
+# column: screen-inset-shaded
 mothership_wide |> 
   ggplot(aes(x = factor(year), y = duration)) +
     geom_point(
@@ -265,8 +298,8 @@ mothership_wide |>
 ### Per Person
 
 ```{r runtime_person}
-#| column: screen-inset-shaded
 #| fig-height: 18
+# column: screen-inset-shaded
 mothership_long |>
   filter(year >= 2011) |>
   group_by(person) |>

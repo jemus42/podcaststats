@@ -90,7 +90,7 @@ podcasts |>
 From first to last published episode.
 
 ```{r allshows-timeline}
-#| fig-height: 16
+#| fig-height: 18
 #| fig-width: 10
 # column: screen-inset-shaded
 podcasts |>

@@ -21,7 +21,10 @@ At least that was the case, but ever since the ATP site relaunched in... 2020 or
 
 ## Episode Duration
 
-```{r atp_duration, fig.height=6, fig.width=10}
+```{r atp_duration}
+#| fig-height: 6
+#| fig-width: 10
+
 ggplot(atp, aes(x = date, y = duration)) +
   geom_point(alpha = .5, size = 2) +
   geom_label_repel(
@@ -48,6 +51,9 @@ ggplot(atp, aes(x = date, y = duration)) +
 ### Duration by Year
 
 ```{r atp_duration_year, fig.height=6}
+#| fig-height: 7
+#| fig-width: 9
+
 atp |>
   group_by(year) |>
   ggplot(aes(x = as.factor(year), y = duration)) +
@@ -72,6 +78,9 @@ atp |>
 ### Duration by Month
 
 ```{r atp_duration_month, fig.height=6}
+#| fig-height: 7
+#| fig-width: 9
+
 atp |>
   ggplot(aes(x = month, y = duration)) +
   geom_boxplot() +
@@ -97,6 +106,9 @@ atp |>
 ## Weekday Heatmap
 
 ```{r atp_release_weekday}
+#| fig-height: 7
+#| fig-width: 9
+
 atp |>
   mutate(year = forcats::fct_rev(factor(year))) |>
   count(year, weekday, .drop = FALSE) |>

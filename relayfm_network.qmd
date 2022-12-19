@@ -53,24 +53,30 @@ In {year(now()) - 1}, there were {lastyear} episodes published, and we're curren
 ## Shows by Age
 
 ```{r shows_by_age}
-#| fig-height: 9
+#| fig-height: 10
+#| fig-width: 9
 relay_episodes |>
-  filter(year >= 2014) |>
+  #filter(year >= 2014) |>
   group_by(show) |>
   mutate(
     d_min = min(date),
     d_max = max(date)
   ) |>
-  ggplot(aes(x = reorder(show, d_min), color = show_status)) +
-  geom_errorbar(aes(ymin = d_min, ymax = d_max),
+  ggplot(aes(y = reorder(show, d_min), color = show_status)) +
+  geom_errorbar(aes(xmin = d_min, xmax = d_max),
     width = .5, linewidth = 2, alpha = .75
   ) +
-  coord_flip() +
-  scale_x_discrete(position = "top") +
+  geom_vline(xintercept = as.Date("2014-01-01"), linetype = "dashed") +
+  scale_x_date(
+    date_breaks = "2 years", date_labels = "%Y",
+    date_minor_breaks = "1 year"
+  ) +
+  scale_y_discrete(position = "right") +
   scale_color_brewer(palette = "Dark2") +
   labs(
-    x = "", y = "First to Last Episode Date",
-    title = "Relay FM: Show Timelines", subtitle = "Since 2014",
+    y = NULL, x = "First to Last Episode Date",
+    title = "Relay FM: Show Timelines", 
+    #subtitle = "Since 2014",
     caption = caption, color = "Status"
   ) +
   theme(legend.position = "top")
@@ -127,6 +133,9 @@ relay_episodes |>
 ### Regularity
 
 ```{r shows_per_week_bars, fig.height=12, fig.width=11}
+#| fig-height: 12
+#| fig-width: 11
+
 relay_episodes |>
   mutate(
     week = isoweek(date),
@@ -139,7 +148,7 @@ relay_episodes |>
   geom_col() +
   # scale_y_continuous(breaks = seq(0, 10, 1)) +
   # scale_x_continuous(breaks = seq(0, 60, 10)) +
-  facet_wrap(~show, ncol = 3) +
+  facet_wrap(~show, ncol = 3, scales = "free") +
   labs(
     title = "Relay FM", subtitle = "Episodes per Week in the current year",
     x = "Week of Year", y = "# fo Episodes", caption = caption
@@ -183,7 +192,10 @@ relay_episodes |>
 
 ## All Shows
 
-```{r runtime_allshows_scatter, fig.height=7, fig.width=10}
+```{r runtime_allshows_scatter}
+#| fig-height: 7
+#| fig-width: 10
+
 relay_episodes |>
   filter(year >= 2014, duration <= hms(hours = 4)) |>
   ggplot(aes(x = date, y = duration, color = show)) +
@@ -210,6 +222,7 @@ relay_episodes |>
 ```{r runtime_allshows}
 #| fig-height: 18
 #| fig-width: 14
+
 relay_episodes |>
   filter(show != "B-Sides", year >= 2014) |>
   ggplot(aes(x = date, y = duration)) +
@@ -233,7 +246,10 @@ relay_episodes |>
 
 ### Histogram
 
-```{r runtime_allshows_hist, fig.width=9, fig.height=7}
+```{r runtime_allshows_hist}
+#| fig-height: 9
+#| fig-width: 8
+
 relay_episodes |>
   filter(duration <= hms(hours = 3)) |>
   ggplot(aes(x = duration)) +
@@ -254,7 +270,10 @@ relay_episodes |>
 
 ### Boxplots 
 
-```{r runtime_avg_pershow, fig.height=9}
+```{r runtime_avg_pershow}
+#| fig-height: 10
+#| fig-width: 9
+
 relay_episodes |>
   group_by(show) |>
   ggplot(aes(x = forcats::fct_reorder(show, duration, .fun = mean), y = duration)) +
@@ -279,7 +298,10 @@ relay_episodes |>
 Sadly I don't have a lot of data about people besides the hosts of each show. I *could* try to pry out the guests of shows out of each show's RSS feed, but sadly this information is not neatly presented in the feed, but rather would require an amount of regexing I am not prepared, and therefore not able to do.  
 Be that as it may, here's a bit about the hosts.
 
-```{r people, fig.height=9}
+```{r people}
+#| fig-height: 10
+#| fig-width: 9
+
 relay_episodes |>
   gather_people() |>
   count(person) |>
@@ -297,7 +319,10 @@ relay_episodes |>
 
 Sooo okay! Filtered by episodes airing in 2014 or later though.
 
-```{r hosts_by_hours_by_weeks_active, fig.height = 9}
+```{r hosts_by_hours_by_weeks_active}
+#| fig-height: 10
+#| fig-width: 9
+
 relay_episodes |>
   filter(year >= 2014) |>
   gather_people() |>
@@ -318,7 +343,8 @@ ggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration
   geom_col() +
   coord_flip() +
   scale_y_time(
-    breaks = hms(minutes = seq(0, 1e6, 30))
+    breaks = hms(minutes = seq(0, 1e6, 60)),
+    labels = \(x) str_extract(as.character(x), "\\d{2}:\\d{2}")
   ) +
   labs(
     title = "Relay FM",
@@ -330,7 +356,10 @@ ggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration
 
 ## Period of host activity
 
-```{r relay_people_activity, fig.height = 9}
+```{r relay_people_activity}
+#| fig-height: 10
+#| fig-width: 9
+
 ggplot(people_activity) +
   geom_segment(aes(
     x = forcats::fct_reorder(person, first_show, .desc = TRUE), xend = person,
