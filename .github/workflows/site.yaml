@@ -18,6 +18,8 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
+      - uses: quarto-dev/quarto-actions/setup@v2
+
       # - name: Install font
       #   run: |
       #     brew tap homebrew/cask-fonts
@@ -48,11 +50,10 @@ jobs:
           cache_podcast_data(incomparable_episodes)
         shell: Rscript {0}
 
-      - name: Render Site
-        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
-
-      - name: Copy data to public directory
-        run: 'rm _site/data/.gitignore; cp data/* _site/data/'
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html
 
       - uses: keithweaver/aws-s3-github-action@v1.0.0
         name: Copy data to s3
