@@ -24,6 +24,7 @@ if (FALSE) {
   library(Hmisc)
 }
 
+incomparable_shows <- readRDS("data/incomparable_shows.rds")
 incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
 
 mothership_wide <- incomparable_episodes |>
@@ -39,7 +40,6 @@ atp <- readRDS("data/atp.rds") |>
     network = "ATP",
     show = "ATP"
   ) |>
-  # Exclude episodes with missing data until bonus episodes are parsed properly
   filter(!is.na(duration))
 
 
@@ -87,8 +87,8 @@ theme_set(
   ) +
     theme(
       plot.title.position = "plot",
+      plot.caption.position = "plot",
       panel.spacing.x = unit(2, "mm"),
-      legend.position = "top",
-      plot.caption.position = "plot"
+      legend.position = "top"
     )
 )

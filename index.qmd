@@ -111,8 +111,7 @@ podcasts |>
     x = "", y = "First to Latest Episode Date",
     color = NULL,
     caption = caption
-  ) +
-  theme(legend.position = "top")
+  )
 ```
 
 
@@ -133,6 +132,5 @@ podcasts |>
     title = "Podcasts by Duration", subtitle = "By Network",
     x = "", y = "Duration (H:M:S)", fill = NULL,
     caption = caption
-  ) +
-  theme(legend.position = "top")
+  )
 ```

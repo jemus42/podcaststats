@@ -247,8 +247,8 @@ relay_episodes |>
 ### Histogram
 
 ```{r runtime_allshows_hist}
-#| fig-height: 9
-#| fig-width: 8
+#| fig-height: 8
+#| fig-width: 11
 
 relay_episodes |>
   filter(duration <= hms(hours = 3)) |>

@@ -101,8 +101,7 @@ ggplot(data = panelist_breakdown_long, aes(x = reorder(person, total), y = n, fi
     title = glue::glue("The Incomparable — {current_year}"),
     subtitle = "Panelists by # of Appearances",
     x = "Panelist", y = "# of Appearances", fill = "Role"
-  ) +
-  theme(legend.position = "top")
+  )
 ```
 
 ### All Time Stats
@@ -138,18 +137,6 @@ mothership_long |>
       total_perc = colDef(name = "Total (%)", sortable = TRUE)
     )
   )
-  
-  # datatable(
-  #   style = "bootstrap",
-  #   filter = "top",
-  #   colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
-  #   rownames = FALSE,
-  #   options = list(
-  #      pageLength = 25,
-  #      lengthMenu = c(10, 25, 50, 100)
-  #   )
-  # ) |>
-  # formatPercentage(columns = 6, digits = 1)
 ```
 
 <!--
