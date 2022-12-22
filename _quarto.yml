@@ -67,3 +67,4 @@ format:
 knitr:
  opts_chunk:
    fig.align: center
+   dev: ragg_png

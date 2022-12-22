@@ -17,6 +17,9 @@ library(ggbeeswarm)
 library(DT)
 library(reactable)
 
+# renv::install("hrbrmstr/hrbragg")
+library(hrbragg)
+hrbragg::install_inter()
 
 # Dummy to make renv pick up ragg and Hmisc
 if (FALSE) {
@@ -79,11 +82,26 @@ duration_mins <- "Duration (H:M:S)"
 # Set default theme
 # hrbrthemes::import_public_sans()
 
+# theme_set(
+#   theme_ipsum(
+#     base_size = 14,
+#     plot_margin = margin(4, 4, 4, 4),
+#     axis_text_size = 12
+#   ) +
+#     theme(
+#       plot.title.position = "plot",
+#       plot.caption.position = "plot",
+#       panel.spacing.x = unit(2, "mm"),
+#       legend.position = "top"
+#     )
+# )
+
 theme_set(
-  theme_ipsum(
+  theme_inter(
+    mode = "light",
     base_size = 14,
-    plot_margin = margin(4, 4, 4, 4),
     axis_text_size = 12
+    #plot_margin = margin(4, 4, 4, 4),
   ) +
     theme(
       plot.title.position = "plot",

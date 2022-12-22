@@ -130,11 +130,12 @@ relay_episodes |>
     )
 ```
 
-### Regularity
+### Regularity (TBA)
 
-```{r shows_per_week_bars, fig.height=12, fig.width=11}
+```{r shows_per_week_bars}
 #| fig-height: 12
 #| fig-width: 11
+#| eval: false
 
 relay_episodes |>
   mutate(
