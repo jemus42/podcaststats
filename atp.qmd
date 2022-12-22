@@ -1,37 +1,30 @@
 ---
 title: "Accidental Tech Podcast"
-date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
-author: "Lukas — @jemus42"
-output:
-  html_document
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r setup, echo=FALSE, cache=FALSE, include=FALSE}
-source("00_setup.R")
-
-knitr::opts_chunk$set(fig.path = "assets/plots/atp/")
-
-#### Data Prep ####
-atp <- readRDS("data/atp.rds") |>
-  filter(!is.na(month), !is.na(duration)) |>
-  mutate(date = as.POSIXct(date))
-
-#### Plot presets ####
-duration_mins <- "Duration (HH:MM:SS)"
+```{r}
+#| file: _common.R
+#| include: false
 ```
+
 
 Data in this summary is [limited to the 100 most recent episodes](https://twitter.com/caseyliss/status/706885764236361728) in the feed.
 
 At least that was the case until November 2016, when [Marco pointed out](https://twitter.com/marcoarment/status/801550714568900608) to me that there was, indeed, a better place for me to scrape episode data. 
 
-In the meantime, I had [taken John's advice](https://twitter.com/siracusa/status/801444008404914176) and started [downloading every ATP episode ever as mp3](https://twitter.com/Jemus42/status/801451942560022528) to manually [mediainfo](https://en.wikipedia.org/wiki/MediaInfo) the duration out of them in a script, only to realize that the first few episodes [didn't have title information](https://twitter.com/Jemus42/status/801504118816833536) in them. This left only the option of crawling the ATP website for full episode metadata (which is annoying because of non-trivial URL parameters for pagination), which I was very much about to do… until I got Marco's reply.  
+In the meantime, I had [taken John's advice](https://twitter.com/siracusa/status/801444008404914176) and started [downloading every ATP episode ever as mp3](https://twitter.com/Jemus42/status/801451942560022528) to manually [`mediainfo`](https://en.wikipedia.org/wiki/MediaInfo) the duration out of them in a script, only to realize that the first few episodes [didn't have title information](https://twitter.com/Jemus42/status/801504118816833536) in them. This left only the option of crawling the ATP website for full episode metadata (which was annoying because of non-trivial URL parameters for pagination), which I was very much about to do… until I got Marco's reply.  
 So… thanks Marco for saving me from the horrible fate that would have been a while loop in R.
+
+At least that was the case, but ever since the ATP site relaunched in... 2020 or so? it was feasible so scrape the site and just leave it at that, as overcast feeds were not easily available programmatically anyway. It was a whole thing and I neglected to write any of it down. Whoopsie. 
 
 ## Episode Duration
 
-```{r atp_duration, fig.height=6, fig.width=10}
+```{r atp_duration}
+#| fig-height: 6
+#| fig-width: 10
+
 ggplot(atp, aes(x = date, y = duration)) +
   geom_point(alpha = .5, size = 2) +
   geom_label_repel(
@@ -40,7 +33,7 @@ ggplot(atp, aes(x = date, y = duration)) +
   ) +
   expand_limits(y = 0) +
   geom_smooth(method = lm, formula = y ~ x, se = FALSE, color = "red") +
-  scale_x_datetime(
+  scale_x_date(
     breaks = date_breaks("12 months"),
     minor_breaks = date_breaks("6 months"),
     date_labels = "%Y"
@@ -58,6 +51,9 @@ ggplot(atp, aes(x = date, y = duration)) +
 ### Duration by Year
 
 ```{r atp_duration_year, fig.height=6}
+#| fig-height: 7
+#| fig-width: 9
+
 atp |>
   group_by(year) |>
   ggplot(aes(x = as.factor(year), y = duration)) +
@@ -69,7 +65,7 @@ atp |>
   labs(
     title = "ATP Episode Durations per Year",
     subtitle = "Duration by year with average (dot)",
-    x = "", y = "Duration (mins)", caption = caption
+    x = "", y = duration_mins, caption = caption
   ) +
   theme(
     strip.text = element_text(size = rel(1)),
@@ -82,20 +78,23 @@ atp |>
 ### Duration by Month
 
 ```{r atp_duration_month, fig.height=6}
+#| fig-height: 7
+#| fig-width: 9
+
 atp |>
   ggplot(aes(x = month, y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
-  scale_x_discrete(
-    guide = guide_axis(n.dodge = 2)
-  ) +
+  # scale_x_discrete(
+  #   guide = guide_axis(n.dodge = 2)
+  # ) +
   scale_y_time(
     breaks = hms(minutes = seq(0, 1e6, 30))
   ) +
   labs(
     title = "ATP Episode Durations grouped by Month",
     subtitle = "Duration by month with average (dot)",
-    x = "Month", y = "Duration (mins)", caption = caption
+    x = NULL, y = duration_mins, caption = caption
   ) +
   theme(
     strip.text = element_text(size = rel(1)),
@@ -107,6 +106,9 @@ atp |>
 ## Weekday Heatmap
 
 ```{r atp_release_weekday}
+#| fig-height: 7
+#| fig-width: 9
+
 atp |>
   mutate(year = forcats::fct_rev(factor(year))) |>
   count(year, weekday, .drop = FALSE) |>
@@ -138,7 +140,8 @@ atp |>
   select(number, title, duration, date, year, month) |>
   datatable(
     style = "bootstrap",
-    colnames = c("#", "Title", "Duration (mins)", "Date", "Year", "Month")
+    colnames = c("#", "Title", "Duration (mins)", "Date", "Year", "Month"),
+    rownames = FALSE
   )
 ```
 

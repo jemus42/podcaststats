@@ -1,25 +1,15 @@
 ---
-title: "The Incomparable"
-date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
-author: "Lukas — @jemus42"
-output: 
-  html_document:
-    fig_height: 8
+title: "The Mothership"
+knitr:
+  opts_chunk: 
+    fig_path: "plots/incomparable_mothership/"
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
-source("00_setup.R")
-
-#### Global options ####
-knitr::opts_chunk$set(
-  fig.path = "assets/plots/incomparable_main/"
-)
-
-incomparable_wide <- readRDS("data/incomparable_episodes.rds") |>
-  filter(show == "The Incomparable Mothership")
-incomparable <- gather_people(incomparable_wide)
+```{r}
+#| file: _common.R
+#| include: false
 ```
 
 ## Introduction
@@ -29,20 +19,24 @@ However, I want to fulfill [Jason's request](https://twitter.com/jsnell/status/8
 
 
 ```{epoxy tenth-summary, .transformer = epoxy_style_bold()}
-Since its first episode on {format(min(as.Date(incomparable_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(incomparable_wide$duration, na.rm = TRUE)/dhours(1))} hours of content (roughly {round(sum(incomparable_wide$duration, na.rm = TRUE)/ddays(1))} days) across {nrow(incomparable_wide)} episodes.
+Since its first episode on {format(min(as.Date(mothership_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(mothership_wide$duration, na.rm = TRUE)/dhours(1))} hours of content (roughly {round(sum(mothership_wide$duration, na.rm = TRUE)/ddays(1))} days) across {nrow(mothership_wide)} episodes.
 ```
 
 The latest episode in the current dataset:
 
 ```{r tenth-latest-data}
-incomparable_wide |>
+mothership_wide |>
   head(1) |>
   select(number, date, title, host, guest) |>
   mutate(
     date = as.Date(date),
-    guest = stringr::str_replace_all(guest, ";", ", ")
+    title = glue::glue("<a href=\"https://www.theincomparable.com/theincomparable/{number}\">{title}</a>"),
+    guest = and::and(stringr::str_split(guest, ";", simplify = TRUE))
   ) |>
-  knitr::kable(col.names = c("#", "Date", "Title", "Host", "Guests")) |>
+  knitr::kable(
+    col.names = c("#", "Date", "Title", "Host", "Guests"),
+    escape = FALSE
+  ) |>
   kableExtra::kable_styling()
 ```
 
@@ -52,24 +46,47 @@ incomparable_wide |>
 
 
 ```{epoxy panelists-head, .transformer = epoxy_style_bold()}
-There were {nrow(filter(incomparable_wide, year == current_year))} episodes published in {current_year}. Here's a breakdown by host and guest counts.
+There were {nrow(filter(mothership_wide, year == current_year))} episodes published in {current_year}. Here's a breakdown by host and guest counts.
 ```
 
-```{r current_year_panelists, fig.height=9}
-panelist_breakdown <- incomparable |>
+```{r current_year_panelists_tab, fig.height=9}
+mothership_long |>
+  # Filter out special episodes containing letters
+  filter(!str_detect(number, "[a-z]$"), year == current_year) |>
+  count(person, role) |>
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) |>
+  mutate(
+    person = factor(person),
+    total = guest + host,
+    total_perc = scales::label_percent(.accuracy = .1)(total / nrow(mothership_wide)),
+    rank = rank(-total, ties.method = "min")
+  ) |>
+  arrange(desc(total)) |>
+  select(rank, person, host, guest, total, total_perc) |>
+  reactable(
+    columns = list(
+      rank = colDef(name = "Rank", sortable = TRUE),
+      person = colDef(name = "Person", filterable = TRUE, sortable = TRUE),
+      host = colDef(name = "Host", sortable = TRUE),
+      guest = colDef(name = "Guest", sortable = TRUE),
+      total = colDef(name = "Total", sortable = TRUE),
+      total_perc = colDef(name = "Total (%)", sortable = TRUE)
+    )
+  )
+```
+
+
+Looking at it as a bar chart is not really helping I guess but sure why not.
+
+```{r current_year_panelists_plot}
+#| fig-height: 9
+panelist_breakdown <- mothership_long |>
   filter(year == current_year) |>
   group_by(person, role) |>
   tally() |>
   spread(role, n) |>
   replace_na(list(guest = 0, host = 0)) |>
   mutate(total = guest + host)
-
-panelist_breakdown |>
-  arrange(desc(total)) |>
-  datatable(
-    style = "bootstrap",
-    colnames = c("Person", "Guest", "Host", "Total")
-  )
 
 panelist_breakdown_long <- panelist_breakdown |>
   gather(role, n, guest, host) 
@@ -84,8 +101,7 @@ ggplot(data = panelist_breakdown_long, aes(x = reorder(person, total), y = n, fi
     title = glue::glue("The Incomparable — {current_year}"),
     subtitle = "Panelists by # of Appearances",
     x = "Panelist", y = "# of Appearances", fill = "Role"
-  ) +
-  theme(legend.position = "top")
+  )
 ```
 
 ### All Time Stats
@@ -98,7 +114,7 @@ Special bonus episodes are not included (507b, 506b, 337b, 173z).
 Nothing special, just "appears in episode" counts.
 
 ```{r tenth-panelists}
-incomparable |>
+mothership_long |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   count(person, role) |>
@@ -106,30 +122,30 @@ incomparable |>
   mutate(
     person = factor(person),
     total = guest + host,
-    total_perc = round(total / nrow(incomparable_wide), 4),
+    total_perc = scales::label_percent(.accuracy = .1)(total / nrow(mothership_wide)),
     rank = rank(-total, ties.method = "min")
   ) |>
   arrange(desc(total)) |>
   select(rank, person, host, guest, total, total_perc) |>
-  datatable(
-    style = "bootstrap",
-    filter = "top",
-    colnames = c("Rank", "Person", "Host", "Guest", "Total", "Total %"), 
-    rownames = FALSE,
-    options = list(
-       pageLength = 25,
-       lengthMenu = c(10, 25, 50, 100)
+  reactable(
+    columns = list(
+      rank = colDef(name = "Rank", sortable = TRUE),
+      person = colDef(name = "Person", filterable = TRUE, sortable = TRUE),
+      host = colDef(name = "Host", sortable = TRUE),
+      guest = colDef(name = "Guest", sortable = TRUE),
+      total = colDef(name = "Total", sortable = TRUE),
+      total_perc = colDef(name = "Total (%)", sortable = TRUE)
     )
-  ) |>
-  formatPercentage(columns = 6, digits = 1)
+  )
 ```
 
-#### By Segment (currently defunct)
+<!--
+#### By Segment
 
 The segments the dataset knows about, with episode count:
 
-```{r tenth-segments, eval=FALSE,include=FALSE}
-incomparable_wide |>
+```{r tenth-segments}
+mothership_wide |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   count(category, sort = TRUE) |>
@@ -139,8 +155,8 @@ incomparable_wide |>
 
 Ranks and % withing each segment.
 
-```{r tenth-panelists-segments, eval=FALSE,include=FALSE}
-incomparable |>
+```{r tenth-panelists-segments}
+mothership_long |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   count(category, person, role) |>
@@ -172,12 +188,14 @@ incomparable |>
   formatPercentage(columns = 7, digits = 1)
 ```
 
+--->
+
 #### By Duration of Appearance
 
 Duration per episode in which each person appears, one episode can count towards multiple people's total of course.
 
 ```{r tenth-panelists-duration}
-incomparable |>
+mothership_long |>
   # Filter out special episodes containing letters
   filter(!str_detect(number, "[a-z]$")) |>
   group_by(person) |>
@@ -187,22 +205,21 @@ incomparable |>
     hours = round(mins/60, 1), 
     days = round(hours/24, 1),
     person = factor(person),
-    runtime_perc = round(mins / sum(as.numeric(incomparable_wide$duration/60)), 4),
+    runtime_perc = scales::label_percent(accuracy = .1)(mins / sum(as.numeric(mothership_wide$duration/60))),
     rank = rank(-mins, ties.method = "min")
   ) |>
   arrange(rank) |>
   select(rank, person, runtime_perc, mins, hours, days) |>
-  datatable(
-    style = "bootstrap",
-    filter = "top",
-    colnames = c("Rank", "Person", "% of All", "Minutes", "Hours", "Days"), 
-    rownames = FALSE,
-    options = list(
-       pageLength = 25,
-       lengthMenu = c(10, 25, 50, 100)
+  reactable(
+    columns = list(
+      rank = colDef(name = "Rank", sortable = TRUE),
+      person = colDef(name = "Person", filterable = TRUE, sortable = TRUE),
+      runtime_perc = colDef(name = "% of All", sortable = TRUE),
+      mins = colDef(name = "Minutes", sortable = TRUE),
+      hours = colDef(name = "Hours", sortable = TRUE),
+      days = colDef(name = "Days", sortable = TRUE)
     )
-  ) |>
-  formatPercentage(columns = 3, digits = 1)
+  )
 ```
 
 
@@ -210,8 +227,10 @@ incomparable |>
 
 Because that's the easy one.
 
-```{r runtime, fig.width=10}
-tmp <- incomparable_wide |>
+```{r runtime}
+#| fig-width: 10
+# column: screen-inset-shaded
+tmp <- mothership_wide |>
   mutate(title_long = str_wrap(paste0(number, ": ", title), 20))
 
 ggplot(tmp, aes(x = date, y = duration)) +
@@ -239,8 +258,10 @@ ggplot(tmp, aes(x = date, y = duration)) +
 
 ### By Year
 
-```{r runtime_year, fig.width=10}
-incomparable_wide |> 
+```{r runtime_year}
+#| fig-width: 8
+# column: screen-inset-shaded
+mothership_wide |> 
   ggplot(aes(x = factor(year), y = duration)) +
     geom_point(
       alpha = .75,
@@ -263,8 +284,10 @@ incomparable_wide |>
 
 ### Per Person
 
-```{r runtime_person, fig.height=18}
-incomparable |>
+```{r runtime_person}
+#| fig-height: 18
+# column: screen-inset-shaded
+mothership_long |>
   filter(year >= 2011) |>
   group_by(person) |>
   mutate(mean_duration = mean(duration)) |>

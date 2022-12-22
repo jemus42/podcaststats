@@ -1,24 +1,16 @@
 ---
-title: "The Incomparable: Network Wide"
-date: "`r format(Sys.time(), '%F %R', tz = 'UTC', usetz = T)`"
-author: "Lukas — @jemus42"
-output: 
-  html_document:
-    fig_height: 8
+title: "The Incomparable Network"
 editor_options: 
   chunk_output_type: console
 ---
 
+```{r}
+#| file: _common.R
+#| include: false
+```
+
 ```{r setup, include=FALSE}
-source("00_setup.R")
-
-#### Global options ####
-knitr::opts_chunk$set(
-  fig.path = "assets/plots/incomparable_network/"
-)
-
-incomparable_wide <- readRDS("data/incomparable_episodes.rds")
-incomparable <- gather_people(incomparable_wide)
+incomparable <- gather_people(incomparable_episodes)
 ```
 
 ## All Time Stats
@@ -26,7 +18,7 @@ incomparable <- gather_people(incomparable_wide)
 All shows on the network, first and last episode timeline.
 
 ```{r incomparable_network_timeline, fig.height=12}
-incomparable_wide |>
+incomparable_episodes |>
   group_by(show) |>
   mutate(
     d_min = min(date),
@@ -34,7 +26,7 @@ incomparable_wide |>
   ) |>
   ggplot(aes(x = reorder(show, d_min))) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max),
-    width = .5, size = 1, alpha = .75, color = "#2C2E6A"
+    width = .5, linewidth = 1, alpha = .75, color = "#2C2E6A"
   ) +
   coord_flip() +
   scale_x_discrete(position = "top") +
@@ -50,7 +42,7 @@ incomparable_wide |>
 All episodes since 2011.
 
 ```{r incomparable_network_alltime}
-incomparable_wide |>
+incomparable_episodes |>
   count(show) |>
   ggplot(aes(x = reorder(show, n), y = n)) +
   geom_col() +
@@ -62,7 +54,7 @@ incomparable_wide |>
     caption = caption
   )
 
-incomparable_wide |>
+incomparable_episodes |>
   filter(year >= 2011) |>
   ggplot(aes(x = date, y = duration, fill = show)) +
   geom_point(shape = 21, color = "black", alpha = .5) +
@@ -77,7 +69,7 @@ incomparable_wide |>
     caption = caption
   )
 
-incomparable_wide |>
+incomparable_episodes |>
   filter(year >= 2011) |>
   count(year, month) |>
   ggplot(aes(x = month, y = n)) +
@@ -170,7 +162,7 @@ incomparable |>
 TL;DR TeeVee is basially cheating.
 
 ```{r incomparable_network_currentyear_shows}
-incomparable_wide |>
+incomparable_episodes |>
   filter(year == current_year) |>
   count(show) |>
   ggplot(aes(x = reorder(show, n), y = n)) +
@@ -188,7 +180,7 @@ incomparable_wide |>
 ## `r current_year` Episodes
 
 ```{r incomparable_network_currentyear_episodes, fig.height=6, fig.width=9}
-incomparable_wide |>
+incomparable_episodes |>
   filter(year == current_year) |>
   mutate(date = round_date(date, unit = "week")) |>
   count(date) |>
@@ -211,10 +203,10 @@ incomparable_wide |>
 
 ## Yearly Episode Output
 
-All in all, *The Incomparable* published `r round(sum(incomparable_wide$duration) / dminutes(1))` minutes of content, or `r round(sum(incomparable_wide$duration) / dweeks(1))` weeks, which are numbers that exists as a concept in your head but not in reality.
+All in all, *The Incomparable* published `r round(sum(incomparable_episodes$duration) / dminutes(1))` minutes of content, or `r round(sum(incomparable_episodes$duration) / dweeks(1))` weeks, which are numbers that exists as a concept in your head but not in reality.
 
 ```{r incomparable_network_episodes_peryear}
-incomparable_wide |>
+incomparable_episodes |>
   filter(year >= 2011) |>
   count(year) |>
   ggplot(aes(x = factor(year), y = n)) +

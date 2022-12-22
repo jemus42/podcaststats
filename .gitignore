@@ -3,17 +3,18 @@
 .RData
 .Ruserdata
 
-# Ignore experiments script and old code
-99_fiddle.R
 
 # Ignore outputs
 _site
 assets
-*.html
+
 site_libs
 
 #
 *_files
-push.sh
+
 
 log*.log
+
+/.quarto/
+_freeze

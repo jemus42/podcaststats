@@ -1,7 +1,3 @@
-#### Setup stuff for each sub-analysis ####
-# Should be source'd on top of each Rmd
-#### Loading packages ####
-# library(magrittr)
 library(dplyr)
 library(tidyr)
 library(stringr)
@@ -17,8 +13,9 @@ library(scales)
 library(ggrepel)
 library(hrbrthemes)
 library(ggbeeswarm)
-library(plotly)
+#library(plotly)
 library(DT)
+library(reactable)
 
 
 # Dummy to make renv pick up ragg and Hmisc
@@ -27,18 +24,40 @@ if (FALSE) {
   library(Hmisc)
 }
 
+incomparable_shows <- readRDS("data/incomparable_shows.rds")
+incomparable_episodes <- readRDS("data/incomparable_episodes.rds")
+
+mothership_wide <- incomparable_episodes |>
+  filter(show == "The Incomparable Mothership")
+
+mothership_long <- gather_people(mothership_wide)
+
+relay_shows <- readRDS("data/relay_shows.rds")
+relay_episodes <- readRDS("data/relay_episodes.rds")
+
+atp <- readRDS("data/atp.rds") |>
+  mutate(
+    network = "ATP",
+    show = "ATP"
+  ) |>
+  filter(!is.na(duration))
+
+
+
 #### Knitr chunk options ####
-knitr::opts_chunk$set(
-  fig.path = "assets/plots/",
-  fig.align = "center",
-  echo = FALSE,
-  prompt = FALSE,
-  comment = NA,
-  message = FALSE,
-  warning = FALSE,
-  cache = FALSE,
-  dev = "ragg_png"
-)
+#knitr::opts_chunk$set(
+  #fig.path = "assets/plots/",
+
+  #fig.align = "center"
+
+  # echo = FALSE,
+  # prompt = FALSE,
+  # comment = NA,
+  # message = FALSE,
+  # warning = FALSE,
+  # cache = FALSE,
+  # dev = "ragg_png"
+#)
 
 # For yearly review things, use the current(ish) year
 current_year <- year(today() - dmonths(3))
@@ -51,9 +70,11 @@ network_colors <- c(
 
 #### Plotting presets ####
 caption <- paste0(
-  "podcasts.jemu.name – @jemus42\n",
+  "podcasts.jemu.name\n",
   format(lubridate::now("UTC"), format = "%F %H:%M %Z")
 )
+
+duration_mins <- "Duration (H:M:S)"
 
 # Set default theme
 # hrbrthemes::import_public_sans()
@@ -66,6 +87,7 @@ theme_set(
   ) +
     theme(
       plot.title.position = "plot",
+      plot.caption.position = "plot",
       panel.spacing.x = unit(2, "mm"),
       legend.position = "top"
     )
