@@ -13,16 +13,18 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: yes
 
       - uses: r-lib/actions/setup-pandoc@v2
-
-      - uses: r-lib/actions/setup-renv@v2
-
-      - uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Install Stuff
         run: |
           sudo apt install libcurl4-openssl-dev
+
+      - uses: r-lib/actions/setup-renv@v2
+
+      - uses: quarto-dev/quarto-actions/setup@v2
 
       - uses: keithweaver/aws-s3-github-action@v1.0.0
         name: Copy data from s3
