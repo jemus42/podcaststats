@@ -254,7 +254,7 @@ relay_episodes |>
 relay_episodes |>
   filter(duration <= hms(hours = 3)) |>
   ggplot(aes(x = duration)) +
-  geom_histogram(binwidth = 120, color = "white") +
+  geom_histogram(binwidth = 120, fill = "gray", color = "white") +
   scale_x_time(
     breaks = hms(minutes = seq(0, 1e6, 30))
   ) +
