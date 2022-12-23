@@ -20,10 +20,9 @@ jobs:
 
       - uses: quarto-dev/quarto-actions/setup@v2
 
-      # - name: Install font
-      #   run: |
-      #     brew tap homebrew/cask-fonts
-      #     brew install --cask font-public-sans
+      - name: Install Stuff
+        run: |
+          sudo apt install libcurl4-openssl-dev
 
       - uses: keithweaver/aws-s3-github-action@v1.0.0
         name: Copy data from s3
