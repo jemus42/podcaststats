@@ -25,57 +25,21 @@ jobs:
       #     brew tap homebrew/cask-fonts
       #     brew install --cask font-public-sans
 
-      - name: Get ATP data
-        run: |
-          library(poddr)
-          atp <- atp_get_episodes()
-          cache_podcast_data(atp, csv = FALSE)
-        shell: Rscript {0}
-
-      - name: Get Relay.fm data
-        run: |
-          library(poddr)
-          relay_shows <- relay_get_shows()
-          relay_episodes <- relay_get_episodes(relay_shows)
-          cache_podcast_data(relay_shows)
-          cache_podcast_data(relay_episodes)
-        shell: Rscript {0}
-
-      - name: Get The Incomparable data
-        run: |
-          library(poddr)
-          incomparable_shows <- incomparable_get_shows()
-          incomparable_episodes <- incomparable_get_episodes(incomparable_shows)
-          cache_podcast_data(incomparable_shows)
-          cache_podcast_data(incomparable_episodes)
-        shell: Rscript {0}
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copy data from s3
+        with:
+          command: cp
+          source: s3://jemsudatasets/podcaststats/
+          destination: ./data/
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: eu-central-1
+          flags: --recursive
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
         with:
           to: html
-
-      - uses: keithweaver/aws-s3-github-action@v1.0.0
-        name: Copy data to s3
-        with:
-          command: cp
-          source: ./data/
-          destination: s3://jemsudatasets/podcaststats/
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: eu-central-1
-          flags: --recursive
-
-      - uses: keithweaver/aws-s3-github-action@v1.0.0
-        name: Copy data to s3
-        with:
-          command: cp
-          source: ./data/
-          destination: s3://jemsudatasets/podcaststats/
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: eu-central-1
-          flags: --recursive
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.0
