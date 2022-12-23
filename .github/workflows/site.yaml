@@ -22,9 +22,9 @@ jobs:
         with:
           extra-packages: any::pins, any::paws.storage, local::.
 
-      - name: Install Stuff
-        run: |
-          sudo apt install libcurl4-openssl-dev
+      # - name: Install Stuff
+      #   run: |
+      #     sudo apt install libcurl4-openssl-dev
 
       - uses: r-lib/actions/setup-renv@v2
 
@@ -40,6 +40,9 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: eu-central-1
           flags: --recursive
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
