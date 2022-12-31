@@ -41,8 +41,8 @@ jobs:
           aws_region: eu-central-1
           flags: --recursive
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2

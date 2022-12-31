@@ -19,7 +19,8 @@ library(reactable)
 
 # renv::install("hrbrmstr/hrbragg")
 library(hrbragg)
-hrbragg::install_inter()
+#hrbragg::install_inter()
+hrbragg::install_eau_sans()
 
 # Dummy to make renv pick up ragg and Hmisc
 if (FALSE) {
@@ -97,7 +98,7 @@ duration_mins <- "Duration (H:M:S)"
 # )
 
 theme_set(
-  theme_inter(
+  hrbragg::theme_eau(
     mode = "light",
     base_size = 14,
     axis_text_size = 12
