@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -69,12 +69,10 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Podcast Stats - Raw Data">
-<meta property="og:description" content="Here’s the raw data, refreshed every week or so.
-Get the CSV file for import in arbitrary software, and the RDS file if you happen to use R.">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="Podcast Stats">
 <meta name="twitter:title" content="Podcast Stats - Raw Data">
-<meta name="twitter:description" content="Here’s the raw data, refreshed every week or so.
-Get the CSV file for import in arbitrary software, and the RDS file if you happen to use R.">
+<meta name="twitter:description" content="">
 <meta name="twitter:creator" content="@jemus42">
 <meta name="twitter:card" content="summary">
 </head>
@@ -90,54 +88,54 @@ Get the CSV file for import in arbitrary software, and the RDS file if you happe
     <span class="navbar-title">Podcast Stats</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-the-incomparable" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-the-incomparable" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">The Incomparable</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-the-incomparable">    
         <li>
-    <a class="dropdown-item" href="./incomparable_mothership.html">
+    <a class="dropdown-item" href="./incomparable_mothership.html" rel="" target="">
  <span class="dropdown-text">The Motshership</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./incomparable_network.html">
+    <a class="dropdown-item" href="./incomparable_network.html" rel="" target="">
  <span class="dropdown-text">The Network</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./relayfm_network.html">
+    <a class="nav-link" href="./relayfm_network.html" rel="" target="">
  <span class="menu-text">Relay FM</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./atp.html">
+    <a class="nav-link" href="./atp.html" rel="" target="">
  <span class="menu-text">ATP</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./data.html" aria-current="page">
+    <a class="nav-link active" href="./data.html" rel="" target="" aria-current="page">
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/jemus42/podcaststats"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jemus42/podcaststats" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -171,7 +169,7 @@ Get the CSV file for import in arbitrary software, and the RDS file if you happe
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 23, 6:19 (UTC)</p>
+      <p class="date">April 30, 6:19 (UTC)</p>
     </div>
   </div>
   
@@ -195,77 +193,71 @@ if (window.location.hostname != "127.0.0.1") {
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 }
-</script><noscript><p><img src="//matomo.jemu.name/matomo.php?idsite=5&amp;rec=1" style="border:0;" alt=""></p></noscript><script async="" defer="" data-website-id="33ece4ff-5286-4664-a3c0-0a61a65e0c58" src="https://umami.jemu.name/umami.js"></script><p>Here’s the raw data, refreshed every week or so.<br>
+</script><script async="" defer="" data-website-id="33ece4ff-5286-4664-a3c0-0a61a65e0c58" src="https://umami.jemu.name/umami.js"></script><p>Here’s the raw data, refreshed every week or so.<br>
 Get the CSV file for import in arbitrary software, and the RDS file if you happen to use R. Note that as of now ATP is not available as a CSV file since the datasets contains a per-episode nested list-column of all the HTTP links from the shownotes and CSV doesn’t like that.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Network/Show </th>
-   <th style="text-align:left;"> Last Updated </th>
-   <th style="text-align:right;"> Size </th>
-   <th style="text-align:left;"> Download </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Network/Show</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Last Updated</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Size</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Download</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> ATP </td>
-   <td style="text-align:left;"> 2023-04-23 06:18:53 </td>
-   <td style="text-align:right;"> 411.85K </td>
-   <td style="text-align:left;"> <a href="./data/atp.rds">atp.rds</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;vertical-align: middle !important;" rowspan="4"> The Incomparable </td>
-   <td style="text-align:left;"> 2023-04-23 06:18:58 </td>
-   <td style="text-align:right;"> 2.78M </td>
-   <td style="text-align:left;"> <a href="./data/incomparable_episodes.csv">incomparable_episodes.csv</a> </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> 2023-04-23 06:18:58 </td>
-   <td style="text-align:right;"> 827.97K </td>
-   <td style="text-align:left;"> <a href="./data/incomparable_episodes.rds">incomparable_episodes.rds</a> </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> 2023-04-23 06:19:02 </td>
-   <td style="text-align:right;"> 6.72K </td>
-   <td style="text-align:left;"> <a href="./data/incomparable_shows.csv">incomparable_shows.csv</a> </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> 2023-04-23 06:19:02 </td>
-   <td style="text-align:right;"> 1.67K </td>
-   <td style="text-align:left;"> <a href="./data/incomparable_shows.rds">incomparable_shows.rds</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;vertical-align: middle !important;" rowspan="4"> Relay FM </td>
-   <td style="text-align:left;"> 2023-04-23 06:19:06 </td>
-   <td style="text-align:right;"> 839.2K </td>
-   <td style="text-align:left;"> <a href="./data/relay_episodes.csv">relay_episodes.csv</a> </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> 2023-04-23 06:19:06 </td>
-   <td style="text-align:right;"> 137.96K </td>
-   <td style="text-align:left;"> <a href="./data/relay_episodes.rds">relay_episodes.rds</a> </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> 2023-04-23 06:19:11 </td>
-   <td style="text-align:right;"> 2.57K </td>
-   <td style="text-align:left;"> <a href="./data/relay_shows.csv">relay_shows.csv</a> </td>
-  </tr>
-  <tr>
-   
-   <td style="text-align:left;"> 2023-04-23 06:19:10 </td>
-   <td style="text-align:right;"> 973 </td>
-   <td style="text-align:left;"> <a href="./data/relay_shows.rds">relay_shows.rds</a> </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">ATP</td>
+<td style="text-align: left;">2023-04-30 06:19:05</td>
+<td style="text-align: right;">413.29K</td>
+<td style="text-align: left;"><a href="./data/atp.rds">atp.rds</a></td>
+</tr>
+<tr class="even">
+<td rowspan="4" style="text-align: left; vertical-align: middle !important;">The Incomparable</td>
+<td style="text-align: left;">2023-04-30 06:19:09</td>
+<td style="text-align: right;">2.78M</td>
+<td style="text-align: left;"><a href="./data/incomparable_episodes.csv">incomparable_episodes.csv</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-04-30 06:19:09</td>
+<td style="text-align: right;">828.81K</td>
+<td style="text-align: left;"><a href="./data/incomparable_episodes.rds">incomparable_episodes.rds</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-04-30 06:19:14</td>
+<td style="text-align: right;">6.72K</td>
+<td style="text-align: left;"><a href="./data/incomparable_shows.csv">incomparable_shows.csv</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-04-30 06:19:14</td>
+<td style="text-align: right;">1.67K</td>
+<td style="text-align: left;"><a href="./data/incomparable_shows.rds">incomparable_shows.rds</a></td>
+</tr>
+<tr class="even">
+<td rowspan="4" style="text-align: left; vertical-align: middle !important;">Relay FM</td>
+<td style="text-align: left;">2023-04-30 06:19:18</td>
+<td style="text-align: right;">840.7K</td>
+<td style="text-align: left;"><a href="./data/relay_episodes.csv">relay_episodes.csv</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-04-30 06:19:18</td>
+<td style="text-align: right;">138.22K</td>
+<td style="text-align: left;"><a href="./data/relay_episodes.rds">relay_episodes.rds</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-04-30 06:19:23</td>
+<td style="text-align: right;">2.57K</td>
+<td style="text-align: left;"><a href="./data/relay_shows.csv">relay_shows.csv</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-04-30 06:19:23</td>
+<td style="text-align: right;">973</td>
+<td style="text-align: left;"><a href="./data/relay_shows.rds">relay_shows.rds</a></td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -415,9 +407,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -482,6 +488,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -520,12 +612,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/podcasts\.jemu\.name/);
+      var filterRegex = new RegExp("https:\/\/podcasts\.jemu\.name");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -538,13 +630,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center">
-        <ul class="footer-items list-unstyled">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
     <li class="nav-item">
     <a class="nav-link" href="./about.html">About</a>
   </li>  
 </ul>
-      </div>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 
