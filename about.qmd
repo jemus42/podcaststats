@@ -20,11 +20,10 @@ It can only exist because the kind people behind the respective podcast websites
 
 If you have questions, requests, or grievances, you can find me 
 
-- in the Incomparable member slack (@jemus42)
-- in the Relay FM member discord (jemus42#4242)
+- in the Incomparable and Relay FM member slack (jemus42)
 - on [Mastodon](https://norden.social/@jemsu)
 
-...or by whispering you message at a passing butterfly.  
+...or by whispering your message at a passing butterfly.  
 It'll find me.
 
 ## License
