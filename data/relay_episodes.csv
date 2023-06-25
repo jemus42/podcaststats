@@ -1,4 +1,5 @@
 show;number;title;duration;date;year;month;weekday;host;network
+Analog(ue);214;Not to a Bad Place;01:10:44;2023-06-24;2023;June;Saturday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);213;Juicin' It;01:30:31;2023-05-06;2023;May;Saturday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);212;Hope Coursing Through My Veins;01:27:14;2023-04-09;2023;April;Sunday;"Casey Liss;Myke Hurley";relay.fm
 Analog(ue);211;Ha La BUSINESS;01:50:55;2023-03-12;2023;March;Sunday;"Casey Liss;Myke Hurley";relay.fm
@@ -425,6 +426,7 @@ B-Sides;4;Podcast Vagrant;00:04:40;2014-10-02;2014;October;Thursday;Relay FM Hos
 B-Sides;3;Need More Analog(ue)?;00:08:43;2014-09-21;2014;September;Sunday;Relay FM Hosts;relay.fm
 B-Sides;2;Calendaring with Federico;00:12:05;2014-09-11;2014;September;Thursday;Relay FM Hosts;relay.fm
 B-Sides;1;Launch Week Q&A;00:40:43;2014-08-25;2014;August;Monday;Relay FM Hosts;relay.fm
+Clockwise;508;Text Yourself Before You Wreck Yourself;00:27:45;2023-06-21;2023;June;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;507;Help My Kid Find the Cat;00:32:23;2023-06-14;2023;June;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;506;I Want To Be Able to Ducking Type;00:25:51;2023-06-06;2023;June;Tuesday;"Dan Moren;Mikah Sargent";relay.fm
 Clockwise;505;That Satisfying Click;00:29:59;2023-05-31;2023;May;Wednesday;"Dan Moren;Mikah Sargent";relay.fm
@@ -932,6 +934,7 @@ Conduit;3;Getting Away, Now!;00:39:48;2021-08-12;2021;August;Thursday;"Kathy Cam
 Conduit;2;When You Can’t Even (Or Odd);00:45:00;2021-07-29;2021;July;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;1;Our Systems: The Unicorn & Silk Sonic Methods;00:45:20;2021-07-15;2021;July;Thursday;"Kathy Campbell;Jay Miller";relay.fm
 Conduit;0;Episode 0 - It’s the Show!;00:10:21;2021-07-09;2021;July;Friday;"Kathy Campbell;Jay Miller";relay.fm
+Connected;455;I’ve Been Banned from Aroma360;01:39:15;2023-06-21;2023;June;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;454;Pipe It In;01:34:20;2023-06-14;2023;June;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;453;By the Meat of Your Teeth;01:05:33;2023-06-07;2023;June;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
 Connected;452;The Rickies (WWDC 2023);01:15:13;2023-05-31;2023;May;Wednesday;"Federico Viticci;Stephen Hackett;Myke Hurley";relay.fm
@@ -2737,6 +2740,7 @@ Make Do;4;From The Pen Show – Double Broad, Double Feature!;01:20:19;2018-05-0
 Make Do;3;Why Do We Make? (”Hello. I am achiever. Please notice.”);00:32:40;2018-04-18;2018;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
 Make Do;2;A Room of One’s Own;00:37:35;2018-04-04;2018;April;Wednesday;"Tiff Arment;Julia Skott";relay.fm
 Make Do;1;”Lowercase a, art.”;00:27:19;2018-03-21;2018;March;Wednesday;"Tiff Arment;Julia Skott";relay.fm
+Material;417;It Prefers To Stay Inside The House;01:09:06;2023-06-22;2023;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;416;Breakfast, Lunch, and Dinner In Bed;01:08:32;2023-06-15;2023;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;415;Super-Soakers Filled With Dysentery;00:46:26;2023-06-08;2023;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
 Material;414;Belief in a Higher Weirdo;01:07:02;2023-06-01;2023;June;Thursday;"Andy Ihnatko;Florence Ion";relay.fm
@@ -3355,6 +3359,7 @@ Pictorial;4;Sonia Delaunay;00:34:55;2020-01-14;2020;January;Tuesday;"Betty Chen;
 Pictorial;3;Follow the Money;00:39:34;2019-12-31;2019;December;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;2;Postcards as Art;00:26:16;2019-12-17;2019;December;Tuesday;"Betty Chen;Quinn Rose";relay.fm
 Pictorial;1;Can Artificial Intelligence Make Art?;00:33:30;2019-12-03;2019;December;Tuesday;"Betty Chen;Quinn Rose";relay.fm
+Reconcilable Differences;211;A Very Bad Grayble;02:12:51;2023-06-23;2023;June;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;210;My Personal Fantasia;01:32:42;2023-06-09;2023;June;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;209;Trick Food;01:19:23;2023-05-26;2023;May;Friday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;208;Spinal Tap with Cowboy Hats;01:34:15;2023-05-12;2023;May;Friday;"Merlin Mann;John Siracusa";relay.fm
@@ -3565,6 +3570,7 @@ Reconcilable Differences;4;Ohio Intervention;01:31:35;2015-07-02;2015;July;Thurs
 Reconcilable Differences;3;Helena Sell;02:23:00;2015-06-18;2015;June;Thursday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;2;Thrown to the Wolves of Puberty;01:48:33;2015-06-11;2015;June;Thursday;"Merlin Mann;John Siracusa";relay.fm
 Reconcilable Differences;1;We All Ruined It Together;02:09:01;2015-06-03;2015;June;Wednesday;"Merlin Mann;John Siracusa";relay.fm
+Remaster;118;The Legend of Zelda: Tears of the Kingdom;00:52:34;2023-06-21;2023;June;Wednesday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;117;Guilty Games;00:50:44;2023-04-28;2023;April;Friday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;116;Fuse a Stick to a Fork;00:52:53;2023-03-29;2023;March;Wednesday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
 Remaster;115;What We Want to Play in 2023;00:55:50;2023-02-24;2023;February;Friday;"Federico Viticci;Shahid Kamal Ahmad;Myke Hurley";relay.fm
@@ -3746,6 +3752,7 @@ Roboism;4;A Single Piece of Toast;00:31:05;2017-06-27;2017;June;Tuesday;"Savanna
 Roboism;3;You Have to Be Invited In ;00:40:49;2017-06-16;2017;June;Friday;"Savannah Million;Alex Cox";relay.fm
 Roboism;2;The Bees Are Getting Angrier ;00:26:31;2017-05-30;2017;May;Tuesday;"Savannah Million;Alex Cox";relay.fm
 Roboism;1;A Beautiful Smoosh Bot;00:26:07;2017-05-15;2017;May;Monday;"Savannah Million;Alex Cox";relay.fm
+Rocket;443;The Thrust is Wrong;00:55:39;2023-06-22;2023;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;442;Reddit Black-out;00:58:21;2023-06-15;2023;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;441;How to Spend A Lot Of Money;01:25:01;2023-06-08;2023;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
 Rocket;440;Build-ing a Mystery;00:53:47;2023-06-01;2023;June;Thursday;"Christina Warren;Brianna Wu;Simone De Rochefort";relay.fm
@@ -4211,6 +4218,7 @@ The Backmarkers;4;Imola Grand Prix Reaction;00:59:00;2022-04-24;2022;April;Sunda
 The Backmarkers;3;Are Ferrari Unstoppable? - F1 2022 Australian Grand Prix Review;01:05:24;2022-04-10;2022;April;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;2;Why F1 is AMAZING Now - Saudi Arabian Grand Prix Review;01:04:52;2022-03-27;2022;March;Sunday;"Austin Evans;Myke Hurley";relay.fm
 The Backmarkers;1;F1 2022 is BACK! Bahrain Grand Prix Review;01:03:24;2022-03-20;2022;March;Sunday;"Austin Evans;Myke Hurley";relay.fm
+The Pen Addict;569;By the Way I’m Also the President;00:53:48;2023-06-21;2023;June;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;568;I Wanted To Go The Slow Way;01:06:02;2023-06-14;2023;June;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;567;Just Delete Our Podcast;01:00:16;2023-06-07;2023;June;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
 The Pen Addict;566;A Boat on Your Desk;00:51:31;2023-05-31;2023;May;Wednesday;"Brad Dowdy;Myke Hurley";relay.fm
