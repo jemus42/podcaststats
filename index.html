@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 3, 6:38 (UTC)</p>
+      <p class="date">March 10, 6:17 (UTC)</p>
     </div>
   </div>
   
@@ -347,8 +347,8 @@ Since the data collection and plot creation is automated and updated daily, this
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f92727d5f0a5c8f17c11" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f92727d5f0a5c8f17c11">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Network":["ATP","relay.fm","The Incomparable"],"Episodes":[546,7193,6216],"First Episode":["2013-02-07","2009-05-05","2006-07-30"],"Last Episode":["2023-07-31","2023-08-09","2023-08-08"],"# of Shows":[1,47,57],"Avg Episodes per Show":[546,153,109.1]},"columns":[{"id":"Network","name":"Network","type":"character"},{"id":"Episodes","name":"Episodes","type":"numeric"},{"id":"First Episode","name":"First Episode","type":"character"},{"id":"Last Episode","name":"Last Episode","type":"character"},{"id":"# of Shows","name":"# of Shows","type":"numeric"},{"id":"Avg Episodes per Show","name":"Avg Episodes per Show","type":"numeric"}],"dataKey":"9929f5c831cd68317bc03e7e0ee95d11"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-99a8a605d2f2d4b50ea7" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-99a8a605d2f2d4b50ea7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Network":["ATP","relay.fm","The Incomparable"],"Episodes":[546,7193,6216],"First Episode":["2013-02-07","2009-05-05","2006-07-30"],"Last Episode":["2023-07-31","2023-08-09","2023-08-08"],"# of Shows":[1,47,57],"Avg Episodes per Show":[546,153,109.1]},"columns":[{"id":"Network","name":"Network","type":"character"},{"id":"Episodes","name":"Episodes","type":"numeric"},{"id":"First Episode","name":"First Episode","type":"character"},{"id":"Last Episode","name":"Last Episode","type":"character"},{"id":"# of Shows","name":"# of Shows","type":"numeric"},{"id":"Avg Episodes per Show","name":"Avg Episodes per Show","type":"numeric"}],"dataKey":"9929f5c831cd68317bc03e7e0ee95d11"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="timeline" class="level3">
@@ -654,6 +654,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // default icon
           link.classList.add("external");
       }
@@ -692,7 +697,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
