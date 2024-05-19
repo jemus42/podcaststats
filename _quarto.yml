@@ -43,7 +43,7 @@ website:
     center:
       - text: "About"
         href: about.qmd
-  body-header: _includes/matomo.html
+  # body-header: _includes/matomo.html
 
 format:
   html:

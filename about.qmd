@@ -8,8 +8,6 @@ about:
       text: Mastodon
       href: https://norden.social/@jemsu
     - icon: twitter
-      text: twitter
-      href: https://twitter.com/jemus42
     - icon: github
       text: Github
       href: https://github.com/jemus42
@@ -24,7 +22,6 @@ If you have questions, requests, or grievances, you can find me
 - on [Mastodon](https://norden.social/@jemsu)
 
 ...or by whispering your message at a passing butterfly.  
-It'll find me.
 
 ## License
 
