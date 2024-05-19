@@ -17,28 +17,6 @@ library(ggbeeswarm)
 library(DT)
 library(reactable)
 
-# renv::install("hrbrmstr/hrbragg")
-# library(hrbragg)
-#
-#
-# if (Sys.info()[["sysname"]] == "") {
-#   loc <- system.file("fonts", "eau-sans", package = "hrbragg")
-#
-#   font_library <- path.expand("~/.fonts")
-#   if (!dir.exists(font_library)) {
-#     dir.create(font_library, showWarnings = TRUE, mode = "0700")
-#   }
-#   res <- file.copy(from = list.files(path = loc, full.names = TRUE),
-#                    to = font_library)
-#
-#   system("fc-cache -f -v")
-#
-# } else {
-#   # Only works for macOS
-#   hrbragg::install_eau_sans()
-# }
-
-
 # Dummy to make renv pick up ragg and Hmisc
 if (FALSE) {
   library(ragg)

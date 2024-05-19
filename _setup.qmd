@@ -82,8 +82,6 @@ caption <- paste0(
   format(lubridate::now("UTC"), format = "%F %H:%M %Z")
 )
 
-# Set default theme
-# hrbrthemes::import_public_sans()
 
 theme_set(
   theme_ipsum(
