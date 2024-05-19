@@ -18,7 +18,7 @@ I would like to do a lot more with this, but currently time is scarce.
 However, I want to fulfill [Jason's request](https://twitter.com/jsnell/status/800412064640483328), since I would love to be worthy of the title of *record keeper*.
 
 
-```{epoxy tenth-summary, .transformer = epoxy_style_bold()}
+```{epoxy tenth-summary, .transformer = epoxy_transform_bold()}
 Since its first episode on {format(min(as.Date(mothership_wide$date, na.rm = TRUE)), "%B %d, %Y")}, The Incomparable has accumulated {round(sum(mothership_wide$duration, na.rm = TRUE)/dhours(1))} hours of content (roughly {round(sum(mothership_wide$duration, na.rm = TRUE)/ddays(1))} days) across {nrow(mothership_wide)} episodes.
 ```
 
@@ -45,7 +45,7 @@ mothership_wide |>
 ### `r current_year` Panelists
 
 
-```{epoxy panelists-head, .transformer = epoxy_style_bold()}
+```{epoxy panelists-head, .transformer = epoxy_transform_bold()}
 There were {nrow(filter(mothership_wide, year == current_year))} episodes published in {current_year}. Here's a breakdown by host and guest counts.
 ```
 

@@ -43,7 +43,7 @@ thisyear <- relay_episodes |>
 progress <- round(thisyear / lastyear * 100, 1)
 ```
 
-```{epoxy, .transformer = epoxy_style_bold()}
+```{epoxy, .transformer = epoxy_transform_bold()}
 [Relay FM](https://relay.fm/) spans {length(shows)} shows and a combined runtime of over {round(sum(relay_episodes$duration, na.rm = TRUE)/ddays(1))} days spread across {nrow(relay_episodes)} episodes since 2014.  
 
 In {year(now()) - 1}, there were {lastyear} episodes published, and we're currently about {progress}% of the way there at {thisyear} episodes this year.
