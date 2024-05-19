@@ -21,7 +21,7 @@ jobs:
       - uses: r-lib/actions/setup-renv@v2
       - uses: quarto-dev/quarto-actions/setup@v2
 
-      - uses: keithweaver/aws-s3-github-action@v1
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
         name: Copy data from s3
         with:
           command: cp
