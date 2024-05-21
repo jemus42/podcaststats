@@ -68,9 +68,6 @@ atp |>
     x = "", y = duration_mins, caption = caption
   ) +
   theme(
-    strip.text = element_text(size = rel(1)),
-    axis.text.x = element_text(size = rel(1.5)),
-    axis.ticks.x = element_blank(),
     panel.grid.major.x = element_blank()
   )
 ```
@@ -85,9 +82,9 @@ atp |>
   ggplot(aes(x = month, y = duration)) +
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
-  # scale_x_discrete(
-  #   guide = guide_axis(n.dodge = 2)
-  # ) +
+  scale_x_discrete(
+    guide = guide_axis(n.dodge = 2)
+  ) +
   scale_y_time(
     breaks = hms(minutes = seq(0, 1e6, 30))
   ) +
@@ -97,8 +94,6 @@ atp |>
     x = NULL, y = duration_mins, caption = caption
   ) +
   theme(
-    strip.text = element_text(size = rel(1)),
-    axis.text.x = element_text(size = rel(.9), hjust = 1),
     panel.grid.major.x = element_blank()
   )
 ```
