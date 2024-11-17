@@ -15,8 +15,6 @@ website:
   title: "Podcast Stats"
   description: ""
   open-graph: true
-  twitter-card:
-    creator: "@jemus42"
   site-url: "https://podcasts.jemu.name"
   navbar:
     search: true
@@ -43,7 +41,6 @@ website:
     center:
       - text: "About"
         href: about.qmd
-  # body-header: _includes/matomo.html
 
 format:
   html:
@@ -62,7 +59,9 @@ format:
     page-layout: full
     code-fold: true
     code-tools: false
-    fig-align: "right"
+    fig-align: "center"
+    lightbox: true
+    include-in-header: _includes/umami.html
 
 knitr:
  opts_chunk:

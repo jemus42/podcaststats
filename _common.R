@@ -7,7 +7,6 @@ library(purrr)
 library(epoxy)
 library(poddr)
 
-# library(knitr)
 library(ggplot2)
 library(scales)
 library(ggrepel)
@@ -35,28 +34,8 @@ relay_shows <- readRDS("data/relay_shows.rds")
 relay_episodes <- readRDS("data/relay_episodes.rds")
 
 atp <- readRDS("data/atp.rds") |>
-  mutate(
-    network = "ATP",
-    show = "ATP"
-  ) |>
   filter(!is.na(duration))
 
-
-
-#### Knitr chunk options ####
-#knitr::opts_chunk$set(
-  #fig.path = "assets/plots/",
-
-  #fig.align = "center"
-
-  # echo = FALSE,
-  # prompt = FALSE,
-  # comment = NA,
-  # message = FALSE,
-  # warning = FALSE,
-  # cache = FALSE,
-  # dev = "ragg_png"
-#)
 
 # For yearly review things, use the current(ish) year
 current_year <- year(today() - dmonths(3))
@@ -94,10 +73,7 @@ duration_mins <- "Duration (H:M:S)"
 
 theme_set(
   theme_minimal(
-    #mode = "light",
     base_size = 14
-    #axis_text_size = 12
-    #plot_margin = margin(4, 4, 4, 4),
   ) +
     theme(
       axis.text = element_text(size = 12),
