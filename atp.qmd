@@ -10,14 +10,14 @@ editor_options:
 ```
 
 
-Data in this summary is [limited to the 100 most recent episodes](https://twitter.com/caseyliss/status/706885764236361728) in the feed.
-
+Data in this summary is [limited to the 100 most recent episodes](https://twitter.com/caseyliss/status/706885764236361728) in the feed.  
 At least that was the case until November 2016, when [Marco pointed out](https://twitter.com/marcoarment/status/801550714568900608) to me that there was, indeed, a better place for me to scrape episode data. 
 
 In the meantime, I had [taken John's advice](https://twitter.com/siracusa/status/801444008404914176) and started [downloading every ATP episode ever as mp3](https://twitter.com/Jemus42/status/801451942560022528) to manually [`mediainfo`](https://en.wikipedia.org/wiki/MediaInfo) the duration out of them in a script, only to realize that the first few episodes [didn't have title information](https://twitter.com/Jemus42/status/801504118816833536) in them. This left only the option of crawling the ATP website for full episode metadata (which was annoying because of non-trivial URL parameters for pagination), which I was very much about to do… until I got Marco's reply.  
 So… thanks Marco for saving me from the horrible fate that would have been a while loop in R.
 
-At least that was the case, but ever since the ATP site relaunched in... 2020 or so? it was feasible so scrape the site and just leave it at that, as overcast feeds were not easily available programmatically anyway. It was a whole thing and I neglected to write any of it down. Whoopsie. 
+At least that was the case, but ever since the ATP site relaunched in... 2020 or so? it was feasible so scrape the site and just leave it at that, as overcast feeds were not easily available programmatically anyway. It was a whole thing and I neglected to write any of it down.  
+Whoopsie. 
 
 ## Episode Duration
 
@@ -39,13 +39,18 @@ ggplot(atp, aes(x = date, y = duration)) +
     date_labels = "%Y"
   ) +
   scale_y_time(
-    breaks = hms(minutes = seq(0, 1e6, 30))
+    breaks = hms(minutes = seq(0, 1e6, 30)),
+    labels = \(x) {
+      stringr::str_replace(x, ":\\d\\d$", "")
+    }
   ) +
   labs(
     title = "ATP Episode Durations",
-    subtitle = "All episodes by duration",
-    x = "Date Published", y = duration_mins, caption = caption
-  ) 
+    subtitle = "All episodes durations with trend line.\n5 longest episodes are labelled with their episode number.",
+    x = "Date Published",
+    y = "Duration (H:M)",
+    caption = caption
+  )
 ```
 
 ### Duration by Year
@@ -60,12 +65,17 @@ atp |>
   geom_boxplot() +
   stat_summary(fun = mean, geom = "point", color = "red") +
   scale_y_time(
-    breaks = hms(minutes = seq(0, 1e6, 30))
+    breaks = hms(minutes = seq(0, 1e6, 30)),
+    labels = \(x) {
+      stringr::str_replace(x, ":\\d\\d$", "")
+    }
   ) +
   labs(
     title = "ATP Episode Durations per Year",
     subtitle = "Duration by year with average (dot)",
-    x = "", y = duration_mins, caption = caption
+    x = "",
+    y = "Duration (H:M)",
+    caption = caption
   ) +
   theme(
     panel.grid.major.x = element_blank()
@@ -91,7 +101,9 @@ atp |>
   labs(
     title = "ATP Episode Durations grouped by Month",
     subtitle = "Duration by month with average (dot)",
-    x = NULL, y = duration_mins, caption = caption
+    x = NULL,
+    y = duration_mins,
+    caption = caption
   ) +
   theme(
     panel.grid.major.x = element_blank()
@@ -114,8 +126,11 @@ atp |>
   labs(
     title = "ATP Release Day",
     subtitle = "Frequency of releases per day of week",
-    x = "Day of Week", y = "Year", caption = caption,
-    fill = "Count", color = "Count"
+    x = "Day of Week",
+    y = "Year",
+    caption = caption,
+    fill = "Count",
+    color = "Count"
   ) +
   theme(
     panel.grid.major = element_blank(),
@@ -129,7 +144,7 @@ atp |>
 ```{r atp_episodes_table}
 atp |>
   mutate(
-    duration = round(duration/60, 2),
+    duration = round(duration / 60, 2),
     date = as_date(date)
   ) |>
   select(number, title, duration, date, year, month) |>
@@ -139,4 +154,3 @@ atp |>
     rownames = FALSE
   )
 ```
-

@@ -54,22 +54,6 @@ caption <- paste0(
 
 duration_mins <- "Duration (H:M:S)"
 
-# Set default theme
-# hrbrthemes::import_public_sans()
-
-# theme_set(
-#   theme_ipsum(
-#     base_size = 14,
-#     plot_margin = margin(4, 4, 4, 4),
-#     axis_text_size = 12
-#   ) +
-#     theme(
-#       plot.title.position = "plot",
-#       plot.caption.position = "plot",
-#       panel.spacing.x = unit(2, "mm"),
-#       legend.position = "top"
-#     )
-# )
 
 theme_set(
   theme_minimal(

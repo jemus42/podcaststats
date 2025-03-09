@@ -19,6 +19,8 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::pins, any::paws.storage, local::.
+      - name: Install system dependencies for renv-installed packages
+        run: sudo apt install gsfonts libcairo2-dev libgit2-dev libmagick++-dev libx11-dev
       - uses: r-lib/actions/setup-renv@v2
       - uses: quarto-dev/quarto-actions/setup@v2
 
