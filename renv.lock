@@ -2002,7 +2002,7 @@
     },
     "globals": {
       "Package": "globals",
-      "Version": "0.16.3",
+      "Version": "0.17.0",
       "Source": "Repository",
       "Depends": [
         "R (>= 3.1.2)"
@@ -2011,14 +2011,14 @@
         "codetools"
       ],
       "Title": "Identify Global Objects in R Expressions",
-      "Authors@R": "c( person(\"Henrik\", \"Bengtsson\", role=c(\"aut\", \"cre\", \"cph\"), email=\"henrikb@braju.com\"), person(\"Davis\",\"Vaughan\", role=\"ctb\", email=\"davis@rstudio.com\"))",
+      "Authors@R": "c( person(\"Henrik\", \"Bengtsson\", role=c(\"aut\", \"cre\", \"cph\"), email=\"henrikb@braju.com\"), person(\"Davis\",\"Vaughan\", role=\"ctb\", email=\"davis@posit.co\"))",
       "Description": "Identifies global (\"unknown\" or \"free\") objects in R expressions by code inspection using various strategies (ordered, liberal, or conservative).  The objective of this package is to make it as simple as possible to identify global objects for the purpose of exporting them in parallel, distributed compute environments.",
       "License": "LGPL (>= 2.1)",
       "LazyLoad": "TRUE",
       "ByteCompile": "TRUE",
-      "URL": "https://globals.futureverse.org, https://github.com/HenrikBengtsson/globals",
-      "BugReports": "https://github.com/HenrikBengtsson/globals/issues",
-      "RoxygenNote": "7.3.1",
+      "URL": "https://globals.futureverse.org, https://github.com/futureverse/globals",
+      "BugReports": "https://github.com/futureverse/globals/issues",
+      "RoxygenNote": "7.3.2",
       "NeedsCompilation": "no",
       "Author": "Henrik Bengtsson [aut, cre, cph], Davis Vaughan [ctb]",
       "Maintainer": "Henrik Bengtsson <henrikb@braju.com>",
@@ -2407,7 +2407,7 @@
     },
     "httpuv": {
       "Package": "httpuv",
-      "Version": "1.6.15",
+      "Version": "1.6.16",
       "Source": "Repository",
       "Type": "Package",
       "Title": "HTTP and WebSocket Server Library",
@@ -2429,6 +2429,7 @@
       "Suggests": [
         "callr",
         "curl",
+        "jsonlite",
         "testthat",
         "websocket"
       ],
@@ -2437,7 +2438,7 @@
         "Rcpp"
       ],
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.1",
+      "RoxygenNote": "7.3.2",
       "SystemRequirements": "GNU make, zlib",
       "Collate": "'RcppExports.R' 'httpuv.R' 'random_port.R' 'server.R' 'staticServer.R' 'static_paths.R' 'utils.R'",
       "NeedsCompilation": "yes",
@@ -3389,7 +3390,7 @@
     },
     "poddr": {
       "Package": "poddr",
-      "Version": "0.2.6",
+      "Version": "0.2.6.1",
       "Source": "GitHub",
       "Title": "Collect Metadata for Selected Podcasts",
       "Authors@R": "person(\"Lukas\", \"Burk\", , \"github@quantenbrot.de\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0001-7528-3795\"))",
@@ -3424,10 +3425,13 @@
       "RemoteUsername": "jemus42",
       "RemotePkgRef": "jemus42/poddr",
       "RemoteRef": "HEAD",
-      "RemoteSha": "eedb19394310e467322677b48308fbb70b211296",
+      "RemoteSha": "b98981f104d7e74fc1590748a291fbe980ad0018",
       "NeedsCompilation": "no",
-      "Author": "Lukas Burk [aut, cre] (<https://orcid.org/0000-0001-7528-3795>)",
-      "Maintainer": "Lukas Burk <github@quantenbrot.de>"
+      "Author": "Lukas Burk [aut, cre] (ORCID: <https://orcid.org/0000-0001-7528-3795>)",
+      "Maintainer": "Lukas Burk <github@quantenbrot.de>",
+      "Depends": [
+        "R (>= 4.1.0)"
+      ]
     },
     "polite": {
       "Package": "polite",
