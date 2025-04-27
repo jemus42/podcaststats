@@ -19,3 +19,4 @@ log*.log
 /.quarto/
 _freeze
 datastuff.R
+data_cache
