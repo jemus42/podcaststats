@@ -20,3 +20,4 @@ log*.log
 _freeze
 datastuff.R
 data_cache
+_targets/

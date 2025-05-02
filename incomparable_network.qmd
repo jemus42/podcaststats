@@ -4,13 +4,16 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
-#| file: _common.R
+```{r setup}
 #| include: false
-```
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(DT)
 
-```{r setup, include=FALSE}
-incomparable <- gather_people(incomparable_episodes)
+targets::tar_source()
+targets::tar_load(incomparable_episodes)
+incomparable <- poddr::gather_people(incomparable_episodes)
 ```
 
 ## All Time Stats
@@ -59,7 +62,7 @@ incomparable_episodes |>
   ggplot(aes(x = date, y = duration, fill = show)) +
   geom_point(shape = 21, color = "black", alpha = .5) +
   scale_y_time(
-    breaks = hms(minutes = seq(0, 300, 30))
+    breaks = hms::hms(minutes = seq(0, 300, 30))
   ) +
   scale_fill_viridis_d(option = "A", guide = "none") +
   labs(
@@ -110,13 +113,12 @@ incomparable |>
 ```
 
 
-## `r current_year`` Hosts and Guests
+## `r current_year` Hosts and Guests
 
 ```{r currentyear_panelists_network, fig.height=14}
 incomparable |>
   filter(year == current_year) |>
-  group_by(person, role) |>
-  tally() |>
+  count(person, role) |>
   spread(role, n) |>
   replace_na(list(guest = 0, host = 0)) |>
   mutate(total = guest + host) |>
@@ -182,7 +184,7 @@ incomparable_episodes |>
 ```{r incomparable_network_currentyear_episodes, fig.height=6, fig.width=9}
 incomparable_episodes |>
   filter(year == current_year) |>
-  mutate(date = round_date(date, unit = "week")) |>
+  mutate(date = lubridate::round_date(date, unit = "week")) |>
   count(date) |>
   ggplot(aes(x = date, y = n)) +
     geom_col() +
@@ -203,7 +205,7 @@ incomparable_episodes |>
 
 ## Yearly Episode Output
 
-All in all, *The Incomparable* published `r round(sum(incomparable_episodes$duration) / dminutes(1))` minutes of content, or `r round(sum(incomparable_episodes$duration) / dweeks(1))` weeks, which are numbers that exists as a concept in your head but not in reality.
+All in all, *The Incomparable* published `r round(sum(incomparable_episodes$duration) / lubridate::dminutes(1))` minutes of content, or `r round(sum(incomparable_episodes$duration) / lubridate::dweeks(1))` weeks, which are numbers that exists as a concept in your head but not in reality.
 
 ```{r incomparable_network_episodes_peryear}
 incomparable_episodes |>
@@ -219,4 +221,3 @@ incomparable_episodes |>
       caption = caption
     )
 ```
-

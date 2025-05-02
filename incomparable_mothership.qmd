@@ -7,9 +7,19 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
-#| file: _common.R
+```{r setup}
 #| include: false
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(reactable)
+library(epoxy)
+library(ggrepel)
+
+targets::tar_source()
+targets::tar_load(mothership_wide)
+targets::tar_load(mothership_long)
 ```
 
 ## Introduction
@@ -52,7 +62,7 @@ There were {nrow(filter(mothership_wide, year == current_year))} episodes publis
 ```{r current_year_panelists_tab, fig.height=9}
 mothership_long |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$"), year == current_year) |>
+  filter(!stringr::str_detect(number, "[a-z]$"), year == current_year) |>
   count(person, role) |>
   pivot_wider(names_from = role, values_from = n, values_fill = 0) |>
   mutate(
@@ -116,7 +126,7 @@ Nothing special, just "appears in episode" counts.
 ```{r tenth-panelists}
 mothership_long |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) |>
+  filter(!stringr::str_detect(number, "[a-z]$")) |>
   count(person, role) |>
   pivot_wider(names_from = role, values_from = n, values_fill = 0) |>
   mutate(
@@ -147,7 +157,7 @@ The segments the dataset knows about, with episode count:
 ```{r tenth-segments}
 mothership_wide |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) |>
+  filter(!stringr::str_detect(number, "[a-z]$")) |>
   count(category, sort = TRUE) |>
   replace_na(replace = list(category = "General")) |>
   knitr::kable()
@@ -158,7 +168,7 @@ Ranks and % withing each segment.
 ```{r tenth-panelists-segments}
 mothership_long |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) |>
+  filter(!stringr::str_detect(number, "[a-z]$")) |>
   count(category, person, role) |>
   filter(!is.na(category)) |>
   pivot_wider(names_from = role, values_from = n, values_fill = 0) |>
@@ -172,20 +182,20 @@ mothership_long |>
     rank = rank(-total, ties.method = "min")
   ) |>
   arrange(category, desc(total)) |>
-  select(category, rank, person, host, guest, total, total_perc) |>
-  datatable(
-    style = "bootstrap",
-    colnames = c("Segment", "Rank", "Person", "Host", "Guest", "Total", "Total %"), 
-    rownames = FALSE,
-    filter = "top",
-    extensions = "RowGroup",
-    options = list(
-       rowGroup = list(dataSrc = 0),
-       pageLength = 50,
-       lengthMenu = c(10, 25, 50, 75, 120)
-    )
-  ) |>
-  formatPercentage(columns = 7, digits = 1)
+  select(category, rank, person, host, guest, total, total_perc)
+  # datatable(
+  #   style = "bootstrap",
+  #   colnames = c("Segment", "Rank", "Person", "Host", "Guest", "Total", "Total %"), 
+  #   rownames = FALSE,
+  #   filter = "top",
+  #   extensions = "RowGroup",
+  #   options = list(
+  #      rowGroup = list(dataSrc = 0),
+  #      pageLength = 50,
+  #      lengthMenu = c(10, 25, 50, 75, 120)
+  #   )
+  # ) |>
+  # formatPercentage(columns = 7, digits = 1)
 ```
 
 --->
@@ -197,7 +207,7 @@ Duration per episode in which each person appears, one episode can count towards
 ```{r tenth-panelists-duration}
 mothership_long |>
   # Filter out special episodes containing letters
-  filter(!str_detect(number, "[a-z]$")) |>
+  filter(!stringr::str_detect(number, "[a-z]$")) |>
   group_by(person) |>
   summarize(mins = sum(as.numeric(duration)/60)) |>
   mutate(
@@ -231,7 +241,7 @@ Because that's the easy one.
 #| fig-width: 10
 # column: screen-inset-shaded
 tmp <- mothership_wide |>
-  mutate(title_long = str_wrap(paste0(number, ": ", title), 20))
+  mutate(title_long = stringr::str_wrap(paste0(number, ": ", title), 20))
 
 ggplot(tmp, aes(x = date, y = duration)) +
   geom_point(alpha = .75) +
@@ -302,4 +312,3 @@ mothership_long |>
     caption = caption
   )
 ```
-

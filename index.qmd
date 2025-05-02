@@ -7,15 +7,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
-#| file: _common.R
-#| include: false
-```
-
 ```{r setup, include=FALSE}
-podcasts <- incomparable_episodes |>
-  bind_rows(relay_episodes) |>
-  bind_rows(atp)
+library(ggplot2)
+library(dplyr)
+library(reactable)
+
+targets::tar_source()
+targets::tar_load(podcasts)
 ```
 
 This site is an automatically generated collection of plots and tables visualizing some metadata from my favorite podcasts/podcast networks.  
@@ -45,18 +43,18 @@ Since the data collection and plot creation is automated and updated daily, this
 
 ## Current data
 
-The last time the data was updated and the date of the latest episode within each dataset.
+The last time the date of the latest episode within each dataset.
 
 ```{r current-data}
-tibble::tribble(
-  ~source, ~file_time, ~latest_episode,
-  "relay.fm", file.info("data/relay_episodes.rds")[["mtime"]], max(relay_episodes$date),
-  "The Incomparable", file.info("data/incomparable_episodes.rds")[["mtime"]], max(incomparable_episodes$date),
-  "ATP", file.info("data/atp.rds")[["mtime"]], max(atp$date)
-) |>
+podcasts |>
+  summarize(
+    latest_episode = max(date),
+    .by = network
+  ) |>
+  select(network, latest_episode) |>
   arrange(desc(latest_episode)) |>
   knitr::kable(
-    col.names = c("Podcast/Network", "File Time", "Latest Episode")
+    col.names = c("Podcast/Network", "Latest Episode")
   ) |>
   kableExtra::kable_styling()
 ```
@@ -76,7 +74,7 @@ podcasts |>
     epspershow = round(episodes / shows, 1),
     .groups = "drop"
   ) |>
-  set_names(c(
+  setNames(c(
     "Network", "Episodes", "First Episode",
     "Last Episode", "# of Shows", "Avg Episodes per Show"
   )) |>

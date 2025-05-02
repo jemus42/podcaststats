@@ -7,7 +7,6 @@ about:
     - icon: mastodon
       text: Mastodon
       href: https://norden.social/@jemsu
-    - icon: twitter
     - icon: github
       text: Github
       href: https://github.com/jemus42
@@ -20,8 +19,6 @@ If you have questions, requests, or grievances, you can find me
 
 - in the Incomparable and Relay FM member Discords (jemus42)
 - on [Mastodon](https://norden.social/@jemsu)
-
-...or by whispering your message at a passing butterfly.  
 
 ## License
 

@@ -24,24 +24,13 @@ jobs:
       - uses: r-lib/actions/setup-renv@v2
       - uses: quarto-dev/quarto-actions/setup@v2
 
-      - uses: keithweaver/aws-s3-github-action@v1.0.0
-        name: Copy data from s3
-        with:
-          command: cp
-          source: s3://jemsudatasets/podcaststats/
-          destination: ./data/
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: eu-central-1
-          flags: --recursive
 
       # - name: Setup tmate session
       #   uses: mxschmitt/action-tmate@v3
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: html
+        run:
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

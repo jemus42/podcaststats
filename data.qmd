@@ -18,7 +18,7 @@ Note that as of now ATP is not available as a CSV file since the datasets contai
 
 
 ```{r}
-files <- fs::dir_ls(here::here("data"), regexp = "\\.csv$|\\.rds$")
+files <- fs::dir_ls(here::here("data_cache"), regexp = "\\.csv$|\\.rds$")
 
 fs::file_info(files) |>
   select(path, size, change_time) |>
