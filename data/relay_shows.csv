@@ -1,0 +1,49 @@
+show;feed_url;show_status
+Analog(ue);https://www.relay.fm/analogue/feed;Active
+Automators;https://www.relay.fm/automators/feed;Active
+BONANZA;https://www.relay.fm/bonanza/feed;Active
+B-Sides;https://www.relay.fm/b-sides/feed;Active
+Clockwise;https://www.relay.fm/clockwise/feed;Active
+Conduit;https://www.relay.fm/conduit/feed;Active
+Connected;https://www.relay.fm/connected/feed;Active
+Cortex;https://www.relay.fm/cortex/feed;Active
+Departures;https://www.relay.fm/departures/feed;Active
+Downstream;https://www.relay.fm/downstream/feed;Active
+Focused;https://www.relay.fm/focused/feed;Active
+Mac Power Users;https://www.relay.fm/mpu/feed;Active
+Make Do;https://www.relay.fm/makedo/feed;Active
+Material;https://www.relay.fm/material/feed;Active
+Originality;https://www.relay.fm/originality/feed;Active
+Paper Places;https://www.relay.fm/paperplaces/feed;Active
+Parallel;https://www.relay.fm/parallel/feed;Active
+Reconcilable Differences;https://www.relay.fm/rd/feed;Active
+Remaster;https://www.relay.fm/remaster/feed;Active
+Roboism;https://www.relay.fm/roboism/feed;Active
+The Backmarkers;https://www.relay.fm/backmarkers/feed;Active
+The Pen Addict;https://www.relay.fm/penaddict/feed;Active
+Thoroughly Considered;https://www.relay.fm/tc/feed;Active
+Top Four;https://www.relay.fm/topfour/feed;Active
+Under the Radar;https://www.relay.fm/radar/feed;Active
+Ungeniused;https://www.relay.fm/ungeniused/feed;Active
+Upgrade;https://www.relay.fm/upgrade/feed;Active
+20 Macs for 2020;https://www.relay.fm/20macs/feed;Retired
+Adapt;https://www.relay.fm/adapt/feed;Retired
+Bionic;https://www.relay.fm/bionic/feed;Retired
+Canvas;https://www.relay.fm/canvas/feed;Retired
+CMD Space;https://www.relay.fm/cmdspace/feed;Retired
+Disruption;https://www.relay.fm/disruption/feed;Retired
+Download;https://www.relay.fm/download/feed;Retired
+Flashback;https://www.relay.fm/flashback/feed;Retired
+Inquisitive;https://www.relay.fm/inquisitive/feed;Retired
+Isometric;https://www.relay.fm/isometric/feed;Retired
+Less Than or Equal;https://www.relay.fm/ltoe/feed;Retired
+Liftoff;https://www.relay.fm/liftoff/feed;Retired
+Mixed Feelings;https://www.relay.fm/mixedfeelings/feed;Retired
+Pictorial;https://www.relay.fm/pictorial/feed;Retired
+Playing for Fun;https://www.relay.fm/playingforfun/feed;Retired
+Presentable;https://www.relay.fm/presentable/feed;Retired
+Query;https://www.relay.fm/query/feed;Retired
+Rocket;https://www.relay.fm/rocket/feed;Retired
+The Prompt;https://www.relay.fm/prompt/feed;Retired
+The Test Drivers;https://www.relay.fm/testdrivers/feed;Retired
+Virtual;https://www.relay.fm/virtual/feed;Retired
