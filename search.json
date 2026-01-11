@@ -1,0 +1,205 @@
+[
+  {
+    "objectID": "relayfm_network.html",
+    "href": "relayfm_network.html",
+    "title": "Relay FM — In Numbers",
+    "section": "",
+    "text": "After doing The Incomparable, I had to go see what I could do with Relay FM’s data as well, naturally.\nSo this is the beginning of that. The source code is included in this repo, and, in case anyone asks:\nYes, you can use these graphs for whatever. Maybe link back to me, that would be cool.\nPlease note that there’s probably still stuff coming."
+  },
+  {
+    "objectID": "relayfm_network.html#shows-by-age",
+    "href": "relayfm_network.html#shows-by-age",
+    "title": "Relay FM — In Numbers",
+    "section": "Shows by Age",
+    "text": "Shows by Age\n\n\nCode\nrelay_episodes |&gt;\n  #filter(year &gt;= 2014) |&gt;\n  group_by(show) |&gt;\n  mutate(\n    d_min = min(date),\n    d_max = max(date)\n  ) |&gt;\n  ggplot(aes(y = reorder(show, d_min), color = show_status)) +\n  geom_errorbar(aes(xmin = d_min, xmax = d_max),\n    width = .5, linewidth = 2, alpha = .75\n  ) +\n  geom_vline(xintercept = as.Date(\"2014-01-01\"), linetype = \"dashed\") +\n  scale_x_date(\n    date_breaks = \"2 years\", date_labels = \"%Y\",\n    date_minor_breaks = \"1 year\"\n  ) +\n  scale_y_discrete(position = \"right\") +\n  scale_color_brewer(palette = \"Dark2\") +\n  labs(\n    y = NULL, x = \"First to Last Episode Date\",\n    title = \"Relay FM: Show Timelines\", \n    #subtitle = \"Since 2014\",\n    caption = caption, color = \"Status\"\n  ) +\n  theme(legend.position = \"top\")"
+  },
+  {
+    "objectID": "relayfm_network.html#shows-per-year",
+    "href": "relayfm_network.html#shows-per-year",
+    "title": "Relay FM — In Numbers",
+    "section": "Shows per Year",
+    "text": "Shows per Year\n\n\nCode\nrelay_episodes |&gt;\n  filter(year &gt;= 2014) |&gt;\n  group_by(show, year) |&gt;\n  tally() |&gt;\n  ggplot(aes(x = as.factor(year), weight = n, fill = show)) +\n  geom_bar(show.legend = FALSE) +\n  scale_y_continuous(\n    breaks = seq(0, 1e6, 200),\n    minor_breaks = seq(0, 1e6, 100)\n  ) +\n  scale_fill_viridis_d(guide = guide_legend(ncol = 2, keyheight = 1.5)) +\n  labs(\n    x = \"Year\", y = \"# of Episodes\", fill = \"Show\",\n    title = \"Relay FM: Episodes per Year\",\n    subtitle = \"One color per show, but too many shows for a legible legend, sorry.\",\n    caption = caption\n  )"
+  },
+  {
+    "objectID": "relayfm_network.html#shows-per-week",
+    "href": "relayfm_network.html#shows-per-week",
+    "title": "Relay FM — In Numbers",
+    "section": "Shows per Week",
+    "text": "Shows per Week\n\n\nCode\nrelay_episodes |&gt;\n  mutate(\n    week = week(date),\n    year_num = year(date)\n  ) |&gt;\n  filter(year_num &gt;= 2014) |&gt;\n  group_by(year, week) |&gt;\n  tally() |&gt;\n  ggplot(aes(x = week, y = n)) +\n    geom_point() +\n    geom_smooth(method = lm, formula = y ~ x, se = FALSE, color = \"red\") +\n    scale_y_continuous(\n      breaks = seq(0, 100, 10),\n      minor_breaks = seq(0, 100, 5)\n    ) +\n    scale_x_continuous(breaks = seq(0, 55, 16)) +\n    facet_wrap(~year) +\n    labs(\n      title = \"Relay FM: Weekly Episode Output\",\n      x = \"Week of Year\", y = \"Episodes Published\", caption = caption\n    )\n\n\n\n\n\n\n\n\n\n\nRegularity (TBA)\n\n\nCode\nrelay_episodes |&gt;\n  mutate(\n    week = isoweek(date),\n    year_num = year(date)\n  ) |&gt;\n  filter(year_num == current_year) |&gt;\n  group_by(show, year, week) |&gt;\n  tally() |&gt;\n  ggplot(aes(x = week, y = n)) +\n  geom_col() +\n  # scale_y_continuous(breaks = seq(0, 10, 1)) +\n  # scale_x_continuous(breaks = seq(0, 60, 10)) +\n  facet_wrap(~show, ncol = 3, scales = \"free\") +\n  labs(\n    title = \"Relay FM\", subtitle = \"Episodes per Week in the current year\",\n    x = \"Week of Year\", y = \"# fo Episodes\", caption = caption\n  ) +\n  theme(axis.text.y = element_text(size = rel(.5)))"
+  },
+  {
+    "objectID": "relayfm_network.html#shows-per-month",
+    "href": "relayfm_network.html#shows-per-month",
+    "title": "Relay FM — In Numbers",
+    "section": "Shows per Month",
+    "text": "Shows per Month\n\n\nCode\nrelay_episodes |&gt;\n  mutate(\n    month = month(date),\n    year_num = year(date)\n  ) |&gt;\n  filter(year_num &gt;= 2014) |&gt;\n  group_by(year, month) |&gt;\n  tally() |&gt;\n  ggplot(aes(x = month, y = n)) +\n    geom_point() +\n    geom_smooth(method = lm, formula = y ~ x, se = FALSE, color = \"red\") +\n    scale_y_continuous(\n      breaks = seq(0, 1e6, 10),\n      minor_breaks = seq(0, 1e6, 5)\n    ) +\n    scale_x_continuous(\n      breaks = seq(0, 13, 2),\n      minor_breaks = seq(0, 13, 1)\n    ) +\n    facet_grid(. ~ year, space = \"free_x\", scales = \"free_x\") +\n    labs(\n      title = \"Relay FM: Monthly Episode Output\",\n      x = \"Month of Year\", y = \"Episodes Published\", caption = caption\n    ) +\n    theme(axis.text.x = element_text(size = rel(.9)))"
+  },
+  {
+    "objectID": "relayfm_network.html#all-shows",
+    "href": "relayfm_network.html#all-shows",
+    "title": "Relay FM — In Numbers",
+    "section": "All Shows",
+    "text": "All Shows\n\n\nCode\nrelay_episodes |&gt;\n  filter(year &gt;= 2014, duration &lt;= hms(hours = 4)) |&gt;\n  ggplot(aes(x = date, y = duration, color = show)) +\n  geom_point(alpha = .5, show.legend = FALSE) +\n  scale_x_date(\n    date_breaks = \"1 years\",\n    date_labels = \"%Y\",\n    minor_breaks = NULL\n  ) +\n  scale_y_time(\n    breaks = hms(hours = seq(0, 1e6, 1)),\n    limits = c(0, NA)\n  ) +\n  scale_color_viridis_d(guide = guide_legend(ncol = 1, keyheight = .75, )) +\n  labs(\n    title = \"Relay FM: Episode Durations of Every Episode Since 2014\",\n    subtitle = \"No legend, but one color per show. Only for episodes &lt; 4 hours\",\n    x = \"Date Published\", y = \"Duration (HH:MM:SS)\", color = \"Show\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\n\n\nCode\nrelay_episodes |&gt;\n  filter(show != \"B-Sides\", year &gt;= 2014) |&gt;\n  ggplot(aes(x = date, y = duration)) +\n    geom_point() +\n    expand_limits(y = 0) +\n    scale_x_date(\n      breaks = date_breaks(\"12 months\"),\n      minor_breaks = date_breaks(\"6 month\"),\n      date_labels = \"%Y\"\n    ) +\n    scale_y_time(\n      breaks = hms(minutes = seq(0, 1e6, 60))\n    ) +\n    facet_wrap(~show, ncol = 5, scales = \"free\") +\n    labs(\n      title = \"Relay FM\", subtitle = \"Episode Durations\",\n      x = \"Date Published\", y = \"Duration (HH:MM:SS)\", caption = caption\n    ) +\n    theme(axis.text.x = element_text(angle = 90, vjust = .5))\n\n\n\n\n\n\n\n\n\n\nHistogram\n\n\nCode\nrelay_episodes |&gt;\n  filter(duration &lt;= hms(hours = 3)) |&gt;\n  ggplot(aes(x = duration)) +\n  geom_histogram(binwidth = 120, fill = \"gray\", color = \"white\") +\n  scale_x_time(\n    breaks = hms(minutes = seq(0, 1e6, 30))\n  ) +\n  scale_y_continuous(breaks = seq(0, 600, 50)) +\n  labs(\n    title = \"Relay FM: Episode Durations\", \n    subtitle = \"Limited to episodes under 3 hours\",\n    y = \"Episode Count\", x = \"Duration (HH:MM:SS)\", caption = caption\n  )"
+  },
+  {
+    "objectID": "relayfm_network.html#average-by-show",
+    "href": "relayfm_network.html#average-by-show",
+    "title": "Relay FM — In Numbers",
+    "section": "Average by Show",
+    "text": "Average by Show\n\nBoxplots\n\n\nCode\nrelay_episodes |&gt;\n  group_by(show) |&gt;\n  ggplot(aes(x = forcats::fct_reorder(show, duration, .fun = mean), y = duration)) +\n    geom_boxplot() +\n    stat_summary(\n      fun = \"mean\", geom = \"point\", size = 2,\n      color = \"black\", fill = \"red\", shape = 21\n    ) +\n    coord_flip() +\n    scale_y_time(\n      breaks = hms(minutes = seq(0, 1e6, 60))\n    ) +\n    labs(\n      title = \"Relay FM\",\n      subtitle = \"Episode Duration — Boxplot + Mean (red)\",\n      x = \"\", y = \"Duration (HH:MM:SS)\", caption = caption\n    )"
+  },
+  {
+    "objectID": "relayfm_network.html#host-by-hours-per-week-of-podcasting-says-lbutlr-in-the-slack",
+    "href": "relayfm_network.html#host-by-hours-per-week-of-podcasting-says-lbutlr-in-the-slack",
+    "title": "Relay FM — In Numbers",
+    "section": "Host by hours per week of podcasting, says @lbutlr in the slack",
+    "text": "Host by hours per week of podcasting, says @lbutlr in the slack\nSooo okay! Filtered by episodes airing in 2014 or later though.\n\n\nCode\nrelay_episodes |&gt;\n  filter(year &gt;= 2014) |&gt;\n  gather_people() |&gt;\n  group_by(person) |&gt;\n  summarize(\n    n = n(),\n    duration = sum(duration, na.rm = TRUE),\n    first_show = min(date, na.rm = TRUE),\n    last_show = max(date), na.rm = TRUE,\n    weeks_active = first_show %--% last_show / dweeks(1),\n    duration_per_week = as_hms(duration / weeks_active),\n    .groups = \"drop\"\n  ) -&gt;\n  people_activity\n\n\nggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration_per_week)) +\n  geom_col() +\n  coord_flip() +\n  scale_y_time(\n    breaks = hms(minutes = seq(0, 1e6, 60)),\n    labels = \\(x) str_extract(as.character(x), \"\\\\d{2}:\\\\d{2}\")\n  ) +\n  labs(\n    title = \"Relay FM\",\n    subtitle = \"Total duration per host divided by number of weeks active\\n(First to latest appearance)\",\n    x = \"\", y = \"Average Duration (HH:MM:SS)\",\n    caption = caption\n  )"
+  },
+  {
+    "objectID": "relayfm_network.html#period-of-host-activity",
+    "href": "relayfm_network.html#period-of-host-activity",
+    "title": "Relay FM — In Numbers",
+    "section": "Period of host activity",
+    "text": "Period of host activity\n\n\nCode\nggplot(people_activity) +\n  geom_segment(aes(\n    x = forcats::fct_reorder(person, first_show, .desc = TRUE), xend = person,\n    y = first_show, yend = last_show\n  ),\n  linewidth = 2, alpha = .75\n  ) +\n  coord_flip() +\n  labs(\n    title = \"Relay FM\",\n    subtitle = \"Period of hosting activity (first to most recent show)\\nOrdered by first appearance\",\n    x = \"\", y = \"Date of show\",\n    caption = caption\n  )"
+  },
+  {
+    "objectID": "incomparable_network.html",
+    "href": "incomparable_network.html",
+    "title": "The Incomparable Network",
+    "section": "",
+    "text": "All shows on the network, first and last episode timeline.\n\n\nCode\nincomparable_episodes |&gt;\n  group_by(show) |&gt;\n  mutate(\n    d_min = min(date),\n    d_max = max(date)\n  ) |&gt;\n  ggplot(aes(x = reorder(show, d_min))) +\n  geom_errorbar(aes(ymin = d_min, ymax = d_max),\n    width = .5, linewidth = 1, alpha = .75, color = \"#2C2E6A\"\n  ) +\n  coord_flip() +\n  scale_x_discrete(position = \"top\") +\n  labs(\n    x = \"\", y = \"First to Last Episode Date\",\n    title = \"The Incomparable Network\",\n    subtitle = \"Show Timelines: First and last known episode dates\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\nAll episodes since 2011.\n\n\nCode\nincomparable_episodes |&gt;\n  count(show) |&gt;\n  ggplot(aes(x = reorder(show, n), y = n)) +\n  geom_col() +\n  coord_flip() +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"All Episodes Since 2011 by Show\",\n    x = \"\", y = \"# of Episodes\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\nCode\nincomparable_episodes |&gt;\n  filter(year &gt;= 2011) |&gt;\n  ggplot(aes(x = date, y = duration, fill = show)) +\n  geom_point(shape = 21, color = \"black\", alpha = .5) +\n  scale_y_time(\n    breaks = hms(minutes = seq(0, 300, 30))\n  ) +\n  scale_fill_viridis_d(option = \"A\", guide = \"none\") +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"All Episodes Since 2011 by Duration, Colored by Show\",\n    x = \"\", y = \"Duration (mins)\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\nCode\nincomparable_episodes |&gt;\n  filter(year &gt;= 2011) |&gt;\n  count(year, month) |&gt;\n  ggplot(aes(x = month, y = n)) +\n  geom_point(color = \"black\", alpha = .75) +\n  facet_wrap(~year, nrow = 1, scales = \"free_x\") +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"Episodes per Month Since 2011\",\n    x = \"\", y = \"# of Episodes\",\n    caption = caption\n  ) +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = rel(0.5)))\n\n\n\n\n\n\n\n\n\nEpisode duration by the 15 people most frequently appearing on the network:\n\n\nCode\ntop_15 &lt;- incomparable |&gt;\n  filter(year &gt;= 2011) |&gt;\n  count(person) |&gt;\n  top_n(15) |&gt;\n  pull(person)\n\n\nSelecting by n\n\n\nCode\nincomparable |&gt;\n  filter(person %in% top_15) |&gt;\n  group_by(person) |&gt;\n  mutate(mean_duration = mean(duration)) |&gt;\n  ggplot(aes(x = reorder(person, mean_duration), y = duration)) +\n  geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +\n  geom_boxplot(alpha = .5, outlier.alpha = 0) +\n  coord_flip() +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"15 Most Frequently Appearing People's Episode Duration\",\n    x = \"\", y = \"Duration (mins)\",\n    caption = caption\n  )"
+  },
+  {
+    "objectID": "incomparable_network.html#all-time-stats",
+    "href": "incomparable_network.html#all-time-stats",
+    "title": "The Incomparable Network",
+    "section": "",
+    "text": "All shows on the network, first and last episode timeline.\n\n\nCode\nincomparable_episodes |&gt;\n  group_by(show) |&gt;\n  mutate(\n    d_min = min(date),\n    d_max = max(date)\n  ) |&gt;\n  ggplot(aes(x = reorder(show, d_min))) +\n  geom_errorbar(aes(ymin = d_min, ymax = d_max),\n    width = .5, linewidth = 1, alpha = .75, color = \"#2C2E6A\"\n  ) +\n  coord_flip() +\n  scale_x_discrete(position = \"top\") +\n  labs(\n    x = \"\", y = \"First to Last Episode Date\",\n    title = \"The Incomparable Network\",\n    subtitle = \"Show Timelines: First and last known episode dates\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\nAll episodes since 2011.\n\n\nCode\nincomparable_episodes |&gt;\n  count(show) |&gt;\n  ggplot(aes(x = reorder(show, n), y = n)) +\n  geom_col() +\n  coord_flip() +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"All Episodes Since 2011 by Show\",\n    x = \"\", y = \"# of Episodes\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\nCode\nincomparable_episodes |&gt;\n  filter(year &gt;= 2011) |&gt;\n  ggplot(aes(x = date, y = duration, fill = show)) +\n  geom_point(shape = 21, color = \"black\", alpha = .5) +\n  scale_y_time(\n    breaks = hms(minutes = seq(0, 300, 30))\n  ) +\n  scale_fill_viridis_d(option = \"A\", guide = \"none\") +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"All Episodes Since 2011 by Duration, Colored by Show\",\n    x = \"\", y = \"Duration (mins)\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\nCode\nincomparable_episodes |&gt;\n  filter(year &gt;= 2011) |&gt;\n  count(year, month) |&gt;\n  ggplot(aes(x = month, y = n)) +\n  geom_point(color = \"black\", alpha = .75) +\n  facet_wrap(~year, nrow = 1, scales = \"free_x\") +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"Episodes per Month Since 2011\",\n    x = \"\", y = \"# of Episodes\",\n    caption = caption\n  ) +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = rel(0.5)))\n\n\n\n\n\n\n\n\n\nEpisode duration by the 15 people most frequently appearing on the network:\n\n\nCode\ntop_15 &lt;- incomparable |&gt;\n  filter(year &gt;= 2011) |&gt;\n  count(person) |&gt;\n  top_n(15) |&gt;\n  pull(person)\n\n\nSelecting by n\n\n\nCode\nincomparable |&gt;\n  filter(person %in% top_15) |&gt;\n  group_by(person) |&gt;\n  mutate(mean_duration = mean(duration)) |&gt;\n  ggplot(aes(x = reorder(person, mean_duration), y = duration)) +\n  geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +\n  geom_boxplot(alpha = .5, outlier.alpha = 0) +\n  coord_flip() +\n  labs(\n    title = \"The Incomparable Network\",\n    subtitle = \"15 Most Frequently Appearing People's Episode Duration\",\n    x = \"\", y = \"Duration (mins)\",\n    caption = caption\n  )"
+  },
+  {
+    "objectID": "incomparable_network.html#hosts-and-guests",
+    "href": "incomparable_network.html#hosts-and-guests",
+    "title": "The Incomparable Network",
+    "section": "2025` Hosts and Guests",
+    "text": "2025` Hosts and Guests\n\n\nCode\nincomparable |&gt;\n  filter(year == current_year) |&gt;\n  group_by(person, role) |&gt;\n  tally() |&gt;\n  spread(role, n) |&gt;\n  replace_na(list(guest = 0, host = 0)) |&gt;\n  mutate(total = guest + host) |&gt;\n  arrange(desc(total)) |&gt;\n  datatable(style = \"bootstrap\", colnames = c(\"Person\", \"Guest\", \"Host\", \"Total Appearances\"))\n\n\n\n\n\n\nI opted to leave out the plot for that data because oh boy so many people, so I hope everyone will be happy with the table.\nIt was artisanally crafted as a gift to The Incomparable panelists and fans &lt;3\n\nA Searchable Table of All The nice People*\n* All the nice people and Philip Mozolak\nHere’s a searchable and sortable list of all the episodes released in 2025 (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through https://www.theincomparable.com/person/ would be almost like work.\n\n\nCode\nincomparable |&gt;\n  filter(year == current_year) |&gt;\n  select(\n    show, number, date,\n    duration, title, person, role\n  ) |&gt;\n  mutate(\n    #duration = round(duration, 2),\n    date = lubridate::as_date(date),\n    show = factor(show)\n  ) |&gt;\n  arrange(desc(date)) |&gt;\n  datatable(\n    style = \"bootstrap\", filter = \"top\",\n    colnames = c(\n      \"Show\", \"#\", \"Date (UTC)\",\n      \"Duration (mins)\", \"Title\", \"Person\",\n      \"Role\"\n    )\n  ) |&gt;\n  formatDate(3, method = \"toDateString\")"
+  },
+  {
+    "objectID": "incomparable_network.html#shows",
+    "href": "incomparable_network.html#shows",
+    "title": "The Incomparable Network",
+    "section": "2025 Shows",
+    "text": "2025 Shows\nTL;DR TeeVee is basially cheating.\n\n\nCode\nincomparable_episodes |&gt;\n  filter(year == current_year) |&gt;\n  count(show) |&gt;\n  ggplot(aes(x = reorder(show, n), y = n)) +\n  geom_col() +\n  coord_flip() +\n  labs(\n    title = glue::glue(\"The Incomparable Network — {current_year}\"),\n    subtitle = \"Shows by episode count\",\n    x = \"\",\n    y = \"# of Episodes\",\n    caption = caption\n  )"
+  },
+  {
+    "objectID": "incomparable_network.html#episodes",
+    "href": "incomparable_network.html#episodes",
+    "title": "The Incomparable Network",
+    "section": "2025 Episodes",
+    "text": "2025 Episodes\n\n\nCode\nincomparable_episodes |&gt;\n  filter(year == current_year) |&gt;\n  mutate(date = round_date(date, unit = \"week\")) |&gt;\n  count(date) |&gt;\n  ggplot(aes(x = date, y = n)) +\n    geom_col() +\n    scale_x_date(\n      date_breaks = \"1 month\",\n      date_labels = \"%B\"\n    ) +\n    labs(\n      title = glue::glue(\"The Incomparable Network — {current_year}\"),\n      subtitle = \"Shows per week\",\n      x = \"\",\n      y = \"# of Episodes per Week\",\n      caption = caption\n    ) +\n    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))"
+  },
+  {
+    "objectID": "incomparable_network.html#yearly-episode-output",
+    "href": "incomparable_network.html#yearly-episode-output",
+    "title": "The Incomparable Network",
+    "section": "Yearly Episode Output",
+    "text": "Yearly Episode Output\nAll in all, The Incomparable published 3.86179^{5} minutes of content, or 38 weeks, which are numbers that exists as a concept in your head but not in reality.\n\n\nCode\nincomparable_episodes |&gt;\n  filter(year &gt;= 2011) |&gt;\n  count(year) |&gt;\n  ggplot(aes(x = factor(year), y = n)) +\n    geom_col() +\n    labs(\n      title = \"The Incomparable Network\",\n      subtitle = \"Shows per year\",\n      x = \"\",\n      y = \"# of Episodes per Year\",\n      caption = caption\n    )"
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "Raw Data",
+    "section": "",
+    "text": "Here’s the raw data, refreshed every week or so.\nGet the CSV file for import in arbitrary software, and the RDS file if you happen to use R. Note that as of now ATP is not available as a CSV file since the datasets contains a per-episode nested list-column of all the HTTP links from the shownotes and CSV doesn’t like that.\n\n\n\n\n\nNetwork/Show\nLast Updated\nSize\nDownload\n\n\n\n\nATP\n2026-01-11 06:25:39\n577.16K\natp.rds\n\n\nThe Incomparable\n2026-01-11 06:25:40\n3.25M\nincomparable_episodes.csv\n\n\n2026-01-11 06:25:39\n968.12K\nincomparable_episodes.rds\n\n\n2026-01-11 06:25:39\n7.09K\nincomparable_shows.csv\n\n\n2026-01-11 06:25:39\n1.74K\nincomparable_shows.rds\n\n\nRelay FM\n2026-01-11 06:25:39\n1014.65K\nrelay_episodes.csv\n\n\n2026-01-11 06:25:39\n165.46K\nrelay_episodes.rds\n\n\n2026-01-11 06:25:39\n2.53K\nrelay_shows.csv\n\n\n2026-01-11 06:25:39\n970\nrelay_shows.rds"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This is a hobby/procrastination project.\nIt can only exist because the kind people behind the respective podcast websites are ok with me doing what I do.\nIf you have questions, requests, or grievances, you can find me\n…or by whispering your message at a passing butterfly."
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About",
+    "section": "License",
+    "text": "License\n\nThis work is licensed under CC BY 4.0\n\nIt’s hard to say how much of this I actually own, since I’m just collecting data that’s publicly on the web.\nSo to the extent of my ability I can at the very least grant you my explicit permission not be a jerk about gestures wildly all this."
+  },
+  {
+    "objectID": "atp.html",
+    "href": "atp.html",
+    "title": "Accidental Tech Podcast",
+    "section": "",
+    "text": "Data in this summary is limited to the 100 most recent episodes in the feed.\nAt least that was the case until November 2016, when Marco pointed out to me that there was, indeed, a better place for me to scrape episode data.\nIn the meantime, I had taken John’s advice and started downloading every ATP episode ever as mp3 to manually mediainfo the duration out of them in a script, only to realize that the first few episodes didn’t have title information in them. This left only the option of crawling the ATP website for full episode metadata (which was annoying because of non-trivial URL parameters for pagination), which I was very much about to do… until I got Marco’s reply.\nSo… thanks Marco for saving me from the horrible fate that would have been a while loop in R.\nAt least that was the case, but ever since the ATP site relaunched in… 2020 or so? it was feasible so scrape the site and just leave it at that, as overcast feeds were not easily available programmatically anyway. It was a whole thing and I neglected to write any of it down.\nWhoopsie."
+  },
+  {
+    "objectID": "atp.html#episode-duration",
+    "href": "atp.html#episode-duration",
+    "title": "Accidental Tech Podcast",
+    "section": "Episode Duration",
+    "text": "Episode Duration\n\n\nCode\nggplot(atp, aes(x = date, y = duration)) +\n  geom_point(alpha = .5, size = 2) +\n  geom_label_repel(\n    data = slice_max(atp, duration, n = 5),\n    aes(label = glue::glue(\"{number}: {title}\"))\n  ) +\n  expand_limits(y = 0) +\n  geom_smooth(method = lm, formula = y ~ x, se = FALSE, color = \"red\") +\n  scale_x_date(\n    breaks = date_breaks(\"12 months\"),\n    minor_breaks = date_breaks(\"6 months\"),\n    date_labels = \"%Y\"\n  ) +\n  scale_y_time(\n    breaks = hms(minutes = seq(0, 1e6, 30)),\n    labels = \\(x) {\n      stringr::str_replace(x, \":\\\\d\\\\d$\", \"\")\n    }\n  ) +\n  labs(\n    title = \"ATP Episode Durations\",\n    subtitle = \"All episodes durations with trend line.\\n5 longest episodes are labelled with their episode number.\",\n    x = \"Date Published\",\n    y = \"Duration (H:M)\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\n\nDuration by Year\n\n\nCode\natp |&gt;\n  group_by(year) |&gt;\n  ggplot(aes(x = as.factor(year), y = duration)) +\n  geom_boxplot() +\n  stat_summary(fun = mean, geom = \"point\", color = \"red\") +\n  scale_y_time(\n    breaks = hms(minutes = seq(0, 1e6, 30)),\n    labels = \\(x) {\n      stringr::str_replace(x, \":\\\\d\\\\d$\", \"\")\n    }\n  ) +\n  labs(\n    title = \"ATP Episode Durations per Year\",\n    subtitle = \"Duration by year with average (dot)\",\n    x = \"\",\n    y = \"Duration (H:M)\",\n    caption = caption\n  ) +\n  theme(\n    panel.grid.major.x = element_blank()\n  )\n\n\n\n\n\n\n\n\n\n\n\nDuration by Month\n\n\nCode\natp |&gt;\n  ggplot(aes(x = month, y = duration)) +\n  geom_boxplot() +\n  stat_summary(fun = mean, geom = \"point\", color = \"red\") +\n  scale_x_discrete(\n    guide = guide_axis(n.dodge = 2)\n  ) +\n  scale_y_time(\n    breaks = hms(minutes = seq(0, 1e6, 30))\n  ) +\n  labs(\n    title = \"ATP Episode Durations grouped by Month\",\n    subtitle = \"Duration by month with average (dot)\",\n    x = NULL,\n    y = duration_mins,\n    caption = caption\n  ) +\n  theme(\n    panel.grid.major.x = element_blank()\n  )"
+  },
+  {
+    "objectID": "atp.html#weekday-heatmap",
+    "href": "atp.html#weekday-heatmap",
+    "title": "Accidental Tech Podcast",
+    "section": "Weekday Heatmap",
+    "text": "Weekday Heatmap\n\n\nCode\natp |&gt;\n  mutate(year = forcats::fct_rev(factor(year))) |&gt;\n  count(year, weekday, .drop = FALSE) |&gt;\n  ggplot(aes(x = weekday, y = year, fill = n, color = n)) +\n  geom_tile() +\n  scale_color_viridis_c() +\n  scale_fill_viridis_c() +\n  labs(\n    title = \"ATP Release Day\",\n    subtitle = \"Frequency of releases per day of week\",\n    x = \"Day of Week\",\n    y = \"Year\",\n    caption = caption,\n    fill = \"Count\",\n    color = \"Count\"\n  ) +\n  theme(\n    panel.grid.major = element_blank(),\n    panel.grid.minor = element_blank()\n  )"
+  },
+  {
+    "objectID": "atp.html#raw-data",
+    "href": "atp.html#raw-data",
+    "title": "Accidental Tech Podcast",
+    "section": "Raw Data",
+    "text": "Raw Data\n\n\nCode\natp |&gt;\n  mutate(\n    duration = round(duration / 60, 2),\n    date = as_date(date)\n  ) |&gt;\n  select(number, title, duration, date, year, month) |&gt;\n  datatable(\n    style = \"bootstrap\",\n    colnames = c(\"#\", \"Title\", \"Duration (mins)\", \"Date\", \"Year\", \"Month\"),\n    rownames = FALSE\n  )"
+  },
+  {
+    "objectID": "incomparable_mothership.html",
+    "href": "incomparable_mothership.html",
+    "title": "The Mothership",
+    "section": "",
+    "text": "I would like to do a lot more with this, but currently time is scarce.\nHowever, I want to fulfill Jason’s request, since I would love to be worthy of the title of record keeper.\n\nSince its first episode on August 22, 2010, The Incomparable has accumulated 1134 hours of content (roughly 47 days) across 811 episodes.\n\nThe latest episode in the current dataset:\n\n\nCode\nmothership_wide |&gt;\n  head(1) |&gt;\n  select(number, date, title, host, guest) |&gt;\n  mutate(\n    date = as.Date(date),\n    title = glue::glue(\"&lt;a href=\\\"https://www.theincomparable.com/theincomparable/{number}\\\"&gt;{title}&lt;/a&gt;\"),\n    guest = and::and(stringr::str_split(guest, \";\", simplify = TRUE))\n  ) |&gt;\n  knitr::kable(\n    col.names = c(\"#\", \"Date\", \"Title\", \"Host\", \"Guests\"),\n    escape = FALSE\n  ) |&gt;\n  kableExtra::kable_styling()\n\n\n\n\n\n#\nDate\nTitle\nHost\nGuests\n\n\n\n\n798\n2025-12-31\n&lt;a href=\"https://www.theincomparable.com/theincomparable/798\"&gt;Trust Dan, Not Fish&lt;/a&gt;\nJason Snell\nErika Ensign, Moisés Chiullán, Tony Sindelar, David J. Loehr, Annette Wierstra, Scott McNulty, Dan Moren, and Brian Warren"
+  },
+  {
+    "objectID": "incomparable_mothership.html#introduction",
+    "href": "incomparable_mothership.html#introduction",
+    "title": "The Mothership",
+    "section": "",
+    "text": "I would like to do a lot more with this, but currently time is scarce.\nHowever, I want to fulfill Jason’s request, since I would love to be worthy of the title of record keeper.\n\nSince its first episode on August 22, 2010, The Incomparable has accumulated 1134 hours of content (roughly 47 days) across 811 episodes.\n\nThe latest episode in the current dataset:\n\n\nCode\nmothership_wide |&gt;\n  head(1) |&gt;\n  select(number, date, title, host, guest) |&gt;\n  mutate(\n    date = as.Date(date),\n    title = glue::glue(\"&lt;a href=\\\"https://www.theincomparable.com/theincomparable/{number}\\\"&gt;{title}&lt;/a&gt;\"),\n    guest = and::and(stringr::str_split(guest, \";\", simplify = TRUE))\n  ) |&gt;\n  knitr::kable(\n    col.names = c(\"#\", \"Date\", \"Title\", \"Host\", \"Guests\"),\n    escape = FALSE\n  ) |&gt;\n  kableExtra::kable_styling()\n\n\n\n\n\n#\nDate\nTitle\nHost\nGuests\n\n\n\n\n798\n2025-12-31\n&lt;a href=\"https://www.theincomparable.com/theincomparable/798\"&gt;Trust Dan, Not Fish&lt;/a&gt;\nJason Snell\nErika Ensign, Moisés Chiullán, Tony Sindelar, David J. Loehr, Annette Wierstra, Scott McNulty, Dan Moren, and Brian Warren"
+  },
+  {
+    "objectID": "incomparable_mothership.html#panelists",
+    "href": "incomparable_mothership.html#panelists",
+    "title": "The Mothership",
+    "section": "Panelists",
+    "text": "Panelists\n\n2025 Panelists\n\nThere were 50 episodes published in 2025. Here’s a breakdown by host and guest counts.\n\n\n\nCode\nmothership_long |&gt;\n  # Filter out special episodes containing letters\n  filter(!str_detect(number, \"[a-z]$\"), year == current_year) |&gt;\n  count(person, role) |&gt;\n  pivot_wider(names_from = role, values_from = n, values_fill = 0) |&gt;\n  mutate(\n    person = factor(person),\n    total = guest + host,\n    total_perc = scales::label_percent(.accuracy = .1)(total / nrow(mothership_wide)),\n    rank = rank(-total, ties.method = \"min\")\n  ) |&gt;\n  arrange(desc(total)) |&gt;\n  select(rank, person, host, guest, total, total_perc) |&gt;\n  reactable(\n    columns = list(\n      rank = colDef(name = \"Rank\", sortable = TRUE),\n      person = colDef(name = \"Person\", filterable = TRUE, sortable = TRUE),\n      host = colDef(name = \"Host\", sortable = TRUE),\n      guest = colDef(name = \"Guest\", sortable = TRUE),\n      total = colDef(name = \"Total\", sortable = TRUE),\n      total_perc = colDef(name = \"Total (%)\", sortable = TRUE)\n    )\n  )\n\n\n\n\n\n\nLooking at it as a bar chart is not really helping I guess but sure why not.\n\n\nCode\npanelist_breakdown &lt;- mothership_long |&gt;\n  filter(year == current_year) |&gt;\n  group_by(person, role) |&gt;\n  tally() |&gt;\n  spread(role, n) |&gt;\n  replace_na(list(guest = 0, host = 0)) |&gt;\n  mutate(total = guest + host)\n\npanelist_breakdown_long &lt;- panelist_breakdown |&gt;\n  gather(role, n, guest, host) \n\n\nggplot(data = panelist_breakdown_long, aes(x = reorder(person, total), y = n, fill = role)) +\n  geom_col(color = \"black\", alpha = .6) +\n  coord_flip() +\n  scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +\n  scale_fill_brewer(palette = \"Dark2\", label = c(\"Guest\", \"Host\")) +\n  labs(\n    title = glue::glue(\"The Incomparable — {current_year}\"),\n    subtitle = \"Panelists by # of Appearances\",\n    x = \"Panelist\", y = \"# of Appearances\", fill = \"Role\"\n  )\n\n\n\n\n\n\n\n\n\n\n\nAll Time Stats\nHere are some rankings of panelists (including hosts) across different metrics / subsets.\nSpecial bonus episodes are not included (507b, 506b, 337b, 173z).\n\nBy Number of Appearances\nNothing special, just “appears in episode” counts.\n\n\nCode\nmothership_long |&gt;\n  # Filter out special episodes containing letters\n  filter(!str_detect(number, \"[a-z]$\")) |&gt;\n  count(person, role) |&gt;\n  pivot_wider(names_from = role, values_from = n, values_fill = 0) |&gt;\n  mutate(\n    person = factor(person),\n    total = guest + host,\n    total_perc = scales::label_percent(.accuracy = .1)(total / nrow(mothership_wide)),\n    rank = rank(-total, ties.method = \"min\")\n  ) |&gt;\n  arrange(desc(total)) |&gt;\n  select(rank, person, host, guest, total, total_perc) |&gt;\n  reactable(\n    columns = list(\n      rank = colDef(name = \"Rank\", sortable = TRUE),\n      person = colDef(name = \"Person\", filterable = TRUE, sortable = TRUE),\n      host = colDef(name = \"Host\", sortable = TRUE),\n      guest = colDef(name = \"Guest\", sortable = TRUE),\n      total = colDef(name = \"Total\", sortable = TRUE),\n      total_perc = colDef(name = \"Total (%)\", sortable = TRUE)\n    )\n  )\n\n\n\n\n\n\n\n\n\nBy Duration of Appearance\nDuration per episode in which each person appears, one episode can count towards multiple people’s total of course.\n\n\nCode\nmothership_long |&gt;\n  # Filter out special episodes containing letters\n  filter(!str_detect(number, \"[a-z]$\")) |&gt;\n  group_by(person) |&gt;\n  summarize(mins = sum(as.numeric(duration)/60)) |&gt;\n  mutate(\n    mins = round(mins, 1),\n    hours = round(mins/60, 1), \n    days = round(hours/24, 1),\n    person = factor(person),\n    runtime_perc = scales::label_percent(accuracy = .1)(mins / sum(as.numeric(mothership_wide$duration/60))),\n    rank = rank(-mins, ties.method = \"min\")\n  ) |&gt;\n  arrange(rank) |&gt;\n  select(rank, person, runtime_perc, mins, hours, days) |&gt;\n  reactable(\n    columns = list(\n      rank = colDef(name = \"Rank\", sortable = TRUE),\n      person = colDef(name = \"Person\", filterable = TRUE, sortable = TRUE),\n      runtime_perc = colDef(name = \"% of All\", sortable = TRUE),\n      mins = colDef(name = \"Minutes\", sortable = TRUE),\n      hours = colDef(name = \"Hours\", sortable = TRUE),\n      days = colDef(name = \"Days\", sortable = TRUE)\n    )\n  )"
+  },
+  {
+    "objectID": "incomparable_mothership.html#runtime",
+    "href": "incomparable_mothership.html#runtime",
+    "title": "The Mothership",
+    "section": "Runtime",
+    "text": "Runtime\nBecause that’s the easy one.\n\n\nCode\n# column: screen-inset-shaded\ntmp &lt;- mothership_wide |&gt;\n  mutate(title_long = str_wrap(paste0(number, \": \", title), 20))\n\nggplot(tmp, aes(x = date, y = duration)) +\n  geom_point(alpha = .75) +\n  geom_smooth(method = loess, formula = y ~ x, se = FALSE, color = \"red\") +\n  geom_label_repel(\n    data = slice_max(tmp, duration, n = 8),\n    aes(label = title_long), alpha = .8, size = 3\n  ) +\n  scale_x_date(\n    date_breaks = \"1 year\", date_labels = \"%Y\"\n  ) +\n  scale_y_time(\n    breaks = hms(minutes = seq(0, 1e5, 60)),\n    limits = c(0, NA)\n  ) +\n  labs(\n    title = \"The Incomparable: Mothership\",\n    subtitle = \"Episode runtimes\",\n    y = \"Duration (HH:MM:SS)\", x = \"Date Published\",\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\n\nBy Year\n\n\nCode\n# column: screen-inset-shaded\nmothership_wide |&gt; \n  ggplot(aes(x = factor(year), y = duration)) +\n    geom_point(\n      alpha = .75,\n      position = position_jitter(height = 0, width = .2)\n    ) +\n    geom_boxplot(outlier.alpha = 0, alpha = .5) +\n    stat_summary(fun = mean, geom = \"point\", color = \"red\") +\n    scale_y_time(\n      breaks = hms(minutes = seq(0, 1e5, 60)),\n      limits = c(0, NA)\n    ) +\n    labs(\n      title = \"The Incomparable Network: Mothership\",\n      subtitle = \"Episode runtimes\",\n      y = \"Duration (HH:MM:SS)\", x = \"Year Published\",\n      caption = caption\n    )\n\n\n\n\n\n\n\n\n\n\n\nPer Person\n\n\nCode\n# column: screen-inset-shaded\nmothership_long |&gt;\n  filter(year &gt;= 2011) |&gt;\n  group_by(person) |&gt;\n  mutate(mean_duration = mean(duration)) |&gt;\n  ggplot(aes(x = reorder(person, mean_duration), y = duration)) +\n  geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +\n  geom_boxplot(alpha = .5, outlier.alpha = 0) +\n  coord_flip() +\n  labs(\n    title = \"The Incomparable Mothership\",\n    subtitle = \"Episode runtimes by panelist\",\n    y = \"Duration (HH:MM:SS)\", x = \"Panelist\",\n    caption = caption\n  )"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Podcast Data for Fun and (not) Profit",
+    "section": "",
+    "text": "This site is an automatically generated collection of plots and tables visualizing some metadata from my favorite podcasts/podcast networks.\nIncluded:\nData includes episode runtimes, release dates, and hosts (in case of The Incomparable, also guests).\nThe data sources are:\nData collection and site/plot-recreation happens Sunday morning (UTC)."
+  },
+  {
+    "objectID": "index.html#current-data",
+    "href": "index.html#current-data",
+    "title": "Podcast Data for Fun and (not) Profit",
+    "section": "Current data",
+    "text": "Current data\nThe last time the data was updated and the date of the latest episode within each dataset.\n\n\nCode\ntibble::tribble(\n  ~source, ~file_time, ~latest_episode,\n  \"relay.fm\", file.info(\"data/relay_episodes.rds\")[[\"mtime\"]], max(relay_episodes$date),\n  \"The Incomparable\", file.info(\"data/incomparable_episodes.rds\")[[\"mtime\"]], max(incomparable_episodes$date),\n  \"ATP\", file.info(\"data/atp.rds\")[[\"mtime\"]], max(atp$date)\n) |&gt;\n  arrange(desc(latest_episode)) |&gt;\n  knitr::kable(\n    col.names = c(\"Podcast/Network\", \"File Time\", \"Latest Episode\")\n  ) |&gt;\n  kableExtra::kable_styling()\n\n\n\n\n\nPodcast/Network\nFile Time\nLatest Episode\n\n\n\n\nrelay.fm\n2026-01-09 06:57:54\n2026-01-08\n\n\nThe Incomparable\n2026-01-09 06:57:53\n2026-01-08\n\n\nATP\n2026-01-09 06:57:54\n2026-01-08"
+  },
+  {
+    "objectID": "index.html#all-shows",
+    "href": "index.html#all-shows",
+    "title": "Podcast Data for Fun and (not) Profit",
+    "section": "All Shows",
+    "text": "All Shows\nHere’s a quick overview of the podcast data I’ve collected so far.\n\n\nCode\npodcasts |&gt;\n  group_by(network) |&gt;\n  summarize(\n    episodes = n(),\n    firstep = as.character(as.Date(min(date, na.rm = TRUE))),\n    lastep = as.character(as.Date(max(date, na.rm = TRUE))),\n    shows = length(unique(show)),\n    epspershow = round(episodes / shows, 1),\n    .groups = \"drop\"\n  ) |&gt;\n  set_names(c(\n    \"Network\", \"Episodes\", \"First Episode\",\n    \"Last Episode\", \"# of Shows\", \"Avg Episodes per Show\"\n  )) |&gt;\n  reactable(\n    rownames = FALSE \n  )\n\n\n\n\n\n\n\nTimeline\nFrom first to last published episode.\n\n\nCode\n# column: screen-inset-shaded\npodcasts |&gt;\n  group_by(show) |&gt;\n  mutate(\n    d_min = min(date),\n    d_max = max(date)\n  ) |&gt;\n  ggplot(aes(x = reorder(show, d_min), color = network)) +\n  geom_errorbar(aes(ymin = d_min, ymax = d_max), width = 1, linewidth = 1) +\n  scale_x_discrete(position = \"top\") +\n  scale_color_manual(values = network_colors) +\n  coord_flip() +\n  theme(legend.position = \"top\") +\n  labs(\n    title = \"All Podcasts Timeline\",\n    subtitle = \"The Incomparable, Relay FM, ATP\",\n    x = \"\", y = \"First to Latest Episode Date\",\n    color = NULL,\n    caption = caption\n  )\n\n\n\n\n\n\n\n\n\n\n\nDuration\n\n\nCode\n# column: screen-inset-shaded\n\npodcasts |&gt;\n  filter(!is.na(duration)) |&gt;\n  ggplot(aes(x = reorder(show, duration, FUN = mean), y = duration, fill = network)) +\n  geom_boxplot() +\n  coord_flip() +\n  scale_fill_manual(values = network_colors) +\n  labs(\n    title = \"Podcasts by Duration\", subtitle = \"By Network\",\n    x = \"\", y = \"Duration (H:M:S)\", fill = NULL,\n    caption = caption\n  )"
+  }
+]
