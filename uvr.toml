@@ -1,0 +1,17 @@
+[project]
+name = "podcasts.jemu.name"
+r_version = "4.6.0"
+description = "What the Package Does (One Line, Title Case)"
+
+[dependencies]
+dplyr = "*"
+ggplot2 = "*"
+lubridate = "*"
+purrr = "*"
+quarto = "*"
+ragg = "*"
+reactable = "*"
+stringr = "*"
+tarchetypes = "*"
+targets = "*"
+tidyr = "*"
