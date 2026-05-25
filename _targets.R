@@ -9,12 +9,8 @@ library(tarchetypes)
 
 # Set target options:
 tar_option_set(
-  packages = c("dplyr"), # Packages that your targets need for their tasks.
-  format = "qs", # Optionally set the default storage format. qs is fast.
-  controller = crew::crew_controller_local(
-    workers = max(1, floor(getOption("Ncpus") / 2)),
-    seconds_idle = 60
-  ),
+  packages = c("dplyr"),
+  format = "qs",
   error = "trim"
 )
 
