@@ -2,7 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-
+TODO.md
+.vscode
 
 # Ignore outputs
 _site
