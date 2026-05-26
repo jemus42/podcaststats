@@ -1,6 +1,6 @@
 ---
 title: "Relay FM — In Numbers"
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
@@ -19,11 +19,11 @@ targets::tar_source()
 targets::tar_load(relay_shows)
 targets::tar_load(relay_episodes)
 
-relay_episodes <- relay_episodes |> 
+relay_episodes <- relay_episodes |>
   left_join(
-    relay_shows |> 
-      select(show, show_status), 
-  by = "show")
+    relay_shows |> select(show, show_status),
+    by = "show"
+  )
 
 shows <- relay_episodes |>
   group_by(show) |>
@@ -32,13 +32,13 @@ shows <- relay_episodes |>
   pull("show")
 
 relay_episodes <- relay_episodes |>
-  mutate(
-    show = factor(show, levels = shows, ordered = TRUE),
-  )
+  mutate(show = factor(show, levels = shows, ordered = TRUE))
+
+relay_anchor <- palette_relayfm[["accent"]]
 ```
 
-After doing [The Incomparable](http://stats.jemu.name/theincomparable/results_incomparable_master.html), I had to go see what I could do with [Relay FM's](https://relay.fm) data as well, naturally.  
-So this is the beginning of that. The source code is included in [this repo](https://github.com/jemus42/podcaststats), and, in case anyone asks:  
+After doing [The Incomparable](http://stats.jemu.name/theincomparable/results_incomparable_master.html), I had to go see what I could do with [Relay FM's](https://relay.fm) data as well, naturally.
+So this is the beginning of that. The source code is included in [this repo](https://github.com/jemus42/podcaststats), and, in case anyone asks:
 Yes, you can use these graphs for whatever. Maybe link back to me, that would be cool.
 
 Please note that there's probably still stuff coming.
@@ -56,19 +56,18 @@ progress <- round(thisyear / lastyear * 100, 1)
 ```
 
 ```{epoxy, .transformer = epoxy_transform_bold()}
-[Relay FM](https://relay.fm/) spans {length(shows)} shows and a combined runtime of over {round(sum(relay_episodes$duration, na.rm = TRUE)/ddays(1))} days spread across {nrow(relay_episodes)} episodes since 2014.  
+[Relay FM](https://relay.fm/) spans {length(shows)} shows and a combined runtime of over {round(sum(relay_episodes$duration, na.rm = TRUE)/ddays(1))} days spread across {nrow(relay_episodes)} episodes since 2014.
 
 In {year(now()) - 1}, there were {lastyear} episodes published, and we're currently about {progress}% of the way there at {thisyear} episodes this year.
 ```
 
 
-## Shows by Age
+## Shows by age
 
 ```{r shows_by_age}
 #| fig-height: 10
 #| fig-width: 9
 relay_episodes |>
-  #filter(year >= 2014) |>
   group_by(show) |>
   mutate(
     d_min = min(date),
@@ -76,26 +75,26 @@ relay_episodes |>
   ) |>
   ggplot(aes(y = reorder(show, d_min), color = show_status)) +
   geom_errorbar(aes(xmin = d_min, xmax = d_max),
-    width = .5, linewidth = 2, alpha = .75
+    width = .5, linewidth = 2, alpha = .85
   ) +
-  geom_vline(xintercept = as.Date("2014-01-01"), linetype = "dashed") +
-  scale_x_date(
-    date_breaks = "2 years", 
-    date_labels = "%Y",
-    date_minor_breaks = "1 year"
+  geom_vline(xintercept = as.Date("2014-01-01"), linetype = "dashed", color = "grey60") +
+  scale_x_continuous(
+    transform = c("date", "reverse"),
+    breaks = scales::breaks_width("2 years"),
+    minor_breaks = scales::breaks_width("1 year"),
+    labels = scales::label_date("%Y")
   ) +
-  scale_y_discrete(position = "right") +
-  scale_color_brewer(palette = "Dark2") +
+  scale_color_manual(values = c(Active = "#009E73", Retired = "#999999")) +
+  theme_relayfm() +
+  theme(axis.text.y = element_text(hjust = 1)) +
   labs(
-    y = NULL, x = "First to Last Episode Date",
-    title = "Relay FM: Show Timelines", 
-    #subtitle = "Since 2014",
+    y = NULL, x = "First to last episode date",
+    title = "Relay FM: show timelines",
     caption = caption, color = "Status"
-  ) +
-  theme(legend.position = "top")
+  )
 ```
 
-## Shows per Year
+## Shows per year
 
 ```{r show_per_year, fig.height = 6, fig.width = 10}
 relay_episodes |>
@@ -108,16 +107,17 @@ relay_episodes |>
     breaks = seq(0, 1e6, 200),
     minor_breaks = seq(0, 1e6, 100)
   ) +
-  scale_fill_viridis_d(guide = guide_legend(ncol = 2, keyheight = 1.5)) +
+  scale_fill_viridis_d(option = "mako") +
+  theme_relayfm() +
   labs(
-    x = "Year", y = "# of Episodes", fill = "Show",
-    title = "Relay FM: Episodes per Year",
-    subtitle = "One color per show, but too many shows for a legible legend, sorry.",
+    x = "Year", y = "Episodes", fill = NULL,
+    title = "Relay FM: episodes per year",
+    subtitle = "One color per show; legend omitted at this many shows.",
     caption = caption
   )
 ```
 
-## Shows per Week
+## Shows per week
 
 ```{r shows_per_week, fig.height=6, fig.width = 10}
 relay_episodes |>
@@ -129,17 +129,20 @@ relay_episodes |>
   group_by(year, week) |>
   tally() |>
   ggplot(aes(x = week, y = n)) +
-    geom_point() +
-    geom_smooth(method = lm, formula = y ~ x, se = FALSE, color = "red") +
+    geom_point(color = palette_relayfm[["slate"]], alpha = .6, size = 1.2) +
+    geom_smooth(method = lm, formula = y ~ x, se = FALSE,
+                color = relay_anchor, linewidth = 0.8) +
     scale_y_continuous(
       breaks = seq(0, 100, 10),
       minor_breaks = seq(0, 100, 5)
     ) +
     scale_x_continuous(breaks = seq(0, 55, 16)) +
     facet_wrap(~year) +
+    theme_relayfm() +
     labs(
-      title = "Relay FM: Weekly Episode Output",
-      x = "Week of Year", y = "Episodes Published", caption = caption
+      title = "Relay FM: weekly episode output",
+      x = "Week of year", y = "Episodes published",
+      caption = caption
     )
 ```
 
@@ -158,19 +161,17 @@ relay_episodes |>
   filter(year_num == current_year) |>
   count(show, year, week) |>
   ggplot(aes(x = week, y = n)) +
-  geom_col() +
-  # scale_y_continuous(breaks = seq(0, 10, 1)) +
-  # scale_x_continuous(breaks = seq(0, 60, 10)) +
+  geom_col(fill = palette_relayfm[["slate"]]) +
   facet_wrap(~show, ncol = 3, scales = "free") +
+  theme_relayfm() +
   labs(
-    title = "Relay FM", subtitle = "Episodes per Week in the current year",
-    x = "Week of Year", y = "# fo Episodes", caption = caption
-  ) +
-  theme(axis.text.y = element_text(size = rel(.5)))
+    title = "Relay FM", subtitle = "Episodes per week in the current year",
+    x = "Week of year", y = "Episodes", caption = caption
+  )
 ```
 
 
-## Shows per Month
+## Shows per month
 
 ```{r shows_per_month}
 #| fig-width: 12
@@ -182,8 +183,9 @@ relay_episodes |>
   filter(year_num >= 2014) |>
   count(year, month) |>
   ggplot(aes(x = month, y = n)) +
-    geom_point() +
-    geom_smooth(method = lm, formula = y ~ x, se = FALSE, color = "red") +
+    geom_point(color = palette_relayfm[["slate"]], alpha = .6, size = 1.2) +
+    geom_smooth(method = lm, formula = y ~ x, se = FALSE,
+                color = relay_anchor, linewidth = 0.8) +
     scale_y_continuous(
       breaks = seq(0, 1e6, 10),
       minor_breaks = seq(0, 1e6, 5)
@@ -193,16 +195,17 @@ relay_episodes |>
       minor_breaks = seq(0, 13, 1)
     ) +
     facet_grid(. ~ year, space = "free_x", scales = "free_x") +
+    theme_relayfm() +
     labs(
-      title = "Relay FM: Monthly Episode Output",
-      x = "Month of Year", y = "Episodes Published", caption = caption
-    ) +
-    theme(axis.text.x = element_text(size = rel(.9)))
+      title = "Relay FM: monthly episode output",
+      x = "Month of year", y = "Episodes published",
+      caption = caption
+    )
 ```
 
 # Runtimes
 
-## All Shows
+## All shows
 
 ```{r runtime_allshows_scatter}
 #| fig-height: 7
@@ -211,7 +214,7 @@ relay_episodes |>
 relay_episodes |>
   filter(year >= 2014, duration <= hms(hours = 4)) |>
   ggplot(aes(x = date, y = duration, color = show)) +
-  geom_point(alpha = .5, show.legend = FALSE) +
+  geom_point(alpha = .5, show.legend = FALSE, size = 1.2) +
   scale_x_date(
     date_breaks = "1 years",
     date_labels = "%Y",
@@ -221,11 +224,12 @@ relay_episodes |>
     breaks = hms(hours = seq(0, 1e6, 1)),
     limits = c(0, NA)
   ) +
-  scale_color_viridis_d(guide = guide_legend(ncol = 1, keyheight = .75, )) +
+  scale_color_viridis_d(option = "mako") +
+  theme_relayfm() +
   labs(
-    title = "Relay FM: Episode Durations of Every Episode Since 2014",
-    subtitle = "No legend, but one color per show. Only for episodes < 4 hours",
-    x = "Date Published", y = "Duration (HH:MM:SS)", color = "Show",
+    title = "Relay FM: episode durations since 2014",
+    subtitle = "One color per show, no legend. Episodes under 4 hours only.",
+    x = "Date published", y = "Duration (HH:MM:SS)",
     caption = caption
   )
 ```
@@ -238,7 +242,7 @@ relay_episodes |>
 relay_episodes |>
   filter(show != "B-Sides", year >= 2014) |>
   ggplot(aes(x = date, y = duration)) +
-    geom_point() +
+    geom_point(color = palette_relayfm[["slate"]], alpha = .5, size = 1) +
     expand_limits(y = 0) +
     scale_x_date(
       date_breaks = "12 months",
@@ -249,11 +253,13 @@ relay_episodes |>
       breaks = hms(minutes = seq(0, 1e6, 60))
     ) +
     facet_wrap(~show, ncol = 5, scales = "free") +
+    theme_relayfm() +
+    theme(axis.text.x = element_text(angle = 90, vjust = .5)) +
     labs(
-      title = "Relay FM", subtitle = "Episode Durations",
-      x = "Date Published", y = "Duration (HH:MM:SS)", caption = caption
-    ) +
-    theme(axis.text.x = element_text(angle = 90, vjust = .5))
+      title = "Relay FM: episode durations by show",
+      x = "Date published", y = "Duration (HH:MM:SS)",
+      caption = caption
+    )
 ```
 
 ### Histogram
@@ -265,22 +271,25 @@ relay_episodes |>
 relay_episodes |>
   filter(duration <= hms(hours = 3)) |>
   ggplot(aes(x = duration)) +
-  geom_histogram(binwidth = 120, fill = "gray", color = "white") +
+  geom_histogram(binwidth = 120,
+                 fill = palette_relayfm[["slate"]], color = "white") +
   scale_x_time(
     breaks = hms(minutes = seq(0, 1e6, 30))
   ) +
   scale_y_continuous(breaks = seq(0, 600, 50)) +
+  theme_relayfm() +
   labs(
-    title = "Relay FM: Episode Durations", 
-    subtitle = "Limited to episodes under 3 hours",
-    y = "Episode Count", x = "Duration (HH:MM:SS)", caption = caption
+    title = "Relay FM: episode durations",
+    subtitle = "Episodes under 3 hours.",
+    y = "Episode count", x = "Duration (HH:MM:SS)",
+    caption = caption
   )
 ```
 
 
-## Average by Show
+## Average by show
 
-### Boxplots 
+### Boxplots
 
 ```{r runtime_avg_pershow}
 #| fig-height: 10
@@ -289,25 +298,28 @@ relay_episodes |>
 relay_episodes |>
   group_by(show) |>
   ggplot(aes(x = forcats::fct_reorder(show, duration, .fun = mean), y = duration)) +
-    geom_boxplot() +
+    geom_boxplot(color = "grey25", fill = "grey95", outlier.size = 0.8) +
     stat_summary(
       fun = "mean", geom = "point", size = 2,
-      color = "black", fill = "red", shape = 21
+      color = relay_anchor
     ) +
     coord_flip() +
     scale_y_time(
-      breaks = hms(minutes = seq(0, 1e6, 60))
+      breaks = hms(minutes = seq(0, 1e6, 60)),
+      labels = scales::label_time(format = "%H:%M")
     ) +
+    theme_relayfm() +
     labs(
-      title = "Relay FM",
-      subtitle = "Episode Duration — Boxplot + Mean (red)",
-      x = "", y = "Duration (HH:MM:SS)", caption = caption
+      title = "Relay FM: episode duration by show",
+      subtitle = "Boxplot per show; show mean marked in blue.",
+      x = NULL, y = "Duration (H:M)",
+      caption = caption
     )
 ```
 
 # People
 
-Sadly I don't have a lot of data about people besides the hosts of each show. I *could* try to pry out the guests of shows out of each show's RSS feed, but sadly this information is not neatly presented in the feed, but rather would require an amount of regexing I am not prepared, and therefore not able to do.  
+Sadly I don't have a lot of data about people besides the hosts of each show. I *could* try to pry out the guests of shows out of each show's RSS feed, but sadly this information is not neatly presented in the feed, but rather would require an amount of regexing I am not prepared, and therefore not able to do.
 Be that as it may, here's a bit about the hosts.
 
 ```{r people}
@@ -318,18 +330,19 @@ relay_episodes |>
   poddr::gather_people() |>
   count(person) |>
   ggplot(aes(x = reorder(person, n), y = n)) +
-  geom_col() +
+  geom_col(fill = palette_relayfm[["slate"]]) +
   coord_flip() +
+  theme_relayfm() +
   labs(
-    title = "Relay FM: Person by Number of Episodes",
-    x = "", y = "# of Episodes Hosted",
+    title = "Relay FM: hosts by episode count",
+    x = NULL, y = "Episodes hosted",
     caption = caption
   )
 ```
 
-## Host by hours per week of podcasting, says @lbutlr in the slack
+## Host by hours per week of podcasting
 
-Sooo okay! Filtered by episodes airing in 2014 or later though.
+Filtered to episodes airing in 2014 or later.
 
 ```{r hosts_by_hours_by_weeks_active}
 #| fig-height: 10
@@ -343,7 +356,7 @@ relay_episodes |>
     n = n(),
     duration = sum(duration, na.rm = TRUE),
     first_show = min(date, na.rm = TRUE),
-    last_show = max(date), na.rm = TRUE,
+    last_show = max(date, na.rm = TRUE),
     weeks_active = first_show %--% last_show / lubridate::dweeks(1),
     duration_per_week = as_hms(duration / weeks_active),
     .groups = "drop"
@@ -352,16 +365,17 @@ relay_episodes |>
 
 
 ggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration_per_week)) +
-  geom_col() +
+  geom_col(fill = palette_relayfm[["slate"]]) +
   coord_flip() +
   scale_y_time(
     breaks = hms(minutes = seq(0, 1e6, 60)),
     labels = \(x) stringr::str_extract(as.character(x), "\\d{2}:\\d{2}")
   ) +
+  theme_relayfm() +
   labs(
-    title = "Relay FM",
-    subtitle = "Total duration per host divided by number of weeks active\n(First to latest appearance)",
-    x = "", y = "Average Duration (HH:MM:SS)",
+    title = "Relay FM: hours of podcast per active week",
+    subtitle = "Total hosting duration divided by weeks from first to most recent appearance.",
+    x = NULL, y = "Average duration (HH:MM:SS)",
     caption = caption
   )
 ```
@@ -377,13 +391,14 @@ ggplot(people_activity) +
     x = forcats::fct_reorder(person, first_show, .desc = TRUE), xend = person,
     y = first_show, yend = last_show
   ),
-  linewidth = 2, alpha = .75
+  linewidth = 2, alpha = .85, color = palette_relayfm[["slate"]]
   ) +
   coord_flip() +
+  theme_relayfm() +
   labs(
-    title = "Relay FM",
-    subtitle = "Period of hosting activity (first to most recent show)\nOrdered by first appearance",
-    x = "", y = "Date of show",
+    title = "Relay FM: period of hosting activity",
+    subtitle = "First to most recent show; ordered by first appearance.",
+    x = NULL, y = "Date of show",
     caption = caption
   )
 ```

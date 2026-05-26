@@ -970,10 +970,10 @@ checksum = "md5:7b9ca1d45d941238381cb55d13ff4d68"
 
 [[package]]
 name = "poddr"
-version = "0.3.0"
+version = "0.3.2"
 source = "github"
-url = "https://api.github.com/repos/jemus42/poddr/tarball/dbbcc5750cfdaf376a624038ca7902ba3b01396f"
-checksum = "git:dbbcc5750cfdaf376a624038ca7902ba3b01396f"
+url = "https://api.github.com/repos/jemus42/poddr/tarball/0a1938fef253952cc4199f8386d38a9121e219b2"
+checksum = "git:0a1938fef253952cc4199f8386d38a9121e219b2"
 requires = [
     "checkmate",
     "cli",
@@ -1317,6 +1317,27 @@ requires = [
 ]
 
 [[package]]
+name = "showtext"
+version = "0.9.8"
+source = "cran"
+raw_version = "0.9-8"
+url = "https://cran.r-project.org/src/contrib/showtext_0.9-8.tar.gz"
+checksum = "md5:c3b07977ad22967335bfbc87b74e6376"
+requires = [
+    "sysfonts",
+    "showtextdb",
+]
+
+[[package]]
+name = "showtextdb"
+version = "3.0.0"
+source = "cran"
+raw_version = "3.0"
+url = "https://cran.r-project.org/src/contrib/showtextdb_3.0.tar.gz"
+checksum = "md5:f70b8177f5cd2805148bf01822ed2c19"
+requires = ["sysfonts"]
+
+[[package]]
 name = "spiderbar"
 version = "0.2.5"
 source = "cran"
@@ -1393,6 +1414,14 @@ source = "cran"
 raw_version = "3.4.3"
 url = "https://cran.r-project.org/src/contrib/sys_3.4.3.tar.gz"
 checksum = "md5:ffb4244c6d4cacdd4ac8ef187699707c"
+
+[[package]]
+name = "sysfonts"
+version = "0.8.9"
+source = "cran"
+raw_version = "0.8.9"
+url = "https://cran.r-project.org/src/contrib/sysfonts_0.8.9.tar.gz"
+checksum = "md5:c5a568cf3ee93e7050592369d5f32165"
 
 [[package]]
 name = "systemfonts"

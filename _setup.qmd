@@ -9,17 +9,21 @@ library(purrr)
 library(epoxy)
 library(poddr)
 
-# library(knitr)
 library(ggplot2)
 library(scales)
 library(ggrepel)
-library(hrbrthemes)
 library(ggbeeswarm)
 library(DT)
 library(reactable)
 
+# Fonts + themes — registers Besley/Roboto/Montserrat/Inter/JetBrains Mono
+# via sysfonts on first call. Idempotent across pages.
+register_site_fonts()
 
-# Dummy to make renv pick up ragg and Hmisc
+# Use showtext when rendering figures so registered Google Fonts get embedded.
+knitr::opts_chunk$set(fig.showtext = TRUE)
+
+# Dummy so uvr scan keeps these as imports — used by knitr/quarto internals.
 if (FALSE) {
   library(ragg)
   library(Hmisc)

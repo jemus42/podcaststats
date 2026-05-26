@@ -29,11 +29,12 @@ quarto = "*"
 ragg = "*"
 reactable = "*"
 scales = "*"
+showtext = "*"
 stringr = "*"
+sysfonts = "*"
 tarchetypes = "*"
 targets = "*"
 tidyr = "*"
 
 [dependencies.poddr]
 git = "jemus42/poddr"
-rev = "httr2-migration"

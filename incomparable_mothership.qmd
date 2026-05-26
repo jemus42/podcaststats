@@ -20,6 +20,11 @@ library(ggrepel)
 targets::tar_source()
 targets::tar_load(mothership_wide)
 targets::tar_load(mothership_long)
+
+inc_navy   <- palette_incomparable[["navy"]]
+inc_orange <- palette_incomparable[["orange"]]
+inc_dark   <- palette_incomparable[["navy_dark"]]
+inc_cream  <- palette_incomparable[["cream"]]
 ```
 
 ## Introduction
@@ -40,14 +45,22 @@ mothership_wide |>
   select(number, date, title, host, guest) |>
   mutate(
     date = as.Date(date),
-    title = glue::glue("<a href=\"https://www.theincomparable.com/theincomparable/{number}\">{title}</a>"),
+    title_html = glue::glue('<a href="https://www.theincomparable.com/theincomparable/{number}">{title}</a>'),
     guest = and::and(stringr::str_split(guest, ";", simplify = TRUE))
   ) |>
-  knitr::kable(
-    col.names = c("#", "Date", "Title", "Host", "Guests"),
-    escape = FALSE
-  ) |>
-  kableExtra::kable_styling()
+  select(number, date, title_html, host, guest) |>
+  reactable(
+    columns = list(
+      number     = colDef(name = "#", maxWidth = 60),
+      date       = colDef(name = "Date", maxWidth = 110),
+      title_html = colDef(name = "Title", html = TRUE),
+      host       = colDef(name = "Host"),
+      guest      = colDef(name = "Guests")
+    ),
+    sortable = FALSE,
+    pagination = FALSE,
+    compact = TRUE
+  )
 ```
 
 ## Panelists 
@@ -103,14 +116,17 @@ panelist_breakdown_long <- panelist_breakdown |>
 
 
 ggplot(data = panelist_breakdown_long, aes(x = reorder(person, total), y = n, fill = role)) +
-  geom_col(color = "black", alpha = .6) +
+  geom_col(color = "white", linewidth = 0.2) +
   coord_flip() +
   scale_y_continuous(breaks = seq(0, 100, 5), minor_breaks = seq(0, 100, 1)) +
-  scale_fill_brewer(palette = "Dark2", label = c("Guest", "Host")) +
+  scale_fill_manual(values = c(host = inc_navy, guest = inc_orange),
+                    labels = c("Guest", "Host")) +
+  theme_incomparable() +
   labs(
     title = glue::glue("The Incomparable — {current_year}"),
-    subtitle = "Panelists by # of Appearances",
-    x = "Panelist", y = "# of Appearances", fill = "Role"
+    subtitle = "Panelists by number of appearances.",
+    x = NULL, y = "Appearances", fill = "Role",
+    caption = caption
   )
 ```
 
@@ -244,26 +260,26 @@ tmp <- mothership_wide |>
   mutate(title_long = stringr::str_wrap(paste0(number, ": ", title), 20))
 
 ggplot(tmp, aes(x = date, y = duration)) +
-  geom_point(alpha = .75) +
-  geom_smooth(method = loess, formula = y ~ x, se = FALSE, color = "red") +
+  geom_point(alpha = .65, color = inc_navy, size = 1.2) +
+  geom_smooth(method = loess, formula = y ~ x, se = FALSE,
+              color = inc_orange, linewidth = 0.8) +
   geom_label_repel(
     data = slice_max(tmp, duration, n = 8),
-    aes(label = title_long), alpha = .8, size = 3
+    aes(label = title_long), alpha = .9, size = 3, family = "roboto"
   ) +
-  scale_x_date(
-    date_breaks = "1 year", date_labels = "%Y"
-  ) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   scale_y_time(
     breaks = hms(minutes = seq(0, 1e5, 60)),
     limits = c(0, NA)
   ) +
+  theme_incomparable() +
   labs(
     title = "The Incomparable: Mothership",
-    subtitle = "Episode runtimes",
-    y = "Duration (HH:MM:SS)", x = "Date Published",
+    subtitle = "Episode runtimes with eight longest episodes labelled.",
+    y = "Duration (HH:MM:SS)", x = "Date published",
     caption = caption
   )
-  
+
 ```
 
 ### By Year
@@ -271,22 +287,25 @@ ggplot(tmp, aes(x = date, y = duration)) +
 ```{r runtime_year}
 #| fig-width: 8
 # column: screen-inset-shaded
-mothership_wide |> 
+mothership_wide |>
   ggplot(aes(x = factor(year), y = duration)) +
     geom_point(
-      alpha = .75,
-      position = position_jitter(height = 0, width = .2)
+      alpha = .55,
+      position = position_jitter(height = 0, width = .2),
+      color = inc_navy, size = 1
     ) +
-    geom_boxplot(outlier.alpha = 0, alpha = .5) +
-    stat_summary(fun = mean, geom = "point", color = "red") +
+    geom_boxplot(outlier.alpha = 0, alpha = .35,
+                 color = inc_dark, fill = inc_cream) +
+    stat_summary(fun = mean, geom = "point", color = inc_orange, size = 2) +
     scale_y_time(
       breaks = hms(minutes = seq(0, 1e5, 60)),
       limits = c(0, NA)
     ) +
+    theme_incomparable() +
     labs(
-      title = "The Incomparable Network: Mothership",
-      subtitle = "Episode runtimes",
-      y = "Duration (HH:MM:SS)", x = "Year Published",
+      title = "The Incomparable Mothership",
+      subtitle = "Episode runtimes per year; annual mean marked in orange.",
+      y = "Duration (HH:MM:SS)", x = "Year published",
       caption = caption
     )
 
@@ -302,13 +321,16 @@ mothership_long |>
   group_by(person) |>
   mutate(mean_duration = mean(duration)) |>
   ggplot(aes(x = reorder(person, mean_duration), y = duration)) +
-  geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +
-  geom_boxplot(alpha = .5, outlier.alpha = 0) +
+  geom_point(alpha = .35, position = position_jitter(height = 0, width = .25),
+             color = inc_navy, size = 1) +
+  geom_boxplot(alpha = .35, outlier.alpha = 0,
+               color = inc_dark, fill = inc_cream) +
   coord_flip() +
+  theme_incomparable() +
   labs(
     title = "The Incomparable Mothership",
-    subtitle = "Episode runtimes by panelist",
-    y = "Duration (HH:MM:SS)", x = "Panelist",
+    subtitle = "Episode runtimes by panelist; ordered by mean duration.",
+    y = "Duration (HH:MM:SS)", x = NULL,
     caption = caption
   )
 ```
