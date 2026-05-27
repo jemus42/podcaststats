@@ -34,13 +34,6 @@ The data sources are:
 
 Data collection and site/plot-recreation happens Sunday morning  (UTC).
 
-:::{.callout-note}
-This project is in a perpetual cycle of maintenance and "ain't nobody got time for that"-ness, which is primarily reflected in many of the plots not looking right.  
-The reason is that whenever I tweaked the plot dimensions so that the spacing allows for all the text to be readable, it only takes a few months for multiple new podcasts to appear.  
-Since the data collection and plot creation is automated and updated daily, this means the plots now have to fit more data, but since I haven't figured out a good way to auto-adjust the plot width accordingly, plots will look squished after a few months.  
-:::
-
-
 ## Current data
 
 The last time the date of the latest episode within each dataset.
@@ -88,7 +81,7 @@ podcasts |>
 From first to last published episode.
 
 ```{r allshows-timeline}
-#| fig-height: 18
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(podcasts$show))
 #| fig-width: 10
 podcasts |>
   group_by(show) |>
@@ -122,7 +115,7 @@ podcasts |>
 ### Duration
 
 ```{r allshows-duration}
-#| fig-height: 18
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(podcasts$show))
 #| fig-width: 10
 podcasts |>
   filter(!is.na(duration)) |>

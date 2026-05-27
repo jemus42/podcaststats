@@ -24,7 +24,9 @@ inc_dark   <- palette_incomparable[["navy_dark"]]
 
 All shows on the network, first and last episode timeline.
 
-```{r incomparable_network_timeline, fig.height=12}
+```{r incomparable_network_timeline}
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(incomparable_episodes$show))
+#| fig-width: 10
 incomparable_episodes |>
   group_by(show) |>
   mutate(
@@ -56,6 +58,8 @@ incomparable_episodes |>
 All episodes since 2011.
 
 ```{r incomparable_network_alltime_count}
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(incomparable_episodes$show))
+#| fig-width: 9
 incomparable_episodes |>
   count(show) |>
   ggplot(aes(x = reorder(show, n), y = n)) +
@@ -182,6 +186,8 @@ incomparable |>
 TL;DR TeeVee is basically cheating.
 
 ```{r incomparable_network_currentyear_shows}
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(incomparable_episodes$show[incomparable_episodes$year == current_year]))
+#| fig-width: 9
 incomparable_episodes |>
   filter(year == current_year) |>
   count(show) |>

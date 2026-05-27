@@ -65,8 +65,8 @@ In {year(now()) - 1}, there were {lastyear} episodes published, and we're curren
 ## Shows by age
 
 ```{r shows_by_age}
-#| fig-height: 10
-#| fig-width: 9
+#| fig-height: !expr fig_height_categories(nrow(relay_shows))
+#| fig-width: 10
 relay_episodes |>
   group_by(show) |>
   mutate(
@@ -236,7 +236,7 @@ relay_episodes |>
 
 
 ```{r runtime_allshows}
-#| fig-height: 18
+#| fig-height: !expr fig_height_facets(dplyr::n_distinct(relay_episodes$show[relay_episodes$year >= 2014 & relay_episodes$show != "B-Sides"]), ncol = 5)
 #| fig-width: 14
 
 relay_episodes |>
@@ -292,8 +292,8 @@ relay_episodes |>
 ### Boxplots
 
 ```{r runtime_avg_pershow}
-#| fig-height: 10
-#| fig-width: 9
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(relay_episodes$show))
+#| fig-width: 10
 
 relay_episodes |>
   group_by(show) |>
@@ -323,7 +323,7 @@ Sadly I don't have a lot of data about people besides the hosts of each show. I 
 Be that as it may, here's a bit about the hosts.
 
 ```{r people}
-#| fig-height: 10
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(poddr::gather_people(relay_episodes)$person))
 #| fig-width: 9
 
 relay_episodes |>
@@ -345,7 +345,7 @@ relay_episodes |>
 Filtered to episodes airing in 2014 or later.
 
 ```{r hosts_by_hours_by_weeks_active}
-#| fig-height: 10
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(poddr::gather_people(dplyr::filter(relay_episodes, year >= 2014))$person))
 #| fig-width: 9
 
 relay_episodes |>
@@ -383,7 +383,7 @@ ggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration
 ## Period of host activity
 
 ```{r relay_people_activity}
-#| fig-height: 10
+#| fig-height: !expr fig_height_categories(nrow(people_activity))
 #| fig-width: 9
 
 ggplot(people_activity) +

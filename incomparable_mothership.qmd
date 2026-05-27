@@ -102,7 +102,8 @@ mothership_long |>
 Looking at it as a bar chart is not really helping I guess but sure why not.
 
 ```{r current_year_panelists_plot}
-#| fig-height: 9
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(dplyr::filter(mothership_long, year == current_year)$person), per_row = 0.18, min = 6)
+#| fig-width: 9
 panelist_breakdown <- mothership_long |>
   filter(year == current_year) |>
   group_by(person, role) |>
@@ -314,7 +315,8 @@ mothership_wide |>
 ### Per Person
 
 ```{r runtime_person}
-#| fig-height: 18
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(dplyr::filter(mothership_long, year >= 2011)$person), per_row = 0.14)
+#| fig-width: 10
 # column: screen-inset-shaded
 mothership_long |>
   filter(year >= 2011) |>
