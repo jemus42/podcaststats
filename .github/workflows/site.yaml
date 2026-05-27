@@ -1,38 +1,85 @@
 name: Render & Deploy Site
+
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+      - targets
   schedule:
-    - cron: "0 6 * * 0" # At 06:00 on Sunday.
+    - cron: "0 6 * * 0" # 06:00 UTC on Sunday.
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      UVR_VERSION: v0.3.7
     steps:
       - uses: actions/checkout@v4
-      - uses: r-lib/actions/setup-r@v2
+
+      - name: Compute weekly cache key
+        id: cache-keys
+        run: echo "week=$(date -u +%Y-%V)" >> "$GITHUB_OUTPUT"
+
+      - name: Install uvr
+        run: |
+          curl -fsSL "https://github.com/nbafrank/uvr/releases/download/${UVR_VERSION}/uvr-x86_64-unknown-linux-gnu.tar.gz" \
+            | sudo tar -xzC /usr/local/bin
+          uvr --version
+
+      - name: Read pinned R version
+        id: rver
+        run: |
+          ver=$(awk -F'"' '/^r_version[[:space:]]*=/ {print $2; exit}' uvr.toml)
+          echo "version=${ver}" >> "$GITHUB_OUTPUT"
+
+      - name: Cache uvr package store and project library
+        uses: actions/cache@v4
         with:
-          use-public-rspm: yes
-      - uses: r-lib/actions/setup-pandoc@v2
-      - uses: r-lib/actions/setup-r-dependencies@v2
+          path: |
+            ~/.uvr/packages
+            .uvr/library
+          key: uvr-${{ runner.os }}-r${{ steps.rver.outputs.version }}-${{ hashFiles('uvr.lock') }}
+          restore-keys: |
+            uvr-${{ runner.os }}-r${{ steps.rver.outputs.version }}-
+
+      - name: Cache R version install
+        uses: actions/cache@v4
         with:
-          extra-packages: any::pins, any::paws.storage, local::.
-      - name: Install system dependencies for renv-installed packages
-        run: sudo apt install gsfonts libcairo2-dev libgit2-dev libmagick++-dev libx11-dev
-      - uses: r-lib/actions/setup-renv@v2
+          path: ~/.uvr/r-versions
+          key: uvr-r-${{ runner.os }}-${{ steps.rver.outputs.version }}
+
+      - name: Cache targets pipeline (weekly)
+        uses: actions/cache@v4
+        with:
+          path: _targets
+          key: targets-${{ steps.cache-keys.outputs.week }}
+          restore-keys: |
+            targets-
+
+      - name: Install R ${{ steps.rver.outputs.version }} via uvr
+        run: uvr r install "${{ steps.rver.outputs.version }}"
+
+      - name: Sync R package library (with system deps)
+        run: uvr sync --install-system-deps
+
       - uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Build pipeline (scrape + render site)
+        run: uvr run -- Rscript -e 'targets::tar_make()'
 
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
+      - name: Upload rendered site as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-${{ github.sha }}
+          path: _site
+          retention-days: 14
 
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
-        run:
-
-      - name: Deploy 🚀
+      - name: Deploy to gh-pages
+        if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
