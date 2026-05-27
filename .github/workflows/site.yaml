@@ -10,7 +10,13 @@ on:
     - cron: "0 6 * * 0" # 06:00 UTC on Sunday.
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -71,17 +77,28 @@ jobs:
       - name: Build pipeline (scrape + render site)
         run: uvr run -- Rscript -e 'targets::tar_make()'
 
-      - name: Upload rendered site as artifact
+      - name: Upload site preview artifact (non-main branches)
+        if: github.ref != 'refs/heads/main'
         uses: actions/upload-artifact@v4
         with:
           name: site-${{ github.sha }}
           path: _site
           retention-days: 14
 
-      - name: Deploy to gh-pages
+      - name: Upload Pages artifact
         if: github.ref == 'refs/heads/main'
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: _site
-          single-commit: true
+          path: _site
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
