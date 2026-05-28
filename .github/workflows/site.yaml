@@ -30,17 +30,25 @@ jobs:
         id: cache-keys
         run: echo "week=$(date -u +%Y-%V)" >> "$GITHUB_OUTPUT"
 
-      - name: Install uvr
-        run: |
-          curl -fsSL "https://github.com/nbafrank/uvr/releases/download/${UVR_VERSION}/uvr-x86_64-unknown-linux-gnu.tar.gz" \
-            | sudo tar -xzC /usr/local/bin
-          uvr --version
-
       - name: Read pinned R version
         id: rver
         run: |
           ver=$(awk -F'"' '/^r_version[[:space:]]*=/ {print $2; exit}' uvr.toml)
           echo "version=${ver}" >> "$GITHUB_OUTPUT"
+
+      # R itself comes from the official action — uvr's own `r install` is
+      # currently broken on Linux (fails extracting the Posit .deb). uvr is
+      # used only to sync the locked package library against this R.
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ steps.rver.outputs.version }}
+          use-public-rspm: true
+
+      - name: Install uvr
+        run: |
+          curl -fsSL "https://github.com/nbafrank/uvr/releases/download/${UVR_VERSION}/uvr-x86_64-unknown-linux-gnu.tar.gz" \
+            | sudo tar -xzC /usr/local/bin
+          uvr --version
 
       - name: Cache uvr package store and project library
         uses: actions/cache@v4
@@ -52,12 +60,6 @@ jobs:
           restore-keys: |
             uvr-${{ runner.os }}-r${{ steps.rver.outputs.version }}-
 
-      - name: Cache R version install
-        uses: actions/cache@v4
-        with:
-          path: ~/.uvr/r-versions
-          key: uvr-r-${{ runner.os }}-${{ steps.rver.outputs.version }}
-
       - name: Cache targets pipeline (weekly)
         uses: actions/cache@v4
         with:
@@ -66,16 +68,13 @@ jobs:
           restore-keys: |
             targets-
 
-      - name: Install R ${{ steps.rver.outputs.version }} via uvr
-        run: uvr r install "${{ steps.rver.outputs.version }}"
-
       - name: Sync R package library (with system deps)
         run: uvr sync --install-system-deps
 
       - uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Build pipeline (scrape + render site)
-        run: uvr run -- Rscript -e 'targets::tar_make()'
+        run: Rscript -e 'targets::tar_make()'
 
       - name: Upload site preview artifact (non-main branches)
         if: github.ref != 'refs/heads/main'
