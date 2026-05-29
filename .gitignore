@@ -22,6 +22,6 @@ _freeze
 datastuff.R
 data_cache
 _targets/
-/.uvr/library/
+/rv/library/
 
 **/*.quarto_ipynb

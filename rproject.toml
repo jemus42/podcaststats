@@ -1,0 +1,42 @@
+[project]
+name = "podcasts.jemu.name"
+r_version = "4.6.0"
+
+repositories = [
+    { alias = "CRAN", url = "https://packagemanager.posit.co/cran/latest" },
+]
+
+dependencies = [
+    "DT",
+    "Hmisc",
+    "and",
+    "base64url",
+    "crew",
+    "dplyr",
+    "epoxy",
+    "forcats",
+    "fs",
+    "ggbeeswarm",
+    "ggplot2",
+    "ggrepel",
+    "glue",
+    "here",
+    "hms",
+    "hrbrthemes",
+    "kableExtra",
+    "knitr",
+    "lubridate",
+    "purrr",
+    "qs2",
+    "quarto",
+    "ragg",
+    "reactable",
+    "scales",
+    "showtext",
+    "stringr",
+    "sysfonts",
+    "tarchetypes",
+    "targets",
+    "tidyr",
+    { name = "poddr", git = "https://github.com/jemus42/poddr", branch = "main" },
+]
