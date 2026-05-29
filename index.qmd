@@ -7,15 +7,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
-#| file: _common.R
-#| include: false
-```
-
 ```{r setup, include=FALSE}
-podcasts <- incomparable_episodes |>
-  bind_rows(relay_episodes) |>
-  bind_rows(atp)
+library(ggplot2)
+library(dplyr)
+library(reactable)
+
+targets::tar_source()
+targets::tar_load(podcasts)
 ```
 
 This site is an automatically generated collection of plots and tables visualizing some metadata from my favorite podcasts/podcast networks.  
@@ -36,27 +34,20 @@ The data sources are:
 
 Data collection and site/plot-recreation happens Sunday morning  (UTC).
 
-:::{.callout-note}
-This project is in a perpetual cycle of maintenance and "ain't nobody got time for that"-ness, which is primarily reflected in many of the plots not looking right.  
-The reason is that whenever I tweaked the plot dimensions so that the spacing allows for all the text to be readable, it only takes a few months for multiple new podcasts to appear.  
-Since the data collection and plot creation is automated and updated daily, this means the plots now have to fit more data, but since I haven't figured out a good way to auto-adjust the plot width accordingly, plots will look squished after a few months.  
-:::
-
-
 ## Current data
 
-The last time the data was updated and the date of the latest episode within each dataset.
+The last time the date of the latest episode within each dataset.
 
 ```{r current-data}
-tibble::tribble(
-  ~source, ~file_time, ~latest_episode,
-  "relay.fm", file.info("data/relay_episodes.rds")[["mtime"]], max(relay_episodes$date),
-  "The Incomparable", file.info("data/incomparable_episodes.rds")[["mtime"]], max(incomparable_episodes$date),
-  "ATP", file.info("data/atp.rds")[["mtime"]], max(atp$date)
-) |>
+podcasts |>
+  summarize(
+    latest_episode = max(date),
+    .by = network
+  ) |>
+  select(network, latest_episode) |>
   arrange(desc(latest_episode)) |>
   knitr::kable(
-    col.names = c("Podcast/Network", "File Time", "Latest Episode")
+    col.names = c("Podcast/Network", "Latest Episode")
   ) |>
   kableExtra::kable_styling()
 ```
@@ -76,7 +67,7 @@ podcasts |>
     epspershow = round(episodes / shows, 1),
     .groups = "drop"
   ) |>
-  set_names(c(
+  setNames(c(
     "Network", "Episodes", "First Episode",
     "Last Episode", "# of Shows", "Avg Episodes per Show"
   )) |>
@@ -90,25 +81,31 @@ podcasts |>
 From first to last published episode.
 
 ```{r allshows-timeline}
-#| fig-height: 18
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(podcasts$show))
 #| fig-width: 10
-# column: screen-inset-shaded
 podcasts |>
   group_by(show) |>
   mutate(
     d_min = min(date),
     d_max = max(date)
   ) |>
+  ungroup() |>
   ggplot(aes(x = reorder(show, d_min), color = network)) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max), width = 1, linewidth = 1) +
-  scale_x_discrete(position = "top") +
-  scale_color_manual(values = network_colors) +
+  scale_y_continuous(
+    transform = c("date", "reverse"),
+    breaks = scales::breaks_width("2 years"),
+    minor_breaks = scales::breaks_width("1 year"),
+    labels = scales::label_date("%Y")
+  ) +
+  scale_color_network() +
   coord_flip() +
-  theme(legend.position = "top") +
+  theme_neutral() +
+  theme(axis.text.y = element_text(hjust = 1)) +
   labs(
     title = "All Podcasts Timeline",
     subtitle = "The Incomparable, Relay FM, ATP",
-    x = "", y = "First to Latest Episode Date",
+    x = NULL, y = "First to latest episode date",
     color = NULL,
     caption = caption
   )
@@ -118,19 +115,18 @@ podcasts |>
 ### Duration
 
 ```{r allshows-duration}
-#| fig-height: 18
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(podcasts$show))
 #| fig-width: 10
-# column: screen-inset-shaded
-
 podcasts |>
   filter(!is.na(duration)) |>
   ggplot(aes(x = reorder(show, duration, FUN = mean), y = duration, fill = network)) +
   geom_boxplot() +
   coord_flip() +
-  scale_fill_manual(values = network_colors) +
+  scale_fill_network() +
+  theme_neutral() +
   labs(
-    title = "Podcasts by Duration", subtitle = "By Network",
-    x = "", y = "Duration (H:M:S)", fill = NULL,
+    title = "Podcasts by duration", subtitle = "By network",
+    x = NULL, y = "Duration (H:M:S)", fill = NULL,
     caption = caption
   )
 ```

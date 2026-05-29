@@ -2,3 +2,6 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^uvr\.toml$
+^uvr\.lock$
+^\.uvr$

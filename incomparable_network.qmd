@@ -1,23 +1,32 @@
 ---
 title: "The Incomparable Network"
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
-```{r}
-#| file: _common.R
+```{r setup}
 #| include: false
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(DT)
+
+targets::tar_source()
+targets::tar_load(incomparable_episodes)
+incomparable <- poddr::gather_people(incomparable_episodes)
+
+inc_navy   <- palette_incomparable[["navy"]]
+inc_orange <- palette_incomparable[["orange"]]
+inc_dark   <- palette_incomparable[["navy_dark"]]
 ```
 
-```{r setup, include=FALSE}
-incomparable <- gather_people(incomparable_episodes)
-```
-
-## All Time Stats
+## All-time stats
 
 All shows on the network, first and last episode timeline.
 
-```{r incomparable_network_timeline, fig.height=12}
+```{r incomparable_network_timeline}
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(incomparable_episodes$show))
+#| fig-width: 10
 incomparable_episodes |>
   group_by(show) |>
   mutate(
@@ -26,14 +35,21 @@ incomparable_episodes |>
   ) |>
   ggplot(aes(x = reorder(show, d_min))) +
   geom_errorbar(aes(ymin = d_min, ymax = d_max),
-    width = .5, linewidth = 1, alpha = .75, color = "#2C2E6A"
+    width = .5, linewidth = 1, alpha = .85, color = inc_navy
   ) +
   coord_flip() +
-  scale_x_discrete(position = "top") +
+  scale_y_continuous(
+    transform = c("date", "reverse"),
+    breaks = scales::breaks_width("2 years"),
+    minor_breaks = scales::breaks_width("1 year"),
+    labels = scales::label_date("%Y")
+  ) +
+  theme_incomparable() +
+  theme(axis.text.y = element_text(hjust = 1)) +
   labs(
-    x = "", y = "First to Last Episode Date",
+    x = NULL, y = "First to last episode date",
     title = "The Incomparable Network",
-    subtitle = "Show Timelines: First and last known episode dates",
+    subtitle = "Show timelines: first and last known episode dates.",
     caption = caption
   )
 ```
@@ -41,47 +57,54 @@ incomparable_episodes |>
 
 All episodes since 2011.
 
-```{r incomparable_network_alltime}
+```{r incomparable_network_alltime_count}
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(incomparable_episodes$show))
+#| fig-width: 9
 incomparable_episodes |>
   count(show) |>
   ggplot(aes(x = reorder(show, n), y = n)) +
-  geom_col() +
+  geom_col(fill = inc_navy) +
   coord_flip() +
+  theme_incomparable() +
   labs(
     title = "The Incomparable Network",
-    subtitle = "All Episodes Since 2011 by Show",
-    x = "", y = "# of Episodes",
+    subtitle = "All episodes since 2011, by show.",
+    x = NULL, y = "Episodes",
     caption = caption
   )
+```
 
+```{r incomparable_network_alltime_duration}
 incomparable_episodes |>
   filter(year >= 2011) |>
   ggplot(aes(x = date, y = duration, fill = show)) +
-  geom_point(shape = 21, color = "black", alpha = .5) +
-  scale_y_time(
-    breaks = hms(minutes = seq(0, 300, 30))
-  ) +
-  scale_fill_viridis_d(option = "A", guide = "none") +
+  geom_point(shape = 21, color = "white", alpha = .6, size = 1.8, stroke = 0.2) +
+  scale_y_time(breaks = hms::hms(minutes = seq(0, 300, 30))) +
+  scale_fill_viridis_d(option = "rocket", guide = "none", end = 0.85) +
+  theme_incomparable() +
   labs(
     title = "The Incomparable Network",
-    subtitle = "All Episodes Since 2011 by Duration, Colored by Show",
-    x = "", y = "Duration (mins)",
+    subtitle = "Episode duration over time; one fill per show.",
+    x = NULL, y = "Duration (HH:MM)",
     caption = caption
   )
+```
 
+```{r incomparable_network_alltime_monthly}
 incomparable_episodes |>
   filter(year >= 2011) |>
   count(year, month) |>
   ggplot(aes(x = month, y = n)) +
-  geom_point(color = "black", alpha = .75) +
+  geom_point(color = inc_navy, alpha = .8, size = 1.2) +
   facet_wrap(~year, nrow = 1, scales = "free_x") +
+  theme_incomparable() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = rel(0.5))) +
   labs(
     title = "The Incomparable Network",
-    subtitle = "Episodes per Month Since 2011",
-    x = "", y = "# of Episodes",
+    subtitle = "Episodes per month since 2011.",
+    x = NULL, y = "Episodes",
     caption = caption
-  ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = rel(0.5)))
+  )
 ```
 
 Episode duration by the 15 people most frequently appearing on the network:
@@ -98,25 +121,27 @@ incomparable |>
   group_by(person) |>
   mutate(mean_duration = mean(duration)) |>
   ggplot(aes(x = reorder(person, mean_duration), y = duration)) +
-  geom_point(alpha = .5, position = position_jitter(height = 0, width = .25)) +
-  geom_boxplot(alpha = .5, outlier.alpha = 0) +
+  geom_point(alpha = .4, position = position_jitter(height = 0, width = .25),
+             color = inc_navy, size = 1) +
+  geom_boxplot(alpha = .35, outlier.alpha = 0,
+               color = inc_dark, fill = palette_incomparable[["cream"]]) +
   coord_flip() +
+  theme_incomparable() +
   labs(
     title = "The Incomparable Network",
-    subtitle = "15 Most Frequently Appearing People's Episode Duration",
-    x = "", y = "Duration (mins)",
+    subtitle = "Episode duration for the 15 most frequently appearing people.",
+    x = NULL, y = "Duration (HH:MM)",
     caption = caption
   )
 ```
 
 
-## `r current_year`` Hosts and Guests
+## `r current_year` hosts and guests
 
 ```{r currentyear_panelists_network, fig.height=14}
 incomparable |>
   filter(year == current_year) |>
-  group_by(person, role) |>
-  tally() |>
+  count(person, role) |>
   spread(role, n) |>
   replace_na(list(guest = 0, host = 0)) |>
   mutate(total = guest + host) |>
@@ -124,14 +149,14 @@ incomparable |>
   datatable(style = "bootstrap", colnames = c("Person", "Guest", "Host", "Total Appearances"))
 ```
 
-I opted to leave out the plot for that data because *oh boy so many people*, so I hope everyone will be happy with the table.  
+I opted to leave out the plot for that data because *oh boy so many people*, so I hope everyone will be happy with the table.
 It was artisanally crafted as a gift to *The Incomparable* panelists and fans <3
 
-### A Searchable Table of All The nice People<small>*</small>
+### A searchable table of all the nice people<small>*</small>
 
 <small>* All the nice people _and_ Philip Mozolak</small>
 
-Here's a searchable and sortable list of all the episodes released in `r current_year` (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person aprticipated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
+Here's a searchable and sortable list of all the episodes released in `r current_year` (UTC, no freedom timestamps, sorry). There are multiple rows per episode, because each person gets their own row, which should make it a little easier to find out which person participated in which episode. Because manually searching through <https://www.theincomparable.com/person/> would be almost like work.
 
 ```{r currentyear_panelists_network_fulltable}
 incomparable |>
@@ -141,7 +166,6 @@ incomparable |>
     duration, title, person, role
   ) |>
   mutate(
-    #duration = round(duration, 2),
     date = lubridate::as_date(date),
     show = factor(show)
   ) |>
@@ -157,66 +181,63 @@ incomparable |>
   formatDate(3, method = "toDateString")
 ```
 
-## `r current_year` Shows
+## `r current_year` shows
 
-TL;DR TeeVee is basially cheating.
+TL;DR TeeVee is basically cheating.
 
 ```{r incomparable_network_currentyear_shows}
+#| fig-height: !expr fig_height_categories(dplyr::n_distinct(incomparable_episodes$show[incomparable_episodes$year == current_year]))
+#| fig-width: 9
 incomparable_episodes |>
   filter(year == current_year) |>
   count(show) |>
   ggplot(aes(x = reorder(show, n), y = n)) +
-  geom_col() +
+  geom_col(fill = inc_navy) +
   coord_flip() +
+  theme_incomparable() +
   labs(
     title = glue::glue("The Incomparable Network — {current_year}"),
-    subtitle = "Shows by episode count",
-    x = "",
-    y = "# of Episodes",
+    subtitle = "Shows by episode count.",
+    x = NULL, y = "Episodes",
     caption = caption
   )
 ```
 
-## `r current_year` Episodes
+## `r current_year` episodes
 
 ```{r incomparable_network_currentyear_episodes, fig.height=6, fig.width=9}
 incomparable_episodes |>
   filter(year == current_year) |>
-  mutate(date = round_date(date, unit = "week")) |>
+  mutate(date = lubridate::round_date(date, unit = "week")) |>
   count(date) |>
   ggplot(aes(x = date, y = n)) +
-    geom_col() +
-    scale_x_date(
-      date_breaks = "1 month",
-      date_labels = "%B"
-    ) +
+    geom_col(fill = inc_navy) +
+    scale_x_date(date_breaks = "1 month", date_labels = "%B") +
+    theme_incomparable() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
     labs(
       title = glue::glue("The Incomparable Network — {current_year}"),
-      subtitle = "Shows per week",
-      x = "",
-      y = "# of Episodes per Week",
+      subtitle = "Episodes per week.",
+      x = NULL, y = "Episodes per week",
       caption = caption
-    ) +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
-
+    )
 ```
 
-## Yearly Episode Output
+## Yearly episode output
 
-All in all, *The Incomparable* published `r round(sum(incomparable_episodes$duration) / dminutes(1))` minutes of content, or `r round(sum(incomparable_episodes$duration) / dweeks(1))` weeks, which are numbers that exists as a concept in your head but not in reality.
+All in all, *The Incomparable* published `r round(sum(incomparable_episodes$duration) / lubridate::dminutes(1))` minutes of content, or `r round(sum(incomparable_episodes$duration) / lubridate::dweeks(1))` weeks, which are numbers that exist as a concept in your head but not in reality.
 
 ```{r incomparable_network_episodes_peryear}
 incomparable_episodes |>
   filter(year >= 2011) |>
   count(year) |>
   ggplot(aes(x = factor(year), y = n)) +
-    geom_col() +
+    geom_col(fill = inc_navy) +
+    theme_incomparable() +
     labs(
       title = "The Incomparable Network",
-      subtitle = "Shows per year",
-      x = "",
-      y = "# of Episodes per Year",
+      subtitle = "Episodes per year.",
+      x = NULL, y = "Episodes",
       caption = caption
     )
 ```
-

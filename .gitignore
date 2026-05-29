@@ -2,7 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-
+TODO.md
+.vscode
 
 # Ignore outputs
 _site
@@ -20,3 +21,7 @@ log*.log
 _freeze
 datastuff.R
 data_cache
+_targets/
+/rv/library/
+
+**/*.quarto_ipynb
