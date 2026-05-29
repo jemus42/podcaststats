@@ -22,7 +22,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      UVR_VERSION: v0.3.7
+      RV_VERSION: v0.21.0
     steps:
       - uses: actions/checkout@v4
 
@@ -33,32 +33,31 @@ jobs:
       - name: Read pinned R version
         id: rver
         run: |
-          ver=$(awk -F'"' '/^r_version[[:space:]]*=/ {print $2; exit}' uvr.toml)
+          ver=$(awk -F'"' '/^r_version[[:space:]]*=/ {print $2; exit}' rproject.toml)
           echo "version=${ver}" >> "$GITHUB_OUTPUT"
 
-      # R itself comes from the official action — uvr's own `r install` is
-      # currently broken on Linux (fails extracting the Posit .deb). uvr is
-      # used only to sync the locked package library against this R.
+      # R itself comes from the official action. rv only manages the locked
+      # package library — it resolves P3M binaries and its own cache directly,
+      # so use-public-rspm is unnecessary here.
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ steps.rver.outputs.version }}
-          use-public-rspm: true
 
-      - name: Install uvr
+      - name: Install rv
         run: |
-          curl -fsSL "https://github.com/nbafrank/uvr/releases/download/${UVR_VERSION}/uvr-x86_64-unknown-linux-gnu.tar.gz" \
+          curl -fsSL "https://github.com/A2-ai/rv/releases/download/${RV_VERSION}/rv-${RV_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
             | sudo tar -xzC /usr/local/bin
-          uvr --version
+          rv --version
 
-      - name: Cache uvr package store and project library
+      - name: Cache rv package store and project library
         uses: actions/cache@v4
         with:
           path: |
-            ~/.uvr/packages
-            .uvr/library
-          key: uvr-${{ runner.os }}-r${{ steps.rver.outputs.version }}-${{ hashFiles('uvr.lock') }}
+            ~/.cache/rv
+            rv/library
+          key: rv-${{ runner.os }}-r${{ steps.rver.outputs.version }}-${{ hashFiles('rv.lock') }}
           restore-keys: |
-            uvr-${{ runner.os }}-r${{ steps.rver.outputs.version }}-
+            rv-${{ runner.os }}-r${{ steps.rver.outputs.version }}-
 
       - name: Cache targets pipeline (weekly)
         uses: actions/cache@v4
@@ -68,8 +67,15 @@ jobs:
           restore-keys: |
             targets-
 
-      - name: Sync R package library (with system deps)
-        run: uvr sync --install-system-deps
+      # rv doesn't install system deps itself; `rv sysdeps --only-absent` lists
+      # the apt packages the locked dependency tree needs (Ubuntu/Debian only).
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          rv sysdeps --only-absent | xargs -r sudo apt-get install -y --no-install-recommends
+
+      - name: Sync R package library
+        run: rv sync
 
       - uses: quarto-dev/quarto-actions/setup@v2
 
