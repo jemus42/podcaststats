@@ -38,5 +38,5 @@ dependencies = [
     "tarchetypes",
     "targets",
     "tidyr",
-    { name = "poddr", git = "https://github.com/jemus42/poddr", branch = "main" },
+    { name = "poddr", git = "https://github.com/jemus42/poddr", branch = "main" }
 ]

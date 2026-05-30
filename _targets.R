@@ -60,6 +60,12 @@ list(
     command = combine_data(incomparable_episodes, relay_episodes, atp),
     packages = "dplyr"
   ),
+  tar_target(
+    name = data_files,
+    command = export_datasets(atp, relay_episodes, incomparable_episodes),
+    format = "file",
+    packages = c("fs", "here")
+  ),
   tar_quarto(
     name = site,
     path = ".",

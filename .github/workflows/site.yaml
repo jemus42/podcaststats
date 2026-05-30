@@ -82,6 +82,12 @@ jobs:
       - name: Build pipeline (scrape + render site)
         run: Rscript -e 'targets::tar_make()'
 
+      # tar_option_set(error = "trim") keeps scraping resilient but lets the
+      # pipeline exit 0 even when the `site` target errors — guard against
+      # publishing a broken/empty site (root 404) by asserting the render exists.
+      - name: Verify site rendered
+        run: test -f _site/index.html
+
       - name: Upload site preview artifact (non-main branches)
         if: github.ref != 'refs/heads/main'
         uses: actions/upload-artifact@v4

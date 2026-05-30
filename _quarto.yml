@@ -4,9 +4,14 @@ project:
     - "*.qmd"
     - "!ignored.qmd"
     - "!ignored-dir/"
+    # rv/library/ vendors R packages whose own .qmd files (e.g. Hmisc tests)
+    # would otherwise get rendered as site pages.
+    - "!rv/"
   resources:
-    - "*.rds"
-    - "*.csv"
+    # Pipeline-generated downloads for data.qmd. data/ is gitignored (artifacts
+    # are rebuilt by tar_make()), so they must be force-published here.
+    - "data/*.rds"
+    - "data/*.csv"
   preview:
     port: 4555
     browser: false
