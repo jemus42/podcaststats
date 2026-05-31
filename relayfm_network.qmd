@@ -212,7 +212,7 @@ relay_episodes |>
 #| fig-width: 10
 
 relay_episodes |>
-  filter(year >= 2014, duration <= hms(hours = 4)) |>
+  filter(year >= 2014, duration <= hms::hms(hours = 4)) |>
   ggplot(aes(x = date, y = duration, color = show)) +
   geom_point(alpha = .5, show.legend = FALSE, size = 1.2) +
   scale_x_date(
@@ -221,7 +221,7 @@ relay_episodes |>
     minor_breaks = NULL
   ) +
   scale_y_time(
-    breaks = hms(hours = seq(0, 1e6, 1)),
+    breaks = hms::hms(hours = seq(0, 1e6, 1)),
     limits = c(0, NA)
   ) +
   scale_color_viridis_d(option = "mako") +
@@ -250,7 +250,7 @@ relay_episodes |>
       date_labels = "%Y"
     ) +
     scale_y_time(
-      breaks = hms(minutes = seq(0, 1e6, 60))
+      breaks = hms::hms(minutes = seq(0, 1e6, 60))
     ) +
     facet_wrap(~show, ncol = 5, scales = "free") +
     theme_relayfm() +
@@ -269,12 +269,12 @@ relay_episodes |>
 #| fig-width: 11
 
 relay_episodes |>
-  filter(duration <= hms(hours = 3)) |>
+  filter(duration <= hms::hms(hours = 3)) |>
   ggplot(aes(x = duration)) +
   geom_histogram(binwidth = 120,
                  fill = palette_relayfm[["slate"]], color = "white") +
   scale_x_time(
-    breaks = hms(minutes = seq(0, 1e6, 30))
+    breaks = hms::hms(minutes = seq(0, 1e6, 30))
   ) +
   scale_y_continuous(breaks = seq(0, 600, 50)) +
   theme_relayfm() +
@@ -305,7 +305,7 @@ relay_episodes |>
     ) +
     coord_flip() +
     scale_y_time(
-      breaks = hms(minutes = seq(0, 1e6, 60)),
+      breaks = hms::hms(minutes = seq(0, 1e6, 60)),
       labels = scales::label_time(format = "%H:%M")
     ) +
     theme_relayfm() +
@@ -368,7 +368,7 @@ ggplot(people_activity, aes(x = reorder(person, duration_per_week), y = duration
   geom_col(fill = palette_relayfm[["slate"]]) +
   coord_flip() +
   scale_y_time(
-    breaks = hms(minutes = seq(0, 1e6, 60)),
+    breaks = hms::hms(minutes = seq(0, 1e6, 60)),
     labels = \(x) stringr::str_extract(as.character(x), "\\d{2}:\\d{2}")
   ) +
   theme_relayfm() +

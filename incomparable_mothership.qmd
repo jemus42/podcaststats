@@ -270,7 +270,7 @@ ggplot(tmp, aes(x = date, y = duration)) +
   ) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   scale_y_time(
-    breaks = hms(minutes = seq(0, 1e5, 60)),
+    breaks = hms::hms(minutes = seq(0, 1e5, 60)),
     limits = c(0, NA)
   ) +
   theme_incomparable() +
@@ -299,7 +299,7 @@ mothership_wide |>
                  color = inc_dark, fill = inc_cream) +
     stat_summary(fun = mean, geom = "point", color = inc_orange, size = 2) +
     scale_y_time(
-      breaks = hms(minutes = seq(0, 1e5, 60)),
+      breaks = hms::hms(minutes = seq(0, 1e5, 60)),
       limits = c(0, NA)
     ) +
     theme_incomparable() +
