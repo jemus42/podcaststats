@@ -24,7 +24,7 @@ jobs:
     env:
       RV_VERSION: v0.21.0
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Compute weekly cache key
         id: cache-keys
