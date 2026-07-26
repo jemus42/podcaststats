@@ -18,29 +18,37 @@ tar_option_set(
 tar_source()
 
 list(
-  tar_target(
+  # tar_age() re-runs a target once its stored copy is older than `age`,
+  # so a weekly cron re-scrapes but local re-renders within the week don't.
+  # Downstream targets invalidate only when the scraped data actually changes.
+  tar_age(
     name = atp,
     command = atp_get_episodes(cache = FALSE),
+    age = as.difftime(1, units = "weeks"),
     packages = "poddr"
   ),
-  tar_target(
+  tar_age(
     name = relay_shows,
     command = relay_get_shows(cache = FALSE),
+    age = as.difftime(1, units = "weeks"),
     packages = "poddr"
   ),
-  tar_target(
+  tar_age(
     name = relay_episodes,
     command = relay_get_episodes(relay_shows, cache = FALSE),
+    age = as.difftime(1, units = "weeks"),
     packages = "poddr"
   ),
-  tar_target(
+  tar_age(
     name = incomparable_shows,
     command = incomparable_get_shows(cache = FALSE),
+    age = as.difftime(1, units = "weeks"),
     packages = "poddr"
   ),
-  tar_target(
+  tar_age(
     name = incomparable_episodes,
     command = incomparable_get_episodes(incomparable_shows, cache = FALSE),
+    age = as.difftime(1, units = "weeks"),
     packages = "poddr"
   ),
   tar_target(
