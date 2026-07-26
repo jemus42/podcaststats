@@ -22,7 +22,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      RV_VERSION: v0.21.0
+      RV_VERSION: v0.22.2
     steps:
       - uses: actions/checkout@v7
 

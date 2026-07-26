@@ -864,7 +864,7 @@ dependencies = []
 [[packages]]
 name = "poddr"
 version = "0.3.2"
-source = { git = "https://github.com/jemus42/poddr", sha = "ad88f14d70b8a8f18cb473a1c532a68b2bdd50b7", branch = "main" }
+source = { git = "https://github.com/jemus42/poddr", sha = "9b3e9b86b9e1a886f4ef6f14e8066b313aaa5e2b", branch = "main" }
 force_source = true
 dependencies = [
     "checkmate",
