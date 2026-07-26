@@ -25,3 +25,4 @@ _targets/
 /rv/library/
 
 **/*.quarto_ipynb
+.scratch
