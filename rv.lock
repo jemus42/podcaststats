@@ -80,13 +80,6 @@ force_source = false
 dependencies = []
 
 [[packages]]
-name = "RcppParallel"
-version = "6.0.0"
-source = { repository = "https://packagemanager.posit.co/cran/2026-07-25" }
-force_source = false
-dependencies = []
-
-[[packages]]
 name = "S7"
 version = "0.2.2"
 source = { repository = "https://packagemanager.posit.co/cran/2026-07-25" }
@@ -845,8 +838,8 @@ dependencies = []
 
 [[packages]]
 name = "poddr"
-version = "0.3.2"
-source = { git = "https://github.com/jemus42/poddr", sha = "9b3e9b86b9e1a886f4ef6f14e8066b313aaa5e2b", branch = "main" }
+version = "0.3.3"
+source = { git = "https://github.com/jemus42/poddr", sha = "edd0e6febdfd871520d09431161eb6b267c83290", branch = "main" }
 force_source = true
 dependencies = [
     "checkmate",
@@ -931,17 +924,6 @@ dependencies = [
     { name = "magrittr", requirement = "(>= 1.5.0)" },
     { name = "rlang", requirement = "(>= 1.1.1)" },
     { name = "vctrs", requirement = "(>= 0.6.3)" },
-]
-
-[[packages]]
-name = "qs2"
-version = "0.2.2"
-source = { repository = "https://packagemanager.posit.co/cran/2026-07-25" }
-force_source = false
-dependencies = [
-    "Rcpp",
-    "RcppParallel",
-    { name = "stringfish", requirement = "(>= 0.18.0)" },
 ]
 
 [[packages]]
@@ -1172,16 +1154,6 @@ source = { repository = "https://packagemanager.posit.co/cran/2026-07-25" }
 force_source = false
 dependencies = [
     "Rcpp",
-]
-
-[[packages]]
-name = "stringfish"
-version = "0.19.0"
-source = { repository = "https://packagemanager.posit.co/cran/2026-07-25" }
-force_source = false
-dependencies = [
-    "Rcpp",
-    "RcppParallel",
 ]
 
 [[packages]]

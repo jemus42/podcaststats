@@ -30,7 +30,6 @@ dependencies = [
   "knitr",
   "lubridate",
   "purrr",
-  "qs2",
   "quarto",
   "ragg",
   "reactable",

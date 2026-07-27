@@ -34,6 +34,7 @@ However, I want to fulfill [Jason's request](https://twitter.com/jsnell/status/8
 
 ```{r tenth-summary}
 #| results: asis
+#| echo: false
 glue::glue('Since its first episode on **{format(min(as.Date(mothership_wide$date, na.rm = TRUE)), "%B %d, %Y")}**, The Incomparable has accumulated **{round(sum(mothership_wide$duration, na.rm = TRUE)/dhours(1))}** hours of content (roughly **{round(sum(mothership_wide$duration, na.rm = TRUE)/ddays(1))}** days) across **{nrow(mothership_wide)}** episodes.')
 ```
 
@@ -70,6 +71,7 @@ mothership_wide |>
 
 ```{r panelists-head}
 #| results: asis
+#| echo: false
 glue::glue("There were **{nrow(filter(mothership_wide, year == current_year))}** episodes published in **{current_year}**. Here's a breakdown by host and guest counts.")
 ```
 

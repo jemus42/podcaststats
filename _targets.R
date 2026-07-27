@@ -8,10 +8,16 @@ library(targets)
 library(tarchetypes)
 
 # Set target options:
+# Default RDS format: the data is a few MB, so qs's speed buys nothing, and
+# dropping it removes the qs2 -> stringfish -> RcppParallel/TBB native stack
+# that repeatedly failed to build/load across platforms.
 tar_option_set(
   packages = c("dplyr"),
-  format = "qs",
-  error = "trim"
+  # "null": an errored target becomes NULL and the pipeline runs to completion
+  # (exit 0), so a single failed scrape or render doesn't abort everything. CI
+  # guards against a broken result with `test -f _site/index.html`.
+  # (Replaces the removed "trim" value from older targets.)
+  error = "null"
 )
 
 # Run the R scripts in the R/ folder with your custom functions:
